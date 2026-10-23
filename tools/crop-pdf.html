@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>Free PDF Margin Cropper — Trim Whitespace & Fit to Screen | SlowPDF</title>
+  <meta name="description" content="Crop PDF margins online for free. Auto-detect white margins, trim blank borders, fit documents for Kindle or iPad reading, and export with 100% original sharpness in client RAM." />
+  <meta property="og:title" content="Free PDF Margin Cropper — Trim Whitespace & Fit to Screen | SlowPDF" />
+  <meta property="og:description" content="Trim outer margins and blank whitespace from PDF files. Auto-detect content bounding box, adjust top/bottom/left/right steppers, and save cropped PDFs with 100% privacy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/crop-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Crop PDF Margins Studio",
+        "url": "https://slowpdf.in/tools/crop-pdf.html",
+        "description": "100% client-side private PDF margin cropper to trim blank outer borders, auto-detect content whitespace, adjust margin steppers, and set CropBox/MediaBox coordinates directly in local browser RAM.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does Auto-Detect White Margins work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Auto-Detect scans the canvas pixel data of your PDF page to find the exact bounding rectangle containing text and graphics, automatically snapping the crop handles snugly around the active content."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does cropping a PDF reduce image resolution or text quality?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! SlowPDF modifies the internal PDF CropBox and MediaBox viewport vectors using pdf-lib without re-compressing pages. Vector text, embedded fonts, and original image resolution remain 100% untouched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I crop all pages in a document simultaneously?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Select 'Apply to All Pages' in the toolbar to apply your chosen margin crop dimensions across every page in your PDF document."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is cropping PDF margins helpful for Kindle and e-readers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely! Trimming unnecessary white borders allows e-readers like Kindle, Kobo, and iPad tablets to zoom in on body text automatically, making eBooks much easier to read."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I fine-tune crop margins using numeric inputs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use our Top, Bottom, Left, and Right margin steppers in the toolbar to adjust border offsets with pixel precision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my confidential files uploaded to any external server during cropping?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All page rendering, margin detection, and PDF viewport updating happen 100% inside your device's browser RAM. Zero files leave your computer or mobile phone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I undo or reset my crop handles if I make a mistake?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Click the 'Reset Crop Box' button at any time to expand crop handles back to full original page dimensions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work on scanned book pages or photo notes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF works on both native vector PDFs and scanned image documents, allowing you to trim dark scanner edges or page shadows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I crop individual pages with different crop boxes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Switch scope to 'Current Page Only' to set custom crop boundaries for specific pages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SlowPDF Crop PDF 100% free with no watermarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF.js & PDF-Lib Client-Side Engines -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* ==========================================================================
+       LOCKED THEME SPECIFICATION:
+       - Page background: #FFFBF2 !important
+       - Header background: #E8DABF !important
+       ========================================================================== */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #E8DABF !important;
+    }
+
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .dragover-active {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.05) !important;
+      transform: scale(1.01);
+    }
+
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #2D3748 !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F !important;
+    }
+
+    .mascot-celebration {
+      background-color: transparent !important;
+      object-fit: contain;
+    }
+
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .footer-link:hover {
+      color: #355E4B;
+      font-weight: 700;
+    }
+
+    /* Interactive Crop Overlay Elements */
+    .crop-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    .crop-overlay-mask {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .crop-box {
+      position: absolute;
+      border: 2px dashed #274737;
+      background-color: transparent;
+      box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+      cursor: move;
+      z-index: 20;
+      touch-action: none;
+    }
+
+    .crop-handle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #274737;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+      z-index: 30;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      touch-action: none;
+    }
+
+    .crop-handle.nw { top: -6px; left: -6px; cursor: nwse-resize; }
+    .crop-handle.n  { top: -6px; left: calc(50% - 6px); cursor: ns-resize; }
+    .crop-handle.ne { top: -6px; right: -6px; cursor: nesw-resize; }
+    .crop-handle.e  { top: calc(50% - 6px); right: -6px; cursor: ew-resize; }
+    .crop-handle.se { bottom: -6px; right: -6px; cursor: nwse-resize; }
+    .crop-handle.s  { bottom: -6px; left: calc(50% - 6px); cursor: ns-resize; }
+    .crop-handle.sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+    .crop-handle.w  { top: calc(50% - 6px); left: -6px; cursor: ew-resize; }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR (100% LOCKED)       -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Title -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center & Right Nav Links -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Hamburger Menu Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="mobileMenuBtn" 
+          type="button"
+          class="mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preferences Drawer Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle" 
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="compress-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          Compress PDF
+        </a>
+        <a href="whiteout-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          Whiteout & Redact
+        </a>
+        <a href="add-page-numbers.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+          Add Page Numbers
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. INNER TOOL WORKBENCH CONTAINER          -->
+  <!-- ========================================== -->
+  <main id="tool-workbench" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
+    
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        100% Original Sharpness • Zero Server Upload
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Crop PDF Margins
+      </h1>
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Trim blank borders, auto-detect text whitespace, adjust margin steppers, and fit PDF documents for Kindle or tablet reading.
+      </p>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-4 sm:p-8 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-7 7m7-7L5 5"/>
+          </svg>
+        </div>
+
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Choose a PDF file or drop here
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6 leading-relaxed">
+          Select any PDF to trim outer whitespace, auto-fit margins, and preview interactive crop handles in real time.
+        </p>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('pdf-file-input').click()"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF Document
+        </button>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW B: CROP STUDIO WORKBENCH              -->
+      <!-- ========================================== -->
+      <div id="workbench-panel" class="hidden space-y-6">
+        
+        <!-- File Info Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#274737] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <h4 id="file-name-display" class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white truncate">document.pdf</h4>
+              <p id="file-meta-display" class="text-xs text-stone-500 dark:text-stone-400">Loading document pages...</p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            onclick="document.getElementById('pdf-file-input').click()"
+            class="px-4 py-2 rounded-xl text-xs font-bold text-[#274737] dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/60 hover:bg-emerald-200/80 dark:hover:bg-emerald-900/80 transition-colors shrink-0"
+          >
+            Change PDF
+          </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TOP TOOLBAR & CROP CONTROLS (Normal flow)  -->
+        <!-- ========================================== -->
+        <div class="bg-stone-100/90 dark:bg-[#161F1B] p-4 sm:p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800 space-y-4">
+          
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            
+            <!-- Auto Detect & Scope Controls -->
+            <div class="flex flex-wrap items-center gap-3">
+              <button 
+                type="button" 
+                id="auto-detect-margins-btn" 
+                class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all"
+                title="Scans canvas pixels to automatically detect content bounding box and snap crop box"
+              >
+                <span>🪄</span>
+                <span>Auto-Detect White Margins</span>
+              </button>
+
+              <button 
+                type="button" 
+                id="reset-crop-box-btn" 
+                class="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-bold text-xs sm:text-sm hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                title="Reset crop box back to full page dimensions"
+              >
+                <span>🔄</span>
+                <span>Reset Crop Box</span>
+              </button>
+
+              <!-- Scope Switcher -->
+              <div class="flex items-center gap-2 pl-2 border-l border-stone-300 dark:border-stone-700 text-xs sm:text-sm font-bold text-stone-700 dark:text-stone-300">
+                <span class="text-stone-500 uppercase tracking-wider text-2xs">Scope:</span>
+                <label class="inline-flex items-center gap-1.5 cursor-pointer">
+                  <input type="radio" name="cropScope" value="all" checked class="accent-[#274737]" />
+                  <span>Apply to All Pages</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 cursor-pointer ml-2">
+                  <input type="radio" name="cropScope" value="single" class="accent-[#274737]" />
+                  <span>Current Page Only</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Page Navigation -->
+            <div class="flex items-center justify-between sm:justify-end gap-2">
+              <button 
+                type="button" 
+                id="prev-page-btn" 
+                class="p-2 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-700 disabled:opacity-40"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <span id="page-num-display" class="text-xs sm:text-sm font-bold text-stone-700 dark:text-stone-200 px-2">Page 1 of 1</span>
+              <button 
+                type="button" 
+                id="next-page-btn" 
+                class="p-2 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-700 disabled:opacity-40"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Numeric Margin Stepper Inputs -->
+          <div class="pt-3 border-t border-stone-200/80 dark:border-stone-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            
+            <div>
+              <label for="margin-top-input" class="block text-2xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-1">
+                Top Margin (px):
+              </label>
+              <input 
+                type="number" 
+                id="margin-top-input" 
+                min="0" 
+                value="20" 
+                class="w-full px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-xs focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="margin-bottom-input" class="block text-2xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-1">
+                Bottom Margin (px):
+              </label>
+              <input 
+                type="number" 
+                id="margin-bottom-input" 
+                min="0" 
+                value="20" 
+                class="w-full px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-xs focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="margin-left-input" class="block text-2xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-1">
+                Left Margin (px):
+              </label>
+              <input 
+                type="number" 
+                id="margin-left-input" 
+                min="0" 
+                value="20" 
+                class="w-full px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-xs focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="margin-right-input" class="block text-2xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-1">
+                Right Margin (px):
+              </label>
+              <input 
+                type="number" 
+                id="margin-right-input" 
+                min="0" 
+                value="20" 
+                class="w-full px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-xs focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- LIVE DOCUMENT CANVAS WITH INTERACTIVE OVERLAY -->
+        <!-- ========================================== -->
+        <div class="flex flex-col items-center py-6 bg-stone-200/50 dark:bg-stone-900/40 p-4 sm:p-6 rounded-2xl border border-stone-200 dark:border-stone-800 min-h-[450px]">
+          <div id="crop-wrapper" class="crop-wrapper">
+            <canvas id="pdf-render-canvas" class="block w-full h-auto"></canvas>
+            
+            <!-- Interactive Crop Box Overlay with 8 Draggable Handles -->
+            <div id="crop-box" class="crop-box">
+              <div class="crop-handle nw" data-handle="nw"></div>
+              <div class="crop-handle n"  data-handle="n"></div>
+              <div class="crop-handle ne" data-handle="ne"></div>
+              <div class="crop-handle e"  data-handle="e"></div>
+              <div class="crop-handle se" data-handle="se"></div>
+              <div class="crop-handle s"  data-handle="s"></div>
+              <div class="crop-handle sw" data-handle="sw"></div>
+              <div class="crop-handle w"  data-handle="w"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIMARY ACTION DOCK & FILENAME INPUT -->
+        <div class="pt-6 border-t border-stone-200 dark:border-stone-800 space-y-4">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div class="flex-1 max-w-md">
+              <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-400 mb-1">
+                Output File Name:
+              </label>
+              <input 
+                type="text" 
+                id="output-filename-input" 
+                value="SlowPDF_Cropped_Document" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-semibold text-sm focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <button 
+              type="button" 
+              id="apply-crop-btn" 
+              class="px-8 py-4 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 shrink-0"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-7 7m7-7L5 5"/></svg>
+              Apply Crop & Download PDF
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW C: PROCESSING PROGRESS MODAL STATE    -->
+      <!-- ========================================== -->
+      <div id="processing-progress-box" class="hidden py-16 text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-100 dark:bg-emerald-950/70 text-[#274737] dark:text-emerald-400 flex items-center justify-center animate-spin">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+          Updating PDF Viewport Vectors...
+        </h3>
+        <p id="progress-status-text" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto">
+          Applying CropBox & MediaBox viewports in browser RAM with 100% original sharpness...
+        </p>
+
+        <div class="max-w-md mx-auto bg-stone-200 dark:bg-stone-800 h-3 rounded-full overflow-hidden">
+          <div id="progress-bar-fill" class="bg-[#274737] dark:bg-emerald-500 h-full w-0 transition-all duration-300"></div>
+        </div>
+        <span id="progress-percent-text" class="text-xs font-extrabold text-[#274737] dark:text-emerald-400">0%</span>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW D: MASCOT CELEBRATION SUCCESS STATE   -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden py-10 text-center space-y-6">
+        <div class="relative w-28 h-28 mx-auto">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Celebrating" 
+            class="w-full h-full object-contain mascot-celebration animate-bounce"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+
+        <div class="space-y-2 max-w-md mx-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            PDF Margins Cropped!
+          </h3>
+          <p id="success-file-stats-display" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+            Outer margins trimmed • 100% original vector & image resolution preserved
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 max-w-md mx-auto text-left space-y-1">
+          <span class="text-2xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">Cropped Output File:</span>
+          <p id="success-file-name-display" class="text-sm font-bold text-[#222E28] dark:text-white truncate">SlowPDF_Cropped_Document.pdf</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+          <button 
+            type="button" 
+            id="download-cropped-pdf-btn" 
+            class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Cropped PDF
+          </button>
+
+          <button 
+            type="button" 
+            id="crop-another-btn" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-700 transition-all"
+          >
+            Crop Another PDF
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 3. MANDATORY 10-BANNER PROMO CAROUSEL      -->
+  <!-- ========================================== -->
+  <section id="promo-carousel-section" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+    <!-- Rendered dynamically by assets/js/carousel.js -->
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. 500+ WORD TECHNICAL SEO ARTICLE         -->
+  <!-- ========================================== -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-12 space-y-8 text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+    <div class="border-b border-stone-200 dark:border-stone-800 pb-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Free PDF Margin Cropper — Trim Whitespace & Fit to Screen
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
+        Learn how to crop PDF margins online, trim blank white borders, auto-detect text boundaries, and optimize eBooks for Kindle and tablet reading.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">🪄</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Auto-Detect White Content</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Our intelligent canvas scanner analyzes pixel brightness to automatically find non-white text and figures, snapping crop boundaries snugly around your content.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">📱</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">e-Reader & Kindle Optimization</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Trimming wide margins allows portable e-readers, Kindle paperwhites, and iPad screens to display larger, clearer body fonts without manual zooming.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+        Why Crop PDF Margins Client-Side with Vector Accuracy?
+      </h3>
+      <p>
+        Standard online PDF cropping tools often rasterize document pages into low-resolution images, causing blurry text, loss of vector sharpness, and bloated file sizes. SlowPDF takes a superior approach by modifying internal PDF <code>CropBox</code> and <code>MediaBox</code> viewport definitions directly via PDF-Lib in browser RAM.
+      </p>
+      <p>
+        By adjusting viewport vectors directly, your document maintains 100% of its original vector clarity, embedded fonts, high-resolution graphics, and selectable text lines.
+      </p>
+    </div>
+
+    <div class="bg-emerald-50/60 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-200/70 dark:border-emerald-800/60 space-y-3">
+      <h4 class="font-bold text-base text-[#274737] dark:text-emerald-300 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        100% Private Client-Side Security
+      </h4>
+      <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300">
+        Cropping sensitive business papers, financial reports, or academic manuscripts requires maximum privacy. SlowPDF performs 100% of rendering, margin detection, and PDF generation locally inside your device's memory. Zero data ever leaves your computer or phone.
+      </p>
+    </div>
+  </article>
+
+  <!-- ========================================== -->
+  <!-- 5. 10 FAQ ACCORDION ITEMS WITH JSON-LD     -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 space-y-6">
+    <div class="text-center space-y-2">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+        Everything you need to know about cropping PDF margins and trimming whitespace.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How does Auto-Detect White Margins work?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Auto-Detect scans the canvas pixel data of your PDF page to find the exact bounding rectangle containing text and graphics, automatically snapping the crop handles snugly around the active content.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Does cropping a PDF reduce image resolution or text quality?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          No! SlowPDF modifies the internal PDF CropBox and MediaBox viewport vectors using pdf-lib without re-compressing pages. Vector text, embedded fonts, and original image resolution remain 100% untouched.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Can I crop all pages in a document simultaneously?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Yes! Select 'Apply to All Pages' in the toolbar to apply your chosen margin crop dimensions across every page in your PDF document.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Is cropping PDF margins helpful for Kindle and e-readers?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Absolutely! Trimming unnecessary white borders allows e-readers like Kindle, Kobo, and iPad tablets to zoom in on body text automatically, making eBooks much easier to read.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How do I fine-tune crop margins using numeric inputs?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Use our Top, Bottom, Left, and Right margin steppers in the toolbar to adjust border offsets with pixel precision.
+        </div>
+      </div>
+
+      <!-- Extra FAQs Container -->
+      <div id="extra-faq-items" class="hidden space-y-3">
+        
+        <!-- FAQ 6 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Are my confidential files uploaded to any external server during cropping?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Never. All page rendering, margin detection, and PDF viewport updating happen 100% inside your device's browser RAM. Zero files leave your computer or mobile phone.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Can I undo or reset my crop handles if I make a mistake?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! Click the 'Reset Crop Box' button at any time to expand crop handles back to full original page dimensions.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does this tool work on scanned book pages or photo notes?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF works on both native vector PDFs and scanned image documents, allowing you to trim dark scanner edges or page shadows.
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Can I crop individual pages with different crop boxes?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! Switch scope to 'Current Page Only' to set custom crop boundaries for specific pages.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Is SlowPDF Crop PDF 100% free with no watermarks?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="text-center pt-2">
+      <button 
+        type="button" 
+        id="toggle-all-faq-btn" 
+        class="px-6 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-xs font-bold text-[#274737] dark:text-emerald-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
+      >
+        View All 10 Questions
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER RICH FOOTER (100% LOCKED)        -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#E8DABF] dark:bg-[#18201C] border-t border-[#D8C7A5] dark:border-stone-800 pt-12 pb-8 transition-colors duration-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        
+        <!-- Brand Summary Column -->
+        <div class="md:col-span-2 space-y-4">
+          <a href="../index.html" class="flex items-center gap-3 group">
+            <img src="../assets/images/logo.png" alt="SlowPDF" class="w-8 h-8 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+            <span class="text-xl font-extrabold text-[#2D3748] dark:text-white">Slow <span class="text-[#1E3D30] dark:text-emerald-400">PDF</span></span>
+          </a>
+          <p class="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed max-w-sm">
+            Free client-side PDF utility studio. Process, convert, watermark, compress, crop, and redact documents safely inside your browser RAM with zero server uploads.
+          </p>
+          <div class="flex items-center gap-2 text-2xs font-extrabold text-[#1E3D30] dark:text-emerald-400 uppercase tracking-wider">
+            <span>🛡️ 100% Client-Side Privacy</span>
+            <span>•</span>
+            <span>⚡ Local RAM Execution</span>
+          </div>
+        </div>
+
+        <!-- Column 1: Popular Tools -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Popular Tools</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="compress-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Compress PDF</a></li>
+            <li><a href="images-to-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Images to PDF</a></li>
+            <li><a href="crop-pdf.html" class="footer-link font-bold text-[#1E3D30] dark:text-emerald-400">Crop PDF Margins</a></li>
+            <li><a href="add-page-numbers.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Add Page Numbers</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Edit & Security -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Edit & Security</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="whiteout-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Whiteout & Redact</a></li>
+            <li><a href="edit-pdf-metadata.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Edit Metadata</a></li>
+            <li><a href="pdf-color-tint.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Color Inverter</a></li>
+            <li><a href="protect-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Protect PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company & Legal -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Company & Legal</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="../pages/about.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">About Us</a></li>
+            <li><a href="../pages/blog.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Blog & Articles</a></li>
+            <li><a href="../pages/contact.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Contact Support</a></li>
+            <li><a href="../pages/privacy.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-[#D8C7A5]/80 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-2xs text-stone-700 dark:text-stone-400">
+        <p>© 2026 SlowPDF. All rights reserved. Zero files saved or uploaded.</p>
+        <div class="flex items-center gap-4">
+          <a href="../pages/privacy.html" class="hover:underline">Privacy Policy</a>
+          <a href="../pages/about.html" class="hover:underline">About</a>
+          <a href="../pages/contact.html" class="hover:underline">Contact</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 7. CROP ENGINE & OVERLAY SCRIPT             -->
+  <!-- ========================================== -->
+  <script>
+    // Global Application State
+    let selectedFile = null;
+    let fileArrayBuffer = null;
+    let pdfDocObj = null;
+    let croppedPdfBlobUrl = null;
+
+    let currentPageNum = 1;
+    let totalPages = 1;
+    let renderScale = 1.2;
+
+    // Crop box state in pixel coordinates relative to canvas
+    // { top, left, width, height }
+    let cropRect = { top: 20, left: 20, width: 300, height: 400 };
+
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+
+    // DOM Elements
+    const fileInput = document.getElementById('pdf-file-input');
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const successPanel = document.getElementById('success-panel');
+
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const fileMetaDisplay = document.getElementById('file-meta-display');
+
+    const pdfRenderCanvas = document.getElementById('pdf-render-canvas');
+    const cropWrapper = document.getElementById('crop-wrapper');
+    const cropBox = document.getElementById('crop-box');
+
+    const autoDetectBtn = document.getElementById('auto-detect-margins-btn');
+    const resetCropBtn = document.getElementById('reset-crop-box-btn');
+
+    const prevPageBtn = document.getElementById('prev-page-btn');
+    const nextPageBtn = document.getElementById('next-page-btn');
+    const pageNumDisplay = document.getElementById('page-num-display');
+
+    const marginTopInput = document.getElementById('margin-top-input');
+    const marginBottomInput = document.getElementById('margin-bottom-input');
+    const marginLeftInput = document.getElementById('margin-left-input');
+    const marginRightInput = document.getElementById('margin-right-input');
+
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const applyCropBtn = document.getElementById('apply-crop-btn');
+
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressPercentText = document.getElementById('progress-percent-text');
+
+    const successFileNameDisplay = document.getElementById('success-file-name-display');
+    const successFileStatsDisplay = document.getElementById('success-file-stats-display');
+    const downloadCroppedPdfBtn = document.getElementById('download-cropped-pdf-btn');
+    const cropAnotherBtn = document.getElementById('crop-another-btn');
+
+    // File Input & Drag-Drop Listeners
+    fileInput.addEventListener('change', handleFileSelection);
+
+    ['dragover', 'dragenter'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelection();
+      }
+    });
+
+    async function handleFileSelection() {
+      if (!fileInput.files || fileInput.files.length === 0) return;
+
+      selectedFile = fileInput.files[0];
+      if (selectedFile.type !== 'application/pdf' && !selectedFile.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a valid PDF file.');
+        return;
+      }
+
+      const sizeMB = (selectedFile.size / (1024 * 1024)).toFixed(2);
+      fileNameDisplay.textContent = selectedFile.name;
+      fileMetaDisplay.textContent = `${sizeMB} MB • Reading document pages...`;
+
+      const baseName = selectedFile.name.replace(/\.pdf$/i, '');
+      outputFilenameInput.value = `SlowPDF_Cropped_${baseName}`;
+
+      emptyDropzone.classList.add('hidden');
+      workbenchPanel.classList.remove('hidden');
+
+      try {
+        fileArrayBuffer = await selectedFile.arrayBuffer();
+
+        const loadingTask = pdfjsLib.getDocument({ data: fileArrayBuffer.slice(0) });
+        pdfDocObj = await loadingTask.promise;
+
+        totalPages = pdfDocObj.numPages;
+        currentPageNum = 1;
+
+        fileMetaDisplay.textContent = `${sizeMB} MB • ${totalPages} Page${totalPages > 1 ? 's' : ''} • Ready to Crop`;
+
+        await renderPagePreview(currentPageNum);
+
+      } catch (err) {
+        console.error('Error opening PDF:', err);
+        alert('Failed to load PDF file: ' + err.message);
+        workbenchPanel.classList.add('hidden');
+        emptyDropzone.classList.remove('hidden');
+      }
+    }
+
+    // Render Page Preview
+    async function renderPagePreview(pageNum) {
+      if (!pdfDocObj) return;
+
+      const page = await pdfDocObj.getPage(pageNum);
+      const dpr = window.devicePixelRatio || 1;
+      const targetScale = 2.0;
+      const baseViewport = page.getViewport({ scale: renderScale || 1.3 });
+      const viewport = page.getViewport({ scale: (renderScale || 1.3) * targetScale * dpr });
+
+      pdfRenderCanvas.width = Math.floor(viewport.width);
+      pdfRenderCanvas.height = Math.floor(viewport.height);
+      pdfRenderCanvas.style.width = `${Math.floor(baseViewport.width)}px`;
+      pdfRenderCanvas.style.height = `${Math.floor(baseViewport.height)}px`;
+      pdfRenderCanvas.style.imageRendering = '-webkit-optimize-contrast';
+      pdfRenderCanvas.style.imageRendering = 'crisp-edges';
+      pdfRenderCanvas.style.display = 'block';
+      pdfRenderCanvas.style.margin = '0 auto';
+      pdfRenderCanvas.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.08)';
+
+      canvasWidth = Math.floor(baseViewport.width);
+      canvasHeight = Math.floor(baseViewport.height);
+
+      cropWrapper.style.width = `${Math.floor(baseViewport.width)}px`;
+      cropWrapper.style.height = `${Math.floor(baseViewport.height)}px`;
+
+      const ctx = pdfRenderCanvas.getContext('2d');
+      await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+      pageNumDisplay.textContent = `Page ${pageNum} of ${totalPages}`;
+      prevPageBtn.disabled = pageNum <= 1;
+      nextPageBtn.disabled = pageNum >= totalPages;
+
+      // Set initial crop rect if fresh
+      if (cropRect.left === 0 && cropRect.top === 0) {
+        cropRect = {
+          left: 20,
+          top: 20,
+          width: Math.max(100, canvasWidth - 40),
+          height: Math.max(100, canvasHeight - 40)
+        };
+      } else {
+        // Constrain existing crop rect to canvas bounds
+        cropRect.left = Math.min(cropRect.left, canvasWidth - 50);
+        cropRect.top = Math.min(cropRect.top, canvasHeight - 50);
+        cropRect.width = Math.min(cropRect.width, canvasWidth - cropRect.left);
+        cropRect.height = Math.min(cropRect.height, canvasHeight - cropRect.top);
+      }
+
+      updateCropBoxUI();
+    }
+
+    // Navigation Page Controls
+    prevPageBtn.addEventListener('click', () => {
+      if (currentPageNum > 1) {
+        currentPageNum--;
+        renderPagePreview(currentPageNum);
+      }
+    });
+
+    nextPageBtn.addEventListener('click', () => {
+      if (currentPageNum < totalPages) {
+        currentPageNum++;
+        renderPagePreview(currentPageNum);
+      }
+    });
+
+    // Update Crop Box Elements & Inputs UI
+    function updateCropBoxUI() {
+      cropBox.style.left = `${cropRect.left}px`;
+      cropBox.style.top = `${cropRect.top}px`;
+      cropBox.style.width = `${cropRect.width}px`;
+      cropBox.style.height = `${cropRect.height}px`;
+
+      // Sync numeric inputs
+      const topMargin = Math.round(cropRect.top);
+      const bottomMargin = Math.round(canvasHeight - (cropRect.top + cropRect.height));
+      const leftMargin = Math.round(cropRect.left);
+      const rightMargin = Math.round(canvasWidth - (cropRect.left + cropRect.width));
+
+      marginTopInput.value = Math.max(0, topMargin);
+      marginBottomInput.value = Math.max(0, bottomMargin);
+      marginLeftInput.value = Math.max(0, leftMargin);
+      marginRightInput.value = Math.max(0, rightMargin);
+    }
+
+    // Sync from Numeric Inputs to Crop Box
+    function syncFromInputs() {
+      const topMargin = parseInt(marginTopInput.value, 10) || 0;
+      const bottomMargin = parseInt(marginBottomInput.value, 10) || 0;
+      const leftMargin = parseInt(marginLeftInput.value, 10) || 0;
+      const rightMargin = parseInt(marginRightInput.value, 10) || 0;
+
+      const newLeft = Math.min(leftMargin, canvasWidth - 50);
+      const newTop = Math.min(topMargin, canvasHeight - 50);
+      const newWidth = Math.max(50, canvasWidth - newLeft - rightMargin);
+      const newHeight = Math.max(50, canvasHeight - newTop - bottomMargin);
+
+      cropRect = {
+        left: newLeft,
+        top: newTop,
+        width: newWidth,
+        height: newHeight
+      };
+
+      updateCropBoxUI();
+    }
+
+    [marginTopInput, marginBottomInput, marginLeftInput, marginRightInput].forEach(input => {
+      input.addEventListener('input', syncFromInputs);
+    });
+
+    // Reset Crop Box
+    resetCropBtn.addEventListener('click', () => {
+      cropRect = {
+        left: 20,
+        top: 20,
+        width: Math.max(100, canvasWidth - 40),
+        height: Math.max(100, canvasHeight - 40)
+      };
+      updateCropBoxUI();
+    });
+
+    // 🪄 Auto-Detect White Margins
+    autoDetectBtn.addEventListener('click', () => {
+      const ctx = pdfRenderCanvas.getContext('2d');
+      const imgData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+      const data = imgData.data;
+
+      let minX = canvasWidth;
+      let minY = canvasHeight;
+      let maxX = 0;
+      let maxY = 0;
+
+      // Scan canvas pixels
+      for (let y = 0; y < canvasHeight; y += 2) {
+        for (let x = 0; x < canvasWidth; x += 2) {
+          const idx = (y * canvasWidth + x) * 4;
+          const r = data[idx];
+          const g = data[idx + 1];
+          const b = data[idx + 2];
+          const brightness = (r + g + b) / 3;
+
+          // Non-white pixel threshold
+          if (brightness < 240) {
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+
+      // If valid non-white bounding box found
+      if (maxX > minX && maxY > minY) {
+        const padding = 12; // 12px breathing room
+        const newLeft = Math.max(0, minX - padding);
+        const newTop = Math.max(0, minY - padding);
+        const newRight = Math.min(canvasWidth, maxX + padding);
+        const newBottom = Math.min(canvasHeight, maxY + padding);
+
+        cropRect = {
+          left: newLeft,
+          top: newTop,
+          width: newRight - newLeft,
+          height: newBottom - newTop
+        };
+
+        updateCropBoxUI();
+      } else {
+        alert('Could not detect content boundaries. Page appears blank or uniform.');
+      }
+    });
+
+    // Interactive Dragging Mechanics for Crop Box & 8 Handles
+    let isDragging = false;
+    let activeHandle = null;
+    let startX = 0;
+    let startY = 0;
+    let startCrop = { ...cropRect };
+
+    function getEventPos(e) {
+      const touch = e.touches ? e.touches[0] : e;
+      return { x: touch.clientX, y: touch.clientY };
+    }
+
+    // Handles Drag Start
+    cropBox.addEventListener('mousedown', startDrag);
+    cropBox.addEventListener('touchstart', startDrag, { passive: false });
+
+    function startDrag(e) {
+      e.preventDefault();
+      const pos = getEventPos(e);
+      startX = pos.x;
+      startY = pos.y;
+      startCrop = { ...cropRect };
+
+      if (e.target.classList.contains('crop-handle')) {
+        activeHandle = e.target.getAttribute('data-handle');
+      } else {
+        activeHandle = 'move';
+      }
+
+      isDragging = true;
+      document.addEventListener('mousemove', onDragMove);
+      document.addEventListener('touchmove', onDragMove, { passive: false });
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+    }
+
+    function onDragMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      const pos = getEventPos(e);
+      const dx = pos.x - startX;
+      const dy = pos.y - startY;
+
+      let { left, top, width, height } = startCrop;
+
+      if (activeHandle === 'move') {
+        left = Math.max(0, Math.min(canvasWidth - width, left + dx));
+        top = Math.max(0, Math.min(canvasHeight - height, top + dy));
+      } else {
+        if (activeHandle.includes('w')) {
+          const newLeft = Math.max(0, Math.min(left + width - 40, left + dx));
+          width += left - newLeft;
+          left = newLeft;
+        }
+        if (activeHandle.includes('e')) {
+          width = Math.max(40, Math.min(canvasWidth - left, width + dx));
+        }
+        if (activeHandle.includes('n')) {
+          const newTop = Math.max(0, Math.min(top + height - 40, top + dy));
+          height += top - newTop;
+          top = newTop;
+        }
+        if (activeHandle.includes('s')) {
+          height = Math.max(40, Math.min(canvasHeight - top, height + dy));
+        }
+      }
+
+      cropRect = { left, top, width, height };
+      updateCropBoxUI();
+    }
+
+    function endDrag() {
+      isDragging = false;
+      activeHandle = null;
+      document.removeEventListener('mousemove', onDragMove);
+      document.removeEventListener('touchmove', onDragMove);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchend', endDrag);
+    }
+
+    // Primary Action: Apply Crop & Download PDF via PDF-Lib
+    applyCropBtn.addEventListener('click', async () => {
+      if (!selectedFile || !fileArrayBuffer) return;
+
+      workbenchPanel.classList.add('hidden');
+      processingProgressBox.classList.remove('hidden');
+
+      progressStatusText.textContent = 'Updating PDF page viewports in RAM...';
+      progressBarFill.style.width = '30%';
+      progressPercentText.textContent = '30%';
+
+      setTimeout(async () => {
+        try {
+          const pdfLibDoc = await PDFLib.PDFDocument.load(fileArrayBuffer.slice(0));
+          const pages = pdfLibDoc.getPages();
+          const scope = document.querySelector('input[name="cropScope"]:checked').value;
+
+          progressBarFill.style.width = '60%';
+          progressPercentText.textContent = '60%';
+
+          pages.forEach((page, idx) => {
+            if (scope === 'single' && idx !== currentPageNum - 1) return;
+
+            const { width: pdfWidth, height: pdfHeight } = page.getSize();
+
+            // Convert normalized screen pixels to PDF points
+            const scaleX = pdfWidth / canvasWidth;
+            const scaleY = pdfHeight / canvasHeight;
+
+            const pdfX = cropRect.left * scaleX;
+            // PDF Y-axis is inverted (0,0 is bottom-left)
+            const pdfY = (canvasHeight - (cropRect.top + cropRect.height)) * scaleY;
+            const pdfW = cropRect.width * scaleX;
+            const pdfH = cropRect.height * scaleY;
+
+            // Apply CropBox & MediaBox
+            page.setCropBox(pdfX, pdfY, pdfW, pdfH);
+            page.setMediaBox(pdfX, pdfY, pdfW, pdfH);
+          });
+
+          progressBarFill.style.width = '90%';
+          progressPercentText.textContent = '90%';
+          progressStatusText.textContent = 'Serializing cropped PDF file...';
+
+          const croppedBytes = await pdfLibDoc.save();
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          const blob = new Blob([croppedBytes], { type: 'application/pdf' });
+          if (croppedPdfBlobUrl) URL.revokeObjectURL(croppedPdfBlobUrl);
+          croppedPdfBlobUrl = URL.createObjectURL(blob);
+
+          const sizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+          const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Cropped_Document';
+
+          successFileNameDisplay.textContent = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+          successFileStatsDisplay.textContent = `${sizeMB} MB • ${scope === 'all' ? 'All Pages Cropped' : 'Single Page Cropped'} • 100% Vector Quality`;
+
+          // Switch to Success Screen
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error cropping PDF:', err);
+          alert('Failed to crop PDF: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+          workbenchPanel.classList.remove('hidden');
+        }
+      }, 100);
+    });
+
+    // Trigger Download
+    downloadCroppedPdfBtn.addEventListener('click', () => {
+      if (!croppedPdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Cropped_Document';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = croppedPdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workflow to Crop Another PDF
+    cropAnotherBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileArrayBuffer = null;
+      pdfDocObj = null;
+      if (croppedPdfBlobUrl) URL.revokeObjectURL(croppedPdfBlobUrl);
+      croppedPdfBlobUrl = null;
+
+      fileInput.value = '';
+      cropRect = { top: 20, left: 20, width: 300, height: 400 };
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('crop-pdf');
+      }
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
+
+<script>
+  (function() {
+    function initMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn') || document.getElementById('hamburger-btn') || document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-icon');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const closeBtn = document.getElementById('closeMenuBtn');
+      
+      if (!menuBtn || !drawer) return;
+
+      menuBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        drawer.style.display = (drawer.style.display === 'none' || drawer.style.display === '') ? 'flex' : 'none';
+      };
+
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          drawer.style.display = 'none';
+        };
+      }
+
+      document.addEventListener('click', function(e) {
+        if (drawer.style.display === 'flex' && !drawer.contains(e.target) && !menuBtn.contains(e.target)) {
+          drawer.style.display = 'none';
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+      initMenu();
+    }
+  })();
+</script>
+</body>
+</html>

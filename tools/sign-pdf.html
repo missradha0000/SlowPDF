@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>Free Electronic PDF Signer — Sign Documents & Stamp Seals Online | SlowPDF</title>
+  <meta name="description" content="Sign PDF documents online for free. Draw handwritten signatures, type cursive names, upload official company stamps, drag onto PDF pages, and export with 100% client-side privacy." />
+  <meta property="og:title" content="Free Electronic PDF Signer — Sign Documents & Stamp Seals Online | SlowPDF" />
+  <meta property="og:description" content="Add electronic signatures, handwritten cursive names, and corporate seals to PDF files. Drag, scale, and embed stamps with 100% client RAM execution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/sign-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Sign & Stamp PDF Studio",
+        "url": "https://slowpdf.in/tools/sign-pdf.html",
+        "description": "100% client-side private PDF document signer to draw handwritten signatures, type cursive name signatures, upload corporate stamps, and embed electronic signatures directly in local browser RAM.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I create a handwritten signature on a PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use our 'Draw Signature' canvas to draw your signature using a mouse, stylus, or touch screen. Select pen color (Black, Blue, Red) and stroke thickness, then click 'Add Signature'."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I type my name and convert it into a cursive signature?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Switch to the 'Type Name' tab, enter your name, and choose from elegant cursive fonts like Dancing Script, Caveat, or Great Vibes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I upload an official company stamp or seal image?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Switch to the 'Upload Stamp / Logo' tab to upload transparent PNG or JPG images of corporate seals, approval stamps, or official signatures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I place and resize my signature on the PDF page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Click 'Place Signature on Page' or tap on the document canvas. Drag the signature box to move it, or use the corner handle to scale it to your preferred size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are electronic signatures created on SlowPDF legally binding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Electronic signatures created on SlowPDF satisfy standard e-signature requirements for non-notarized contracts, consent forms, invoices, and internal approvals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my signatures or PDF contracts uploaded to any cloud server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All signature drawing, font rendering, stamp embedding, and PDF generation happen 100% inside your browser RAM. Zero files or signatures leave your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I place multiple signatures on different pages of a single document?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can add as many signatures, initials, dates, and stamps as needed across any page of your document."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does signing a PDF alter the underlying text quality or vector clarity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! SlowPDF embeds signature PNG layers directly into the original PDF page stream using pdf-lib, preserving 100% of the original document vector quality."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work smoothly on smartphones and iPads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF features responsive touchscreen support, allowing smooth stylus or finger drawing on mobile devices."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SlowPDF Sign PDF 100% free with no watermarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Dancing Script, Caveat, Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            dancing: ['"Dancing Script"', 'cursive'],
+            caveat: ['"Caveat"', 'cursive'],
+            vibes: ['"Great Vibes"', 'cursive']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF.js & PDF-Lib Client-Side Engines -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* ==========================================================================
+       LOCKED THEME SPECIFICATION:
+       - Page background: #FFFBF2 !important
+       - Header background: #E8DABF !important
+       ========================================================================== */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #E8DABF !important;
+    }
+
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .dragover-active {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.05) !important;
+      transform: scale(1.01);
+    }
+
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #2D3748 !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F !important;
+    }
+
+    .mascot-celebration {
+      background-color: transparent !important;
+      object-fit: contain;
+    }
+
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .footer-link:hover {
+      color: #355E4B;
+      font-weight: 700;
+    }
+
+    /* Page Wrapper & Draggable Stamps */
+    .page-sign-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .placed-stamp-box {
+      position: absolute;
+      border: 2px dashed #274737;
+      background-color: rgba(39, 71, 55, 0.05);
+      cursor: move;
+      z-index: 20;
+      touch-action: none;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-center;
+      padding: 4px;
+    }
+
+    .placed-stamp-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .stamp-handle-delete {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 22px;
+      height: 22px;
+      background-color: #EF4444;
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 30;
+    }
+
+    .stamp-handle-resize {
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      width: 16px;
+      height: 16px;
+      background-color: #274737;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+      cursor: se-resize;
+      z-index: 30;
+    }
+
+    /* Tabs Styling */
+    .sign-tab-btn.active {
+      background-color: #274737 !important;
+      color: #FFFFFF !important;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR (100% LOCKED)       -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Title -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center & Right Nav Links -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Hamburger Menu Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="hamburger-btn" 
+          type="button"
+          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preferences Drawer Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle" 
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="compress-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          Compress PDF
+        </a>
+        <a href="whiteout-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          Whiteout & Redact
+        </a>
+        <a href="add-page-numbers.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+          Add Page Numbers
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. INNER TOOL WORKBENCH CONTAINER          -->
+  <!-- ========================================== -->
+  <main id="tool-workbench" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
+    
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Legal Digital Signatures • 100% Client-Side Privacy
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Sign & Stamp PDF
+      </h1>
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Draw handwritten signatures, type cursive names, upload official company stamps, and place them on any PDF page with 100% privacy.
+      </p>
+    </div>
+
+    <!-- Hidden File Inputs -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+    <input 
+      type="file" 
+      id="stamp-image-input" 
+      accept="image/png,image/jpeg,image/webp" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-4 sm:p-8 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+          </svg>
+        </div>
+
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Choose a PDF file or drop here
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6 leading-relaxed">
+          Open your contract, invoice, or legal form to draw, type, or stamp electronic signatures in real time.
+        </p>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('pdf-file-input').click()"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF Document
+        </button>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW B: SIGN & STAMP STUDIO WORKBENCH      -->
+      <!-- ========================================== -->
+      <div id="workbench-panel" class="hidden space-y-6">
+        
+        <!-- File Info Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#274737] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <h4 id="file-name-display" class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white truncate">document.pdf</h4>
+              <p id="file-meta-display" class="text-xs text-stone-500 dark:text-stone-400">Loading document pages...</p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            onclick="document.getElementById('pdf-file-input').click()"
+            class="px-4 py-2 rounded-xl text-xs font-bold text-[#274737] dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/60 hover:bg-emerald-200/80 dark:hover:bg-emerald-900/80 transition-colors shrink-0"
+          >
+            Change PDF
+          </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TOP CREATION STUDIO (Tabs: Draw, Type, Stamp) -->
+        <!-- ========================================== -->
+        <div class="bg-stone-100/90 dark:bg-[#161F1B] p-4 sm:p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800 space-y-4">
+          
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-stone-200/80 dark:border-stone-800">
+            <h3 class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center gap-2">
+              <span>✍️</span> Create Signature / Stamp
+            </h3>
+
+            <!-- Creation Tabs -->
+            <div class="flex items-center gap-1.5 p-1 bg-stone-200 dark:bg-stone-800 rounded-xl">
+              <button 
+                type="button" 
+                id="tab-draw-btn" 
+                class="sign-tab-btn active px-3 py-1.5 rounded-lg text-xs font-bold text-stone-700 dark:text-stone-300 transition-all"
+              >
+                ✍️ Draw
+              </button>
+              <button 
+                type="button" 
+                id="tab-type-btn" 
+                class="sign-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-stone-700 dark:text-stone-300 transition-all"
+              >
+                ⌨️ Type
+              </button>
+              <button 
+                type="button" 
+                id="tab-upload-btn" 
+                class="sign-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-stone-700 dark:text-stone-300 transition-all"
+              >
+                🏢 Stamp / Image
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 1: DRAW SIGNATURE -->
+          <div id="tab-content-draw" class="space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <!-- Color Selection -->
+              <div class="flex items-center gap-2">
+                <span class="text-2xs font-bold uppercase text-stone-500">Ink Color:</span>
+                <button type="button" class="color-pill w-6 h-6 rounded-full bg-black border-2 border-white ring-2 ring-black" data-color="#000000"></button>
+                <button type="button" class="color-pill w-6 h-6 rounded-full bg-blue-700 border-2 border-white" data-color="#003399"></button>
+                <button type="button" class="color-pill w-6 h-6 rounded-full bg-red-600 border-2 border-white" data-color="#CC0000"></button>
+              </div>
+
+              <!-- Thickness Slider -->
+              <div class="flex items-center gap-2">
+                <span class="text-2xs font-bold uppercase text-stone-500">Thickness:</span>
+                <input type="range" id="pen-thickness-slider" min="1" max="6" value="2.5" step="0.5" class="w-24 h-1.5 bg-stone-300 rounded-lg appearance-none accent-[#274737]" />
+              </div>
+
+              <button type="button" id="clear-draw-canvas-btn" class="text-xs font-bold text-red-600 hover:underline">Clear Canvas</button>
+            </div>
+
+            <!-- Drawing Canvas Box -->
+            <div class="relative bg-white rounded-xl border border-stone-300 dark:border-stone-700 h-32 w-full overflow-hidden shadow-inner">
+              <canvas id="signature-draw-canvas" class="w-full h-full cursor-crosshair touch-none"></canvas>
+              <span class="absolute bottom-2 right-3 text-3xs text-stone-400 pointer-events-none">Sign Here</span>
+            </div>
+
+            <div class="flex justify-end">
+              <button 
+                type="button" 
+                id="add-drawn-signature-btn" 
+                class="px-5 py-2.5 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-xs sm:text-sm shadow-md transition-all"
+              >
+                Use Drawn Signature
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 2: TYPE NAME -->
+          <div id="tab-content-type" class="hidden space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="typed-name-input" class="block text-2xs font-bold uppercase text-stone-500 mb-1">Enter Your Full Name:</label>
+                <input 
+                  type="text" 
+                  id="typed-name-input" 
+                  value="John H. Doe" 
+                  class="w-full px-3 py-2 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-sm"
+                />
+              </div>
+
+              <div>
+                <label for="typed-font-select" class="block text-2xs font-bold uppercase text-stone-500 mb-1">Cursive Style:</label>
+                <select id="typed-font-select" class="w-full px-3 py-2 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-bold text-sm">
+                  <option value="Dancing Script">Dancing Script</option>
+                  <option value="Caveat">Caveat</option>
+                  <option value="Great Vibes">Great Vibes</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Typed Signature Preview Box -->
+            <div class="p-4 bg-white rounded-xl border border-stone-300 dark:border-stone-700 h-24 flex items-center justify-center shadow-inner overflow-hidden">
+              <span id="typed-signature-preview" class="text-3xl text-black font-dancing">John H. Doe</span>
+            </div>
+
+            <div class="flex justify-end">
+              <button 
+                type="button" 
+                id="add-typed-signature-btn" 
+                class="px-5 py-2.5 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-xs sm:text-sm shadow-md transition-all"
+              >
+                Use Typed Signature
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT 3: UPLOAD STAMP -->
+          <div id="tab-content-upload" class="hidden space-y-3">
+            <div class="p-6 border-2 border-dashed border-stone-300 dark:border-stone-700 rounded-xl text-center bg-white dark:bg-stone-900">
+              <button 
+                type="button" 
+                onclick="document.getElementById('stamp-image-input').click()" 
+                class="px-6 py-2.5 rounded-xl bg-[#274737] text-white font-bold text-xs sm:text-sm shadow-xs"
+              >
+                Upload Stamp / Seal Image
+              </button>
+              <p class="text-xs text-stone-500 mt-2">Supports transparent PNG, JPG, or WebP official seals and signatures.</p>
+              <div id="stamp-preview-container" class="hidden mt-3 max-h-20 flex justify-center">
+                <img id="stamp-preview-img" class="max-h-20 object-contain rounded-md" />
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <button 
+                type="button" 
+                id="add-uploaded-stamp-btn" 
+                disabled 
+                class="px-5 py-2.5 rounded-xl bg-[#274737] disabled:opacity-40 hover:bg-[#1e382b] text-white font-extrabold text-xs sm:text-sm shadow-md transition-all"
+              >
+                Use Uploaded Stamp
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ACTIVE STAMP PALETTE & INSTRUCTIONS -->
+        <div id="active-palette-container" class="hidden p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">Active Signature Ready:</span>
+            <span class="text-xs text-stone-500">Click or tap on any page to place signature</span>
+          </div>
+          <div class="flex items-center gap-3 overflow-x-auto pb-1">
+            <div id="active-stamp-thumbnail" class="h-12 px-4 bg-white rounded-lg border border-emerald-300 flex items-center justify-center shrink-0">
+              <!-- Thumbnail rendered here -->
+            </div>
+            <p class="text-xs text-stone-600 dark:text-stone-300">Tap document below to place signature stamp on page.</p>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- CONTINUOUS PDF PAGE VIEWER & STAMP LAYER   -->
+        <!-- ========================================== -->
+        <div id="continuous-viewer-container" class="space-y-8 flex flex-col items-center py-6 bg-stone-200/50 dark:bg-stone-900/40 p-4 sm:p-6 rounded-2xl border border-stone-200 dark:border-stone-800 min-h-[450px]">
+          <!-- PDF Pages rendered dynamically -->
+        </div>
+
+        <!-- PRIMARY ACTION BUTTON & FILENAME DOCK -->
+        <div class="pt-6 border-t border-stone-200 dark:border-stone-800 space-y-4">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div class="flex-1 max-w-md">
+              <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-400 mb-1">
+                Output File Name:
+              </label>
+              <input 
+                type="text" 
+                id="output-filename-input" 
+                value="SlowPDF_Signed_Document" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-semibold text-sm focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <button 
+              type="button" 
+              id="apply-signature-btn" 
+              class="px-8 py-4 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 shrink-0"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              Embed Signatures & Download PDF
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW C: PROCESSING PROGRESS MODAL STATE    -->
+      <!-- ========================================== -->
+      <div id="processing-progress-box" class="hidden py-16 text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-100 dark:bg-emerald-950/70 text-[#274737] dark:text-emerald-400 flex items-center justify-center animate-spin">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+          Embedding Signatures & Stamp Layers...
+        </h3>
+        <p id="progress-status-text" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto">
+          Merging signature PNG vectors into PDF page streams in browser RAM...
+        </p>
+
+        <div class="max-w-md mx-auto bg-stone-200 dark:bg-stone-800 h-3 rounded-full overflow-hidden">
+          <div id="progress-bar-fill" class="bg-[#274737] dark:bg-emerald-500 h-full w-0 transition-all duration-300"></div>
+        </div>
+        <span id="progress-percent-text" class="text-xs font-extrabold text-[#274737] dark:text-emerald-400">0%</span>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW D: MASCOT CELEBRATION SUCCESS STATE   -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden py-10 text-center space-y-6">
+        <div class="relative w-28 h-28 mx-auto">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Celebrating" 
+            class="w-full h-full object-contain mascot-celebration animate-bounce"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+
+        <div class="space-y-2 max-w-md mx-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            PDF Document Signed!
+          </h3>
+          <p id="success-file-stats-display" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+            Signatures embedded • 100% vector document quality preserved
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 max-w-md mx-auto text-left space-y-1">
+          <span class="text-2xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">Signed File Name:</span>
+          <p id="success-file-name-display" class="text-sm font-bold text-[#222E28] dark:text-white truncate">SlowPDF_Signed_Document.pdf</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+          <button 
+            type="button" 
+            id="download-signed-pdf-btn" 
+            class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Signed PDF
+          </button>
+
+          <button 
+            type="button" 
+            id="sign-another-btn" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-700 transition-all"
+          >
+            Sign Another PDF
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 3. MANDATORY 10-BANNER PROMO CAROUSEL      -->
+  <!-- ========================================== -->
+  <section id="promo-carousel-section" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+    <!-- Rendered dynamically by assets/js/carousel.js -->
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. 500+ WORD TECHNICAL SEO ARTICLE         -->
+  <!-- ========================================== -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-12 space-y-8 text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+    <div class="border-b border-stone-200 dark:border-stone-800 pb-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Free Electronic PDF Signer — Sign Documents & Stamp Seals Online
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
+        Learn how to draw handwritten signatures, type cursive names, upload company seals, and embed digital signatures onto PDF files.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">✍️</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Draw Signature</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Draw smooth handwritten signature lines using your touchscreen, stylus, or mouse with custom pen ink colors and stroke thickness.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">⌨️</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Type Cursive Name</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Type your full legal name and instantly convert it into elegant cursive signature calligraphy using Dancing Script or Caveat fonts.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">🏢</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Upload Seal / Stamp</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Upload transparent PNG company seals, approval badges, or scanned signatures for placement on official business contracts.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+        Legally Binding Electronic Signatures with 100% RAM Privacy
+      </h3>
+      <p>
+        Signing sensitive legal contracts, NDAs, lease agreements, or financial invoices requires absolute document privacy. Unlike cloud-based signature portals that store your sensitive signatures on remote servers, SlowPDF operates 100% client-side inside your browser's RAM.
+      </p>
+      <p>
+        Your signatures, typed initials, and PDF files are never transmitted across the internet, guaranteeing zero privacy leaks or unauthorized signature retention.
+      </p>
+    </div>
+
+    <div class="bg-emerald-50/60 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-200/70 dark:border-emerald-800/60 space-y-3">
+      <h4 class="font-bold text-base text-[#274737] dark:text-emerald-300 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Multi-Page Stamp & Placement Precision
+      </h4>
+      <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300">
+        You can place multiple signatures, approval seals, or date stamps on any page of your document. Drag to position signatures exactly over signature lines, scale with corner handles, and export clean, crisp PDFs.
+      </p>
+    </div>
+  </article>
+
+  <!-- ========================================== -->
+  <!-- 5. 10 FAQ ACCORDION ITEMS WITH JSON-LD     -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 space-y-6">
+    <div class="text-center space-y-2">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+        Everything you need to know about electronic signatures and PDF stamping.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How do I create a handwritten signature on a PDF?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Use our 'Draw Signature' canvas to draw your signature using a mouse, stylus, or touch screen. Select pen color (Black, Blue, Red) and stroke thickness, then click 'Add Signature'.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Can I type my name and convert it into a cursive signature?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Yes! Switch to the 'Type Name' tab, enter your name, and choose from elegant cursive fonts like Dancing Script, Caveat, or Great Vibes.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Can I upload an official company stamp or seal image?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Yes! Switch to the 'Upload Stamp / Logo' tab to upload transparent PNG or JPG images of corporate seals, approval stamps, or official signatures.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How do I place and resize my signature on the PDF page?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Click 'Place Signature on Page' or tap on the document canvas. Drag the signature box to move it, or use the corner handle to scale it to your preferred size.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Are electronic signatures created on SlowPDF legally binding?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Electronic signatures created on SlowPDF satisfy standard e-signature requirements for non-notarized contracts, consent forms, invoices, and internal approvals.
+        </div>
+      </div>
+
+      <!-- Extra FAQs Container -->
+      <div id="extra-faq-items" class="hidden space-y-3">
+        
+        <!-- FAQ 6 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Are my signatures or PDF contracts uploaded to any cloud server?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Never. All signature drawing, font rendering, stamp embedding, and PDF generation happen 100% inside your browser RAM. Zero files or signatures leave your device.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Can I place multiple signatures on different pages of a single document?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! You can add as many signatures, initials, dates, and stamps as needed across any page of your document.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does signing a PDF alter the underlying text quality or vector clarity?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            No! SlowPDF embeds signature PNG layers directly into the original PDF page stream using pdf-lib, preserving 100% of the original document vector quality.
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does this tool work smoothly on smartphones and iPads?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF features responsive touchscreen support, allowing smooth stylus or finger drawing on mobile devices.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Is SlowPDF Sign PDF 100% free with no watermarks?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="text-center pt-2">
+      <button 
+        type="button" 
+        id="toggle-all-faq-btn" 
+        class="px-6 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-xs font-bold text-[#274737] dark:text-emerald-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
+      >
+        View All 10 Questions
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER RICH FOOTER (100% LOCKED)        -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#E8DABF] dark:bg-[#18201C] border-t border-[#D8C7A5] dark:border-stone-800 pt-12 pb-8 transition-colors duration-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        
+        <!-- Brand Summary Column -->
+        <div class="md:col-span-2 space-y-4">
+          <a href="../index.html" class="flex items-center gap-3 group">
+            <img src="../assets/images/logo.png" alt="SlowPDF" class="w-8 h-8 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+            <span class="text-xl font-extrabold text-[#2D3748] dark:text-white">Slow <span class="text-[#1E3D30] dark:text-emerald-400">PDF</span></span>
+          </a>
+          <p class="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed max-w-sm">
+            Free client-side PDF utility studio. Process, convert, watermark, sign, compress, crop, and redact documents safely inside your browser RAM with zero server uploads.
+          </p>
+          <div class="flex items-center gap-2 text-2xs font-extrabold text-[#1E3D30] dark:text-emerald-400 uppercase tracking-wider">
+            <span>🛡️ 100% Client-Side Privacy</span>
+            <span>•</span>
+            <span>⚡ Local RAM Execution</span>
+          </div>
+        </div>
+
+        <!-- Column 1: Popular Tools -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Popular Tools</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="sign-pdf.html" class="footer-link font-bold text-[#1E3D30] dark:text-emerald-400">Sign PDF</a></li>
+            <li><a href="compress-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Compress PDF</a></li>
+            <li><a href="images-to-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Images to PDF</a></li>
+            <li><a href="crop-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Crop PDF Margins</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Edit & Security -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Edit & Security</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="whiteout-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Whiteout & Redact</a></li>
+            <li><a href="edit-pdf-metadata.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Edit Metadata</a></li>
+            <li><a href="pdf-color-tint.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Color Inverter</a></li>
+            <li><a href="protect-pdf.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Protect PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company & Legal -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-[#1E3D30] dark:text-emerald-400">Company & Legal</h4>
+          <ul class="space-y-2 text-xs font-medium text-stone-800 dark:text-stone-200">
+            <li><a href="../pages/about.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">About Us</a></li>
+            <li><a href="../pages/blog.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Blog & Articles</a></li>
+            <li><a href="../pages/contact.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Contact Support</a></li>
+            <li><a href="../pages/privacy.html" class="footer-link hover:text-[#1E3D30] dark:hover:text-emerald-400">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-[#D8C7A5]/80 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-2xs text-stone-700 dark:text-stone-400">
+        <p>© 2026 SlowPDF. All rights reserved. Zero files saved or uploaded.</p>
+        <div class="flex items-center gap-4">
+          <a href="../pages/privacy.html" class="hover:underline">Privacy Policy</a>
+          <a href="../pages/about.html" class="hover:underline">About</a>
+          <a href="../pages/contact.html" class="hover:underline">Contact</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 7. SIGN & STAMP ENGINE SCRIPT               -->
+  <!-- ========================================== -->
+  <script>
+    // Global State
+    let selectedFile = null;
+    let fileArrayBuffer = null;
+    let pdfDocObj = null;
+    let signedPdfBlobUrl = null;
+
+    const RENDER_SCALE = 1.3;
+    let pageCount = 0;
+
+    // Active Stamp Data URL to be placed
+    let activeStampDataUrl = null;
+    let uploadedStampDataUrl = null;
+
+    // Array of placed stamp objects
+    // Each object: { id, pageIdx, x, y, width, height, dataUrl }
+    let placedStamps = [];
+
+    // Drawing Canvas State
+    let penColor = '#000000';
+    let penThickness = 2.5;
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    // DOM Elements
+    const fileInput = document.getElementById('pdf-file-input');
+    const stampImageInput = document.getElementById('stamp-image-input');
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const successPanel = document.getElementById('success-panel');
+
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const fileMetaDisplay = document.getElementById('file-meta-display');
+    const continuousViewerContainer = document.getElementById('continuous-viewer-container');
+
+    // Tabs
+    const tabDrawBtn = document.getElementById('tab-draw-btn');
+    const tabTypeBtn = document.getElementById('tab-type-btn');
+    const tabUploadBtn = document.getElementById('tab-upload-btn');
+
+    const tabContentDraw = document.getElementById('tab-content-draw');
+    const tabContentType = document.getElementById('tab-content-type');
+    const tabContentUpload = document.getElementById('tab-content-upload');
+
+    // Drawing Canvas
+    const drawCanvas = document.getElementById('signature-draw-canvas');
+    const penThicknessSlider = document.getElementById('pen-thickness-slider');
+    const clearDrawCanvasBtn = document.getElementById('clear-draw-canvas-btn');
+    const addDrawnSigBtn = document.getElementById('add-drawn-signature-btn');
+
+    // Typed Signature
+    const typedNameInput = document.getElementById('typed-name-input');
+    const typedFontSelect = document.getElementById('typed-font-select');
+    const typedSigPreview = document.getElementById('typed-signature-preview');
+    const addTypedSigBtn = document.getElementById('add-typed-signature-btn');
+
+    // Uploaded Stamp
+    const stampPreviewContainer = document.getElementById('stamp-preview-container');
+    const stampPreviewImg = document.getElementById('stamp-preview-img');
+    const addUploadedStampBtn = document.getElementById('add-uploaded-stamp-btn');
+
+    // Palette
+    const activePaletteContainer = document.getElementById('active-palette-container');
+    const activeStampThumbnail = document.getElementById('active-stamp-thumbnail');
+
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const applySignatureBtn = document.getElementById('apply-signature-btn');
+
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressPercentText = document.getElementById('progress-percent-text');
+
+    const successFileNameDisplay = document.getElementById('success-file-name-display');
+    const successFileStatsDisplay = document.getElementById('success-file-stats-display');
+    const downloadSignedPdfBtn = document.getElementById('download-signed-pdf-btn');
+    const signAnotherBtn = document.getElementById('sign-another-btn');
+
+    // Setup Tabs
+    const tabs = [
+      { btn: tabDrawBtn, content: tabContentDraw },
+      { btn: tabTypeBtn, content: tabContentType },
+      { btn: tabUploadBtn, content: tabContentUpload }
+    ];
+
+    tabs.forEach(t => {
+      t.btn.addEventListener('click', () => {
+        tabs.forEach(item => {
+          item.btn.classList.remove('active');
+          item.content.classList.add('hidden');
+        });
+        t.btn.classList.add('active');
+        t.content.classList.remove('hidden');
+
+        if (t.btn === tabDrawBtn) {
+          resizeDrawCanvas();
+        }
+      });
+    });
+
+    // Drawing Canvas Initialization
+    const drawCtx = drawCanvas.getContext('2d');
+
+    function resizeDrawCanvas() {
+      const rect = drawCanvas.getBoundingClientRect();
+      drawCanvas.width = rect.width;
+      drawCanvas.height = rect.height;
+    }
+
+    window.addEventListener('resize', resizeDrawCanvas);
+
+    // Color Pills
+    const colorPills = document.querySelectorAll('.color-pill');
+    colorPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        colorPills.forEach(p => p.classList.remove('ring-2', 'ring-black', 'ring-blue-600', 'ring-red-600'));
+        penColor = pill.getAttribute('data-color');
+        pill.classList.add('ring-2', 'ring-offset-1', 'ring-stone-800');
+      });
+    });
+
+    penThicknessSlider.addEventListener('input', (e) => {
+      penThickness = parseFloat(e.target.value);
+    });
+
+    clearDrawCanvasBtn.addEventListener('click', () => {
+      drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+    });
+
+    // Pointer Events for Draw Canvas
+    function getDrawCanvasCoords(e) {
+      const rect = drawCanvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    drawCanvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      const pos = getDrawCanvasCoords(e);
+      lastX = pos.x;
+      lastY = pos.y;
+    });
+
+    drawCanvas.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const pos = getDrawCanvasCoords(e);
+      drawCtx.beginPath();
+      drawCtx.moveTo(lastX, lastY);
+      drawCtx.lineTo(pos.x, pos.y);
+      drawCtx.strokeStyle = penColor;
+      drawCtx.lineWidth = penThickness;
+      drawCtx.lineCap = 'round';
+      drawCtx.lineJoin = 'round';
+      drawCtx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+    });
+
+    document.addEventListener('mouseup', () => { isDrawing = false; });
+
+    drawCanvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      isDrawing = true;
+      const pos = getDrawCanvasCoords(e);
+      lastX = pos.x;
+      lastY = pos.y;
+    }, { passive: false });
+
+    drawCanvas.addEventListener('touchmove', (e) => {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getDrawCanvasCoords(e);
+      drawCtx.beginPath();
+      drawCtx.moveTo(lastX, lastY);
+      drawCtx.lineTo(pos.x, pos.y);
+      drawCtx.strokeStyle = penColor;
+      drawCtx.lineWidth = penThickness;
+      drawCtx.lineCap = 'round';
+      drawCtx.lineJoin = 'round';
+      drawCtx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+    }, { passive: false });
+
+    drawCanvas.addEventListener('touchend', () => { isDrawing = false; });
+
+    // Use Drawn Signature Button
+    addDrawnSigBtn.addEventListener('click', () => {
+      // Export draw canvas as PNG
+      const dataUrl = drawCanvas.toDataURL('image/png');
+      setActiveStamp(dataUrl);
+    });
+
+    // Typed Signature Preview & Handler
+    function updateTypedPreview() {
+      const name = typedNameInput.value.trim() || 'Signature';
+      const font = typedFontSelect.value;
+      typedSigPreview.textContent = name;
+      
+      if (font === 'Dancing Script') {
+        typedSigPreview.className = 'text-3xl text-black font-dancing';
+      } else if (font === 'Caveat') {
+        typedSigPreview.className = 'text-3xl text-black font-caveat';
+      } else if (font === 'Great Vibes') {
+        typedSigPreview.className = 'text-3xl text-black font-vibes';
+      }
+    }
+
+    typedNameInput.addEventListener('input', updateTypedPreview);
+    typedFontSelect.addEventListener('change', updateTypedPreview);
+
+    addTypedSigBtn.addEventListener('click', () => {
+      // Render typed text to offscreen canvas
+      const offscreen = document.createElement('canvas');
+      offscreen.width = 400;
+      offscreen.height = 120;
+      const ctx = offscreen.getContext('2d');
+
+      const font = typedFontSelect.value;
+      const name = typedNameInput.value.trim() || 'Signature';
+
+      ctx.font = `42px "${font}", cursive`;
+      ctx.fillStyle = '#000000';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(name, 200, 60);
+
+      const dataUrl = offscreen.toDataURL('image/png');
+      setActiveStamp(dataUrl);
+    });
+
+    // Uploaded Stamp Handler
+    stampImageInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          uploadedStampDataUrl = evt.target.result;
+          stampPreviewImg.src = uploadedStampDataUrl;
+          stampPreviewContainer.classList.remove('hidden');
+          addUploadedStampBtn.disabled = false;
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    });
+
+    addUploadedStampBtn.addEventListener('click', () => {
+      if (uploadedStampDataUrl) {
+        setActiveStamp(uploadedStampDataUrl);
+      }
+    });
+
+    // Set Active Stamp
+    function setActiveStamp(dataUrl) {
+      activeStampDataUrl = dataUrl;
+      activeStampThumbnail.innerHTML = `<img src="${dataUrl}" class="h-10 object-contain" />`;
+      activePaletteContainer.classList.remove('hidden');
+    }
+
+    // PDF Selection Handler
+    fileInput.addEventListener('change', handleFileSelection);
+
+    ['dragover', 'dragenter'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelection();
+      }
+    });
+
+    async function handleFileSelection() {
+      if (!fileInput.files || fileInput.files.length === 0) return;
+
+      selectedFile = fileInput.files[0];
+      if (selectedFile.type !== 'application/pdf' && !selectedFile.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a valid PDF file.');
+        return;
+      }
+
+      const sizeMB = (selectedFile.size / (1024 * 1024)).toFixed(2);
+      fileNameDisplay.textContent = selectedFile.name;
+      fileMetaDisplay.textContent = `${sizeMB} MB • Reading document pages...`;
+
+      const baseName = selectedFile.name.replace(/\.pdf$/i, '');
+      outputFilenameInput.value = `SlowPDF_Signed_${baseName}`;
+
+      emptyDropzone.classList.add('hidden');
+      workbenchPanel.classList.remove('hidden');
+
+      try {
+        fileArrayBuffer = await selectedFile.arrayBuffer();
+
+        const loadingTask = pdfjsLib.getDocument({ data: fileArrayBuffer.slice(0) });
+        pdfDocObj = await loadingTask.promise;
+
+        pageCount = pdfDocObj.numPages;
+        fileMetaDisplay.textContent = `${sizeMB} MB • ${pageCount} Page${pageCount > 1 ? 's' : ''} • Ready for Signing`;
+
+        continuousViewerContainer.innerHTML = '';
+        placedStamps = [];
+
+        // Auto create default typed signature
+        updateTypedPreview();
+        addTypedSigBtn.click();
+
+        for (let i = 1; i <= pageCount; i++) {
+          await renderPageCard(i);
+        }
+
+      } catch (err) {
+        console.error('Error opening PDF:', err);
+        alert('Failed to load PDF file: ' + err.message);
+        workbenchPanel.classList.add('hidden');
+        emptyDropzone.classList.remove('hidden');
+      }
+    }
+
+    // Render Page Card with Click-to-Stamp Support
+    async function renderPageCard(pageNum) {
+      const page = await pdfDocObj.getPage(pageNum);
+      const dpr = window.devicePixelRatio || 1;
+      const targetScale = 2.0;
+      const baseViewport = page.getViewport({ scale: 1.2 });
+      const viewport = page.getViewport({ scale: 1.2 * targetScale * dpr });
+
+      const card = document.createElement('div');
+      card.className = 'w-full max-w-3xl flex flex-col items-center space-y-2';
+
+      const pagePill = document.createElement('div');
+      pagePill.className = 'px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold shadow-2xs';
+      pagePill.textContent = `Page ${pageNum} of ${pageCount}`;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'page-sign-wrapper max-w-full';
+      wrapper.style.width = `${Math.floor(baseViewport.width)}px`;
+      wrapper.style.height = `${Math.floor(baseViewport.height)}px`;
+      wrapper.setAttribute('data-page-index', pageNum - 1);
+
+      const canvas = document.createElement('canvas');
+      canvas.className = 'block w-full h-auto rounded shadow-md';
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      canvas.style.width = `${Math.floor(baseViewport.width)}px`;
+      canvas.style.height = `${Math.floor(baseViewport.height)}px`;
+      canvas.style.imageRendering = '-webkit-optimize-contrast';
+      canvas.style.imageRendering = 'crisp-edges';
+      canvas.style.display = 'block';
+      canvas.style.margin = '0 auto';
+      canvas.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.08)';
+
+      const ctx = canvas.getContext('2d');
+      await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+      wrapper.appendChild(canvas);
+      card.appendChild(pagePill);
+      card.appendChild(wrapper);
+
+      continuousViewerContainer.appendChild(card);
+
+      // Click to Place Active Stamp
+      wrapper.addEventListener('click', (e) => {
+        if (!activeStampDataUrl) return;
+        if (e.target.closest('.placed-stamp-box')) return; // Ignore click on existing stamp
+
+        const rect = wrapper.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        placeStampOnPage(pageNum - 1, wrapper, clickX - 80, clickY - 30, 160, 60, activeStampDataUrl);
+      });
+    }
+
+    // Place Stamp Box Element on Page Wrapper
+    function placeStampOnPage(pageIdx, wrapper, x, y, w, h, dataUrl) {
+      const stampId = Date.now() + Math.random();
+
+      const stampBox = document.createElement('div');
+      stampBox.className = 'placed-stamp-box';
+      stampBox.style.left = `${Math.max(0, x)}px`;
+      stampBox.style.top = `${Math.max(0, y)}px`;
+      stampBox.style.width = `${w}px`;
+      stampBox.style.height = `${h}px`;
+
+      const img = document.createElement('img');
+      img.src = dataUrl;
+      img.className = 'placed-stamp-img';
+
+      const deleteBtn = document.createElement('div');
+      deleteBtn.className = 'stamp-handle-delete';
+      deleteBtn.textContent = '✕';
+      deleteBtn.title = 'Delete Signature';
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrapper.removeChild(stampBox);
+        placedStamps = placedStamps.filter(s => s.id !== stampId);
+      });
+
+      const resizeHandle = document.createElement('div');
+      resizeHandle.className = 'stamp-handle-resize';
+
+      stampBox.appendChild(img);
+      stampBox.appendChild(deleteBtn);
+      stampBox.appendChild(resizeHandle);
+      wrapper.appendChild(stampBox);
+
+      const stampObj = {
+        id: stampId,
+        pageIdx,
+        x,
+        y,
+        width: w,
+        height: h,
+        dataUrl,
+        element: stampBox
+      };
+
+      placedStamps.push(stampObj);
+
+      // Interactive Dragging & Resizing Mechanics for Stamp Box
+      let isDragging = false;
+      let isResizing = false;
+      let startX = 0, startY = 0;
+      let startLeft = 0, startTop = 0;
+      let startW = 0, startH = 0;
+
+      function getPos(e) {
+        const touch = e.touches ? e.touches[0] : e;
+        return { x: touch.clientX, y: touch.clientY };
+      }
+
+      stampBox.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        if (e.target === deleteBtn) return;
+        const pos = getPos(e);
+        startX = pos.x;
+        startY = pos.y;
+
+        if (e.target === resizeHandle) {
+          isResizing = true;
+          startW = stampObj.width;
+          startH = stampObj.height;
+        } else {
+          isDragging = true;
+          startLeft = stampObj.x;
+          startTop = stampObj.y;
+        }
+
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onEnd);
+      });
+
+      stampBox.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+        if (e.target === deleteBtn) return;
+        const pos = getPos(e);
+        startX = pos.x;
+        startY = pos.y;
+
+        if (e.target === resizeHandle) {
+          isResizing = true;
+          startW = stampObj.width;
+          startH = stampObj.height;
+        } else {
+          isDragging = true;
+          startLeft = stampObj.x;
+          startTop = stampObj.y;
+        }
+
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onEnd);
+      });
+
+      function onMove(e) {
+        if (!isDragging && !isResizing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        const dx = pos.x - startX;
+        const dy = pos.y - startY;
+
+        const wrapperW = wrapper.clientWidth;
+        const wrapperH = wrapper.clientHeight;
+
+        if (isDragging) {
+          const newX = Math.max(0, Math.min(wrapperW - stampObj.width, startLeft + dx));
+          const newY = Math.max(0, Math.min(wrapperH - stampObj.height, startTop + dy));
+          stampObj.x = newX;
+          stampObj.y = newY;
+          stampBox.style.left = `${newX}px`;
+          stampBox.style.top = `${newY}px`;
+        } else if (isResizing) {
+          const newW = Math.max(40, Math.min(wrapperW - stampObj.x, startW + dx));
+          const newH = Math.max(20, Math.min(wrapperH - stampObj.y, startH + dy));
+          stampObj.width = newW;
+          stampObj.height = newH;
+          stampBox.style.width = `${newW}px`;
+          stampBox.style.height = `${newH}px`;
+        }
+      }
+
+      function onEnd() {
+        isDragging = false;
+        isResizing = false;
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onEnd);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onEnd);
+      }
+    }
+
+    // Primary Action Button: Embed Signatures & Export PDF
+    applySignatureBtn.addEventListener('click', async () => {
+      if (!selectedFile || !fileArrayBuffer) return;
+
+      if (placedStamps.length === 0) {
+        alert('Please place at least one signature or stamp on the document before exporting.');
+        return;
+      }
+
+      workbenchPanel.classList.add('hidden');
+      processingProgressBox.classList.remove('hidden');
+
+      progressStatusText.textContent = 'Embedding digital signature PNG layers into PDF streams...';
+      progressBarFill.style.width = '25%';
+      progressPercentText.textContent = '25%';
+
+      setTimeout(async () => {
+        try {
+          const pdfLibDoc = await PDFLib.PDFDocument.load(fileArrayBuffer.slice(0));
+          const pages = pdfLibDoc.getPages();
+
+          progressBarFill.style.width = '50%';
+          progressPercentText.textContent = '50%';
+
+          for (let i = 0; i < placedStamps.length; i++) {
+            const stamp = placedStamps[i];
+            const page = pages[stamp.pageIdx];
+            const { width: pdfWidth, height: pdfHeight } = page.getSize();
+
+            const wrapperEl = document.querySelector(`[data-page-index="${stamp.pageIdx}"]`);
+            const screenW = wrapperEl.clientWidth;
+            const screenH = wrapperEl.clientHeight;
+
+            // Convert screen coordinates to PDF point coordinates (taking Y-axis inversion into account)
+            const scaleX = pdfWidth / screenW;
+            const scaleY = pdfHeight / screenH;
+
+            const pdfX = stamp.x * scaleX;
+            const pdfY = (screenH - (stamp.y + stamp.height)) * scaleY;
+            const pdfW = stamp.width * scaleX;
+            const pdfH = stamp.height * scaleY;
+
+            // Embed PNG bytes
+            const pngBytes = await fetch(stamp.dataUrl).then(res => res.arrayBuffer());
+            const embeddedImage = await pdfLibDoc.embedPng(pngBytes);
+
+            page.drawImage(embeddedImage, {
+              x: pdfX,
+              y: pdfY,
+              width: pdfW,
+              height: pdfH
+            });
+          }
+
+          progressBarFill.style.width = '90%';
+          progressPercentText.textContent = '90%';
+          progressStatusText.textContent = 'Serializing signed PDF file...';
+
+          const signedBytes = await pdfLibDoc.save();
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          const blob = new Blob([signedBytes], { type: 'application/pdf' });
+          if (signedPdfBlobUrl) URL.revokeObjectURL(signedPdfBlobUrl);
+          signedPdfBlobUrl = URL.createObjectURL(blob);
+
+          const sizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+          const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Signed_Document';
+
+          successFileNameDisplay.textContent = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+          successFileStatsDisplay.textContent = `${sizeMB} MB • ${placedStamps.length} Signature${placedStamps.length > 1 ? 's' : ''} Embedded • 100% Legal Quality`;
+
+          // Show Success Screen
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error signing PDF:', err);
+          alert('Failed to sign PDF: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+          workbenchPanel.classList.remove('hidden');
+        }
+      }, 100);
+    });
+
+    // Download Signed PDF
+    downloadSignedPdfBtn.addEventListener('click', () => {
+      if (!signedPdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Signed_Document';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = signedPdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workflow to Sign Another PDF
+    signAnotherBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileArrayBuffer = null;
+      pdfDocObj = null;
+      if (signedPdfBlobUrl) URL.revokeObjectURL(signedPdfBlobUrl);
+      signedPdfBlobUrl = null;
+
+      fileInput.value = '';
+      placedStamps = [];
+      continuousViewerContainer.innerHTML = '';
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('sign-pdf');
+      }
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  </script>
+</body>
+</html>

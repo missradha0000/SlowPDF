@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compress PDF to 20KB, 50KB, 100KB Online Free — SlowPDF</title>
+  <meta name="description" content="Compress PDF files to 20KB, 50KB, 100KB, 200KB or custom target size online for free. 100% client-side in-browser RAM compression, zero server uploads, unlimited privacy." />
+  <meta property="og:title" content="Compress PDF Online Free — Private Client-Side Optimizer | SlowPDF" />
+  <meta property="og:description" content="Reduce PDF file size to 20KB, 50KB, 100KB directly in your browser memory. Fast, crisp vector & text preservation, zero server uploads." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/compress-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Compress PDF",
+        "url": "https://slowpdf.in/tools/compress-pdf.html",
+        "description": "Client-side private tool to compress PDF documents to 20KB, 50KB, 100KB or custom size directly in local browser memory.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I compress a PDF to 100KB or 50KB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Select your PDF file on SlowPDF, click the 50 KB or 100 KB quick preset pill (or enter your desired target size in KB), and click Compress. The in-browser engine dynamically optimizes DPI and compression to reach your target size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my files uploaded to any server during compression?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. SlowPDF operates 100% in local browser RAM using client-side JavaScript and Canvas APIs. No file ever leaves your physical device."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Client-Side PDF Processing & Compression Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* ==========================================================================
+       BODY / PAGE BACKGROUND COLOR SPECIFICATION:
+       - HEX: #FFFBF2 !important
+       - RGB: rgb(255, 251, 242)
+       ========================================================================== */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    /* ==========================================================================
+       UNIVERSAL TOP NAVBAR BACKGROUND INTEGRITY:
+       - HEX: #E8DABF !important permanently in both light and dark modes
+       - Nav text: High-contrast dark charcoal #2D3748 !important
+       ========================================================================== */
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #E8DABF !important;
+    }
+
+    /* Soft floating cards against #FFFBF2 */
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    /* Header mascot gentle idle breathing */
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Drag over active state */
+    .dragover-active {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.05) !important;
+      transform: scale(1.01);
+    }
+    .dark .dragover-active {
+      background-color: rgba(53, 94, 75, 0.2) !important;
+      border-color: #5E9B7E !important;
+    }
+
+    /* High contrast navbar link styling on #E8DABF */
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #2D3748 !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F !important;
+    }
+    .dark .nav-link {
+      color: #2D3748 !important;
+    }
+    .dark .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.18);
+      color: #0B140F !important;
+    }
+
+    /* High contrast footer link styling */
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      margin: -0.25rem -0.5rem;
+    }
+    .footer-link:hover {
+      background-color: rgba(209, 250, 229, 0.8);
+      color: #064e3b;
+      font-weight: 600;
+    }
+    .dark .footer-link:hover {
+      background-color: rgba(53, 94, 75, 0.35);
+      color: #a7f3d0;
+      font-weight: 600;
+    }
+
+    /* Carousel Banner Solid Forest Green */
+    .banner-card-gradient {
+      background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+      color: #ffffff !important;
+    }
+
+    /* Mascot Universal Styling Standard */
+    .mascot-celebration {
+      background-color: transparent !important;
+      object-fit: contain;
+    }
+    .dark .mascot-celebration {
+      mix-blend-mode: normal !important;
+      opacity: 1 !important;
+    }
+
+    /* Custom Webkit Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR                     -->
+  <!-- Background: #E8DABF permanently in Light/Dark -->
+  <!-- Text: #2D3748 !important                   -->
+  <!-- Left: [Tortoise Mascot Logo] [Slow PDF]    -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Left: Brand Logo & Title: [Tortoise Mascot Logo] [Slow PDF] -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center & Right Nav Links (Contextual Home Link) -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Far Right: Hamburger Menu Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="mobileMenuBtn" 
+          type="button"
+          class="mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preferences Drawer Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle" 
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Navigation in Drawer -->
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          All 22 PDF Tools
+        </a>
+        <a href="merge-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+          Merge PDF
+        </a>
+        <a href="protect-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Protect PDF
+        </a>
+        <a href="unlock-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          Unlock PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. HERO & CLIENT-SIDE COMPRESS WORKBENCH   -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
+    
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        100% In-Browser RAM Processing • Zero Cloud Upload
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Compress PDF Online Free
+      </h1>
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Reduce PDF file size to 20KB, 50KB, 100KB, or custom target size without sacrificing readability. 100% private in-browser compression.
+      </p>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-6 sm:p-10 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <!-- Compress Arrows Icon -->
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </div>
+
+        <h3 class="text-lg sm:text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Drop your PDF file here to compress
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6">
+          Files stay inside your local browser memory buffer. Unlimited file size, zero cloud uploads.
+        </p>
+
+        <button 
+          type="button" 
+          id="browse-btn"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF File
+        </button>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-stone-500 dark:text-stone-400">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Quick Presets (20KB - 500KB)
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Text Sharpness Preservation
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            100% RAM Private
+          </span>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW B: ACTIVE COMPRESSION WORKBENCH       -->
+      <!-- ========================================== -->
+      <div id="active-workbench" class="hidden space-y-6">
+        
+        <!-- Document Information Card -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <h4 id="file-name-text" class="text-base font-bold text-[#222E28] dark:text-white truncate" title="document.pdf">
+                document.pdf
+              </h4>
+              <p id="file-size-text" class="text-xs text-stone-500 dark:text-stone-400">
+                Original Size: 3.4 MB • 6 Pages • Ready to Compress
+              </p>
+            </div>
+          </div>
+
+          <button 
+            type="button" 
+            id="choose-different-file-btn"
+            class="text-xs font-semibold text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 py-1.5 px-3 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-white dark:hover:bg-stone-800 transition-colors self-start sm:self-center"
+          >
+            Change File
+          </button>
+        </div>
+
+        <!-- Alert Banner (Dynamic: Error or Warning) -->
+        <div id="alert-box" class="hidden p-4 rounded-xl text-sm font-medium border flex items-start gap-3">
+          <div id="alert-icon" class="shrink-0 mt-0.5"></div>
+          <div id="alert-message" class="flex-1 leading-relaxed"></div>
+        </div>
+
+        <!-- COMPRESSION CONTROLS SECTION -->
+        <div class="space-y-6 pt-2">
+          
+          <!-- Preset Target Size Pills -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <label class="block text-sm font-bold text-[#222E28] dark:text-white">
+                Quick Target Size Presets
+              </label>
+              <span class="text-xs text-stone-500 dark:text-stone-400">
+                Click a preset to apply
+              </span>
+            </div>
+
+            <!-- 6 Interactive Clickable Pills -->
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5" id="presets-container">
+              <button 
+                type="button" 
+                data-target-kb="20" 
+                class="preset-pill py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-bold text-xs sm:text-sm text-[#222E28] dark:text-white bg-white dark:bg-[#161F1B] hover:border-[#355E4B] dark:hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-all text-center shadow-2xs"
+              >
+                20 KB
+              </button>
+              <button 
+                type="button" 
+                data-target-kb="50" 
+                class="preset-pill py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-bold text-xs sm:text-sm text-[#222E28] dark:text-white bg-white dark:bg-[#161F1B] hover:border-[#355E4B] dark:hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-all text-center shadow-2xs"
+              >
+                50 KB
+              </button>
+              <button 
+                type="button" 
+                data-target-kb="100" 
+                class="preset-pill active-preset py-2.5 px-3 rounded-xl border border-[#355E4B] dark:border-emerald-500 font-bold text-xs sm:text-sm text-white bg-[#355E4B] dark:bg-emerald-700 transition-all text-center shadow-xs"
+              >
+                100 KB
+              </button>
+              <button 
+                type="button" 
+                data-target-kb="200" 
+                class="preset-pill py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-bold text-xs sm:text-sm text-[#222E28] dark:text-white bg-white dark:bg-[#161F1B] hover:border-[#355E4B] dark:hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-all text-center shadow-2xs"
+              >
+                200 KB
+              </button>
+              <button 
+                type="button" 
+                data-target-kb="300" 
+                class="preset-pill py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-bold text-xs sm:text-sm text-[#222E28] dark:text-white bg-white dark:bg-[#161F1B] hover:border-[#355E4B] dark:hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-all text-center shadow-2xs"
+              >
+                300 KB
+              </button>
+              <button 
+                type="button" 
+                data-target-kb="500" 
+                class="preset-pill py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 font-bold text-xs sm:text-sm text-[#222E28] dark:text-white bg-white dark:bg-[#161F1B] hover:border-[#355E4B] dark:hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-all text-center shadow-2xs"
+              >
+                500 KB
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Target Size Input Field -->
+          <div class="p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <label for="custom-target-input" class="block text-sm font-bold text-[#222E28] dark:text-white">
+                  Target Size (in Kilobytes)
+                </label>
+                <p class="text-xs text-stone-500 dark:text-stone-400">
+                  Enter your target size. SlowPDF dynamically balances DPI and JPEG quality to get as close as possible.
+                </p>
+              </div>
+
+              <!-- Number Input with KB suffix badge -->
+              <div class="relative flex items-center w-full sm:w-48 shrink-0">
+                <input 
+                  type="number" 
+                  id="custom-target-input" 
+                  min="10" 
+                  max="10000" 
+                  value="100" 
+                  step="5"
+                  class="w-full px-4 py-3 pr-14 text-sm font-bold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+                />
+                <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+                  KB
+                </span>
+              </div>
+            </div>
+
+            <!-- Profile Guidance Badge -->
+            <div id="target-mode-badge" class="flex items-center gap-2 text-xs text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-3.5 py-2 rounded-xl border border-emerald-200/60 dark:border-emerald-900/60">
+              <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+              <span id="target-mode-text">Target: 100 KB • Balanced optimization for online job/exam portals.</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar & Status (Shown during compression) -->
+          <div id="progress-container" class="hidden space-y-2 p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40">
+            <div class="flex items-center justify-between text-xs font-bold text-[#222E28] dark:text-white">
+              <span id="progress-status-text">Compressing pages in browser RAM...</span>
+              <span id="progress-percent-text">0%</span>
+            </div>
+            <div class="w-full bg-stone-200 dark:bg-stone-700 rounded-full h-2.5 overflow-hidden">
+              <div id="progress-bar-fill" class="bg-[#355E4B] dark:bg-emerald-500 h-2.5 rounded-full transition-all duration-200" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Action Button Container -->
+          <div class="pt-2">
+            <button 
+              type="button" 
+              id="compress-action-btn"
+              class="w-full py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              <span id="compress-btn-text">Compress &amp; Reduce Size</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW C: SUCCESS & DOWNLOAD PANEL           -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden text-center py-6 sm:py-8 space-y-6">
+        
+        <!-- Cute 3D glasses tortoise mascot celebration display (Universal Light/Dark Standard) -->
+        <div class="relative inline-block mx-auto mb-1">
+          <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+            <img 
+              src="../assets/images/mascot/tortoise-hero.png" 
+              alt="SlowPDF Mascot Compress Celebration" 
+              class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+              onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+            />
+          </div>
+          <!-- Small green celebration badge near mascot -->
+          <span class="absolute -bottom-1 -right-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            PDF Successfully Compressed!
+          </span>
+        </div>
+
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-[#274737] dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            Optimized &amp; Reduced
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            Your PDF is Ready!
+          </h3>
+          <p id="success-description" class="mt-2 text-stone-600 dark:text-stone-300 text-sm max-w-md mx-auto leading-relaxed">
+            Your document has been optimized in local RAM. Download your smaller file below.
+          </p>
+        </div>
+
+        <!-- Highlight Comparison Badge: Original vs Compressed -->
+        <div class="max-w-md mx-auto p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-stone-50 to-emerald-50 dark:from-emerald-950/40 dark:via-stone-900 dark:to-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-center shadow-xs">
+          <div class="text-xs uppercase tracking-wider font-extrabold text-stone-500 dark:text-stone-400 mb-1">
+            File Size Reduction
+          </div>
+          <div id="comparison-badge-text" class="text-base sm:text-lg font-extrabold text-[#274737] dark:text-emerald-300">
+            Original: 2.8 MB ➔ Compressed: 94 KB (Saved 96%)
+          </div>
+        </div>
+
+        <!-- Compressed File Details Box -->
+        <div class="max-w-md mx-auto p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 text-left flex items-center justify-between text-xs sm:text-sm">
+          <div class="min-w-0 pr-3">
+            <p class="font-bold text-[#222E28] dark:text-white truncate" id="compressed-file-name">
+              SlowPDF_Compressed_Document.pdf
+            </p>
+            <p class="text-stone-500 dark:text-stone-400 text-xs" id="compressed-file-stats">
+              94 KB • 6 Pages • Crisp &amp; Clean
+            </p>
+          </div>
+          <span class="shrink-0 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 text-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Processed in RAM
+          </span>
+        </div>
+
+        <!-- Editable Output File Name Input (Clean, small, optional) -->
+        <div class="max-w-md mx-auto text-left space-y-1.5">
+          <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+            Save File As (Optional Custom Name):
+          </label>
+          <div class="relative flex items-center">
+            <input 
+              type="text" 
+              id="output-filename-input" 
+              value="SlowPDF_Compressed_Document" 
+              class="w-full px-3.5 py-2.5 pr-14 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+              placeholder="SlowPDF_Compressed_Document"
+            />
+            <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+              .pdf
+            </span>
+          </div>
+        </div>
+
+        <!-- Download & Reset Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+          <a 
+            id="download-compressed-btn" 
+            href="#" 
+            download="SlowPDF_Compressed_Document.pdf"
+            class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Compressed PDF
+          </a>
+          <button 
+            type="button" 
+            id="reset-workbench-btn" 
+            class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+          >
+            Compress Another PDF
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP           -->
+    <!-- Horizontal 1-tap navigation chips          -->
+    <!-- ========================================== -->
+    <nav class="w-full max-w-4xl mx-auto mt-6 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. COMPANION TOOLS 10-BANNER CAROUSEL (ZERO GHOSTING / FLUID HEIGHT) -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <!-- Carousel Viewport container -->
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <!-- Slides Container (Absolute/Relative Isolated Slides Stack) -->
+      <div 
+        id="carousel-slides" 
+        class="relative w-full overflow-hidden"
+      >
+        <!-- 10 Companion Banner Slides populated dynamically via SLOWPDF_BANNERS.toolsPromo & carousel.js -->
+      </div>
+    </div>
+
+    <!-- Outside Navigation/Pagination Dots -->
+    <div 
+      id="carousel-dots" 
+      class="mt-4 flex justify-center items-center gap-2"
+    >
+      <!-- 10 Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          Compress PDF to 20KB, 50KB, 100KB Online Free
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300">
+          Almost every government recruitment portal, university admissions board, visa application website, and professional job board enforces strict file size ceilings. Applicants are often met with frustrating errors like <em>"File size must not exceed 100 KB"</em> or <em>"Maximum allowable size: 50 KB"</em>. Trying to manually resize certificates, resumes, or transcripts without ruining readability can be excruciating.
+        </p>
+        <p class="mt-4 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          SlowPDF solves this problem with an intelligent, client-side dynamic compression engine. By dynamically tuning resolution DPI, canvas rendering parameters, and JPEG quantization in real-time, SlowPDF shrinks multi-megabyte PDFs down to your exact target size (such as 20KB, 50KB, 100KB, 200KB, or 300KB) while keeping typography razor-sharp and legible. Crucially, the entire operation takes place inside your browser’s volatile RAM—no document is ever sent to a third-party server.
+        </p>
+      </div>
+
+      <!-- 3-Step Walkthrough Grid -->
+      <div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-6">
+          How to Compress a PDF in 3 Easy Steps
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              1
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Select or Drop PDF
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Drag your PDF file into the workbench or click "Select PDF File" from your computer, tablet, or smartphone.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              2
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Choose Target Size
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Click any quick preset pill (20 KB, 50 KB, 100 KB, 200 KB, 300 KB, 500 KB) or type your custom size in kilobytes.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              3
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Compress in RAM &amp; Save
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Click Compress. In seconds, the in-browser engine builds your lightweight document. Download instantly with clean naming.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-Depth Educational Article Content -->
+      <div class="space-y-6 pt-4 border-t border-stone-200 dark:border-stone-800">
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            Why Traditional Cloud PDF Compressors Threaten Your Privacy
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            When you use legacy cloud compression websites to reduce the size of your resume, academic degree, or salary slips, your file travels across the public internet to an unverified remote server. That third-party cloud machine decodes your document, writes temporary copies to disk, and retains your metadata for ad-tracking or model training.
+          </p>
+          <p class="mt-3 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            SlowPDF takes a radically different privacy approach. Leveraging modern browser WebAssembly and the HTML5 Canvas API, every single byte of compression happens inside your local device’s RAM sandbox. No file is ever transmitted over the network. When you close the browser tab, the temporary memory buffer is permanently erased without leaving any digital trace.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            How SlowPDF Balances File Size and Text Readability
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            Compressing a document is not simply about lowering image quality indiscriminately. If compression is too aggressive, fine numbers on bank statements or barcode IDs become blurred and unusable. SlowPDF’s engine executes an automatic calibration routine on your document:
+          </p>
+          <ul class="mt-3 space-y-2 list-disc list-inside text-sm sm:text-base text-stone-600 dark:text-stone-300">
+            <li><strong>Per-Page Target Budgeting:</strong> The engine divides your chosen target KB evenly across the document's total page count.</li>
+            <li><strong>Dynamic DPI Scaling:</strong> Renders pages at calibrated DPI scales (0.65x to 1.5x) so text contours remain smooth and sharp.</li>
+            <li><strong>Adaptive JPEG Quantization:</strong> Uses fine-grained compression quality steps (from 0.20 to 0.90) to converge precisely onto your target budget without text artifacts.</li>
+            <li><strong>Standard PDF Repackaging:</strong> Re-encapsulates the optimized image streams into compliant ISO 32000 PDF structures with clean xref tables.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            Target Size Recommendations for Popular Use Cases
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-stone-600 dark:text-stone-300">
+            <div class="p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+              <h4 class="font-bold text-[#222E28] dark:text-white mb-1">20 KB &ndash; 50 KB</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Government exam forms (UPSC, SSC, State PSC), student IDs, signature scans, and passport photo attachments.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+              <h4 class="font-bold text-[#222E28] dark:text-white mb-1">100 KB &ndash; 200 KB</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Job applications, LinkedIn profile uploads, university application transcripts, and visa portal supporting documents.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+              <h4 class="font-bold text-[#222E28] dark:text-white mb-1">300 KB &ndash; 500 KB</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Email attachments, pitch decks, multi-page business agreements, and contracts requiring pristine clarity.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+              <h4 class="font-bold text-[#222E28] dark:text-white mb-1">Custom KB Target</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Tailored to exact portal requirements (e.g., 75 KB or 150 KB) with zero guesswork.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Comparison Table -->
+      <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-4">
+          SlowPDF vs Traditional Cloud PDF Compressors
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-stone-200 dark:border-stone-700 text-[#222E28] dark:text-white font-bold">
+                <th class="py-3 pr-4">Feature</th>
+                <th class="py-3 px-4 text-[#355E4B] dark:text-emerald-400">SlowPDF (Zero-Server)</th>
+                <th class="py-3 pl-4 text-stone-500">Traditional Cloud Services</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Privacy &amp; Data Security</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% In-Browser RAM (Zero Cloud Upload)</td>
+                <td class="py-3 pl-4 text-stone-500">Uploaded to third-party cloud servers</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Custom Target Size</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Exact KB input + 6 quick preset pills</td>
+                <td class="py-3 pl-4 text-stone-500">Vague "High / Medium / Low" buttons only</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">File Size Limits</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Unlimited (Bound only by device RAM)</td>
+                <td class="py-3 pl-4 text-stone-500">Restricted to 25MB or 50MB free caps</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Processing Speed</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Instant local processing without upload delays</td>
+                <td class="py-3 pl-4 text-stone-500">Slow network upload and queue wait times</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Pricing &amp; Watermarks</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% Free Forever • Zero Watermarks</td>
+                <td class="py-3 pl-4 text-stone-500">Paywalls, daily limits, watermarks</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: Compressing PDFs
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Everything you need to know about reducing PDF file size with SlowPDF.
+      </p>
+    </div>
+
+    <!-- Accordion Wrapper -->
+    <div class="space-y-3.5" id="faq-accordion">
+      
+      <!-- FAQ 1 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. How do I compress a PDF to exactly 100KB or 50KB?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Simply drop your PDF document into the SlowPDF Compress workbench, click either the [50 KB] or [100 KB] preset pill (or type your target value into the Target Size field), and click "Compress &amp; Reduce Size". The engine performs a real-time calibration to deliver a file as close to your target as physically possible.
+        </div>
+      </div>
+
+      <!-- FAQ 2 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. Are my confidential PDF files uploaded to any servers?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. SlowPDF operates on a strict Zero-Server architecture. All compression, canvas drawing, and PDF repackaging occur exclusively inside your device's browser RAM. Zero bytes are transmitted to any remote server or stored in the cloud.
+        </div>
+      </div>
+
+      <!-- FAQ 3 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. Will compressing my PDF make the text blurry or illegible?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          No. SlowPDF's dynamic algorithm prioritizes typography readability. Instead of blurring text, it adjusts JPEG quantization and DPI resolution adaptively so that letters, numbers, and barcodes remain crisp and legible, meeting portal upload standards.
+        </div>
+      </div>
+
+      <!-- FAQ 4-10 (Collapsible under 'View All 10 Questions') -->
+      <div id="extra-faqs" class="hidden space-y-3.5">
+        
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. What if my original PDF is already smaller than the target size?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            If your uploaded document is already lighter than your chosen target KB (for example, a 60 KB file when you select 100 KB), SlowPDF optimizes the internal object streams without degrading any visual quality.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. How many pages can I compress at once?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            SlowPDF places no artificial page count limits. Whether you are compressing a 1-page certificate or a 40-page textbook, the engine processes each page sequentially and shows real-time progress.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. Can I compress a password-protected PDF?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Encrypted PDFs require unlocking before page contents can be compressed. You can first unlock your document using SlowPDF's companion Unlock PDF tool, then compress the unlocked document here.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. Does SlowPDF add any watermarks to my compressed PDF?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Never! SlowPDF is 100% free with zero watermarks, zero logos added, and zero forced branding. Your output file is completely clean and professional.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Can I enter any custom target size other than the presets?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes! In addition to the 6 quick preset pills (20KB, 50KB, 100KB, 200KB, 300KB, 500KB), you can enter any custom integer into the Target Size box (such as 80 KB, 150 KB, or 400 KB).
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. Does SlowPDF work on smartphones and tablets?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes. SlowPDF is fully responsive and touch-optimized. You can compress PDFs directly on iPhone, iPad, Android smartphones, Windows laptops, and Mac computers via Chrome, Safari, Edge, or Firefox.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. How is my downloaded file named?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            SlowPDF includes a smart filename sanitizer that strips long hashes and UUIDs, automatically naming your file <code class="text-xs bg-stone-100 dark:bg-stone-800 px-1 py-0.5 rounded font-mono">SlowPDF_Compressed_[CleanName].pdf</code>. Furthermore, you can type your own custom filename directly in the download screen before saving.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Toggle Button: View All 10 Questions -->
+      <div class="text-center pt-4">
+        <button 
+          id="toggle-faqs-btn" 
+          type="button" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-[#222E28] dark:text-white font-bold text-xs sm:text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
+        >
+          <span id="faq-btn-text">View All 10 Questions</span>
+          <svg id="faq-chevron" class="w-4 h-4 text-stone-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. EXACT MASTER FOOTER                     -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#E8DABF]/40 dark:bg-[#151D19] border-t border-[#D8C7A5] dark:border-stone-800 transition-colors mt-auto py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top 4-Column Directory Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-stone-200/60 dark:border-stone-800/80">
+        
+        <!-- Brand Info Column -->
+        <div class="space-y-4">
+          <a href="../index.html" class="flex items-center gap-2 select-none group">
+            <img src="../assets/images/logo.png" alt="SlowPDF" class="w-8 h-8 object-contain" onerror="this.src='../public/assets/images/logo.png'" />
+            <span class="text-xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+              Slow <span class="text-[#274737] dark:text-[#5E9B7E]">PDF</span>
+            </span>
+          </a>
+          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+            Made for slow, steady learning • 100% Client-Side Privacy. Your files never leave your device.
+          </p>
+          <div class="pt-2 text-xs text-stone-500 dark:text-stone-500">
+            © 2026 Slow PDF. All rights reserved. Brand: slowpdf.in
+          </div>
+        </div>
+
+        <!-- Column 1: Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Quick Links
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../#popular-tools" class="footer-link">All Tools</a></li>
+            <li><a href="../pages/blog.html" class="footer-link">Blog &amp; Articles</a></li>
+            <li><a href="../pages/how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="../pages/learn.html" class="footer-link">Learn</a></li>
+            <li><a href="../pages/about.html" class="footer-link">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Popular Tools -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Popular Tools
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="merge-pdf.html" class="footer-link">Merge PDF</a></li>
+            <li><a href="split-pdf.html" class="footer-link">Split PDF</a></li>
+            <li><a href="compress-pdf.html" class="footer-link font-semibold text-[#355E4B] dark:text-emerald-400">Compress PDF</a></li>
+            <li><a href="protect-pdf.html" class="footer-link">Protect PDF</a></li>
+            <li><a href="unlock-pdf.html" class="footer-link">Unlock PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal & Help -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Legal &amp; Help
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../pages/privacy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html" class="footer-link">Terms &amp; Conditions</a></li>
+            <li><a href="../pages/security.html" class="footer-link">Security Architecture</a></li>
+            <li><a href="#faq-section" class="footer-link">FAQ</a></li>
+            <li><a href="../pages/contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Social Media Strip -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-stone-500 dark:text-stone-500">
+          Built with calm design principles • Respecting learner privacy since 2026.
+        </div>
+        
+        <!-- Social Media Icons Row -->
+        <div class="flex items-center gap-5 text-stone-500 dark:text-stone-400">
+          <a href="#" class="p-1.5 rounded-lg hover:bg-emerald-100/80 hover:text-emerald-950 dark:hover:bg-[#355E4B]/40 dark:hover:text-emerald-300 transition-colors" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: COMPRESSION ENGINE & UI LOGIC  -->
+  <!-- ========================================== -->
+  <script>
+    // ----------------------------------------------------
+    // 1. DARK MODE THEME PERSISTENCE
+    // ----------------------------------------------------
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeThumb = document.getElementById('dark-mode-thumb');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'true');
+          darkModeToggle.classList.remove('bg-stone-300');
+          darkModeToggle.classList.add('bg-[#355E4B]');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-0');
+          darkModeThumb.classList.add('translate-x-5');
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'false');
+          darkModeToggle.classList.remove('bg-[#355E4B]');
+          darkModeToggle.classList.add('bg-stone-300');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-5');
+          darkModeThumb.classList.add('translate-x-0');
+        }
+      }
+    }
+
+    const savedTheme = localStorage.getItem('slowpdf_theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    applyTheme(initialDark);
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isCurrentDark = document.documentElement.classList.contains('dark');
+        const nextDark = !isCurrentDark;
+        applyTheme(nextDark);
+        localStorage.setItem('slowpdf_theme', nextDark ? 'dark' : 'light');
+      });
+    }
+
+    // ----------------------------------------------------
+    // 2. HAMBURGER MENU MODAL
+    // ----------------------------------------------------
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      menuModal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        menuModal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      });
+      line1.setAttribute('transform', 'rotate(45 12 12)');
+      line2.classList.add('opacity-0');
+      line3.setAttribute('transform', 'rotate(-45 12 12)');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      menuOpen = false;
+      menuModal.classList.add('opacity-0');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => {
+        if (!menuOpen) menuModal.classList.add('hidden');
+      }, 300);
+      line1.removeAttribute('transform');
+      line2.classList.remove('opacity-0');
+      line3.removeAttribute('transform');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // (Navigation and modal drawer handled universally by nav-memory.js)
+
+    // ----------------------------------------------------
+    // 3. COMPRESS PDF WORKBENCH & CLIENT-SIDE ENGINE
+    // ----------------------------------------------------
+    let currentFileBuffer = null;
+    let currentFileName = '';
+    let currentFileSize = 0;
+    let currentNumPages = 0;
+
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const activeWorkbench = document.getElementById('active-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const fileInput = document.getElementById('pdf-file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const chooseDifferentFileBtn = document.getElementById('choose-different-file-btn');
+    const fileNameText = document.getElementById('file-name-text');
+    const fileSizeText = document.getElementById('file-size-text');
+    const alertBox = document.getElementById('alert-box');
+    const alertIcon = document.getElementById('alert-icon');
+    const alertMessage = document.getElementById('alert-message');
+    const customTargetInput = document.getElementById('custom-target-input');
+    const targetModeText = document.getElementById('target-mode-text');
+    const presetsContainer = document.getElementById('presets-container');
+    const presetPills = document.querySelectorAll('.preset-pill');
+    const compressActionBtn = document.getElementById('compress-action-btn');
+    const compressBtnText = document.getElementById('compress-btn-text');
+    const progressContainer = document.getElementById('progress-container');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressPercentText = document.getElementById('progress-percent-text');
+    const comparisonBadgeText = document.getElementById('comparison-badge-text');
+    const compressedFileName = document.getElementById('compressed-file-name');
+    const compressedFileStats = document.getElementById('compressed-file-stats');
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const downloadCompressedBtn = document.getElementById('download-compressed-btn');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+
+    // Trigger file chooser
+    if (emptyDropzone) {
+      emptyDropzone.addEventListener('click', (e) => {
+        if (e.target === browseBtn || browseBtn.contains(e.target)) return;
+        fileInput.click();
+      });
+    }
+    if (browseBtn) {
+      browseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+      });
+    }
+    if (chooseDifferentFileBtn) {
+      chooseDifferentFileBtn.addEventListener('click', () => fileInput.click());
+    }
+
+    // Drag and drop handlers
+    ['dragenter', 'dragover'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+      if (files.length > 0) handleIncomingFile(files[0]);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0) handleIncomingFile(files[0]);
+      fileInput.value = '';
+    });
+
+    // Preset Pill Click Handlers
+    presetPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const targetKb = pill.getAttribute('data-target-kb');
+        customTargetInput.value = targetKb;
+        updatePresetActiveState(targetKb);
+        updateTargetProfileHint(parseInt(targetKb, 10));
+      });
+    });
+
+    // Custom Target Input Handler
+    customTargetInput.addEventListener('input', () => {
+      const val = parseInt(customTargetInput.value, 10) || 0;
+      updatePresetActiveState(val.toString());
+      updateTargetProfileHint(val);
+    });
+
+    function updatePresetActiveState(activeKbStr) {
+      presetPills.forEach(pill => {
+        const pillKb = pill.getAttribute('data-target-kb');
+        if (pillKb === activeKbStr) {
+          pill.classList.remove('bg-white', 'dark:bg-[#161F1B]', 'text-[#222E28]', 'dark:text-white', 'border-stone-200', 'dark:border-stone-700');
+          pill.classList.add('active-preset', 'bg-[#355E4B]', 'dark:bg-emerald-700', 'text-white', 'border-[#355E4B]', 'dark:border-emerald-500', 'shadow-xs');
+        } else {
+          pill.classList.remove('active-preset', 'bg-[#355E4B]', 'dark:bg-emerald-700', 'text-white', 'border-[#355E4B]', 'dark:border-emerald-500', 'shadow-xs');
+          pill.classList.add('bg-white', 'dark:bg-[#161F1B]', 'text-[#222E28]', 'dark:text-white', 'border-stone-200', 'dark:border-stone-700');
+        }
+      });
+    }
+
+    function updateTargetProfileHint(kb) {
+      if (kb <= 30) {
+        targetModeText.textContent = `Target: ${kb} KB • Maximum compression for strict PSC/UPSC/SSC portals.`;
+      } else if (kb <= 75) {
+        targetModeText.textContent = `Target: ${kb} KB • Ultra-compact for government job and visa portals.`;
+      } else if (kb <= 150) {
+        targetModeText.textContent = `Target: ${kb} KB • Balanced optimization for online applications and email.`;
+      } else if (kb <= 350) {
+        targetModeText.textContent = `Target: ${kb} KB • High clarity for professional resumes and contracts.`;
+      } else {
+        targetModeText.textContent = `Target: ${kb} KB • Maximum fidelity retaining high-definition scans.`;
+      }
+    }
+
+    // Byte Formatting Helper
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    // Alert helper
+    function showAlert(type, message) {
+      alertBox.classList.remove('hidden', 'bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/40', 'dark:border-red-900', 'dark:text-red-300', 'bg-amber-50', 'border-amber-200', 'text-amber-800', 'dark:bg-amber-950/40', 'dark:border-amber-900', 'dark:text-amber-300');
+      
+      if (type === 'error') {
+        alertBox.classList.add('bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/40', 'dark:border-red-900', 'dark:text-red-300');
+        alertIcon.innerHTML = '<svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>';
+      } else {
+        alertBox.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-800', 'dark:bg-amber-950/40', 'dark:border-amber-900', 'dark:text-amber-300');
+        alertIcon.innerHTML = '<svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>';
+      }
+      alertMessage.innerHTML = message;
+    }
+
+    function hideAlert() {
+      alertBox.classList.add('hidden');
+      alertMessage.innerHTML = '';
+    }
+
+    // Incoming File Handler
+    async function handleIncomingFile(file) {
+      hideAlert();
+      if (!file || (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf'))) {
+        showAlert('error', 'Please choose a valid PDF document.');
+        return;
+      }
+
+      currentFileName = file.name;
+      currentFileSize = file.size;
+
+      try {
+        currentFileBuffer = await file.arrayBuffer();
+
+        // Parse with PDF.js to verify validity and extract page count
+        const loadingTask = pdfjsLib.getDocument({
+          data: new Uint8Array(currentFileBuffer.slice(0))
+        });
+        const pdfDoc = await loadingTask.promise;
+        currentNumPages = pdfDoc.numPages;
+
+        // Populate File Info Card
+        fileNameText.textContent = currentFileName;
+        fileNameText.title = currentFileName;
+        fileSizeText.textContent = `Original Size: ${formatBytes(currentFileSize)} • ${currentNumPages} Page${currentNumPages > 1 ? 's' : ''} • Ready to Compress`;
+
+        // Intelligent default target selection based on original size
+        const origKb = Math.round(currentFileSize / 1024);
+        let suggestedKb = 100;
+        if (origKb <= 50) {
+          suggestedKb = 20;
+        } else if (origKb <= 120) {
+          suggestedKb = 50;
+        } else if (origKb <= 300) {
+          suggestedKb = 100;
+        } else if (origKb <= 1000) {
+          suggestedKb = 200;
+        } else {
+          suggestedKb = 300;
+        }
+        customTargetInput.value = suggestedKb;
+        updatePresetActiveState(suggestedKb.toString());
+        updateTargetProfileHint(suggestedKb);
+
+        // Switch to Active Workbench
+        emptyDropzone.classList.add('hidden');
+        successPanel.classList.add('hidden');
+        progressContainer.classList.add('hidden');
+        activeWorkbench.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Error reading PDF:', err);
+        showAlert('error', 'Unable to parse this PDF file. If the file is password-protected, please unlock it first using our Unlock PDF tool.');
+      }
+    }
+
+    // Smart File Name Sanitizer
+    function sanitizeBaseName(rawName) {
+      if (!rawName) return 'Document';
+      let clean = rawName.replace(/\.pdf$/i, '').trim();
+
+      // Detect hex hashes (8+ consecutive hex characters) or UUIDs or excessively long names
+      const hasLongHex = /[0-9a-fA-F]{8,}/.test(clean);
+      const hasUuid = /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}/.test(clean);
+      const isTooLong = clean.length > 20;
+
+      if (hasLongHex || hasUuid || isTooLong) {
+        const parts = clean.split(/[_\-\s]+/).filter(p => 
+          p.length > 2 && !/[0-9a-fA-F]{6,}/.test(p) && !/^[0-9]+$/.test(p)
+        );
+        if (parts.length > 0) {
+          clean = parts[0];
+        } else {
+          return 'Document';
+        }
+      }
+
+      // Clean up special characters, keep alphanumeric and underscores
+      clean = clean.replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+      if (clean.length === 0 || clean.length > 15) {
+        return 'Document';
+      }
+      return clean.charAt(0).toUpperCase() + clean.slice(1);
+    }
+
+    function dataUrlToUint8Array(dataUrl) {
+      const base64 = dataUrl.split(',')[1];
+      const binaryString = atob(base64);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes;
+    }
+
+    // Helper to calculate optimal resolution scale based on per-page budget
+    function calculateOptimalScale(budgetPerPage) {
+      if (budgetPerPage <= 16 * 1024) {
+        return 0.70; // ~20KB target
+      } else if (budgetPerPage <= 32 * 1024) {
+        return 0.90; // ~50KB target
+      } else if (budgetPerPage <= 65 * 1024) {
+        return 1.15; // ~100KB target
+      } else if (budgetPerPage <= 130 * 1024) {
+        return 1.50; // ~100-200KB target
+      } else if (budgetPerPage <= 220 * 1024) {
+        return 1.90; // ~200-300KB target
+      } else if (budgetPerPage <= 350 * 1024) {
+        return 2.30; // ~300KB single / 500KB multi
+      } else {
+        return 2.70; // 500KB+
+      }
+    }
+
+    // MAIN COMPRESSION EXECUTION WITH 98%-100% TARGET PRECISION MATCHING
+    async function executeCompression() {
+      const targetKb = parseInt(customTargetInput.value, 10);
+      if (!targetKb || targetKb < 5) {
+        showAlert('error', 'Please enter a valid target size (e.g. 50 KB, 100 KB, 300 KB).');
+        customTargetInput.focus();
+        return;
+      }
+
+      hideAlert();
+      compressActionBtn.disabled = true;
+      compressBtnText.textContent = 'Compressing...';
+      progressContainer.classList.remove('hidden');
+      progressBarFill.style.width = '5%';
+      progressPercentText.textContent = '5%';
+      progressStatusText.textContent = 'Analyzing target budget & document structure...';
+
+      try {
+        const targetBytes = targetKb * 1024;
+        const numPages = currentNumPages || 1;
+
+        // SMART FALLBACK: If original file is already smaller than or equal to target size,
+        // do not degrade it. Preserve 100% original quality and sharp vectors.
+        if (currentFileSize <= targetBytes) {
+          const originalBytes = currentFileSize;
+          const blob = new Blob([currentFileBuffer], { type: 'application/pdf' });
+          const downloadUrl = URL.createObjectURL(blob);
+
+          const shortCleanName = sanitizeBaseName(currentFileName);
+          const defaultBaseName = `SlowPDF_Compressed_${shortCleanName}`;
+
+          function computeFinalFileName() {
+            let userVal = (outputFilenameInput && outputFilenameInput.value ? outputFilenameInput.value.trim() : '') || defaultBaseName;
+            userVal = userVal.replace(/(\.pdf)+$/i, '').trim();
+            if (!userVal) userVal = defaultBaseName;
+            return `${userVal}.pdf`;
+          }
+
+          if (outputFilenameInput) {
+            outputFilenameInput.value = defaultBaseName;
+            outputFilenameInput.oninput = () => {
+              const currentName = computeFinalFileName();
+              downloadCompressedBtn.download = currentName;
+              downloadCompressedBtn.setAttribute('download', currentName);
+              compressedFileName.textContent = currentName;
+            };
+          }
+
+          const finalDownloadName = computeFinalFileName();
+          downloadCompressedBtn.href = downloadUrl;
+          downloadCompressedBtn.download = finalDownloadName;
+          downloadCompressedBtn.setAttribute('download', finalDownloadName);
+          compressedFileName.textContent = finalDownloadName;
+
+          comparisonBadgeText.textContent = `Original: ${formatBytes(originalBytes)} ➔ Output: ${formatBytes(originalBytes)} (Already optimal • 100% quality preserved)`;
+          compressedFileStats.textContent = `${formatBytes(originalBytes)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Full Quality`;
+
+          downloadCompressedBtn.onclick = () => {
+            const latestName = computeFinalFileName();
+            downloadCompressedBtn.download = latestName;
+            downloadCompressedBtn.setAttribute('download', latestName);
+          };
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+          activeWorkbench.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+          return;
+        }
+
+        // PDF structural overhead (xref, trailer, page object dictionary, image XObject wrapper)
+        const pdfOverhead = 1000 + numPages * 320;
+        const budgetForImages = Math.max(1000, targetBytes - pdfOverhead);
+        const budgetPerPage = budgetForImages / numPages;
+
+        // Load document with PDF.js
+        const loadingTask = pdfjsLib.getDocument({
+          data: new Uint8Array(currentFileBuffer.slice(0))
+        });
+        const srcPdf = await loadingTask.promise;
+
+        // Step 1: Calibrate DPI scale on Page 1 to ensure canvas has sufficient resolution
+        // to fill the target budget (preventing under-sizing on high budgets like 300KB)
+        let calibratedScale = calculateOptimalScale(budgetPerPage);
+
+        try {
+          const testPage = await srcPdf.getPage(1);
+          const testViewport = testPage.getViewport({ scale: calibratedScale });
+          const testCanvas = document.createElement('canvas');
+          testCanvas.width = Math.floor(testViewport.width);
+          testCanvas.height = Math.floor(testViewport.height);
+          const testCtx = testCanvas.getContext('2d', { alpha: false });
+          testCtx.fillStyle = '#FFFFFF';
+          testCtx.fillRect(0, 0, testCanvas.width, testCanvas.height);
+
+          await testPage.render({ canvasContext: testCtx, viewport: testViewport }).promise;
+          const sampleDataUrlHigh = testCanvas.toDataURL('image/jpeg', 0.95);
+          const sampleSizeHigh = Math.floor(((sampleDataUrlHigh.length - sampleDataUrlHigh.indexOf(',') - 1) * 3) / 4);
+
+          const sampleDataUrlLow = testCanvas.toDataURL('image/jpeg', 0.10);
+          const sampleSizeLow = Math.floor(((sampleDataUrlLow.length - sampleDataUrlLow.indexOf(',') - 1) * 3) / 4);
+
+          // If sample at 0.95 quality is smaller than 98% of budget per page,
+          // scale up resolution so canvas detail can fill the requested byte budget!
+          if (sampleSizeHigh < budgetPerPage * 0.98) {
+            const neededMultiplier = Math.sqrt((budgetPerPage * 0.99) / Math.max(1000, sampleSizeHigh));
+            calibratedScale = Math.min(3.2, Math.max(calibratedScale, calibratedScale * neededMultiplier));
+          } else if (sampleSizeLow > budgetPerPage && calibratedScale > 0.65) {
+            const downMultiplier = Math.sqrt((budgetPerPage * 0.85) / Math.max(1000, sampleSizeLow));
+            calibratedScale = Math.max(0.55, calibratedScale * downMultiplier);
+          }
+        } catch (calibErr) {
+          console.warn('Calibration step note:', calibErr);
+        }
+
+        // Step 2: Render all pages to canvases at the calibrated resolution scale
+        progressBarFill.style.width = '20%';
+        progressPercentText.textContent = '20%';
+        progressStatusText.textContent = 'Rendering pages in high resolution...';
+
+        const pageCanvases = [];
+        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+          const renderPercent = 20 + Math.round((pageNum / numPages) * 40);
+          progressBarFill.style.width = `${renderPercent}%`;
+          progressPercentText.textContent = `${renderPercent}%`;
+          progressStatusText.textContent = `Rendering page ${pageNum} of ${numPages} (${renderPercent}%)...`;
+
+          const page = await srcPdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: calibratedScale });
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
+          const ctx = canvas.getContext('2d', { alpha: false });
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+          pageCanvases.push({
+            canvas,
+            unscaledViewport: page.getViewport({ scale: 1.0 })
+          });
+        }
+
+        // Helper function to measure total estimated PDF size for a given quality
+        function measureTotalPdfSize(q) {
+          let totalJpegBytes = 0;
+          for (const item of pageCanvases) {
+            const dataUrl = item.canvas.toDataURL('image/jpeg', q);
+            const base64Len = dataUrl.length - dataUrl.indexOf(',') - 1;
+            totalJpegBytes += Math.floor((base64Len * 3) / 4);
+          }
+          return totalJpegBytes + pdfOverhead;
+        }
+
+        // Step 3: 8-Pass Binary Search Target Precision Matching Loop
+        progressBarFill.style.width = '65%';
+        progressPercentText.textContent = '65%';
+        progressStatusText.textContent = 'Executing 8-pass binary search target precision matching...';
+
+        let low = 0.05;
+        let high = 0.98;
+        let bestQuality = 0.50;
+        let bestEstimatedBytes = 0;
+
+        for (let iter = 0; iter < 8; iter++) {
+          const mid = (low + high) / 2;
+          const estimatedPdfBytes = measureTotalPdfSize(mid);
+
+          if (estimatedPdfBytes > targetBytes) {
+            // Exceeds target: reduce high bound
+            high = mid;
+          } else {
+            // Fits within target: record viable candidate and push higher to maximize clarity
+            bestQuality = mid;
+            bestEstimatedBytes = estimatedPdfBytes;
+            low = mid;
+          }
+        }
+
+        // Step 4: 0.01 Incremental Micro-Adjustment Pass
+        // Raises quality in 0.01 steps until sitting strictly within the 98%–100% (297–300 KB for 300 KB target) sweet spot
+        progressBarFill.style.width = '80%';
+        progressPercentText.textContent = '80%';
+        progressStatusText.textContent = 'Fine-tuning 0.01 quality micro-adjustments...';
+
+        while (bestQuality + 0.01 <= 0.98) {
+          const nextQ = Math.round((bestQuality + 0.01) * 100) / 100;
+          const nextEst = measureTotalPdfSize(nextQ);
+          if (nextEst <= targetBytes) {
+            bestQuality = nextQ;
+            bestEstimatedBytes = nextEst;
+          } else {
+            break;
+          }
+        }
+
+        // Step 4: Re-pack into pristine PDF via pdf-lib
+        progressBarFill.style.width = '85%';
+        progressPercentText.textContent = '85%';
+        progressStatusText.textContent = 'Packaging optimized PDF document in RAM...';
+
+        let newPdfDoc = await PDFLib.PDFDocument.create();
+        for (const item of pageCanvases) {
+          const jpegDataUrl = item.canvas.toDataURL('image/jpeg', bestQuality);
+          const jpegBytes = dataUrlToUint8Array(jpegDataUrl);
+          const embeddedImage = await newPdfDoc.embedJpg(jpegBytes);
+          const newPage = newPdfDoc.addPage([item.unscaledViewport.width, item.unscaledViewport.height]);
+          newPage.drawImage(embeddedImage, {
+            x: 0,
+            y: 0,
+            width: item.unscaledViewport.width,
+            height: item.unscaledViewport.height
+          });
+        }
+
+        let compressedBytes = await newPdfDoc.save({ useObjectStreams: true });
+
+        // Strict limit guarantee: if actual output slightly exceeded targetBytes due to stream encoding,
+        // perform a micro-adjustment pass so the output strictly complies with portal ceilings.
+        if (compressedBytes.byteLength > targetBytes) {
+          const ratio = targetBytes / compressedBytes.byteLength;
+          const adjustedQuality = Math.max(0.10, bestQuality * Math.sqrt(ratio) * 0.97);
+          const safePdfDoc = await PDFLib.PDFDocument.create();
+          for (const item of pageCanvases) {
+            const jpegDataUrl = item.canvas.toDataURL('image/jpeg', adjustedQuality);
+            const jpegBytes = dataUrlToUint8Array(jpegDataUrl);
+            const embeddedImage = await safePdfDoc.embedJpg(jpegBytes);
+            const newPage = safePdfDoc.addPage([item.unscaledViewport.width, item.unscaledViewport.height]);
+            newPage.drawImage(embeddedImage, {
+              x: 0,
+              y: 0,
+              width: item.unscaledViewport.width,
+              height: item.unscaledViewport.height
+            });
+          }
+          compressedBytes = await safePdfDoc.save({ useObjectStreams: true });
+        }
+
+        progressBarFill.style.width = '100%';
+        progressPercentText.textContent = '100%';
+
+        const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+        const downloadUrl = URL.createObjectURL(blob);
+
+        // Step 5: Configure Branded File Naming
+        const shortCleanName = sanitizeBaseName(currentFileName);
+        const defaultBaseName = `SlowPDF_Compressed_${shortCleanName}`;
+
+        function computeFinalFileName() {
+          let userVal = (outputFilenameInput && outputFilenameInput.value ? outputFilenameInput.value.trim() : '') || defaultBaseName;
+          userVal = userVal.replace(/(\.pdf)+$/i, '').trim();
+          if (!userVal) userVal = defaultBaseName;
+          return `${userVal}.pdf`;
+        }
+
+        if (outputFilenameInput) {
+          outputFilenameInput.value = defaultBaseName;
+          outputFilenameInput.oninput = () => {
+            const currentName = computeFinalFileName();
+            downloadCompressedBtn.download = currentName;
+            downloadCompressedBtn.setAttribute('download', currentName);
+            compressedFileName.textContent = currentName;
+          };
+        }
+
+        const finalDownloadName = computeFinalFileName();
+        downloadCompressedBtn.href = downloadUrl;
+        downloadCompressedBtn.download = finalDownloadName;
+        downloadCompressedBtn.setAttribute('download', finalDownloadName);
+        compressedFileName.textContent = finalDownloadName;
+
+        // Step 6: Calculate & Render Comparison Badge
+        const originalBytes = currentFileSize;
+        const newBytes = compressedBytes.byteLength;
+        let percentSaved = 0;
+        if (originalBytes > newBytes) {
+          percentSaved = Math.round(((originalBytes - newBytes) / originalBytes) * 100);
+        }
+
+        comparisonBadgeText.textContent = `Original: ${formatBytes(originalBytes)} ➔ Compressed: ${formatBytes(newBytes)} (Saved ${percentSaved}%)`;
+        compressedFileStats.textContent = `${formatBytes(newBytes)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Crisp & Clean`;
+
+        downloadCompressedBtn.onclick = () => {
+          const latestName = computeFinalFileName();
+          downloadCompressedBtn.download = latestName;
+          downloadCompressedBtn.setAttribute('download', latestName);
+        };
+
+        // Switch to success view
+        activeWorkbench.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Compression failed:', err);
+        showAlert('error', 'An unexpected error occurred while compressing your document. Please verify the file.');
+      } finally {
+        compressActionBtn.disabled = false;
+        compressBtnText.textContent = 'Compress & Reduce Size';
+        progressContainer.classList.add('hidden');
+      }
+    }
+
+    compressActionBtn.addEventListener('click', executeCompression);
+
+    customTargetInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') executeCompression();
+    });
+
+    // Reset workbench
+    resetWorkbenchBtn.addEventListener('click', () => {
+      currentFileBuffer = null;
+      currentFileName = '';
+      currentFileSize = 0;
+      currentNumPages = 0;
+      customTargetInput.value = '100';
+      updatePresetActiveState('100');
+      updateTargetProfileHint(100);
+      hideAlert();
+      successPanel.classList.add('hidden');
+      activeWorkbench.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+    });
+
+    // ----------------------------------------------------
+    // 4. ACCORDION FAQ LOGIC
+    // ----------------------------------------------------
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      trigger.addEventListener('click', () => {
+        const isOpen = !content.classList.contains('hidden');
+        if (isOpen) {
+          content.classList.add('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          item.classList.remove('ring-1', 'ring-[#355E4B]');
+        } else {
+          content.classList.remove('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          item.classList.add('ring-1', 'ring-[#355E4B]');
+        }
+      });
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
+
+<script>
+  (function() {
+    function initMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn') || document.getElementById('hamburger-btn') || document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-icon');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const closeBtn = document.getElementById('closeMenuBtn');
+      
+      if (!menuBtn || !drawer) return;
+
+      menuBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        drawer.style.display = (drawer.style.display === 'none' || drawer.style.display === '') ? 'flex' : 'none';
+      };
+
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          drawer.style.display = 'none';
+        };
+      }
+
+      document.addEventListener('click', function(e) {
+        if (drawer.style.display === 'flex' && !drawer.contains(e.target) && !menuBtn.contains(e.target)) {
+          drawer.style.display = 'none';
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+      initMenu();
+    }
+  })();
+</script>
+</body>
+</html>

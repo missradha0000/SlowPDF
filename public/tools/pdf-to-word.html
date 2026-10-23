@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convert PDF to Word Online Free — 100% Private Local DOCX Extraction | SlowPDF</title>
+  <meta name="description" content="Convert PDF documents into editable Microsoft Word (.docx) documents directly in your browser. 100% client-side memory processing. Zero server uploads, unlimited file size, completely free." />
+  <meta property="og:title" content="Convert PDF to Word Online — Private & Fast | SlowPDF" />
+  <meta property="og:description" content="Transform PDF files into editable Word documents in seconds with zero cloud uploads. Safe, private, and free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/pdf-to-word.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Convert PDF to Word",
+        "url": "https://slowpdf.in/tools/pdf-to-word.html",
+        "description": "Client-side private tool to reconstruct PDF text and layout into editable Microsoft Word (.docx) documents.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "1. Will the converted file open natively in Microsoft Word and Google Docs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! The tool generates a standard, uncorrupted OpenXML Microsoft Word document (.docx) compatible with Word, Google Docs, Apple Pages, and LibreOffice Writer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "2. Are my confidential files uploaded to any server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All extraction and Word document creation takes place 100% inside your local browser memory using WebAssembly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "3. How does the converter format headings and paragraph text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The engine analyzes font sizes and vertical positioning. Larger fonts are automatically assigned Word Heading styles while normal text is structured into clean paragraphs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "4. Can I edit text after downloading the Word file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% fully editable. You can edit text, change fonts, add paragraphs, or export back to PDF anytime."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "5. Does this work on scanned image-only PDFs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For scanned PDF images without text streams, run your document through our companion OCR PDF tool first to generate digital text before converting to Word."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "6. What is the maximum file size or page limit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There are no arbitrary cloud caps! Conversion is bound only by your device's available browser memory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "7. Does it preserve original page breaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, clean page break indicators are inserted between pages so document flow remains structured."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "8. Does this work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, once loaded, you can turn off Wi-Fi or go offline and continue converting documents."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "9. Can I convert PDFs on my phone or tablet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, fully responsive and works directly in mobile Safari, Chrome, and browser environments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "10. Why is this PDF to Word tool 100% free with no watermark?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because document processing happens in client-side RAM, SlowPDF has zero server hosting bills for conversions. We keep document editing free and watermark-free for everyone."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF.js v3.11.174 & docx.js v8.5.0 UMD for Client-Side DOCX Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* ==========================================================================
+       BODY / PAGE BACKGROUND COLOR SPECIFICATION:
+       - HEX: #FFFBF2
+       ========================================================================== */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    /* ==========================================================================
+       TOP HEADER / NAVBAR BACKGROUND COLOR SPECIFICATION:
+       - HEX: #E8DABF
+       ========================================================================== */
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #151D19 !important;
+    }
+
+    /* Soft floating cards against #FFFBF2 */
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    /* Header mascot gentle idle breathing */
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Drag over active state */
+    .dragover-active {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.05) !important;
+      transform: scale(1.01);
+    }
+    .dark .dragover-active {
+      background-color: rgba(53, 94, 75, 0.2) !important;
+      border-color: #5E9B7E !important;
+    }
+
+    /* Hide scrollbars for smooth carousel */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Carousel Banner Deep Forest Green Gradient */
+    .banner-card-gradient {
+      background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+      color: #ffffff !important;
+    }
+
+    /* Custom Webkit Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+
+    /* High contrast navbar link styling on #E8DABF */
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #1A261F;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F;
+    }
+    .dark .nav-link { color: #E2E8E4; }
+    .dark .nav-link:hover {
+      background-color: rgba(53, 94, 75, 0.4);
+      color: #A7F3D0;
+    }
+
+    /* High contrast footer link styling */
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      margin: -0.25rem -0.5rem;
+    }
+    .footer-link:hover {
+      background-color: rgba(209, 250, 229, 0.8);
+      color: #064e3b;
+      font-weight: 600;
+    }
+    .dark .footer-link:hover {
+      background-color: rgba(53, 94, 75, 0.35);
+      color: #a7f3d0;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR                     -->
+  <!-- Background: #E8DABF                        -->
+  <!-- Left: [Tortoise Logo] [Slow PDF]           -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Left: Brand Logo & Title -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center Nav Links -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Hamburger Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="hamburger-btn" 
+          type="button"
+          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Clean Dropdown Modal / Mobile Menu -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle"
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation & Legal Links -->
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
+        <a href="../pages/blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Blog &amp; Articles</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
+        </a>
+        <a href="../pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
+        <a href="../pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
+        <a href="../pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
+        <a href="../pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Privacy Policy</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
+        </a>
+        <a href="../pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
+        <a href="../pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. CONVERT PDF TO WORD WORKBENCH           -->
+  <!-- ========================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 w-full flex-1">
+    
+    <!-- Title & Privacy Trust Pill -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 text-xs font-semibold mb-3 shadow-2xs">
+        <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Convert PDF to Word
+      </h1>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Reconstruct structured text, paragraphs, and headings from your PDF into an editable Microsoft Word (.docx) document.
+      </p>
+    </div>
+
+    <!-- Hidden native file input -->
+    <input type="file" id="pdf-file-input" accept=".pdf,application/pdf" class="hidden" />
+
+    <!-- WORKBENCH STATE 1: Empty Dropzone -->
+    <div 
+      id="empty-dropzone" 
+      class="w-full bg-white dark:bg-[#1C2420] rounded-2xl border-2 border-dashed border-[#D8C7A5] dark:border-stone-700/80 p-8 sm:p-14 text-center cursor-pointer shadow-sm hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200 group relative flex flex-col items-center justify-center min-h-[320px]"
+    >
+      <div class="w-20 h-20 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200 shadow-2xs">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-[#F1F5F2] mb-1.5">
+        Choose a PDF file or drag &amp; drop here
+      </h3>
+      <p class="text-stone-500 dark:text-stone-400 text-sm max-w-md mb-6">
+        Select any text-based PDF document. Processed 100% locally in your browser memory without hitting any server.
+      </p>
+      <button 
+        type="button" 
+        id="browse-btn"
+        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        Select PDF Document
+      </button>
+      <div class="mt-6 flex items-center gap-4 text-xs text-stone-500 dark:text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Generates Genuine .DOCX
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Preserves Heading Hierarchy
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Zero Cloud Transfer
+        </span>
+      </div>
+    </div>
+
+    <!-- WORKBENCH STATE 2: File Selected & Conversion Settings -->
+    <div id="active-workbench" class="hidden w-full space-y-6">
+      
+      <!-- Selected File Info Banner -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-5 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <h4 class="font-bold text-base text-[#222E28] dark:text-[#F1F5F2] truncate" id="file-title-display">
+              Document.pdf
+            </h4>
+            <p class="text-xs text-stone-500 dark:text-stone-400" id="file-meta-display">
+              Size: 1.2 MB • Total Pages: 3
+            </p>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="change-file-btn"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Choose Different PDF
+        </button>
+      </div>
+
+      <!-- Conversion Options Box -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm space-y-4">
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          Word Formatting Preferences
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-stone-700 dark:text-stone-300">
+          <label class="p-3.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/50 flex items-center gap-2.5 cursor-pointer hover:border-[#355E4B] transition-colors">
+            <input type="checkbox" id="opt-detect-headings" checked class="rounded text-[#355E4B] focus:ring-[#355E4B]" />
+            <div>
+              <span class="block font-bold text-sm text-[#222E28] dark:text-white">Detect Headings &amp; Titles</span>
+              <span class="block text-[11px] text-stone-500 font-normal">Formats larger text as Word Heading 1 and Heading 2 styles.</span>
+            </div>
+          </label>
+
+          <label class="p-3.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/50 flex items-center gap-2.5 cursor-pointer hover:border-[#355E4B] transition-colors">
+            <input type="checkbox" id="opt-page-breaks" checked class="rounded text-[#355E4B] focus:ring-[#355E4B]" />
+            <div>
+              <span class="block font-bold text-sm text-[#222E28] dark:text-white">Preserve Page Breaks</span>
+              <span class="block text-[11px] text-stone-500 font-normal">Inserts clean Word section page breaks between PDF pages.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Execute Conversion Trigger Bar -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="w-full md:w-auto flex-1 max-w-md">
+          <label for="output-filename" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5">
+            Word Output File Name:
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="output-filename" 
+              value="SlowPDF_Word_Document" 
+              class="w-full px-4 py-2.5 pr-14 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-sm font-semibold text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+            />
+            <span class="absolute right-3.5 top-2.5 text-xs font-bold text-stone-400">.docx</span>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="convert-action-btn"
+          class="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span id="convert-btn-text">Convert to Word (.docx)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- WORKBENCH STATE 3: Success & Download Panel -->
+    <div id="success-panel" class="hidden w-full bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-emerald-300/80 dark:border-emerald-700/80 shadow-xl text-center space-y-6">
+      
+      <!-- Mascot celebration display -->
+      <div class="relative inline-block mx-auto mb-1">
+        <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+          <img 
+            src="../assets/images/mascot/tortoise-hero.png" 
+            alt="SlowPDF Mascot Conversion Celebration" 
+            class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+            onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+          />
+        </div>
+        <span class="absolute -bottom-1 -right-1 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+          Converted to Word Successfully!
+        </span>
+      </div>
+
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+          Word Document Ready!
+        </h3>
+        <p class="mt-2 text-stone-600 dark:text-stone-300 text-sm sm:text-base max-w-lg mx-auto" id="success-description">
+          Your PDF text, headings, and paragraph flows have been synthesized into a clean Microsoft Word (.docx) document in browser RAM.
+        </p>
+      </div>
+
+      <!-- Editable Output File Name Input -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="success-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Save File As (Optional Custom Name):
+        </label>
+        <div class="relative flex items-center">
+          <input 
+            type="text" 
+            id="success-filename-input" 
+            value="SlowPDF_Word_Document" 
+            class="w-full px-3.5 py-2.5 pr-16 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+            placeholder="SlowPDF_Word_Document"
+          />
+          <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+            .docx
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+        <a 
+          id="download-word-btn" 
+          href="#" 
+          download="SlowPDF_Word_Document.docx"
+          class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Word Document (.docx)
+        </a>
+        <button 
+          type="button" 
+          id="reset-workbench-btn"
+          class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          Convert Another PDF
+        </button>
+      </div>
+
+      <div class="pt-4 border-t border-stone-100 dark:border-stone-800 text-xs text-stone-400">
+        100% Client-Side Privacy: The Word document was synthesized directly in RAM and will be deleted when you close this tab.
+      </div>
+    </div>
+
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto mt-6 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <!-- 1. H2 Overview -->
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          What is PDF to Word &amp; What Does This Page Offer?
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          <strong>PDF to Word Conversion</strong> is a vital document transformation process that converts static, non-editable Portable Document Format (PDF) files into native, fully editable Microsoft Word (`.docx`) documents. While PDF files are optimized for universal cross-platform viewing, editing text or revising paragraphs within a PDF often leads to font mismatches and broken formatting.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          This free online <strong>PDF to Word Converter by SlowPDF</strong> offers a privacy-first, client-side engine that parses PDF text streams, bounding coordinates, and line spacing directly inside browser RAM. Utilizing <strong>PDF.js</strong> spatial coordinate extraction and <strong>docx.js</strong> OpenXML document synthesis, our engine converts raw PDF streams into standard, uncorrupted `.docx` files compatible with Microsoft Word, Google Docs, Apple Pages, and LibreOffice.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          Whether you need to edit an academic thesis, revise a corporate agreement, or re-purpose report text, SlowPDF delivers accurate layout reconstruction without sending confidential records to external cloud servers.
+        </p>
+      </div>
+
+      <!-- 2. H3 3-Step Guide -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-6">
+          How to Use PDF to Word in 3 Simple Steps
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">1</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Upload PDF File</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Drag and drop any PDF document into the upload dropzone or select it from your device.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 1: Upload</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">2</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Reconstruct Flow</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Click "Convert to Word (.docx)". Our browser engine analyzes text coordinates into structured Word headings and paragraphs.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 2: Convert</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">3</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Download .DOCX</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Download your uncorrupted Word document and edit text freely in Microsoft Word, Google Docs, or Pages.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 3: Download</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. H3 Why SlowPDF is the Best Alternative -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Why SlowPDF is the Best Alternative
+        </h3>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          Unlike online tools like Smallpdf or iLovePDF that upload sensitive business contracts and personal documents to remote cloud servers, SlowPDF operates strictly on a <strong>100% In-Browser Private Architecture</strong>.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              RAM-Only Synthesis
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Text extraction and OpenXML `.docx` synthesis take place entirely in your browser's active volatile memory.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Zero Waiting Queues
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              No cloud queue throttling or server bottlenecks. Processing starts instantly utilizing your device CPU.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+              No File Limits or Watermarks
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Convert unlimited documents with zero artificial caps, forced user accounts, or branding watermarks.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              100% Free Offline Execution
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Once loaded in browser cache, you can disconnect Wi-Fi and continue converting PDF documents offline.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. H3 Key Features & Technical Capabilities -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Key Features &amp; Technical Capabilities
+        </h3>
+        <ul class="space-y-3 text-sm sm:text-base text-stone-600 dark:text-stone-300">
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Spatial Coordinate Parsing:</strong> Extracts text elements alongside vertical and horizontal page coordinates to preserve original reading flow.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Header &amp; Paragraph Flow Reconstruction:</strong> Automatically classifies text font sizes into Word Heading styles (`Heading 1`, `Heading 2`) and clean paragraph blocks without overlapping lines.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Genuine OpenXML .DOCX Files:</strong> Outputs authentic Word binary blobs ready for editing in Word, Google Docs, Pages, and LibreOffice.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Page Break Preservation:</strong> Retains clear page separation between document sections so page counts and multi-page layouts match original PDFs.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Universal Cross-Platform Support:</strong> Fully optimized for desktop browsers, tablets, and mobile devices across Windows, macOS, Linux, iOS, and Android.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: PDF to Word
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Everything you need to know about converting PDF documents into editable Word files.
+      </p>
+    </div>
+
+    <div class="space-y-3.5" id="faq-accordion">
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. Will the converted file open natively in Microsoft Word and Google Docs?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Yes! The tool generates a standard, uncorrupted OpenXML Microsoft Word document (.docx) compatible with Word, Google Docs, Apple Pages, and LibreOffice Writer.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. Are my confidential files uploaded to any server?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. All extraction and Word document creation takes place 100% inside your local browser memory using WebAssembly.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. How does the converter format headings and paragraph text?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          The engine analyzes font sizes and vertical positioning. Larger fonts are automatically assigned Word Heading styles while normal text is structured into clean paragraphs.
+        </div>
+      </div>
+
+      <div id="extra-faqs" class="hidden space-y-3.5">
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. Can I edit text after downloading the Word file?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, 100% fully editable. You can edit text, change fonts, add paragraphs, or export back to PDF anytime.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. Does this work on scanned image-only PDFs?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            For scanned PDF images without text streams, run your document through our companion OCR PDF tool first to generate digital text before converting to Word.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. What is the maximum file size or page limit?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            There are no arbitrary cloud caps! Conversion is bound only by your device's available browser memory.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. Does it preserve original page breaks?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, clean page break indicators are inserted between pages so document flow remains structured.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Does this work offline?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, once loaded, you can turn off Wi-Fi or go offline and continue converting documents.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. Can I convert PDFs on my phone or tablet?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, fully responsive for Safari on iOS, Chrome on Android, and all modern mobile devices.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. Why is this PDF to Word tool free without watermarks?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Because processing occurs locally in browser memory, SlowPDF incurs zero cloud server computing costs. We keep student tools free and watermark-free.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER FOOTER                           -->
+  <!-- ========================================== -->
+  <footer class="mt-auto bg-[#FFFBF2] dark:bg-[#0E1310] border-t border-stone-200/80 dark:border-stone-800 transition-colors duration-300 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <a href="../index.html" class="flex items-center gap-3 group">
+            <img 
+              src="../assets/images/logo.png" 
+              alt="SlowPDF Brand Logo" 
+              class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform"
+              onerror="this.src='../public/assets/images/logo.png'"
+            />
+            <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
+              Slow <span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
+            </span>
+          </a>
+          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+            Made for slow, steady learning • 100% Client-Side Privacy. Your files never leave your device.
+          </p>
+          <div class="pt-2 text-xs text-stone-500 dark:text-stone-500">
+            © 2026 Slow PDF. All rights reserved. Brand: slowpdf.in
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../#popular-tools" class="footer-link">All Tools</a></li>
+            <li><a href="../pages/blog.html" class="footer-link">Blog &amp; Articles</a></li>
+            <li><a href="../pages/how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="../pages/learn.html" class="footer-link">Learn</a></li>
+            <li><a href="../pages/about.html" class="footer-link">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">Popular Tools</h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="pdf-to-word.html" class="footer-link font-semibold text-[#355E4B] dark:text-emerald-400">PDF to Word</a></li>
+            <li><a href="pdf-to-excel.html" class="footer-link">PDF to Excel</a></li>
+            <li><a href="merge-pdf.html" class="footer-link">Merge PDF</a></li>
+            <li><a href="split-pdf.html" class="footer-link">Split PDF</a></li>
+            <li><a href="compress-pdf.html" class="footer-link">Compress PDF</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">Legal &amp; Help</h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../pages/privacy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html" class="footer-link">Terms &amp; Conditions</a></li>
+            <li><a href="../pages/security.html" class="footer-link">Security Architecture</a></li>
+            <li><a href="#faq-section" class="footer-link">FAQ</a></li>
+            <li><a href="../pages/contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+        <div>Built with calm design principles • Respecting learner privacy since 2026.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT CONVERSION ENGINE               -->
+  <!-- ========================================== -->
+  <script>
+    // 1. Configure PDF.js Worker
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    // 2. Dark Mode Switcher
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeThumb = document.getElementById('dark-mode-thumb');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'true');
+          darkModeToggle.classList.remove('bg-stone-300');
+          darkModeToggle.classList.add('bg-[#355E4B]');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-0');
+          darkModeThumb.classList.add('translate-x-5');
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'false');
+          darkModeToggle.classList.remove('bg-[#355E4B]');
+          darkModeToggle.classList.add('bg-stone-300');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-5');
+          darkModeThumb.classList.add('translate-x-0');
+        }
+      }
+    }
+
+    const savedTheme = localStorage.getItem('slowpdf_theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : systemPrefersDark);
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isDark);
+        localStorage.setItem('slowpdf_theme', !isDark ? 'dark' : 'light');
+      });
+    }
+
+    // 3. Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      menuModal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        menuModal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      });
+    }
+    function closeMenu() {
+      menuOpen = false;
+      menuModal.classList.add('opacity-0');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => { if (!menuOpen) menuModal.classList.add('hidden'); }, 300);
+    }
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeMenu);
+
+    // 4. PDF to Word Conversion Engine
+    let currentPdfBuffer = null;
+    let currentPdfName = '';
+    let pdfPageCount = 0;
+
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const activeWorkbench = document.getElementById('active-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const fileInput = document.getElementById('pdf-file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const changeFileBtn = document.getElementById('change-file-btn');
+    const fileTitleDisplay = document.getElementById('file-title-display');
+    const fileMetaDisplay = document.getElementById('file-meta-display');
+    const outputFilenameInput = document.getElementById('output-filename');
+    const convertActionBtn = document.getElementById('convert-action-btn');
+    const convertBtnText = document.getElementById('convert-btn-text');
+    const downloadWordBtn = document.getElementById('download-word-btn');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+    const successDescription = document.getElementById('success-description');
+
+    emptyDropzone.addEventListener('click', () => fileInput.click());
+    if (browseBtn) browseBtn.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
+    if (changeFileBtn) changeFileBtn.addEventListener('click', () => fileInput.click());
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+      if (files.length > 0) processSelectedFile(files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) processSelectedFile(e.target.files[0]);
+    });
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024, sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    async function processSelectedFile(file) {
+      currentPdfName = file.name;
+      const cleanBaseName = file.name.replace(/\.pdf$/i, '').trim();
+      outputFilenameInput.value = `SlowPDF_Word_${cleanBaseName}`;
+
+      try {
+        currentPdfBuffer = await file.arrayBuffer();
+        const loadingTask = pdfjsLib.getDocument({ data: currentPdfBuffer.slice(0) });
+        const pdfDoc = await loadingTask.promise;
+        pdfPageCount = pdfDoc.numPages;
+
+        fileTitleDisplay.textContent = file.name;
+        fileMetaDisplay.textContent = `Size: ${formatBytes(file.size)} • Total Pages: ${pdfPageCount}`;
+
+        emptyDropzone.classList.add('hidden');
+        activeWorkbench.classList.remove('hidden');
+        successPanel.classList.add('hidden');
+
+      } catch (err) {
+        console.error('Error reading PDF file:', err);
+        alert('Could not parse PDF document. Please make sure it is a valid PDF file.');
+      }
+    }
+
+    // DOCX Synthesis Algorithm
+    convertActionBtn.addEventListener('click', async () => {
+      if (!currentPdfBuffer) return;
+
+      convertActionBtn.disabled = true;
+      convertBtnText.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Reconstructing Word Document...
+      `;
+
+      try {
+        const docxLib = window.docx || window.Docx;
+        if (!docxLib) {
+          alert('The Word document conversion library is still loading. Please wait a moment or refresh the page and try again.');
+          return;
+        }
+
+        const detectHeadings = document.getElementById('opt-detect-headings')?.checked ?? true;
+        const addPageBreaks = document.getElementById('opt-page-breaks')?.checked ?? true;
+
+        const loadingTask = pdfjsLib.getDocument({ data: currentPdfBuffer.slice(0) });
+        const pdfDoc = await loadingTask.promise;
+        
+        const docxChildren = [];
+
+        for (let pIndex = 1; pIndex <= pdfDoc.numPages; pIndex++) {
+          const page = await pdfDoc.getPage(pIndex);
+          const textContent = await page.getTextContent();
+          const items = textContent.items.filter(it => it.str && it.str.trim().length > 0);
+
+          if (items.length > 0) {
+            // Group text items by Y coordinates into lines
+            items.sort((a, b) => b.transform[5] - a.transform[5]);
+
+            const lineClusters = [];
+            const Y_TOLERANCE = 4.0;
+
+            items.forEach(it => {
+              const y = it.transform[5];
+              const x = it.transform[4];
+              const text = it.str;
+              const fontSize = Math.abs(it.transform[0]) || Math.abs(it.transform[3]) || 12;
+
+              let found = false;
+              for (const cluster of lineClusters) {
+                if (Math.abs(cluster.y - y) <= Y_TOLERANCE) {
+                  cluster.items.push({ x, text, fontSize });
+                  found = true;
+                  break;
+                }
+              }
+              if (!found) {
+                lineClusters.push({ y, fontSize, items: [{ x, text, fontSize }] });
+              }
+            });
+
+            // Sort each line horizontally
+            lineClusters.forEach(cluster => cluster.items.sort((a, b) => a.x - b.x));
+            // Sort lines top to bottom
+            lineClusters.sort((a, b) => b.y - a.y);
+
+            // Group lines into paragraphs
+            let currentParaRuns = [];
+            let lastY = null;
+            let lastFontSize = null;
+
+            lineClusters.forEach(line => {
+              const lineText = line.items.map(i => i.text).join(' ').trim();
+              const lineFontSize = line.fontSize;
+
+              if (lineText.length === 0) return;
+
+              const isHeading = detectHeadings && lineFontSize > 15;
+              const isSubHeading = detectHeadings && lineFontSize > 13 && lineFontSize <= 15;
+
+              if (isHeading || isSubHeading) {
+                // Flush existing paragraph
+                if (currentParaRuns.length > 0) {
+                  docxChildren.push(new docxLib.Paragraph({
+                    children: [new docxLib.TextRun({ text: currentParaRuns.join(' '), font: 'Plus Jakarta Sans', size: 24 })],
+                    spacing: { after: 200, line: 276 }
+                  }));
+                  currentParaRuns = [];
+                }
+
+                // Add heading paragraph
+                docxChildren.push(new docxLib.Paragraph({
+                  text: lineText,
+                  heading: isHeading ? docxLib.HeadingLevel.HEADING_1 : docxLib.HeadingLevel.HEADING_2,
+                  spacing: { before: 240, after: 120 }
+                }));
+              } else {
+                // Check if new paragraph break based on Y gap
+                if (lastY !== null && Math.abs(lastY - line.y) > lineFontSize * 2.2) {
+                  if (currentParaRuns.length > 0) {
+                    docxChildren.push(new docxLib.Paragraph({
+                      children: [new docxLib.TextRun({ text: currentParaRuns.join(' '), font: 'Plus Jakarta Sans', size: 23 })],
+                      spacing: { after: 180, line: 276 }
+                    }));
+                    currentParaRuns = [];
+                  }
+                }
+                currentParaRuns.push(lineText);
+              }
+
+              lastY = line.y;
+              lastFontSize = lineFontSize;
+            });
+
+            if (currentParaRuns.length > 0) {
+              docxChildren.push(new docxLib.Paragraph({
+                children: [new docxLib.TextRun({ text: currentParaRuns.join(' '), font: 'Plus Jakarta Sans', size: 23 })],
+                spacing: { after: 200, line: 276 }
+              }));
+            }
+          }
+
+          // Add page break if requested
+          if (addPageBreaks && pIndex < pdfDoc.numPages) {
+            docxChildren.push(new docxLib.Paragraph({
+              children: [new docxLib.PageBreak()]
+            }));
+          }
+        }
+
+        // Create docx Document
+        const docxDocument = new docxLib.Document({
+          creator: 'SlowPDF Client-Side Engine',
+          title: currentPdfName,
+          description: 'Converted from PDF directly inside browser RAM',
+          sections: [{
+            properties: {},
+            children: docxChildren.length > 0 ? docxChildren : [
+              new docxLib.Paragraph({ children: [new docxLib.TextRun({ text: 'Extracted PDF Document Content', size: 24 })] })
+            ]
+          }]
+        });
+
+        // Pack into Blob
+        const blob = await docxLib.Packer.toBlob(docxDocument);
+        const downloadUrl = URL.createObjectURL(blob);
+
+        const successFilenameInput = document.getElementById('success-filename-input');
+        const userBaseName = outputFilenameInput.value.trim() || 'SlowPDF_Word_Document';
+        const cleanName = userBaseName.replace(/\.docx$/i, '').trim();
+
+        if (successFilenameInput) {
+          successFilenameInput.value = cleanName;
+          successFilenameInput.oninput = () => {
+            let name = successFilenameInput.value.trim().replace(/\.docx$/i, '').trim() || cleanName;
+            downloadWordBtn.download = `${name}.docx`;
+            downloadWordBtn.setAttribute('download', `${name}.docx`);
+          };
+        }
+
+        const finalFileName = `${cleanName}.docx`;
+        downloadWordBtn.href = downloadUrl;
+        downloadWordBtn.download = finalFileName;
+        downloadWordBtn.setAttribute('download', finalFileName);
+
+        const totalSize = formatBytes(blob.size);
+        successDescription.textContent = `Successfully reconstructed ${pdfPageCount} PDF page${pdfPageCount > 1 ? 's' : ''} into a fully editable Word document (${totalSize}).`;
+
+        activeWorkbench.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Error synthesizing Word document:', err);
+        alert('An error occurred while building the Word document. Please make sure the PDF contains selectable text.');
+      } finally {
+        convertActionBtn.disabled = false;
+        convertBtnText.textContent = 'Convert to Word (.docx)';
+      }
+    });
+
+    // Reset Workbench
+    resetWorkbenchBtn.addEventListener('click', () => {
+      currentPdfBuffer = null;
+      emptyDropzone.classList.remove('hidden');
+      activeWorkbench.classList.add('hidden');
+      successPanel.classList.add('hidden');
+      fileInput.value = '';
+    });
+
+    // 5. Accordion FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      if (trigger && content) {
+        trigger.addEventListener('click', () => {
+          const isOpen = !content.classList.contains('hidden');
+          if (isOpen) {
+            content.classList.add('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          } else {
+            content.classList.remove('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          }
+        });
+      }
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

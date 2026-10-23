@@ -1,0 +1,6 @@
+{
+  "name": "SlowPDF - Calm, Private & Powerful PDF Tools",
+  "description": "Simple, calm, and reliable zero-server PDF tools designed to help you study and work at your own pace. 100% private, client-side processing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

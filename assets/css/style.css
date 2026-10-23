@@ -1,0 +1,313 @@
+/* ==========================================================================
+   SlowPDF (slowpdf.in) — Master Global Stylesheet
+   Zero-Server, 100% Client-Side Private PDF Utility
+   ========================================================================== */
+
+/* ==========================================================================
+   1. BODY / PAGE BACKGROUND COLOR SPECIFICATION:
+   - HEX: #FFFBF2 !important;
+   - RGB: rgb(255, 251, 242)
+   - HSL: 42°, 100%, 97%
+   - HSV Profile: 42°, 5%, 100%
+   - CMYK: 0%, 2%, 5%, 0%
+   ========================================================================== */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #FFFBF2 !important; /* HSV: 42°, 5%, 100% | RGB: (255, 251, 242) */
+  color: #222E28;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+.dark body {
+  background-color: #121815 !important;
+  color: #F1F5F2;
+}
+
+/* ==========================================================================
+   2. TOP HEADER / NAVBAR BACKGROUND COLOR SPECIFICATION:
+   - Permanently #E8DABF !important in BOTH Light & Dark Modes
+   - Text & links permanently #2D3748 !important in BOTH Light & Dark Modes
+   ========================================================================== */
+#site-header,
+header.site-header,
+.dark #site-header,
+.dark header.site-header {
+  background-color: #E8DABF !important;
+  border-color: #D8C7A5 !important;
+}
+
+#site-header *,
+header.site-header *,
+.dark #site-header *,
+.dark header.site-header * {
+  border-color: #D8C7A5;
+}
+
+#site-header .nav-link,
+header.site-header .nav-link,
+.dark #site-header .nav-link,
+.dark header.site-header .nav-link {
+  color: #2D3748 !important;
+  font-weight: 600 !important;
+}
+
+#site-header .nav-link:hover,
+header.site-header .nav-link:hover,
+.dark #site-header .nav-link:hover,
+.dark header.site-header .nav-link:hover {
+  background-color: rgba(45, 55, 72, 0.12) !important;
+  color: #1A202C !important;
+}
+
+#site-header #brand-home-link,
+header.site-header #brand-home-link,
+.dark #site-header #brand-home-link,
+.dark header.site-header #brand-home-link,
+#site-header #brand-home-link span,
+header.site-header #brand-home-link span,
+.dark #site-header #brand-home-link span,
+.dark header.site-header #brand-home-link span {
+  color: #2D3748 !important;
+}
+
+#site-header #brand-home-link span span,
+header.site-header #brand-home-link span span,
+.dark #site-header #brand-home-link span span,
+.dark header.site-header #brand-home-link span span {
+  color: #1E3D30 !important;
+}
+
+#site-header #hamburger-btn,
+header.site-header #hamburger-btn,
+.dark #site-header #hamburger-btn,
+.dark header.site-header #hamburger-btn {
+  color: #2D3748 !important;
+}
+
+#site-header #hamburger-btn:hover,
+header.site-header #hamburger-btn:hover,
+.dark #site-header #hamburger-btn:hover,
+.dark header.site-header #hamburger-btn:hover {
+  background-color: rgba(45, 55, 72, 0.12) !important;
+}
+
+/* ==========================================================================
+   3. FLOATING TOOL CARDS & ELEVATION
+   ========================================================================== */
+.tool-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 218, 202, 0.7);
+  box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .tool-card {
+  background-color: #1C2420;
+  border-color: #2A3630;
+  color: #F1F5F2;
+  box-shadow: none;
+}
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(39, 71, 55, 0.14), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(53, 94, 75, 0.45);
+}
+.dark .tool-card:hover {
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+  border-color: #43715C;
+}
+
+/* ==========================================================================
+   4. HERO & MASCOT ANIMATIONS
+   ========================================================================== */
+.hero-gradient {
+  background: linear-gradient(135deg, #355E4B 0%, #274737 100%);
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+.animate-gentle-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   4. UNIVERSAL TORTOISE MASCOT STYLING (DARK & LIGHT MODE STANDARD)
+   ========================================================================== */
+.mascot-blend,
+.mascot-celebration {
+  mix-blend-mode: multiply;
+  filter: contrast(1.05) brightness(1.02);
+  transition: all 0.3s ease;
+}
+
+/* In Dark Mode: Strictly disable multiply to avoid turning the mascot black/invisible */
+.dark .mascot-blend,
+.dark .mascot-celebration,
+.dark img.mascot-blend,
+.dark img.mascot-celebration,
+.dark img[data-mascot] {
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 4px 14px rgba(16, 185, 129, 0.25)) brightness(1.06) contrast(1.02) !important;
+}
+
+/* Mascot backlight wrapper for dark mode */
+.mascot-backlight,
+.dark .mascot-backlight {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+.dark .mascot-backlight {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(16, 185, 129, 0.08) 60%, transparent 75%) !important;
+  border-radius: 9999px !important;
+}
+
+@keyframes headerMascotFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+.header-mascot-idle {
+  animation: headerMascotFloat 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   5. ZERO-DISTORTION & COMPLETE SLIDE ISOLATION (ZERO GHOSTING / BLEED-THROUGH)
+   ========================================================================== */
+#carousel-wrapper {
+  overflow: hidden !important;
+  background-color: #173327 !important;
+  background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+}
+
+#carousel-slides {
+  position: relative !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background-color: #173327 !important;
+}
+
+.carousel-slide {
+  width: 100%;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.carousel-slide.active,
+.carousel-slide[data-active="true"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.carousel-slide:not(.active):not([data-active="true"]) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+}
+
+.banner-card-solid {
+  background-color: #173327 !important;
+  background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+}
+
+.banner-slide-card {
+  min-height: 220px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #173327 !important;
+  background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+}
+@media (min-width: 640px) {
+  .banner-slide-card {
+    min-height: 260px;
+  }
+}
+@media (min-width: 768px) {
+  .banner-slide-card {
+    min-height: 300px;
+  }
+}
+
+/* ==========================================================================
+   6. SCROLLBARS & UTILITIES
+   ========================================================================== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFBF2;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #121815;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4D3CB;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #355E4B;
+}
+
+/* High contrast navbar link styling on #E8DABF (Permanently #2D3748 in BOTH modes) */
+.nav-link,
+.dark .nav-link {
+  transition: all 0.2s ease;
+  color: #2D3748 !important;
+  font-weight: 600 !important;
+}
+.nav-link:hover,
+.dark .nav-link:hover {
+  background-color: rgba(45, 55, 72, 0.12) !important;
+  color: #1A202C !important;
+}
+
+/* High contrast footer link styling */
+.footer-link {
+  display: inline-block;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  margin: -0.25rem -0.5rem;
+}
+.footer-link:hover {
+  background-color: rgba(209, 250, 229, 0.8);
+  color: #064e3b;
+  font-weight: 600;
+}
+.dark .footer-link:hover {
+  background-color: rgba(53, 94, 75, 0.35);
+  color: #a7f3d0;
+  font-weight: 600;
+}

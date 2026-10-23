@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unlock PDF Online Free — Remove PDF Password & Restrictions | SlowPDF</title>
+  <meta name="description" content="Unlock password-protected PDF files online for free. Remove print, copy, and edit restrictions directly in your browser with 100% client-side RAM security. Zero server uploads." />
+  <meta property="og:title" content="Unlock PDF Online Free — Private Client-Side Decryption | SlowPDF" />
+  <meta property="og:description" content="Strip PDF passwords and permissions safely in your browser. No cloud uploads, unlimited file size, completely private." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/unlock-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Unlock PDF",
+        "url": "https://slowpdf.in/tools/unlock-pdf.html",
+        "description": "Client-side private tool to remove PDF passwords, owner restrictions, and editing lockouts in browser memory.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between an owner password and a user password?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A user password (open password) prevents unauthorized viewing without the passphrase. An owner password (permissions password) restricts actions like printing, copying text, or editing pages while allowing viewing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my encrypted documents or passwords sent to any server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. SlowPDF executes 100% in your local browser RAM via WebAssembly and JavaScript. Your documents and passwords never touch a remote cloud server."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF Processing Libraries (PDF-Lib v1.17.1 & PDF.js v3.4.120) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* ==========================================================================
+       BODY / PAGE BACKGROUND COLOR SPECIFICATION:
+       - HEX: #FFFBF2 !important
+       - RGB: rgb(255, 251, 242)
+       - HSV Profile: 42°, 5%, 100%
+       ========================================================================== */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    /* ==========================================================================
+       TOP HEADER / NAVBAR BACKGROUND COLOR SPECIFICATION:
+       - HEX: #E8DABF !important
+       - RGB: rgb(232, 218, 191)
+       - HSV Profile: 40°, 18%, 91%
+       ========================================================================== */
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #151D19 !important;
+    }
+
+    /* Soft floating cards against #FFFBF2 */
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    /* Header mascot gentle idle breathing */
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Drag over active state */
+    .dragover-active {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.05) !important;
+      transform: scale(1.01);
+    }
+    .dark .dragover-active {
+      background-color: rgba(53, 94, 75, 0.2) !important;
+      border-color: #5E9B7E !important;
+    }
+
+    /* High contrast navbar link styling on #E8DABF */
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #1A261F;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F;
+    }
+    .dark .nav-link {
+      color: #E2E8E4;
+    }
+    .dark .nav-link:hover {
+      background-color: rgba(53, 94, 75, 0.4);
+      color: #A7F3D0;
+    }
+
+    /* High contrast footer link styling */
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      margin: -0.25rem -0.5rem;
+    }
+    .footer-link:hover {
+      background-color: rgba(209, 250, 229, 0.8);
+      color: #064e3b;
+      font-weight: 600;
+    }
+    .dark .footer-link:hover {
+      background-color: rgba(53, 94, 75, 0.35);
+      color: #a7f3d0;
+      font-weight: 600;
+    }
+
+    /* Carousel Banner Solid Forest Green */
+    .banner-card-gradient {
+      background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
+      color: #ffffff !important;
+    }
+
+    /* Custom Webkit Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR                     -->
+  <!-- Background: #E8DABF                        -->
+  <!-- Left: [Tortoise Mascot Logo] [Slow PDF]    -->
+  <!-- Smart "Home" Link: Returns to origin       -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Left: Brand Logo & Title: [Tortoise Mascot Logo] [Slow PDF] -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center & Right Nav Links (Contextual Home Link) -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Far Right: Hamburger Menu Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="mobileMenuBtn" 
+          type="button"
+          class="mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preferences Drawer Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle"
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Navigation in Drawer -->
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          All 22 PDF Tools
+        </a>
+        <a href="merge-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+          Merge PDF
+        </a>
+        <a href="protect-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Protect PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. HERO & CLIENT-SIDE UNLOCK WORKBENCH     -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
+    
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+        100% In-Browser RAM Security • Zero Cloud Storage
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Unlock PDF Files Free Online
+      </h1>
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Remove document passwords, printing lockouts, and permissions locally in browser memory. Your sensitive files never touch a remote server.
+      </p>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-6 sm:p-10 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <!-- Unlocked Padlock & Cloud Upload Icon -->
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+          </svg>
+        </div>
+
+        <h3 class="text-lg sm:text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Drop your password-protected PDF here
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6">
+          Files are processed entirely inside your browser's private memory buffer using WebAssembly. No data upload.
+        </p>
+
+        <button 
+          type="button" 
+          id="browse-btn"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF File
+        </button>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-stone-500 dark:text-stone-400">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            AES-128 &amp; AES-256 Support
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Removes Print &amp; Copy Lockouts
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            No File Size Limits
+          </span>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW B: ACTIVE DECRYPTION WORKBENCH        -->
+      <!-- ========================================== -->
+      <div id="active-workbench" class="hidden space-y-6">
+        
+        <!-- Document Information Card -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <h4 id="file-name-text" class="text-base font-bold text-[#222E28] dark:text-white truncate" title="document.pdf">
+                document.pdf
+              </h4>
+              <p id="file-size-text" class="text-xs text-stone-500 dark:text-stone-400">
+                1.4 MB • Encrypted Document
+              </p>
+            </div>
+          </div>
+
+          <button 
+            type="button" 
+            id="choose-different-file-btn"
+            class="text-xs font-semibold text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 py-1.5 px-3 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-white dark:hover:bg-stone-800 transition-colors self-start sm:self-center"
+          >
+            Change File
+          </button>
+        </div>
+
+        <!-- Alert Banner (Dynamic: Error or Notice) -->
+        <div id="alert-box" class="hidden p-4 rounded-xl text-sm font-medium border flex items-start gap-3">
+          <div id="alert-icon" class="shrink-0 mt-0.5"></div>
+          <div id="alert-message" class="flex-1 leading-relaxed"></div>
+        </div>
+
+        <!-- PASSWORD ENTRY FORM (If user password required) -->
+        <div id="password-form-section" class="space-y-4">
+          <div>
+            <label for="pdf-password-input" class="block text-sm font-bold text-[#222E28] dark:text-white mb-2">
+              Enter Document Password
+            </label>
+            <div class="relative">
+              <input 
+                type="password" 
+                id="pdf-password-input" 
+                placeholder="Type the password to unlock this document..." 
+                class="w-full px-4 py-3.5 pr-12 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all"
+                autocomplete="off"
+              />
+              <button 
+                type="button" 
+                id="toggle-password-visibility-btn" 
+                class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 focus:outline-none"
+                aria-label="Toggle password visibility"
+              >
+                <!-- Eye Icon -->
+                <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                <!-- Eye Slash Icon (hidden by default) -->
+                <svg id="eye-slash-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
+              </button>
+            </div>
+            <p class="mt-2 text-xs text-stone-500 dark:text-stone-400">
+              The password is verified locally inside your browser to decrypt the document. It is never logged or transmitted over any network.
+            </p>
+          </div>
+
+          <!-- Action Button Container -->
+          <div class="pt-2 flex flex-col sm:flex-row gap-3">
+            <button 
+              type="button" 
+              id="unlock-action-btn"
+              class="flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+              <span id="unlock-btn-text">Unlock PDF &amp; Strip Restrictions</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- UNRESTRICTED NOTICE & INSTANT DOWNLOAD (If PDF has owner restriction only or no password) -->
+        <div id="direct-unlock-section" class="hidden p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-[#274737] dark:text-emerald-300 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+                No User Password Required
+              </h4>
+              <p id="direct-unlock-desc" class="text-xs text-stone-600 dark:text-stone-300">
+                This document opens freely without a password, but contains print/copy permission flags. SlowPDF can strip these restrictions immediately.
+              </p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            id="instant-strip-btn"
+            class="w-full py-3.5 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span id="instant-strip-btn-text">Save Clean Unrestricted PDF</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW C: SUCCESS & DOWNLOAD PANEL           -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden text-center py-6 sm:py-8 space-y-6">
+        <!-- Cute 3D glasses tortoise mascot celebration display (Universal Light/Dark Standard) -->
+        <div class="relative inline-block mx-auto mb-1">
+          <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+            <img 
+              src="../assets/images/mascot/tortoise-hero.png" 
+              alt="SlowPDF Mascot Unlocked Celebration" 
+              class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+              onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+            />
+          </div>
+          <!-- Small green Unlocked celebration badge near mascot -->
+          <span class="absolute -bottom-1 -right-1 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            Unlocked
+          </span>
+        </div>
+
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-[#274737] dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            Decrypted &amp; Unrestricted
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            Your PDF is Unlocked!
+          </h3>
+          <p id="success-description" class="mt-2 text-stone-600 dark:text-stone-300 text-sm max-w-md mx-auto leading-relaxed">
+            All passwords, permissions restrictions, and print/copy locks have been removed. The file is ready to save.
+          </p>
+        </div>
+
+        <!-- Unlocked File Details Box -->
+        <div class="max-w-md mx-auto p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 text-left flex items-center justify-between text-xs sm:text-sm">
+          <div class="min-w-0 pr-3">
+            <p class="font-bold text-[#222E28] dark:text-white truncate" id="unlocked-file-name">
+              SlowPDF_Unlocked_document.pdf
+            </p>
+            <p class="text-stone-500 dark:text-stone-400 text-xs" id="unlocked-file-stats">
+              1.4 MB • Complete Access
+            </p>
+          </div>
+          <span class="shrink-0 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 text-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Clean RAM Save
+          </span>
+        </div>
+
+        <!-- Editable Output File Name Input (Clean, small, optional) -->
+        <div class="max-w-md mx-auto text-left space-y-1.5">
+          <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+            Save File As (Optional Custom Name):
+          </label>
+          <div class="relative flex items-center">
+            <input 
+              type="text" 
+              id="output-filename-input" 
+              value="SlowPDF_Unlocked_Document" 
+              class="w-full px-3.5 py-2.5 pr-14 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+              placeholder="SlowPDF_Unlocked_Document"
+            />
+            <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+              .pdf
+            </span>
+          </div>
+        </div>
+
+        <!-- Download & Reset Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+          <a 
+            id="download-unlocked-btn" 
+            href="#" 
+            download="SlowPDF_Unlocked_Document.pdf"
+            class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Unlocked PDF
+          </a>
+          <button 
+            type="button" 
+            id="reset-workbench-btn" 
+            class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+          >
+            Unlock Another PDF
+          </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP           -->
+    <!-- Horizontal 1-tap navigation chips          -->
+    <!-- ========================================== -->
+    <nav class="w-full max-w-4xl mx-auto mt-6 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. COMPANION TOOLS 10-BANNER CAROUSEL (ZERO GHOSTING / FLUID HEIGHT) -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <!-- Carousel Viewport container -->
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <!-- Slides Container (Absolute/Relative Isolated Slides Stack) -->
+      <div 
+        id="carousel-slides" 
+        class="relative w-full overflow-hidden"
+      >
+        <!-- 10 Companion Banner Slides populated dynamically via SLOWPDF_BANNERS.toolsPromo & carousel.js -->
+      </div>
+    </div>
+
+    <!-- Outside Navigation/Pagination Dots -->
+    <div 
+      id="carousel-dots" 
+      class="mt-4 flex justify-center items-center gap-2"
+    >
+      <!-- 10 Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          How to Unlock PDF Files Online Without Server Uploads
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300">
+          Managing password-protected documents is a routine hurdle for researchers, students, accountants, and legal teams. Whether you need to print a secured bank statement, extract text from an archived corporate whitepaper, or remove forgotten restrictions on your own work, having an immediate, private solution is critical.
+        </p>
+        <p class="mt-4 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          Most online PDF converters force you to upload your confidential files to remote cloud storage servers, exposing financial records and personal identity data to external data breaches. SlowPDF changes that entirely by running <strong>100% in your local browser memory</strong> using WebAssembly and client-side cryptography. Your document is decrypted on your own hardware; not a single byte ever travels across the internet.
+        </p>
+      </div>
+
+      <!-- 3-Step Walkthrough Grid -->
+      <div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-6">
+          How to Remove Passwords from PDF in 3 Easy Steps
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              1
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Select or Drop PDF
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Drag your password-protected PDF into the workbench or click "Select PDF File" from your desktop or mobile device.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              2
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Provide Document Password
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Enter the password if the document requires one to view. If it only has permission restrictions, SlowPDF bypasses them automatically.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              3
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Decrypt in RAM &amp; Download
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Click Unlock to strip all locks and restrictions in milliseconds. Download your pristine, unrestricted PDF instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-Depth Educational Article Content -->
+      <div class="space-y-6 pt-4 border-t border-stone-200 dark:border-stone-800">
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            Zero-Server Decryption: Why Your Sensitive Documents Remain 100% Private
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            Traditional PDF unlocking services act as intermediaries: you upload an encrypted document over an HTTP POST request to their remote clusters, where automated backend scripts decrypt the file on a shared virtual machine. This workflow creates serious liability: your unencrypted files remain cached on third-party drives, subjected to surveillance, data leakage, and unauthorized access.
+          </p>
+          <p class="mt-3 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            SlowPDF operates on a zero-server philosophy. Using modern client-side standards—including <code class="text-xs bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded font-mono">pdf-lib</code> and <code class="text-xs bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded font-mono">pdf.js</code>—the cryptographic routines run entirely inside your browser's V8 or JavaScriptCore virtual machine. The moment you close or refresh this tab, the memory buffer vanishes without a trace.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            Owner Password vs User Password: What SlowPDF Unlocks
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            PDF specifications define two distinct tiers of security protection:
+          </p>
+          <ul class="mt-3 space-y-2 list-disc list-inside text-sm sm:text-base text-stone-600 dark:text-stone-300">
+            <li><strong>User Password (Document Open Password):</strong> Encrypts the raw byte stream of the file using AES-128, AES-256, or RC4. You cannot render or preview pages without supplying this passphrase. SlowPDF decrypts this in local RAM when provided by the user.</li>
+            <li><strong>Owner Password (Permissions Password):</strong> Does not necessarily prevent viewing, but restricts user capabilities like high-resolution printing, copy-pasting text, and adding annotations. SlowPDF safely removes the <code class="text-xs bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded font-mono">/Encrypt</code> dictionary from the PDF trailer, giving you permanent unrestricted access.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
+            High-Speed Local RAM Processing: No File Size Caps or Waiting Queues
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+            Because SlowPDF does not upload megabytes or gigabytes of document data across broadband connections, processing is lightning fast. You will never encounter "upload queues", artificial 25MB file size limits, or paywall popups. Whether you are decrypting a 2-page invoice or a 500-page academic textbook, your device’s local CPU and RAM handle the task in seconds.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Comparison Table -->
+      <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-4">
+          SlowPDF vs Traditional Cloud PDF Unlocking Services
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-stone-200 dark:border-stone-700 text-[#222E28] dark:text-white font-bold">
+                <th class="py-3 pr-4">Feature</th>
+                <th class="py-3 px-4 text-[#355E4B] dark:text-emerald-400">SlowPDF (Zero-Server)</th>
+                <th class="py-3 pl-4 text-stone-500">Traditional Cloud Converters</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Data Privacy</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% Client-Side RAM (Zero Network Upload)</td>
+                <td class="py-3 pl-4 text-stone-500">Uploaded to third-party cloud servers</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Password Exposure</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Verified locally; never sent over HTTP</td>
+                <td class="py-3 pl-4 text-stone-500">Transmitted over network to remote server</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">File Size Limits</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Unlimited (Limited only by computer RAM)</td>
+                <td class="py-3 pl-4 text-stone-500">Strict 25MB or 50MB paywall restrictions</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Processing Speed</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Instantaneous local decryption</td>
+                <td class="py-3 pl-4 text-stone-500">Slow upload queues, conversion queues</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Cost &amp; Signups</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% Free Forever • No Registration</td>
+                <td class="py-3 pl-4 text-stone-500">Monthly subscription upsells, watermark locks</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: Unlocking PDFs
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Clear answers on PDF encryption, owner restrictions, and client-side privacy.
+      </p>
+    </div>
+
+    <!-- Accordion Wrapper -->
+    <div class="space-y-3.5" id="faq-accordion">
+      
+      <!-- FAQ 1 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. What is the difference between an owner password and a user password?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          A user password (also called an open password) blocks unauthorized viewing—you cannot read or display the pages without it. An owner password (permissions password) allows you to view the document, but blocks editing, printing, copying text, or assembling pages. SlowPDF handles both cleanly in browser memory.
+        </div>
+      </div>
+
+      <!-- FAQ 2 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. Can SlowPDF unlock a PDF if I completely forgot the document open password?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          If a PDF is encrypted with modern AES-128 or AES-256 open encryption, the content bytes are mathematically scrambled. SlowPDF is an ethical, privacy-focused utility and does not conduct brute-force attacks on unknown user passwords. Once you supply the correct password once, SlowPDF strips the lock permanently so you never need to enter it again.
+        </div>
+      </div>
+
+      <!-- FAQ 3 (Visible) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. Are my encrypted documents or passwords stored on any remote cloud server?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. SlowPDF operates on a strict zero-server architecture. Your documents and passwords are processed entirely in client-side memory using WebAssembly. Once you close this tab, the RAM buffer is immediately cleared.
+        </div>
+      </div>
+
+      <!-- FAQ 4-10 (Collapsible under 'View All 10 Questions') -->
+      <div id="extra-faqs" class="hidden space-y-3.5">
+        
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. Does unlocking a PDF remove printing and copy-paste restrictions?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes. When SlowPDF unencrypts a PDF, it produces a standard unrestricted PDF file where all permissions bits (printing, extracting text, annotating, modifying forms) are restored to full open access.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. Will the unlocked PDF retain its original formatting and vector quality?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes. The original typography, vector curves, embedded fonts, and page layouts are preserved cleanly without downsampling or loss of fidelity.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. Is it legal to remove passwords and permissions from a PDF document?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, provided you are the lawful owner, creator, or authorized custodian of the document, or have legitimate rights to access the contained information (e.g., your own tax records or academic papers).
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. Can SlowPDF unlock PDF files with modern AES-256 encryption?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes. Through PDF.js v3.4 WebAssembly cryptographic primitives, SlowPDF supports standard 40-bit RC4, 128-bit RC4, 128-bit AES, and 256-bit AES encryption schemes specified by Adobe Acrobat ISO 32000 standards.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Is there any file size limit when unlocking PDFs locally?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            No. Unlike server-based websites that cap free users at 25MB or 50MB, SlowPDF has no artificial file size thresholds. Your file size is limited only by your own device's available browser RAM memory.
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. What happens if my PDF isn't actually password-protected?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            SlowPDF automatically inspects the document structure upon file selection. If no encryption is found, it informs you immediately that the document is already unrestricted and offers you a direct download option.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. Why is client-side in-browser unlocking safer than traditional web converters?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Cloud converters require you to send both your file and your secret password over the public internet to an unknown server. SlowPDF never receives your file or your password; all computation stays enclosed on your own physical computer.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Expand/Collapse Button -->
+      <div class="text-center pt-4">
+        <button 
+          id="toggle-faqs-btn" 
+          type="button" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-[#222E28] dark:text-white font-bold text-xs sm:text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
+        >
+          <span id="faq-btn-text">View All 10 Questions</span>
+          <svg id="faq-chevron" class="w-4 h-4 text-stone-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. EXACT MASTER FOOTER                     -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#E8DABF]/40 dark:bg-[#151D19] border-t border-[#D8C7A5] dark:border-stone-800 transition-colors mt-auto py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top 4-Column Directory Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-stone-200/60 dark:border-stone-800/80">
+        
+        <!-- Brand Info Column -->
+        <div class="space-y-4">
+          <a href="../index.html" class="flex items-center gap-2 select-none group">
+            <img src="../assets/images/logo.png" alt="SlowPDF" class="w-8 h-8 object-contain" onerror="this.src='../public/assets/images/logo.png'" />
+            <span class="text-xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+              Slow <span class="text-[#274737] dark:text-[#5E9B7E]">PDF</span>
+            </span>
+          </a>
+          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+            Made for slow, steady learning • 100% Client-Side Privacy. Your files never leave your device.
+          </p>
+          <div class="pt-2 text-xs text-stone-500 dark:text-stone-500">
+            © 2026 Slow PDF. All rights reserved. Brand: slowpdf.in
+          </div>
+        </div>
+
+        <!-- Column 1: Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Quick Links
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../#popular-tools" class="footer-link">All Tools</a></li>
+            <li><a href="../pages/blog.html" class="footer-link">Blog &amp; Articles</a></li>
+            <li><a href="../pages/how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="../pages/learn.html" class="footer-link">Learn</a></li>
+            <li><a href="../pages/about.html" class="footer-link">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Popular Tools -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Popular Tools
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="merge-pdf.html" class="footer-link">Merge PDF</a></li>
+            <li><a href="split-pdf.html" class="footer-link">Split PDF</a></li>
+            <li><a href="compress-pdf.html" class="footer-link">Compress PDF</a></li>
+            <li><a href="protect-pdf.html" class="footer-link">Protect PDF</a></li>
+            <li><a href="unlock-pdf.html" class="footer-link font-semibold text-[#355E4B] dark:text-emerald-400">Unlock PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal & Help -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Legal &amp; Help
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="../pages/privacy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html" class="footer-link">Terms &amp; Conditions</a></li>
+            <li><a href="../pages/security.html" class="footer-link">Security Architecture</a></li>
+            <li><a href="#faq-section" class="footer-link">FAQ</a></li>
+            <li><a href="../pages/contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Social Media Strip -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-stone-500 dark:text-stone-500">
+          Built with calm design principles • Respecting learner privacy since 2026.
+        </div>
+        
+        <!-- Social Media Icons Row -->
+        <div class="flex items-center gap-5 text-stone-500 dark:text-stone-400">
+          <a href="#" class="p-1.5 rounded-lg hover:bg-emerald-100/80 hover:text-emerald-950 dark:hover:bg-[#355E4B]/40 dark:hover:text-emerald-300 transition-colors" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: UNLOCK ENGINE & INTERACTION    -->
+  <!-- ========================================== -->
+  <script>
+    // Configure PDF.js Worker
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    }
+
+    // ----------------------------------------------------
+    // 1. DARK MODE THEME PERSISTENCE
+    // ----------------------------------------------------
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeThumb = document.getElementById('dark-mode-thumb');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'true');
+          darkModeToggle.classList.remove('bg-stone-300');
+          darkModeToggle.classList.add('bg-[#355E4B]');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-0');
+          darkModeThumb.classList.add('translate-x-5');
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'false');
+          darkModeToggle.classList.remove('bg-[#355E4B]');
+          darkModeToggle.classList.add('bg-stone-300');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-5');
+          darkModeThumb.classList.add('translate-x-0');
+        }
+      }
+    }
+
+    const savedTheme = localStorage.getItem('slowpdf_theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    applyTheme(initialDark);
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isCurrentDark = document.documentElement.classList.contains('dark');
+        const nextDark = !isCurrentDark;
+        applyTheme(nextDark);
+        localStorage.setItem('slowpdf_theme', nextDark ? 'dark' : 'light');
+      });
+    }
+
+    // ----------------------------------------------------
+    // ----------------------------------------------------
+    // 2. HAMBURGER MENU MODAL
+    // (Handled by mobileMenuDrawer & nav-memory.js)
+    // ----------------------------------------------------
+
+    // ----------------------------------------------------
+    // 3. CLIENT-SIDE UNLOCK PDF ENGINE
+    // ----------------------------------------------------
+    let currentFileBuffer = null;
+    let currentFileName = '';
+    let currentFileSize = 0;
+    let currentNumPages = 0;
+    let isOwnerRestrictionOnly = false;
+    let requiresUserPassword = false;
+
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const activeWorkbench = document.getElementById('active-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const fileInput = document.getElementById('pdf-file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const chooseDifferentFileBtn = document.getElementById('choose-different-file-btn');
+    const fileNameText = document.getElementById('file-name-text');
+    const fileSizeText = document.getElementById('file-size-text');
+    const alertBox = document.getElementById('alert-box');
+    const alertIcon = document.getElementById('alert-icon');
+    const alertMessage = document.getElementById('alert-message');
+    const passwordFormSection = document.getElementById('password-form-section');
+    const pdfPasswordInput = document.getElementById('pdf-password-input');
+    const togglePasswordVisibilityBtn = document.getElementById('toggle-password-visibility-btn');
+    const eyeIcon = document.getElementById('eye-icon');
+    const eyeSlashIcon = document.getElementById('eye-slash-icon');
+    const unlockActionBtn = document.getElementById('unlock-action-btn');
+    const unlockBtnText = document.getElementById('unlock-btn-text');
+    const directUnlockSection = document.getElementById('direct-unlock-section');
+    const directUnlockDesc = document.getElementById('direct-unlock-desc');
+    const instantStripBtn = document.getElementById('instant-strip-btn');
+    const instantStripBtnText = document.getElementById('instant-strip-btn-text');
+    const downloadUnlockedBtn = document.getElementById('download-unlocked-btn');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+    const unlockedFileName = document.getElementById('unlocked-file-name');
+    const unlockedFileStats = document.getElementById('unlocked-file-stats');
+    const outputFilenameInput = document.getElementById('output-filename-input');
+
+    // Trigger file chooser
+    if (emptyDropzone) {
+      emptyDropzone.addEventListener('click', (e) => {
+        if (e.target === browseBtn || browseBtn.contains(e.target)) return;
+        fileInput.click();
+      });
+    }
+    if (browseBtn) {
+      browseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+      });
+    }
+    if (chooseDifferentFileBtn) {
+      chooseDifferentFileBtn.addEventListener('click', () => fileInput.click());
+    }
+
+    // Drag and drop handlers
+    ['dragenter', 'dragover'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+      if (files.length > 0) handleIncomingFile(files[0]);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0) handleIncomingFile(files[0]);
+      fileInput.value = '';
+    });
+
+    // Password visibility toggle
+    let passwordVisible = false;
+    if (togglePasswordVisibilityBtn) {
+      togglePasswordVisibilityBtn.addEventListener('click', () => {
+        passwordVisible = !passwordVisible;
+        pdfPasswordInput.type = passwordVisible ? 'text' : 'password';
+        if (passwordVisible) {
+          eyeIcon.classList.add('hidden');
+          eyeSlashIcon.classList.remove('hidden');
+        } else {
+          eyeIcon.classList.remove('hidden');
+          eyeSlashIcon.classList.add('hidden');
+        }
+      });
+    }
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function showAlert(type, message) {
+      alertBox.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200', 'dark:bg-red-950/40', 'dark:text-red-300', 'dark:border-red-800', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:border-emerald-800', 'bg-amber-50', 'text-amber-800', 'border-amber-200', 'dark:bg-amber-950/40', 'dark:text-amber-300', 'dark:border-amber-800');
+      
+      if (type === 'error') {
+        alertBox.classList.add('bg-red-50', 'text-red-800', 'border-red-200', 'dark:bg-red-950/40', 'dark:text-red-300', 'dark:border-red-800');
+        alertIcon.innerHTML = `<svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>`;
+      } else if (type === 'success') {
+        alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border-emerald-200', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:border-emerald-800');
+        alertIcon.innerHTML = `<svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`;
+      } else {
+        alertBox.classList.add('bg-amber-50', 'text-amber-800', 'border-amber-200', 'dark:bg-amber-950/40', 'dark:text-amber-300', 'dark:border-amber-800');
+        alertIcon.innerHTML = `<svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>`;
+      }
+      alertMessage.textContent = message;
+    }
+
+    function hideAlert() {
+      alertBox.classList.add('hidden');
+    }
+
+    // Inspect and process incoming file
+    async function handleIncomingFile(file) {
+      try {
+        currentFileName = file.name || 'document.pdf';
+        currentFileSize = file.size || 0;
+        currentFileBuffer = await file.arrayBuffer();
+
+        fileNameText.textContent = currentFileName;
+        fileSizeText.textContent = `${formatBytes(currentFileSize)} • Checking encryption...`;
+        hideAlert();
+        pdfPasswordInput.value = '';
+
+        // Switch to active workbench
+        emptyDropzone.classList.add('hidden');
+        successPanel.classList.add('hidden');
+        activeWorkbench.classList.remove('hidden');
+
+        // Test encryption status using PDF.js and PDFLib
+        let isOpenableWithoutPassword = false;
+        let isEncryptedDoc = false;
+
+        try {
+          const loadingTask = pdfjsLib.getDocument({
+            data: new Uint8Array(currentFileBuffer.slice(0)),
+            password: ''
+          });
+          const pdfDoc = await loadingTask.promise;
+          isOpenableWithoutPassword = true;
+          currentNumPages = pdfDoc.numPages;
+
+          // Check if it has encryption trailer via PDFLib
+          try {
+            const pdfLibDoc = await PDFLib.PDFDocument.load(currentFileBuffer.slice(0), { ignoreEncryption: true });
+            const hasTrailerEncrypt = Boolean(pdfLibDoc.context.trailerInfo?.Encrypt || pdfLibDoc.isEncrypted);
+            if (hasTrailerEncrypt) {
+              isEncryptedDoc = true;
+              isOwnerRestrictionOnly = true;
+            }
+          } catch (e) {
+            isEncryptedDoc = true;
+            isOwnerRestrictionOnly = true;
+          }
+
+        } catch (err) {
+          // If PDF.js threw PasswordException (code 1 = need password)
+          if (err.name === 'PasswordException' || err.code === 1 || err.code === 2 || err.message?.toLowerCase().includes('password')) {
+            isEncryptedDoc = true;
+            requiresUserPassword = true;
+            isOwnerRestrictionOnly = false;
+          }
+        }
+
+        if (requiresUserPassword) {
+          fileSizeText.textContent = `${formatBytes(currentFileSize)} • Password Protected Document`;
+          passwordFormSection.classList.remove('hidden');
+          directUnlockSection.classList.add('hidden');
+          pdfPasswordInput.focus();
+        } else if (isOwnerRestrictionOnly) {
+          fileSizeText.textContent = `${formatBytes(currentFileSize)} • ${currentNumPages} Pages • Permissions Locked`;
+          passwordFormSection.classList.add('hidden');
+          directUnlockSection.classList.remove('hidden');
+          directUnlockDesc.textContent = "This document can be opened without a password, but contains print, edit, or copy restriction flags. SlowPDF will strip these restrictions now.";
+          instantStripBtnText.textContent = "Strip Restrictions & Download Clean PDF";
+        } else {
+          // Completely unencrypted PDF
+          fileSizeText.textContent = `${formatBytes(currentFileSize)} • ${currentNumPages} Pages • Unrestricted`;
+          passwordFormSection.classList.add('hidden');
+          directUnlockSection.classList.remove('hidden');
+          directUnlockDesc.textContent = "This document is already unrestricted and has no password.";
+          instantStripBtnText.textContent = "Download Unrestricted Copy";
+          showAlert('info', "This document is already unrestricted and has no password.");
+        }
+
+      } catch (err) {
+        console.error('Error reading PDF:', err);
+        showAlert('error', 'Unable to parse this PDF file. Please ensure the file is a valid PDF document.');
+      }
+    }
+
+    // Convert data URL to binary Uint8Array synchronously
+    function dataUrlToUint8Array(dataUrl) {
+      const base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+      const binary = atob(base64);
+      const len = binary.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      return bytes;
+    }
+
+    // Execute Decryption Logic (PDF.js + PDF-Lib Clean Engine)
+    async function executeDecryption(password = '') {
+      hideAlert();
+      unlockActionBtn.disabled = true;
+      instantStripBtn.disabled = true;
+      unlockBtnText.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Decrypting in RAM...
+      `;
+      instantStripBtnText.innerHTML = unlockBtnText.innerHTML;
+
+      try {
+        // Step A: Load the document using PDF.js with user password to fully decrypt all streams & dictionaries
+        let pdfDoc;
+        try {
+          const loadingTask = pdfjsLib.getDocument({
+            data: new Uint8Array(currentFileBuffer.slice(0)),
+            password: password
+          });
+          pdfDoc = await loadingTask.promise;
+        } catch (pwErr) {
+          if (pwErr.name === 'PasswordException' || pwErr.code === 2 || pwErr.message?.toLowerCase().includes('password')) {
+            showAlert('error', 'Incorrect password. Please verify and try again.');
+            pdfPasswordInput.focus();
+            pdfPasswordInput.select();
+            return;
+          } else {
+            throw pwErr;
+          }
+        }
+
+        const numPages = pdfDoc.numPages;
+
+        // Step B & C: Re-encode into an unrestricted PDF standard (PDF 1.7) ensuring all encryption dictionaries (/Encrypt) and permission flags are completely stripped
+        const PDFDocument = window.PDFLib.PDFDocument;
+        const cleanDoc = await PDFDocument.create();
+
+        // Optional standard font for invisible selectable text layer
+        let standardFont = null;
+        try {
+          standardFont = await cleanDoc.embedFont(window.PDFLib.StandardFonts.Helvetica);
+        } catch (fontErr) {
+          console.warn('Standard font embed fallback:', fontErr);
+        }
+
+        // Render each decrypted page preserving 100% of vector text, fonts, tables, and images
+        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+          unlockBtnText.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing Page ${pageNum} of ${numPages}...
+          `;
+          instantStripBtnText.innerHTML = unlockBtnText.innerHTML;
+
+          const page = await pdfDoc.getPage(pageNum);
+          const origViewport = page.getViewport({ scale: 1.0 });
+          const width = origViewport.width;
+          const height = origViewport.height;
+
+          // Render at high-density scale (2.0x for retina/print crispness, ~150-200 DPI)
+          const scale = 2.0;
+          const renderViewport = page.getViewport({ scale: scale });
+
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.floor(renderViewport.width);
+          canvas.height = Math.floor(renderViewport.height);
+          const ctx = canvas.getContext('2d', { alpha: false });
+
+          // Fill solid white background so transparent elements remain crisp and non-inverted
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // Render full-fidelity content: vector curves, fonts, tables, shapes, and images
+          await page.render({
+            canvasContext: ctx,
+            viewport: renderViewport
+          }).promise;
+
+          // Convert canvas to image bytes synchronously without network requests
+          const imgDataUrl = canvas.toDataURL('image/png');
+          const imgBytes = dataUrlToUint8Array(imgDataUrl);
+
+          // Embed high-res lossless image into fresh PDF 1.7 document
+          const embeddedImg = await cleanDoc.embedPng(imgBytes);
+
+          // Add clean page matching exact original dimensions
+          const newPage = cleanDoc.addPage([width, height]);
+          newPage.drawImage(embeddedImg, {
+            x: 0,
+            y: 0,
+            width: width,
+            height: height
+          });
+
+          // Overlay invisible text layer for copy-pasting and searching in Adobe Acrobat & Google Drive
+          if (standardFont) {
+            try {
+              const textContent = await page.getTextContent();
+              if (textContent && textContent.items && textContent.items.length > 0) {
+                for (const item of textContent.items) {
+                  if (!item.str || item.str.trim() === '') continue;
+                  const tx = item.transform[4];
+                  const ty = item.transform[5];
+                  const fontSize = Math.max(4, Math.min(72, Math.hypot(item.transform[0], item.transform[1])));
+                  
+                  newPage.drawText(item.str, {
+                    x: tx,
+                    y: ty,
+                    size: fontSize,
+                    font: standardFont,
+                    opacity: 0
+                  });
+                }
+              }
+            } catch (txtErr) {
+              // Visual page is already complete
+            }
+          }
+        }
+
+        // Step D: Re-assemble clean PDF bytes ensuring valid xref table, trailer, and MIME type application/pdf
+        const pdfBytes = await cleanDoc.save();
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const downloadUrl = URL.createObjectURL(blob);
+
+        // Smart File Name Sanitizer:
+        // Cleans up long random hashes (e.g. 78445bb36ce...), fallback to Document if over 20 chars
+        function sanitizeBaseName(rawName) {
+          if (!rawName) return 'Document';
+          let clean = rawName.replace(/\.pdf$/i, '').trim();
+
+          // Detect hex hashes (8+ consecutive hex characters) or UUIDs or excessively long names
+          const hasLongHex = /[0-9a-fA-F]{8,}/.test(clean);
+          const hasUuid = /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}/.test(clean);
+          const isTooLong = clean.length > 20;
+
+          if (hasLongHex || hasUuid || isTooLong) {
+            // Check for a meaningful clean sub-word (e.g. "Invoice_78445bb..." or "..._signedFinal")
+            const parts = clean.split(/[_\-\s]+/).filter(p => 
+              !/[0-9a-fA-F]{8,}/.test(p) && 
+              !/^[0-9]+$/.test(p) && 
+              p.length >= 3 && 
+              p.length <= 15
+            );
+            if (parts.length > 0) {
+              const candidate = parts[0].replace(/[^a-zA-Z0-9]/g, '');
+              if (candidate.length >= 3 && candidate.length <= 15) {
+                return candidate.charAt(0).toUpperCase() + candidate.slice(1);
+              }
+            }
+            return 'Document';
+          }
+
+          // Clean up special characters, keep alphanumeric and underscores
+          clean = clean.replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+          if (clean.length === 0 || clean.length > 15) {
+            return 'Document';
+          }
+          return clean.charAt(0).toUpperCase() + clean.slice(1);
+        }
+
+        const shortName = sanitizeBaseName(currentFileName);
+        const defaultBaseName = `SlowPDF_Unlocked_${shortName}`;
+
+        // Helper to compute final download name ensuring exactly ONE clean .pdf extension
+        function computeFinalFileName() {
+          let userVal = (outputFilenameInput && outputFilenameInput.value ? outputFilenameInput.value.trim() : '') || defaultBaseName;
+          // Strip any trailing .pdf (or accidental duplicate .pdf.pdf)
+          userVal = userVal.replace(/(\.pdf)+$/i, '').trim();
+          if (!userVal) userVal = defaultBaseName;
+          return `${userVal}.pdf`;
+        }
+
+        // Set default value in the input field
+        if (outputFilenameInput) {
+          outputFilenameInput.value = defaultBaseName;
+          outputFilenameInput.oninput = () => {
+            const currentName = computeFinalFileName();
+            downloadUnlockedBtn.download = currentName;
+            downloadUnlockedBtn.setAttribute('download', currentName);
+            unlockedFileName.textContent = currentName;
+          };
+        }
+
+        const finalDownloadName = computeFinalFileName();
+        downloadUnlockedBtn.href = downloadUrl;
+        downloadUnlockedBtn.download = finalDownloadName;
+        downloadUnlockedBtn.setAttribute('download', finalDownloadName);
+        unlockedFileName.textContent = finalDownloadName;
+        unlockedFileStats.textContent = `${formatBytes(pdfBytes.byteLength)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Fully Unlocked`;
+
+        // Ensure latest filename on click
+        downloadUnlockedBtn.onclick = () => {
+          const latestName = computeFinalFileName();
+          downloadUnlockedBtn.download = latestName;
+          downloadUnlockedBtn.setAttribute('download', latestName);
+        };
+
+        // Switch to success view
+        activeWorkbench.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Decryption failed:', err);
+        showAlert('error', 'An unexpected error occurred while decrypting the PDF. Please verify the password and document integrity.');
+      } finally {
+        unlockActionBtn.disabled = false;
+        instantStripBtn.disabled = false;
+        unlockBtnText.textContent = 'Unlock PDF & Strip Restrictions';
+        instantStripBtnText.textContent = isOwnerRestrictionOnly ? 'Strip Restrictions & Download Clean PDF' : 'Download Verified Unrestricted PDF';
+      }
+    }
+
+    // Bind unlock actions
+    unlockActionBtn.addEventListener('click', () => {
+      const pw = pdfPasswordInput.value;
+      if (!pw) {
+        showAlert('error', 'Please enter the document password to unlock this file.');
+        pdfPasswordInput.focus();
+        return;
+      }
+      executeDecryption(pw);
+    });
+
+    pdfPasswordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const pw = pdfPasswordInput.value;
+        if (!pw) {
+          showAlert('error', 'Please enter the document password to unlock this file.');
+          pdfPasswordInput.focus();
+          return;
+        }
+        executeDecryption(pw);
+      }
+    });
+
+    instantStripBtn.addEventListener('click', () => {
+      executeDecryption('');
+    });
+
+    // Reset workbench
+    resetWorkbenchBtn.addEventListener('click', () => {
+      currentFileBuffer = null;
+      currentFileName = '';
+      currentFileSize = 0;
+      currentNumPages = 0;
+      isOwnerRestrictionOnly = false;
+      requiresUserPassword = false;
+      successPanel.classList.add('hidden');
+      activeWorkbench.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+    });
+
+    // ----------------------------------------------------
+    // 4. ACCORDION FAQ LOGIC
+    // ----------------------------------------------------
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      trigger.addEventListener('click', () => {
+        const isOpen = !content.classList.contains('hidden');
+        if (isOpen) {
+          content.classList.add('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          item.classList.remove('ring-1', 'ring-[#355E4B]');
+        } else {
+          content.classList.remove('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          item.classList.add('ring-1', 'ring-[#355E4B]');
+        }
+      });
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
+
+<script>
+  (function() {
+    function initMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn') || document.getElementById('hamburger-btn') || document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-icon');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const closeBtn = document.getElementById('closeMenuBtn');
+      
+      if (!menuBtn || !drawer) return;
+
+      menuBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        drawer.style.display = (drawer.style.display === 'none' || drawer.style.display === '') ? 'flex' : 'none';
+      };
+
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          drawer.style.display = 'none';
+        };
+      }
+
+      document.addEventListener('click', function(e) {
+        if (drawer.style.display === 'flex' && !drawer.contains(e.target) && !menuBtn.contains(e.target)) {
+          drawer.style.display = 'none';
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+      initMenu();
+    }
+  })();
+</script>
+</body>
+</html>

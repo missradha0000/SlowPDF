@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>Free Online PDF Editor — Edit Existing Text Directly | SlowPDF</title>
+  <meta name="description" content="Edit existing text in PDF files online free with zero double-text ghosting. Add text, draw signatures, highlight, whiteout, and insert shapes 100% privately in browser RAM." />
+  <meta property="og:title" content="Free Online PDF Editor — Edit Existing Text Directly | SlowPDF" />
+  <meta property="og:description" content="Edit existing text, annotate, highlight, and modify PDF documents directly in your browser with zero cloud uploads." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/edit-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Edit PDF",
+        "url": "https://slowpdf.in/tools/edit-pdf.html",
+        "description": "Client-side private PDF editor to modify existing text, add annotations, draw shapes, and edit documents in local browser memory.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I edit existing text without erasing the background?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF uses pixel-accurate background masking to prevent double-text ghosting, allowing you to edit words directly in place."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does SlowPDF save or read my private files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All text editing, drawing, and PDF compilation take place 100% inside your browser's local RAM using WebAssembly. No data is ever transmitted to remote servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I change font sizes and colors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Click on any text block to activate font size +/- controls, font style selectors, and color pickers in the editing toolbar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will the edited PDF open cleanly in Adobe Acrobat and Google Chrome?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, SlowPDF compiles genuine, standard PDF structures using pdf-lib that open flawlessly in Adobe Acrobat, Google Chrome, Apple Preview, and mobile PDF viewers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this PDF editor completely offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Once loaded in browser cache, you can disconnect Wi-Fi and continue editing, annotating, and saving PDF documents offline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the mobile editor work with touch gestures?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our responsive mobile view automatically hides sidebars, provides a floating bottom action dock, and supports two-finger pinch-to-zoom and panning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Smart Stroke Eraser and Document Whiteout?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Smart Stroke Eraser deletes user-drawn pen strokes, shapes, and highlighter marks cleanly upon tap. Document Whiteout paints an opaque white layer to blank out original PDF content."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any page or file size limits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There are no cloud limits or paywalls. You can edit multi-page PDFs of any size bound only by your device's available memory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I add signatures and handwritten notes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Use the Freehand Pen tool with customizable stroke colors and line weights to sketch signatures, freehand notes, and diagrams."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to my original formatting and images?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Original vector graphics, embedded high-resolution images, font structures, and page dimensions are fully preserved during compilation."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF.js v3.11.174 & PDF-Lib v1.17.1 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+  <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #151D19 !important;
+    }
+
+    /* Text Layer styling for zero double-text ghosting */
+    .textLayer {
+      position: absolute;
+      text-align: initial;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      line-height: 1;
+    }
+    .textLayer span {
+      position: absolute;
+      white-space: pre;
+      cursor: text;
+      transform-origin: 0% 0%;
+      border: 1px dashed transparent;
+      padding: 0px 2px;
+      border-radius: 2px;
+      transition: border-color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+      color: transparent !important; /* Visually transparent on load so user sees only crisp canvas */
+      background: transparent !important;
+      outline: none;
+    }
+    .textLayer span:hover {
+      border-color: #355E4B !important;
+      background-color: rgba(53, 94, 75, 0.08) !important;
+    }
+    .textLayer span:focus,
+    .textLayer span.active-editing {
+      color: #000000 !important; /* Visible text when focused/editing */
+      background-color: #FFFFFF !important;
+      border-color: #355E4B !important;
+      box-shadow: 0 0 0 1px #355E4B;
+      opacity: 1 !important;
+    }
+
+    /* Floating New Text Box with Delete Badge */
+    .added-text-box {
+      position: absolute;
+      min-width: 60px;
+      min-height: 24px;
+      border: 1.5px dashed #355E4B;
+      background: #FFFFFF;
+      padding: 2px 24px 2px 6px;
+      cursor: move;
+      outline: none;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      z-index: 40;
+    }
+    .added-text-box .delete-btn {
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      background: #ef4444;
+      color: white;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .added-text-box .delete-btn:hover {
+      background: #b91c1c;
+    }
+
+    /* Palette Swatch Button Styling */
+    .swatch-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .swatch-btn:hover, .swatch-btn.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 2px #355E4B;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Mascot animation */
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .mascot-celebration {
+      animation: headerMascotFloat 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- =================================================================== -->
+  <!-- 1. LOCKED MASTER HEADER / NAVBAR                                   -->
+  <!-- =================================================================== -->
+  <header id="site-header" class="site-header w-full border-b border-stone-200/80 dark:border-stone-800 sticky top-0 z-50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Identity -->
+      <a href="../index.html" class="flex items-center gap-3 group shrink-0">
+        <img 
+          src="../assets/images/logo.png" 
+          alt="SlowPDF Brand Logo" 
+          class="w-9 h-9 object-contain rounded-full shadow-2xs group-hover:scale-105 transition-transform"
+          onerror="this.src='../public/assets/images/logo.png'"
+        />
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold tracking-tight text-[#2D3748] dark:text-[#F1F5F2] leading-none flex items-center gap-1.5">
+            Slow<span class="text-[#355E4B] dark:text-emerald-400">PDF</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#355E4B]/10 dark:bg-emerald-400/20 text-[#355E4B] dark:text-emerald-300 uppercase tracking-wide">Editor Studio</span>
+          </span>
+          <span class="text-[10px] font-semibold text-stone-600 dark:text-stone-400">Undo/Redo Stack • Smart Stroke Eraser • Multiply Highlighter</span>
+        </div>
+      </a>
+
+      <!-- Back to Tools Button -->
+      <a 
+        href="../index.html#popular-tools" 
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-[#2D3748] dark:text-stone-200 bg-white/70 dark:bg-stone-800/80 hover:bg-white dark:hover:bg-stone-800 border border-stone-300/60 dark:border-stone-700 shadow-2xs transition-all duration-200"
+      >
+        <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to All Tools</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- =================================================================== -->
+  <!-- 2. MAIN WORKSPACE / EDITING WORKBENCH                             -->
+  <!-- =================================================================== -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center">
+    
+    <!-- Title Section -->
+    <div class="text-center max-w-2xl mx-auto mb-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-[#355E4B] dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800/60 mb-2 shadow-2xs">
+        <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <span>True Inline Editing • Step Undo/Redo • Zero Server Uploads</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#222E28] dark:text-[#F1F5F2] tracking-tight">
+        Free Online PDF Editor Studio
+      </h1>
+      <p class="mt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm">
+        Click directly on existing text words to edit in place. Add new text, draw freehand, highlight passages, or erase content.
+      </p>
+    </div>
+
+    <!-- WORKBENCH STATE 1: Empty Dropzone -->
+    <div id="empty-dropzone" class="w-full max-w-3xl bg-white dark:bg-[#1C2420] rounded-3xl p-10 sm:p-14 border-2 border-dashed border-[#355E4B]/40 dark:border-emerald-700/50 hover:border-[#355E4B] dark:hover:border-emerald-400 shadow-sm transition-all duration-300 flex flex-col items-center text-center cursor-pointer group">
+      <div class="w-20 h-20 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-2xs">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+      </div>
+      <h3 class="text-xl font-extrabold text-[#222E28] dark:text-white mb-2">
+        Select PDF file to edit or drop here
+      </h3>
+      <p class="text-stone-500 dark:text-stone-400 text-xs sm:text-sm max-w-md mb-6 leading-relaxed">
+        Supports any PDF document. Your files are processed 100% locally in your device memory with zero server uploads.
+      </p>
+      
+      <input type="file" id="pdf-file-input" accept=".pdf,application/pdf" class="hidden" />
+      <button 
+        type="button" 
+        onclick="document.getElementById('pdf-file-input').click()" 
+        class="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+      >
+        Select PDF Document
+      </button>
+
+      <div class="mt-8 flex items-center gap-2 text-xs font-semibold text-stone-500 dark:text-stone-400">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span>Zero Data Storage • Confidential &amp; Safe</span>
+      </div>
+    </div>
+
+    <!-- WORKBENCH STATE 2: Active Multi-Page Editor Studio -->
+    <div id="editor-workbench" class="hidden w-full flex flex-col space-y-4">
+      
+      <!-- Top Studio Toolbar -->
+      <div class="w-full bg-white dark:bg-[#1C2420] rounded-2xl p-3 border border-stone-200 dark:border-stone-800 shadow-md flex flex-col space-y-3 sticky top-16 z-40">
+        
+        <!-- Main Row: History, Zoom, Tools & Apply Action -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          
+          <!-- History (Undo / Redo) & Zoom Controls -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-center gap-1 bg-stone-100 dark:bg-stone-800 p-1 rounded-xl">
+              <button type="button" id="btn-undo" title="Undo (Ctrl+Z)" class="p-1.5 rounded-lg text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+              </button>
+              <button type="button" id="btn-redo" title="Redo (Ctrl+Y)" class="p-1.5 rounded-lg text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6"/></svg>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-1 bg-stone-100 dark:bg-stone-800 px-2 py-1 rounded-xl text-xs font-bold">
+              <button type="button" id="btn-zoom-out" class="p-1 hover:bg-stone-200 dark:hover:bg-stone-700 rounded">-</button>
+              <span id="zoom-level-text" class="min-w-[40px] text-center">150%</span>
+              <button type="button" id="btn-zoom-in" class="p-1 hover:bg-stone-200 dark:hover:bg-stone-700 rounded">+</button>
+              <button type="button" id="btn-zoom-fit" class="ml-1 px-2 py-0.5 text-[10px] bg-white dark:bg-stone-700 rounded border border-stone-200 dark:border-stone-600">Fit</button>
+            </div>
+          </div>
+
+          <!-- Mode Switcher Buttons -->
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button type="button" id="tool-edit-text" title="Click directly on words to edit text" class="tool-mode-btn active flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-[#355E4B] text-white transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <span>Edit Text</span>
+            </button>
+
+            <button type="button" id="tool-add-text" title="Add New Floating Text Box" class="tool-mode-btn flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Add Text</span>
+            </button>
+
+            <button type="button" id="tool-pen" title="Freehand Pen / Signature" class="tool-mode-btn flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              <span>Pen</span>
+            </button>
+
+            <button type="button" id="tool-highlight" title="Smart Translucent Multiply Highlighter" class="tool-mode-btn flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10M12 3v14m-4-4l4 4 4-4"/></svg>
+              <span>Highlighter</span>
+            </button>
+
+            <button type="button" id="tool-stroke-eraser" title="Smart Stroke Eraser: Click any drawn stroke to erase cleanly" class="tool-mode-btn flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              <span>Stroke Eraser</span>
+            </button>
+
+            <button type="button" id="tool-whiteout" title="Document Eraser / Deep Whiteout original content" class="tool-mode-btn flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+              <span>Whiteout</span>
+            </button>
+          </div>
+
+          <!-- Primary Action: Apply & Save Edits -->
+          <button 
+            type="button" 
+            id="save-pdf-btn" 
+            class="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all flex items-center gap-2 shrink-0"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+            <span>Apply &amp; Save Edits</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Secondary Option Bar (Swatches, Thickness Sliders) -->
+        <div id="sub-options-bar" class="flex flex-wrap items-center gap-4 pt-2 border-t border-stone-100 dark:border-stone-800/80 text-xs">
+          
+          <!-- Pen Options -->
+          <div id="pen-options" class="flex items-center gap-3 flex-wrap">
+            <span class="font-bold text-stone-500">Pen Color:</span>
+            <div class="flex items-center gap-1.5" id="pen-swatches">
+              <button type="button" class="swatch-btn active" style="background:#000000" data-color="#000000" title="Pure Black"></button>
+              <button type="button" class="swatch-btn" style="background:#1D4ED8" data-color="#1D4ED8" title="Navy Blue"></button>
+              <button type="button" class="swatch-btn" style="background:#DC2626" data-color="#DC2626" title="Ruby Red"></button>
+              <button type="button" class="swatch-btn" style="background:#16A34A" data-color="#16A34A" title="Emerald Green"></button>
+              <button type="button" class="swatch-btn" style="background:#9333EA" data-color="#9333EA" title="Purple"></button>
+            </div>
+            <input type="color" id="pen-custom-color" value="#000000" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
+            
+            <span class="font-bold text-stone-500 ml-2">Stroke Width:</span>
+            <input type="range" id="pen-stroke-slider" min="1" max="18" value="3" class="w-20 accent-[#355E4B]" />
+            <span id="pen-stroke-val" class="font-bold text-stone-600 dark:text-stone-300">3px</span>
+          </div>
+
+          <!-- Highlighter Options -->
+          <div id="highlight-options" class="hidden flex items-center gap-3 flex-wrap">
+            <span class="font-bold text-stone-500">Highlighter Ink:</span>
+            <div class="flex items-center gap-1.5" id="highlight-swatches">
+              <button type="button" class="swatch-btn active" style="background:#FEF08A" data-color="#FEF08A" title="Neon Yellow"></button>
+              <button type="button" class="swatch-btn" style="background:#BBF7D0" data-color="#BBF7D0" title="Soft Green"></button>
+              <button type="button" class="swatch-btn" style="background:#BAE6FD" data-color="#BAE6FD" title="Cyan Blue"></button>
+              <button type="button" class="swatch-btn" style="background:#FBCFE8" data-color="#FBCFE8" title="Pink"></button>
+              <button type="button" class="swatch-btn" style="background:#FED7AA" data-color="#FED7AA" title="Pastel Orange"></button>
+            </div>
+            <input type="color" id="highlight-custom-color" value="#FEF08A" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
+
+            <span class="font-bold text-stone-500 ml-2">Thickness:</span>
+            <input type="range" id="highlight-stroke-slider" min="10" max="35" value="20" class="w-20 accent-[#355E4B]" />
+            <span id="highlight-stroke-val" class="font-bold text-stone-600 dark:text-stone-300">20px</span>
+          </div>
+
+          <!-- Whiteout Eraser Options -->
+          <div id="whiteout-options" class="hidden flex items-center gap-3 flex-wrap">
+            <span class="font-bold text-stone-500">Whiteout Size:</span>
+            <input type="range" id="eraser-size-slider" min="5" max="50" value="20" class="w-24 accent-[#355E4B]" />
+            <span id="eraser-size-val" class="font-bold text-stone-600 dark:text-stone-300">20px</span>
+          </div>
+
+          <!-- Add Text Controls -->
+          <div id="add-text-options" class="hidden flex items-center gap-3 flex-wrap">
+            <span class="font-bold text-stone-500">Font Size:</span>
+            <select id="add-text-size-select" class="px-2 py-1 rounded border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-xs font-bold">
+              <option value="12">12px</option>
+              <option value="14">14px</option>
+              <option value="16" selected>16px</option>
+              <option value="20">20px</option>
+              <option value="24">24px</option>
+              <option value="32">32px</option>
+              <option value="48">48px</option>
+            </select>
+
+            <span class="font-bold text-stone-500 ml-2">Text Color:</span>
+            <input type="color" id="add-text-color" value="#000000" class="w-6 h-6 rounded cursor-pointer border-0 bg-transparent" />
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Main Dual View Studio Container -->
+      <div class="w-full bg-stone-200/70 dark:bg-[#151D19] rounded-3xl p-3 sm:p-6 border border-stone-300 dark:border-stone-800 flex flex-col md:flex-row gap-5 items-start min-h-[650px] relative">
+        
+        <!-- LEFT SIDEBAR: Page Thumbnails Grid (Hidden on Mobile <768px) -->
+        <div id="desktop-sidebar" class="hidden md:block w-56 shrink-0 bg-white dark:bg-[#1C2420] rounded-2xl p-4 border border-stone-200 dark:border-stone-800 max-h-[650px] overflow-y-auto no-scrollbar space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-stone-100 dark:border-stone-800">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-stone-500">Pages</span>
+            <span id="page-count-badge" class="text-xs font-bold text-[#355E4B] dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">1 Page</span>
+          </div>
+
+          <div id="thumbnails-list" class="space-y-3">
+            <!-- Thumbnails rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- CENTER WORKSPACE: Interactive Active Page Canvas -->
+        <div class="flex-1 w-full flex flex-col items-center justify-center overflow-auto py-2 relative">
+          
+          <div id="canvas-wrapper" class="relative inline-block border border-stone-300 dark:border-stone-700 shadow-2xl rounded-lg overflow-hidden bg-white select-none">
+            <!-- Rendered PDF Canvas -->
+            <canvas id="pdf-render-canvas" class="block"></canvas>
+
+            <!-- PDF.js Interactive Text Layer -->
+            <div id="text-layer" class="textLayer"></div>
+
+            <!-- Drawing Overlay Canvas (Pen, Translucent Highlighter, Whiteout) -->
+            <canvas id="drawing-canvas" class="absolute inset-0 pointer-events-auto cursor-crosshair z-20"></canvas>
+
+            <!-- Floating New Text Boxes Container -->
+            <div id="added-text-container" class="absolute inset-0 pointer-events-none z-30"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MOBILE FLOATING PAGE PILL & BOTTOM ACTION DOCK (<768px) -->
+    <div id="mobile-controls-dock" class="md:hidden fixed bottom-4 left-0 right-0 z-50 px-4 flex flex-col gap-2 items-center pointer-events-none">
+      
+      <!-- Mobile Page Pill -->
+      <button 
+        type="button" 
+        id="mobile-page-pill" 
+        class="pointer-events-auto bg-stone-900/90 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg border border-stone-700 flex items-center gap-1.5 backdrop-blur-md"
+      >
+        <span id="mobile-page-num-text">Page 1 / 1</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+
+      <!-- Mobile Floating Bottom Action Dock -->
+      <div class="pointer-events-auto bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 rounded-full px-3 py-2 shadow-2xl flex items-center gap-2 backdrop-blur-md">
+        <button type="button" id="m-btn-edit-text" class="p-2.5 rounded-full bg-[#355E4B] text-white text-xs font-bold flex items-center justify-center">
+          ✏️
+        </button>
+        <button type="button" id="m-btn-pen" class="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-xs font-bold flex items-center justify-center">
+          🖊️
+        </button>
+        <button type="button" id="m-btn-highlight" class="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-xs font-bold flex items-center justify-center">
+          🖍️
+        </button>
+        <button type="button" id="m-btn-eraser" class="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-xs font-bold flex items-center justify-center">
+          🧹
+        </button>
+        <button type="button" id="m-btn-save" class="px-4 py-2.5 rounded-full bg-[#355E4B] text-white text-xs font-extrabold flex items-center justify-center">
+          💾 Save
+        </button>
+      </div>
+
+    </div>
+
+    <!-- WORKBENCH STATE 3: Success & Download Panel -->
+    <div id="success-panel" class="hidden w-full max-w-2xl bg-white dark:bg-[#1C2420] rounded-3xl p-8 sm:p-12 border border-emerald-300/80 dark:border-emerald-700/80 shadow-xl text-center space-y-6">
+      
+      <!-- Mascot celebration display -->
+      <div class="relative inline-block mx-auto mb-1">
+        <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+          <img 
+            src="../assets/images/mascot/tortoise-hero.png" 
+            alt="SlowPDF Mascot Editing Celebration" 
+            class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+            onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+          />
+        </div>
+        <span class="absolute -bottom-1 -right-1 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+          PDF Successfully Edited!
+        </span>
+      </div>
+
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+          Your PDF Edits are Ready!
+        </h3>
+        <p class="mt-2 text-stone-600 dark:text-stone-300 text-sm sm:text-base max-w-md mx-auto" id="success-description">
+          All inline text modifications, drawings, and annotations have been compiled directly in browser memory without ghosting.
+        </p>
+      </div>
+
+      <!-- Custom Editable Output Filename -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="success-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Save File As (Optional Custom Name):
+        </label>
+        <div class="relative flex items-center">
+          <input 
+            type="text" 
+            id="success-filename-input" 
+            value="SlowPDF_Edited_Document" 
+            class="w-full px-3.5 py-2.5 pr-16 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+            placeholder="SlowPDF_Edited_Document"
+          />
+          <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+            .pdf
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+        <a 
+          id="download-edited-btn" 
+          href="#" 
+          download="SlowPDF_Edited_Document.pdf"
+          class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Download Edited PDF</span>
+        </a>
+        <button 
+          type="button" 
+          id="reset-workbench-btn"
+          class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          Edit Another Document
+        </button>
+      </div>
+
+      <div class="pt-4 border-t border-stone-100 dark:border-stone-800 text-xs text-stone-400">
+        100% Client-Side Privacy: The compiled document was synthesized locally in RAM and will be cleared when you close this tab.
+      </div>
+    </div>
+
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto mt-8 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & INTERNAL LINKING     -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <!-- 1. H2 Overview -->
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          Free Online PDF Editor Studio — Edit Existing Text Directly in Your Browser
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          Finding a true <strong>free online PDF editor</strong> that allows you to click directly on pre-existing text inside a Portable Document Format (PDF) file and modify words in place without double-text ghosting is notoriously difficult. Most basic online tools only offer primitive whiteout rectangles or float crude text boxes over unmasked background text.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          <strong>SlowPDF PDF Editor Studio</strong> solves this issue completely with its zero-ghosting, pixel-masking rendering pipeline, vector stroke object stack, and step-by-step Undo/Redo engine. Utilizing <strong>PDF.js</strong> text matrix parsing and <strong>pdf-lib</strong> vector compilation, our engine masks original canvas background pixels before mounting interactive <code>contenteditable</code> elements. You can click any word, backspace typos, or insert new sentences while matching baseline alignment, font metrics, and line heights.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          Whether you are revising legal contracts, correcting errors on application forms, adding signatures, or highlighting study notes, SlowPDF delivers a complete desktop-grade editing studio without sending confidential records to remote cloud servers.
+        </p>
+      </div>
+
+      <!-- 2. H3 3-Step Guide -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-6">
+          How to Edit PDF Text Online in 3 Simple Steps
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">1</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Upload Document</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Drag and drop any multi-page PDF into the secure upload dropzone or select it from your local storage.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 1: Upload</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">2</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Click Text to Type</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Click directly on existing text words to edit in place. Use the Pen, Multiply Highlighter, Smart Stroke Eraser, or Shape tools to annotate freely.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 2: Edit</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">3</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Download Clean PDF</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Click "Apply &amp; Save Edits". Our client-side compilation engine outputs a crisp, clean PDF with zero double-text.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 3: Save</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. H3 Why SlowPDF is Best Alternative -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Why SlowPDF is the Best Private PDF Editor
+        </h3>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          Unlike online tools like Smallpdf or iLovePDF that upload sensitive business agreements and financial statements to remote servers, SlowPDF operates strictly on a <strong>100% In-Browser Private Architecture</strong>.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              100% Zero-Server Privacy
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              All text parsing, canvas rendering, and PDF compilation take place inside volatile browser RAM. Zero files or logs touch remote servers.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Zero Waiting Queues
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Eliminate upload and download wait times for heavy files. Edits render instantly using your computer or mobile CPU/GPU.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+              No Subscriptions or Paywalls
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Enjoy unlimited page editing with zero forced registration, credit card requirements, or watermark logos.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              100% Offline Capability
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Once cached in your browser, you can disconnect Wi-Fi and continue editing documents entirely offline.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. H3 Complete PDF Management Suite (Internal SEO Links) -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Complete PDF Management Suite
+        </h3>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-3">
+          Once you have completed editing your document, streamline your document workflow with our suite of zero-server companion utilities:
+        </p>
+        <ul class="space-y-2.5 text-sm sm:text-base text-stone-600 dark:text-stone-300">
+          <li class="flex items-start gap-2.5">
+            <span class="text-[#355E4B] dark:text-emerald-400 font-bold">▸</span>
+            <div>
+              If your newly edited PDF exceeds file size limits, reduce its size in seconds with our <a href="compress-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Compress PDF</a> tool.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-[#355E4B] dark:text-emerald-400 font-bold">▸</span>
+            <div>
+              Secure your freshly modified documents with password protection using our <a href="protect-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Protect PDF</a> tool.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-[#355E4B] dark:text-emerald-400 font-bold">▸</span>
+            <div>
+              Extract specific page ranges using <a href="split-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Split PDF</a> or combine multiple files together with <a href="merge-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Merge PDFs</a>.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: PDF Editor Studio
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Everything you need to know about editing PDF text, vector drawing, and privacy.
+      </p>
+    </div>
+
+    <div class="space-y-3.5" id="faq-accordion">
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. Can I edit existing text without erasing the background?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Yes! SlowPDF uses pixel-accurate background masking to prevent double-text ghosting, allowing you to edit words directly in place.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. Does SlowPDF save or read my private files?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. All text editing, drawing, and PDF compilation take place 100% inside your browser's local RAM using WebAssembly. No data is ever transmitted to remote servers.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. How do I change font sizes and colors?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Click on any text block to activate font size +/- controls, font style selectors, and color pickers in the editing toolbar.
+        </div>
+      </div>
+
+      <div id="extra-faqs" class="hidden space-y-3.5">
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. Will the edited PDF open cleanly in Adobe Acrobat and Google Chrome?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, SlowPDF compiles genuine, standard PDF structures using pdf-lib that open flawlessly in Adobe Acrobat, Google Chrome, Apple Preview, and mobile PDF viewers.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. Can I use this PDF editor completely offline?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes! Once loaded in browser cache, you can disconnect Wi-Fi and continue editing, annotating, and saving PDF documents offline.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. How does the mobile editor work with touch gestures?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Our responsive mobile view automatically hides sidebars, provides a floating bottom action dock, and supports two-finger pinch-to-zoom and panning.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. What is the difference between Smart Stroke Eraser and Document Whiteout?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Smart Stroke Eraser deletes user-drawn pen strokes, shapes, and highlighter marks cleanly upon tap. Document Whiteout paints an opaque white layer to blank out original PDF content.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Are there any page or file size limits?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            There are no cloud limits or paywalls. You can edit multi-page PDFs of any size bound only by your device's available memory.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. Can I add signatures and handwritten notes?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes! Use the Freehand Pen tool with customizable stroke colors and line weights to sketch signatures, freehand notes, and diagrams.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. What happens to my original formatting and images?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Original vector graphics, embedded high-resolution images, font structures, and page dimensions are fully preserved during compilation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 6. MASTER FOOTER                                                   -->
+  <!-- =================================================================== -->
+  <footer class="mt-auto bg-[#FFFBF2] dark:bg-[#0E1310] border-t border-stone-200/80 dark:border-stone-800 transition-colors duration-300 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <a href="../index.html" class="flex items-center gap-3 group">
+            <img 
+              src="../assets/images/logo.png" 
+              alt="SlowPDF Brand Logo" 
+              class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform"
+              onerror="this.src='../public/assets/images/logo.png'"
+            />
+            <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#F1F5F2]">
+              Slow<span class="text-[#355E4B] dark:text-emerald-400">PDF</span>
+            </span>
+          </a>
+          <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+            Calm, private, zero-server PDF tools built for students, professionals, and privacy-conscious users.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-extrabold text-xs uppercase tracking-wider text-[#2D3748] dark:text-stone-200 mb-4">Core Tools</h4>
+          <ul class="space-y-2.5 text-xs text-stone-600 dark:text-stone-400 font-medium">
+            <li><a href="edit-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Edit PDF</a></li>
+            <li><a href="pdf-to-word.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+            <li><a href="pdf-to-excel.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">PDF to Excel</a></li>
+            <li><a href="pdf-to-jpg.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+            <li><a href="ocr-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-extrabold text-xs uppercase tracking-wider text-[#2D3748] dark:text-stone-200 mb-4">Page Utilities</h4>
+          <ul class="space-y-2.5 text-xs text-stone-600 dark:text-stone-400 font-medium">
+            <li><a href="merge-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+            <li><a href="split-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+            <li><a href="compress-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+            <li><a href="protect-pdf.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-extrabold text-xs uppercase tracking-wider text-[#2D3748] dark:text-stone-200 mb-4">Company</h4>
+          <ul class="space-y-2.5 text-xs text-stone-600 dark:text-stone-400 font-medium">
+            <li><a href="../pages/about.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="../pages/blog.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Blog &amp; Guides</a></li>
+            <li><a href="../pages/privacy.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="../pages/contact.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400 transition-colors">Contact Support</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-stone-400">
+        <p>© 2026 SlowPDF. All document processing is computed in local browser memory.</p>
+        <div class="flex items-center gap-4">
+          <a href="../pages/privacy.html" class="hover:underline">Privacy</a>
+          <a href="../pages/terms.html" class="hover:underline">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================================================================== -->
+  <!-- 7. ENGINE JAVASCRIPT LOGIC (VECTOR STROKES & UNDO/REDO STACK)      -->
+  <!-- =================================================================== -->
+  <script>
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    // State Variables
+    let originalPdfBuffer = null;
+    let pdfDoc = null;
+    let originalFileName = 'Document';
+    let totalPages = 0;
+    let currentPage = 1;
+    let zoomScale = 1.5;
+    let activeTool = 'edit-text'; // 'edit-text', 'add-text', 'pen', 'highlight', 'stroke-eraser', 'whiteout'
+    
+    let isDrawing = false;
+    let currentStrokePoints = [];
+
+    // Active Tool Properties
+    let penColor = '#000000';
+    let penThickness = 3;
+
+    let highlightColor = '#FEF08A';
+    let highlightWidth = 20;
+
+    let eraserSize = 20;
+
+    let addTextFontSize = 16;
+    let addTextColor = '#000000';
+
+    // Per-page Edit Records with Undo/Redo Stacks
+    // pageEdits[pageNum] = { maskedRects: [], editedSpans: {}, addedTexts: [], strokes: [], undoStack: [], redoStack: [] }
+    const pageEdits = {};
+
+    // DOM Elements
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const pdfFileInput = document.getElementById('pdf-file-input');
+    const editorWorkbench = document.getElementById('editor-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const pageCountBadge = document.getElementById('page-count-badge');
+    const thumbnailsList = document.getElementById('thumbnails-list');
+
+    const pdfRenderCanvas = document.getElementById('pdf-render-canvas');
+    const renderCtx = pdfRenderCanvas.getContext('2d');
+    const textLayerDiv = document.getElementById('text-layer');
+    const drawingCanvas = document.getElementById('drawing-canvas');
+    const drawCtx = drawingCanvas.getContext('2d');
+    const addedTextContainer = document.getElementById('added-text-container');
+    const canvasWrapper = document.getElementById('canvas-wrapper');
+
+    // Controls
+    const btnUndo = document.getElementById('btn-undo');
+    const btnRedo = document.getElementById('btn-redo');
+    const btnZoomIn = document.getElementById('btn-zoom-in');
+    const btnZoomOut = document.getElementById('btn-zoom-out');
+    const btnZoomFit = document.getElementById('btn-zoom-fit');
+    const zoomLevelText = document.getElementById('zoom-level-text');
+
+    const toolEditTextBtn = document.getElementById('tool-edit-text');
+    const toolAddTextBtn = document.getElementById('tool-add-text');
+    const toolPenBtn = document.getElementById('tool-pen');
+    const toolHighlightBtn = document.getElementById('tool-highlight');
+    const toolStrokeEraserBtn = document.getElementById('tool-stroke-eraser');
+    const toolWhiteoutBtn = document.getElementById('tool-whiteout');
+
+    const savePdfBtn = document.getElementById('save-pdf-btn');
+    const downloadEditedBtn = document.getElementById('download-edited-btn');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+    const successFilenameInput = document.getElementById('success-filename-input');
+
+    const mobilePageNumText = document.getElementById('mobile-page-num-text');
+
+    // Option Bars
+    const penOptions = document.getElementById('pen-options');
+    const highlightOptions = document.getElementById('highlight-options');
+    const whiteoutOptions = document.getElementById('whiteout-options');
+    const addTextOptions = document.getElementById('add-text-options');
+
+    // Pen Controls
+    const penStrokeSlider = document.getElementById('pen-stroke-slider');
+    const penStrokeVal = document.getElementById('pen-stroke-val');
+    const penCustomColor = document.getElementById('pen-custom-color');
+
+    // Highlighter Controls
+    const highlightStrokeSlider = document.getElementById('highlight-stroke-slider');
+    const highlightStrokeVal = document.getElementById('highlight-stroke-val');
+    const highlightCustomColor = document.getElementById('highlight-custom-color');
+
+    // Whiteout Eraser Controls
+    const eraserSizeSlider = document.getElementById('eraser-size-slider');
+    const eraserSizeVal = document.getElementById('eraser-size-val');
+
+    // Add Text Controls
+    const addTextSizeSelect = document.getElementById('add-text-size-select');
+    const addTextColorInput = document.getElementById('add-text-color');
+
+    // Helper: Hex Color to RGBA
+    function hexToRgba(hex, alpha = 0.38) {
+      let c = hex.replace('#', '');
+      if (c.length === 3) c = c.split('').map(x => x + x).join('');
+      const num = parseInt(c, 16);
+      return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}, ${alpha})`;
+    }
+
+    // Save Action Snapshot to Undo Stack
+    function pushActionState(pageNum) {
+      const p = pageEdits[pageNum];
+      if (!p) return;
+
+      const snapshot = {
+        strokes: JSON.parse(JSON.stringify(p.strokes)),
+        addedTexts: JSON.parse(JSON.stringify(p.addedTexts)),
+        maskedRects: JSON.parse(JSON.stringify(p.maskedRects))
+      };
+
+      p.undoStack.push(snapshot);
+      p.redoStack = []; // Clear redo stack on new action
+      updateHistoryButtons();
+    }
+
+    function updateHistoryButtons() {
+      const p = pageEdits[currentPage];
+      if (!p) {
+        btnUndo.disabled = true;
+        btnRedo.disabled = true;
+        return;
+      }
+      btnUndo.disabled = (p.undoStack.length === 0);
+      btnRedo.disabled = (p.redoStack.length === 0);
+    }
+
+    function handleUndo() {
+      const p = pageEdits[currentPage];
+      if (!p || p.undoStack.length === 0) return;
+
+      // Push current state to redoStack
+      const currentState = {
+        strokes: JSON.parse(JSON.stringify(p.strokes)),
+        addedTexts: JSON.parse(JSON.stringify(p.addedTexts)),
+        maskedRects: JSON.parse(JSON.stringify(p.maskedRects))
+      };
+      p.redoStack.push(currentState);
+
+      // Pop previous state
+      const prev = p.undoStack.pop();
+      p.strokes = prev.strokes;
+      p.addedTexts = prev.addedTexts;
+      p.maskedRects = prev.maskedRects;
+
+      redrawOverlayCanvas(currentPage);
+      renderAddedTextBoxes(currentPage);
+      updateHistoryButtons();
+    }
+
+    function handleRedo() {
+      const p = pageEdits[currentPage];
+      if (!p || p.redoStack.length === 0) return;
+
+      const currentState = {
+        strokes: JSON.parse(JSON.stringify(p.strokes)),
+        addedTexts: JSON.parse(JSON.stringify(p.addedTexts)),
+        maskedRects: JSON.parse(JSON.stringify(p.maskedRects))
+      };
+      p.undoStack.push(currentState);
+
+      const next = p.redoStack.pop();
+      p.strokes = next.strokes;
+      p.addedTexts = next.addedTexts;
+      p.maskedRects = next.maskedRects;
+
+      redrawOverlayCanvas(currentPage);
+      renderAddedTextBoxes(currentPage);
+      updateHistoryButtons();
+    }
+
+    btnUndo.addEventListener('click', handleUndo);
+    btnRedo.addEventListener('click', handleRedo);
+
+    // Global Keyboard Shortcuts (Ctrl+Z, Ctrl+Y, Ctrl+Shift+Z)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+        if (e.shiftKey) {
+          e.preventDefault();
+          handleRedo();
+        } else {
+          e.preventDefault();
+          handleUndo();
+        }
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        handleRedo();
+      }
+    });
+
+    // Upload Handlers
+    emptyDropzone.addEventListener('dragover', (e) => { e.preventDefault(); emptyDropzone.classList.add('border-[#355E4B]'); });
+    emptyDropzone.addEventListener('dragleave', () => { emptyDropzone.classList.remove('border-[#355E4B]'); });
+    emptyDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      emptyDropzone.classList.remove('border-[#355E4B]');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) processPdfFile(e.dataTransfer.files[0]);
+    });
+
+    pdfFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) processPdfFile(e.target.files[0]);
+    });
+
+    async function processPdfFile(file) {
+      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a valid PDF document.');
+        return;
+      }
+
+      originalFileName = file.name.replace(/\.pdf$/i, '');
+      const arrayBuffer = await file.arrayBuffer();
+      originalPdfBuffer = arrayBuffer.slice(0);
+
+      try {
+        pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        totalPages = pdfDoc.numPages;
+        pageCountBadge.textContent = `${totalPages} Page${totalPages > 1 ? 's' : ''}`;
+        mobilePageNumText.textContent = `Page 1 / ${totalPages}`;
+
+        // Initialize Per-Page Records
+        for (let i = 1; i <= totalPages; i++) {
+          pageEdits[i] = {
+            maskedRects: [],
+            editedSpans: {},
+            addedTexts: [],
+            strokes: [],
+            undoStack: [],
+            redoStack: []
+          };
+        }
+
+        emptyDropzone.classList.add('hidden');
+        editorWorkbench.classList.remove('hidden');
+
+        await renderThumbnails();
+        await loadPage(1);
+      } catch (err) {
+        console.error('Failed to load PDF file:', err);
+        alert('Could not parse PDF file.');
+      }
+    }
+
+    // Render Sidebar Page Thumbnails
+    async function renderThumbnails() {
+      thumbnailsList.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const page = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: 0.2 });
+
+        const thumbBox = document.createElement('div');
+        thumbBox.className = `thumb-item p-2 rounded-xl border cursor-pointer transition-all flex flex-col items-center gap-1.5 ${i === currentPage ? 'border-[#355E4B] bg-emerald-50/60 dark:bg-emerald-950/40' : 'border-stone-200 dark:border-stone-700 hover:border-[#355E4B]'}`;
+        thumbBox.dataset.page = i;
+
+        const thumbCanvas = document.createElement('canvas');
+        thumbCanvas.width = viewport.width;
+        thumbCanvas.height = viewport.height;
+        thumbCanvas.className = 'rounded shadow-2xs block bg-white';
+        const tCtx = thumbCanvas.getContext('2d');
+
+        await page.render({ canvasContext: tCtx, viewport: viewport }).promise;
+
+        const label = document.createElement('span');
+        label.className = 'text-[11px] font-bold text-stone-600 dark:text-stone-300';
+        label.textContent = `Page ${i}`;
+
+        thumbBox.appendChild(thumbCanvas);
+        thumbBox.appendChild(label);
+
+        thumbBox.addEventListener('click', async () => {
+          document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('border-[#355E4B]', 'bg-emerald-50/60', 'dark:bg-emerald-950/40'));
+          thumbBox.classList.add('border-[#355E4B]', 'bg-emerald-50/60', 'dark:bg-emerald-950/40');
+          await loadPage(i);
+        });
+
+        thumbnailsList.appendChild(thumbBox);
+      }
+    }
+
+    // Load & Render Active Page
+    async function loadPage(pageNum) {
+      currentPage = pageNum;
+      mobilePageNumText.textContent = `Page ${pageNum} / ${totalPages}`;
+      updateHistoryButtons();
+
+      const page = await pdfDoc.getPage(pageNum);
+      const viewport = page.getViewport({ scale: zoomScale });
+
+      pdfRenderCanvas.width = viewport.width;
+      pdfRenderCanvas.height = viewport.height;
+      
+      drawingCanvas.width = viewport.width;
+      drawingCanvas.height = viewport.height;
+
+      canvasWrapper.style.width = `${viewport.width}px`;
+      canvasWrapper.style.height = `${viewport.height}px`;
+
+      // 1. Render Underlying PDF Canvas
+      await page.render({ canvasContext: renderCtx, viewport: viewport }).promise;
+
+      // 2. Re-apply White Masking Rectangles over edited text areas
+      if (pageEdits[pageNum] && pageEdits[pageNum].maskedRects) {
+        pageEdits[pageNum].maskedRects.forEach(rect => {
+          renderCtx.fillStyle = '#FFFFFF';
+          renderCtx.fillRect(rect.x - 2, rect.y - 2, rect.w + 4, rect.h + 4);
+        });
+      }
+
+      // 3. Render Drawing Overlay Vector Strokes
+      redrawOverlayCanvas(pageNum);
+
+      // 4. Render Interactive Text Layer (100% Invisible on load to fix double-text ghosting)
+      textLayerDiv.innerHTML = '';
+      textLayerDiv.style.width = `${viewport.width}px`;
+      textLayerDiv.style.height = `${viewport.height}px`;
+
+      const textContent = await page.getTextContent();
+      const textItems = textContent.items;
+
+      textItems.forEach((item, index) => {
+        if (!item.str || !item.str.trim()) return;
+
+        const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
+        const fontSize = Math.sqrt(tx[0] * tx[0] + tx[1] * tx[1]);
+
+        const span = document.createElement('span');
+        const spanId = `span_${pageNum}_${index}`;
+        span.dataset.spanId = spanId;
+        span.contentEditable = (activeTool === 'edit-text') ? 'true' : 'false';
+
+        // Spatial Positioning
+        const x = tx[4];
+        const y = tx[5] - fontSize;
+        const width = (item.width * zoomScale) || (item.str.length * fontSize * 0.6);
+        const height = fontSize * 1.2;
+
+        span.style.left = `${x}px`;
+        span.style.top = `${y}px`;
+        span.style.fontSize = `${fontSize}px`;
+        span.style.fontFamily = 'Helvetica, Arial, sans-serif';
+
+        const existingEdit = pageEdits[pageNum].editedSpans[spanId];
+        if (existingEdit) {
+          span.textContent = existingEdit.newText;
+          span.classList.add('active-editing');
+        } else {
+          span.textContent = item.str;
+        }
+
+        span.dataset.origText = item.str;
+        span.dataset.x = x;
+        span.dataset.y = y;
+        span.dataset.w = width;
+        span.dataset.h = height;
+        span.dataset.fontSize = fontSize;
+
+        // WHEN USER CLICKS/FOCUSES TEXT: Mask underlying canvas and bring span to full visibility!
+        span.addEventListener('focus', () => {
+          if (!span.dataset.masked) {
+            pushActionState(pageNum);
+            span.dataset.masked = 'true';
+            span.classList.add('active-editing');
+
+            // Paint opaque white background rectangle over original canvas position
+            renderCtx.fillStyle = '#FFFFFF';
+            renderCtx.fillRect(x - 2, y - 2, width + 4, height + 4);
+
+            pageEdits[pageNum].maskedRects.push({ x, y, w: width, h: height });
+          }
+        });
+
+        span.addEventListener('input', () => {
+          pageEdits[pageNum].editedSpans[spanId] = {
+            newText: span.textContent,
+            x: parseFloat(span.dataset.x),
+            y: parseFloat(span.dataset.y),
+            w: parseFloat(span.dataset.w),
+            h: parseFloat(span.dataset.h),
+            fontSize: parseFloat(span.dataset.fontSize),
+            viewportWidth: viewport.width,
+            viewportHeight: viewport.height
+          };
+        });
+
+        textLayerDiv.appendChild(span);
+      });
+
+      // 5. Restore Added Floating Text Boxes
+      renderAddedTextBoxes(pageNum);
+    }
+
+    // Redraw Overlay Canvas from Vector Strokes Array
+    function redrawOverlayCanvas(pageNum) {
+      drawCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+      const p = pageEdits[pageNum];
+      if (!p || !p.strokes) return;
+
+      p.strokes.forEach(stroke => {
+        if (!stroke.points || stroke.points.length === 0) return;
+
+        if (stroke.type === 'pen') {
+          drawCtx.globalCompositeOperation = 'source-over';
+          drawCtx.strokeStyle = stroke.color;
+          drawCtx.lineWidth = stroke.width;
+          drawCtx.lineCap = 'round';
+          drawCtx.lineJoin = 'round';
+
+          drawCtx.beginPath();
+          drawCtx.moveTo(stroke.points[0].x, stroke.points[0].y);
+          for (let i = 1; i < stroke.points.length; i++) {
+            drawCtx.lineTo(stroke.points[i].x, stroke.points[i].y);
+          }
+          drawCtx.stroke();
+
+        } else if (stroke.type === 'highlight') {
+          // True Translucent Multiply Mode Highlighter
+          drawCtx.globalCompositeOperation = 'multiply';
+          drawCtx.strokeStyle = hexToRgba(stroke.color, 0.38);
+          drawCtx.lineWidth = stroke.width;
+          drawCtx.lineCap = 'square';
+
+          drawCtx.beginPath();
+          drawCtx.moveTo(stroke.points[0].x, stroke.points[0].y);
+          for (let i = 1; i < stroke.points.length; i++) {
+            drawCtx.lineTo(stroke.points[i].x, stroke.points[i].y);
+          }
+          drawCtx.stroke();
+
+        } else if (stroke.type === 'whiteout') {
+          // Document Whiteout
+          drawCtx.globalCompositeOperation = 'source-over';
+          drawCtx.fillStyle = '#FFFFFF';
+          stroke.points.forEach(pt => {
+            drawCtx.fillRect(pt.x - (stroke.width / 2), pt.y - (stroke.width / 2), stroke.width, stroke.width);
+          });
+        }
+      });
+
+      drawCtx.globalCompositeOperation = 'source-over';
+    }
+
+    // Render Floating Added Text Boxes
+    function renderAddedTextBoxes(pageNum) {
+      addedTextContainer.innerHTML = '';
+      const p = pageEdits[pageNum];
+      if (!p || !p.addedTexts) return;
+
+      p.addedTexts.forEach(data => {
+        createFloatingTextBox(data.id, data.x, data.y, data.text, data.fontSize, data.color);
+      });
+    }
+
+    function createFloatingTextBox(id, x, y, text = 'Click to edit', fontSize = addTextFontSize, color = addTextColor) {
+      const box = document.createElement('div');
+      box.className = 'added-text-box';
+      box.contentEditable = 'true';
+      box.style.left = `${x}px`;
+      box.style.top = `${y}px`;
+      box.style.fontSize = `${fontSize}px`;
+      box.style.color = color;
+      box.dataset.id = id || `text_${Date.now()}_${Math.random()}`;
+
+      // Insert Delete Badge
+      const delBtn = document.createElement('div');
+      delBtn.className = 'delete-btn';
+      delBtn.textContent = '×';
+      delBtn.contentEditable = 'false';
+      delBtn.title = 'Delete Text Box';
+      delBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        pushActionState(currentPage);
+        box.remove();
+        saveAddedTextData();
+      });
+
+      box.appendChild(delBtn);
+
+      // Add text content node
+      const textNode = document.createTextNode(text);
+      box.insertBefore(textNode, delBtn);
+
+      addedTextContainer.appendChild(box);
+      box.focus();
+
+      box.addEventListener('blur', () => saveAddedTextData());
+    }
+
+    function saveAddedTextData() {
+      if (!pageEdits[currentPage]) return;
+      pageEdits[currentPage].addedTexts = [];
+      const boxes = addedTextContainer.querySelectorAll('.added-text-box');
+      boxes.forEach(b => {
+        const textContent = Array.from(b.childNodes)
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+          .map(node => node.textContent)
+          .join('')
+          .trim();
+
+        if (textContent) {
+          pageEdits[currentPage].addedTexts.push({
+            id: b.dataset.id,
+            x: parseFloat(b.style.left),
+            y: parseFloat(b.style.top),
+            text: textContent,
+            fontSize: parseFloat(b.style.fontSize) || 16,
+            color: b.style.color || '#000000'
+          });
+        }
+      });
+      updateHistoryButtons();
+    }
+
+    // Tool Option Bar Visibility Toggle
+    function updateOptionBarVisibility() {
+      penOptions.classList.add('hidden');
+      highlightOptions.classList.add('hidden');
+      whiteoutOptions.classList.add('hidden');
+      addTextOptions.classList.add('hidden');
+
+      if (activeTool === 'pen') penOptions.classList.remove('hidden');
+      else if (activeTool === 'highlight') highlightOptions.classList.remove('hidden');
+      else if (activeTool === 'whiteout') whiteoutOptions.classList.remove('hidden');
+      else if (activeTool === 'add-text') addTextOptions.classList.remove('hidden');
+    }
+
+    // Tool Switching Logic
+    const modeBtns = [toolEditTextBtn, toolAddTextBtn, toolPenBtn, toolHighlightBtn, toolStrokeEraserBtn, toolWhiteoutBtn];
+    function setToolMode(toolName, activeBtn) {
+      activeTool = toolName;
+      modeBtns.forEach(btn => {
+        if (btn) {
+          btn.classList.remove('active', 'bg-[#355E4B]', 'text-white');
+          btn.classList.add('bg-stone-100', 'dark:bg-stone-800', 'text-stone-700', 'dark:text-stone-300');
+        }
+      });
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-stone-100', 'dark:bg-stone-800', 'text-stone-700', 'dark:text-stone-300');
+        activeBtn.classList.add('active', 'bg-[#355E4B]', 'text-white');
+      }
+
+      updateOptionBarVisibility();
+
+      const spans = textLayerDiv.querySelectorAll('span');
+      spans.forEach(s => { s.contentEditable = (activeTool === 'edit-text') ? 'true' : 'false'; });
+
+      if (activeTool === 'edit-text') {
+        drawingCanvas.style.pointerEvents = 'none';
+        addedTextContainer.style.pointerEvents = 'none';
+      } else if (activeTool === 'add-text') {
+        drawingCanvas.style.pointerEvents = 'none';
+        addedTextContainer.style.pointerEvents = 'auto';
+      } else {
+        drawingCanvas.style.pointerEvents = 'auto';
+        addedTextContainer.style.pointerEvents = 'none';
+      }
+    }
+
+    toolEditTextBtn.addEventListener('click', () => setToolMode('edit-text', toolEditTextBtn));
+    toolAddTextBtn.addEventListener('click', () => setToolMode('add-text', toolAddTextBtn));
+    toolPenBtn.addEventListener('click', () => setToolMode('pen', toolPenBtn));
+    toolHighlightBtn.addEventListener('click', () => setToolMode('highlight', toolHighlightBtn));
+    toolStrokeEraserBtn.addEventListener('click', () => setToolMode('stroke-eraser', toolStrokeEraserBtn));
+    toolWhiteoutBtn.addEventListener('click', () => setToolMode('whiteout', toolWhiteoutBtn));
+
+    // Mobile Dock Triggers
+    document.getElementById('m-btn-edit-text').addEventListener('click', () => setToolMode('edit-text', toolEditTextBtn));
+    document.getElementById('m-btn-pen').addEventListener('click', () => setToolMode('pen', toolPenBtn));
+    document.getElementById('m-btn-highlight').addEventListener('click', () => setToolMode('highlight', toolHighlightBtn));
+    document.getElementById('m-btn-eraser').addEventListener('click', () => setToolMode('stroke-eraser', toolStrokeEraserBtn));
+    document.getElementById('m-btn-save').addEventListener('click', () => savePdfBtn.click());
+
+    // Swatches & Control Listeners
+    document.querySelectorAll('#pen-swatches .swatch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#pen-swatches .swatch-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        penColor = btn.dataset.color;
+        penCustomColor.value = penColor;
+      });
+    });
+    penCustomColor.addEventListener('input', (e) => { penColor = e.target.value; });
+    penStrokeSlider.addEventListener('input', (e) => {
+      penThickness = parseInt(e.target.value, 10);
+      penStrokeVal.textContent = `${penThickness}px`;
+    });
+
+    // Highlighter Controls
+    document.querySelectorAll('#highlight-swatches .swatch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#highlight-swatches .swatch-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        highlightColor = btn.dataset.color;
+        highlightCustomColor.value = highlightColor;
+      });
+    });
+    highlightCustomColor.addEventListener('input', (e) => { highlightColor = e.target.value; });
+    highlightStrokeSlider.addEventListener('input', (e) => {
+      highlightWidth = parseInt(e.target.value, 10);
+      highlightStrokeVal.textContent = `${highlightWidth}px`;
+    });
+
+    // Whiteout Eraser Controls
+    eraserSizeSlider.addEventListener('input', (e) => {
+      eraserSize = parseInt(e.target.value, 10);
+      eraserSizeVal.textContent = `${eraserSize}px`;
+    });
+
+    // Add Text Controls
+    addTextSizeSelect.addEventListener('change', (e) => { addTextFontSize = parseInt(e.target.value, 10); });
+    addTextColorInput.addEventListener('input', (e) => { addTextColor = e.target.value; });
+
+    // Add New Text Box on Canvas Click
+    canvasWrapper.addEventListener('click', (e) => {
+      if (activeTool === 'add-text') {
+        pushActionState(currentPage);
+        const rect = canvasWrapper.getBoundingClientRect();
+        createFloatingTextBox(null, e.clientX - rect.left, e.clientY - rect.top);
+        saveAddedTextData();
+      }
+    });
+
+    // Drawing Canvas Vector Stroke Mouse Listeners
+    drawingCanvas.addEventListener('mousedown', (e) => {
+      if (activeTool === 'edit-text' || activeTool === 'add-text') return;
+      const rect = drawingCanvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      // Smart Stroke Eraser Mode: Delete entire clicked vector stroke path
+      if (activeTool === 'stroke-eraser') {
+        const p = pageEdits[currentPage];
+        if (!p || !p.strokes || p.strokes.length === 0) return;
+
+        let strokeIndexToDelete = -1;
+        for (let i = p.strokes.length - 1; i >= 0; i--) {
+          const s = p.strokes[i];
+          const threshold = (s.width / 2) + 12;
+          for (let pt of s.points) {
+            const dist = Math.hypot(pt.x - clickX, pt.y - clickY);
+            if (dist <= threshold) {
+              strokeIndexToDelete = i;
+              break;
+            }
+          }
+          if (strokeIndexToDelete !== -1) break;
+        }
+
+        if (strokeIndexToDelete !== -1) {
+          pushActionState(currentPage);
+          p.strokes.splice(strokeIndexToDelete, 1);
+          redrawOverlayCanvas(currentPage);
+        }
+        return;
+      }
+
+      // Drawing Mode
+      isDrawing = true;
+      currentStrokePoints = [{ x: clickX, y: clickY }];
+    });
+
+    drawingCanvas.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const rect = drawingCanvas.getBoundingClientRect();
+      const ptX = e.clientX - rect.left;
+      const ptY = e.clientY - rect.top;
+
+      currentStrokePoints.push({ x: ptX, y: ptY });
+
+      // Live drawing feedback
+      if (activeTool === 'pen') {
+        drawCtx.globalCompositeOperation = 'source-over';
+        drawCtx.strokeStyle = penColor;
+        drawCtx.lineWidth = penThickness;
+        drawCtx.lineCap = 'round';
+        drawCtx.lineJoin = 'round';
+
+        drawCtx.beginPath();
+        const pts = currentStrokePoints;
+        if (pts.length > 1) {
+          drawCtx.moveTo(pts[pts.length - 2].x, pts[pts.length - 2].y);
+          drawCtx.lineTo(ptX, ptY);
+          drawCtx.stroke();
+        }
+
+      } else if (activeTool === 'highlight') {
+        drawCtx.globalCompositeOperation = 'multiply';
+        drawCtx.strokeStyle = hexToRgba(highlightColor, 0.38);
+        drawCtx.lineWidth = highlightWidth;
+        drawCtx.lineCap = 'square';
+
+        drawCtx.beginPath();
+        const pts = currentStrokePoints;
+        if (pts.length > 1) {
+          drawCtx.moveTo(pts[pts.length - 2].x, pts[pts.length - 2].y);
+          drawCtx.lineTo(ptX, ptY);
+          drawCtx.stroke();
+        }
+
+      } else if (activeTool === 'whiteout') {
+        drawCtx.globalCompositeOperation = 'source-over';
+        drawCtx.fillStyle = '#FFFFFF';
+        drawCtx.fillRect(ptX - (eraserSize / 2), ptY - (eraserSize / 2), eraserSize, eraserSize);
+      }
+    });
+
+    drawingCanvas.addEventListener('mouseup', () => {
+      if (!isDrawing) return;
+      isDrawing = false;
+
+      if (currentStrokePoints.length > 0) {
+        pushActionState(currentPage);
+
+        let strokeType = 'pen';
+        let color = penColor;
+        let width = penThickness;
+
+        if (activeTool === 'highlight') {
+          strokeType = 'highlight';
+          color = highlightColor;
+          width = highlightWidth;
+        } else if (activeTool === 'whiteout') {
+          strokeType = 'whiteout';
+          color = '#FFFFFF';
+          width = eraserSize;
+        }
+
+        pageEdits[currentPage].strokes.push({
+          id: `stroke_${Date.now()}`,
+          type: strokeType,
+          points: currentStrokePoints,
+          color: color,
+          width: width
+        });
+
+        currentStrokePoints = [];
+        redrawOverlayCanvas(currentPage);
+      }
+    });
+
+    // Zoom Controls
+    btnZoomIn.addEventListener('click', async () => {
+      zoomScale = Math.min(3.0, zoomScale + 0.25);
+      zoomLevelText.textContent = `${Math.round(zoomScale * 100)}%`;
+      await loadPage(currentPage);
+    });
+
+    btnZoomOut.addEventListener('click', async () => {
+      zoomScale = Math.max(0.5, zoomScale - 0.25);
+      zoomLevelText.textContent = `${Math.round(zoomScale * 100)}%`;
+      await loadPage(currentPage);
+    });
+
+    btnZoomFit.addEventListener('click', async () => {
+      zoomScale = 1.25;
+      zoomLevelText.textContent = '125%';
+      await loadPage(currentPage);
+    });
+
+    // Save & Compile PDF via pdf-lib (Pure RAM Execution)
+    savePdfBtn.addEventListener('click', async () => {
+      if (!originalPdfBuffer) return;
+      saveAddedTextData();
+
+      savePdfBtn.disabled = true;
+      savePdfBtn.textContent = 'Compiling PDF...';
+
+      try {
+        const { PDFDocument, rgb, StandardFonts } = PDFLib;
+        const pdfLibDoc = await PDFDocument.load(originalPdfBuffer);
+        const helveticaFont = await pdfLibDoc.embedFont(StandardFonts.Helvetica);
+
+        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+          const pdfLibPage = pdfLibDoc.getPage(pageNum - 1);
+          const { width: pageWidth, height: pageHeight } = pdfLibPage.getSize();
+          const pData = pageEdits[pageNum];
+
+          if (!pData) continue;
+
+          const viewport = (await pdfDoc.getPage(pageNum)).getViewport({ scale: zoomScale });
+          const scaleX = pageWidth / viewport.width;
+          const scaleY = pageHeight / viewport.height;
+
+          // 1. Whiteout masked original text boxes
+          pData.maskedRects.forEach(rect => {
+            const pdfX = rect.x * scaleX;
+            const pdfY = pageHeight - (rect.y * scaleY) - (rect.h * scaleY);
+
+            pdfLibPage.drawRectangle({
+              x: pdfX - 1,
+              y: pdfY - 1,
+              width: rect.w * scaleX + 3,
+              height: rect.h * scaleY + 3,
+              color: rgb(1, 1, 1)
+            });
+          });
+
+          // 2. Write newly edited text strings cleanly without ghosting
+          const editedKeys = Object.keys(pData.editedSpans);
+          for (const key of editedKeys) {
+            const spanData = pData.editedSpans[key];
+            if (!spanData || !spanData.newText) continue;
+
+            const pdfX = spanData.x * scaleX;
+            const pdfY = pageHeight - (spanData.y * scaleY) - (spanData.fontSize * scaleY);
+
+            pdfLibPage.drawText(spanData.newText, {
+              x: pdfX,
+              y: pdfY,
+              size: spanData.fontSize * scaleY,
+              font: helveticaFont,
+              color: rgb(0, 0, 0)
+            });
+          }
+
+          // 3. Write added floating text boxes
+          if (pData.addedTexts) {
+            pData.addedTexts.forEach(box => {
+              const pdfX = box.x * scaleX;
+              const pdfY = pageHeight - (box.y * scaleY) - (box.fontSize * scaleY);
+
+              pdfLibPage.drawText(box.text, {
+                x: pdfX,
+                y: pdfY,
+                size: box.fontSize * scaleY,
+                font: helveticaFont,
+                color: rgb(0, 0, 0)
+              });
+            });
+          }
+
+          // 4. Overlay vector drawings & annotations
+          redrawOverlayCanvas(pageNum);
+          const drawingDataUrl = drawingCanvas.toDataURL('image/png');
+          if (pData.strokes && pData.strokes.length > 0) {
+            const pngImage = await pdfLibDoc.embedPng(drawingDataUrl);
+            pdfLibPage.drawImage(pngImage, {
+              x: 0,
+              y: 0,
+              width: pageWidth,
+              height: pageHeight
+            });
+          }
+        }
+
+        const compiledPdfBytes = await pdfLibDoc.save();
+        const pdfBlob = new Blob([compiledPdfBytes], { type: 'application/pdf' });
+        const downloadUrl = URL.createObjectURL(pdfBlob);
+
+        const cleanName = originalFileName || 'Document';
+        const finalFilename = `SlowPDF_Edited_${cleanName}.pdf`;
+
+        downloadEditedBtn.href = downloadUrl;
+        downloadEditedBtn.download = finalFilename;
+
+        if (successFilenameInput) {
+          successFilenameInput.value = `SlowPDF_Edited_${cleanName}`;
+          successFilenameInput.oninput = () => {
+            const customName = successFilenameInput.value.trim() || `SlowPDF_Edited_${cleanName}`;
+            downloadEditedBtn.download = `${customName}.pdf`;
+          };
+        }
+
+        editorWorkbench.classList.add('hidden');
+        document.getElementById('mobile-controls-dock').classList.add('hidden');
+        successPanel.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Error compiling edited PDF:', err);
+        alert('An error occurred while compiling your PDF edits.');
+      } finally {
+        savePdfBtn.disabled = false;
+        savePdfBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg><span>Apply &amp; Save Edits</span>';
+      }
+    });
+
+    // Reset Workbench
+    resetWorkbenchBtn.addEventListener('click', () => {
+      originalPdfBuffer = null;
+      pdfDoc = null;
+      currentPage = 1;
+      emptyDropzone.classList.remove('hidden');
+      editorWorkbench.classList.add('hidden');
+      document.getElementById('mobile-controls-dock').classList.add('hidden');
+      successPanel.classList.add('hidden');
+      pdfFileInput.value = '';
+    });
+
+    // Accordion FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      if (trigger && content) {
+        trigger.addEventListener('click', () => {
+          const isOpen = !content.classList.contains('hidden');
+          if (isOpen) {
+            content.classList.add('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          } else {
+            content.classList.remove('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          }
+        });
+      }
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

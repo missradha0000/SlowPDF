@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>Free Online PDF Metadata Editor — View, Edit & Remove PDF Properties | SlowPDF</title>
+  <meta name="description" content="Edit or remove PDF metadata online for free. Change Title, Author, Subject, Keywords, Creator, Producer, and Creation dates. 100% private in-browser RAM execution." />
+  <meta property="og:title" content="Free Online PDF Metadata Editor — View, Edit & Remove PDF Properties | SlowPDF" />
+  <meta property="og:description" content="Modify hidden PDF document properties, author tags, and creation dates directly in your browser. Wipe personal identifiers for 100% anonymous privacy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.in/tools/edit-pdf-metadata.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Edit PDF Metadata Studio",
+        "url": "https://slowpdf.in/tools/edit-pdf-metadata.html",
+        "description": "100% client-side private PDF metadata editor to view, edit, or wipe document properties, author names, creation dates, keywords, and software tags directly in browser RAM.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is PDF metadata and why should I change or remove it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PDF metadata contains hidden document properties such as the author's real name, company name, creation dates, software software version, and computer filepath tags. Changing or removing metadata prevents accidental privacy leaks before publishing files."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I remove my name and company details completely from a PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Click our 'Wipe All Metadata (Anonymous Privacy Mode)' button to strip away all author names, producer tags, subject lines, and creation timestamps in a single tap."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does changing metadata alter the visual text or pages of my PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Editing metadata only modifies hidden document header properties. Your PDF's visual layout, page images, vector text, fonts, and formatting remain 100% untouched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do PDF keywords and titles improve SEO ranking in search engines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Search engines like Google index PDF document titles and keywords tags. Setting descriptive titles and target keyphrases helps public eBooks, research papers, and whitepapers rank higher in search results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can recipient software see previously wiped metadata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Once wiped and exported with SlowPDF, the hidden dictionary tags are permanently overwritten in the exported file structure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I change the PDF title that displays in browser tab titles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload your file to SlowPDF, enter your preferred document title into the 'Document Title' field, and click 'Save & Update Metadata'. Browsers will display this updated title in tab headers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my files uploaded to your servers during metadata editing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All document parsing and metadata modifications happen 100% inside your local device's browser RAM using WebAssembly and pdf-lib. Zero data leaves your physical device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I edit the creation and modification date of a PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can pick any custom creation date using our date selectors or click 'Set to Today' to sync timestamps instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work on mobile devices and tablets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF's metadata editor is fully responsive and optimized for mobile screens with a sticky action dock."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SlowPDF 100% free with no watermarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero registration requirements."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#274737',
+              forestDark: '#1E362A',
+              sage: '#355E4B',
+              sageLight: '#43715C',
+              cream: '#FFFBF2',
+              creamDark: '#F3ECE2',
+              charcoal: '#222E28',
+              muted: '#637069',
+              darkBg: '#121815',
+              darkCard: '#1C2420',
+              darkBorder: '#2A3630'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- PDF.js & PDF-Lib Client-Side Engines -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Centralized Banners & Nav Scripts -->
+  <script src="../assets/js/banners.js"></script>
+  <script src="../assets/js/carousel.js"></script>
+  <script src="../assets/js/nav-memory.js"></script>
+
+  <style>
+    /* LOCKED THEME STYLES */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+
+    #site-header,
+    header.site-header {
+      background-color: #E8DABF !important;
+    }
+    .dark #site-header,
+    .dark header.site-header {
+      background-color: #E8DABF !important;
+    }
+
+    .tool-card {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(226, 218, 202, 0.7);
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark .tool-card {
+      background-color: #1C2420;
+      border-color: #2A3630;
+      color: #F1F5F2;
+      box-shadow: none;
+    }
+
+    @keyframes headerMascotFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #2D3748 !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F !important;
+    }
+
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .footer-link:hover {
+      color: #355E4B;
+      font-weight: 700;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. LOCKED GLOBAL TOP NAVBAR                -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Title -->
+      <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Logo" 
+            class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+            onerror="this.onerror=null; this.src='/assets/images/logo.png';"
+          />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center Nav Links -->
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
+        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      </nav>
+
+      <!-- Hamburger Button -->
+      <div class="flex items-center gap-3">
+        <button 
+          id="hamburger-btn" 
+          type="button"
+          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preferences Drawer Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.onerror=null; this.src='/assets/images/logo.png';" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle" 
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="edit-pdf-metadata.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-[#355E4B] dark:text-emerald-400 bg-stone-100 dark:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          Edit PDF Metadata
+        </a>
+        <a href="protect-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Protect PDF
+        </a>
+        <a href="add-watermark.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+          Add Watermark
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. INNER TOOL WORKBENCH CONTAINER          -->
+  <!-- ========================================== -->
+  <main id="tool-workbench" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full flex flex-col gap-8">
+
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-1 border border-emerald-300/40">
+        <i data-lucide="file-cog" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+        <span>100% Client-Side RAM Processing</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#222E28] dark:text-white tracking-tight leading-tight">
+        Edit PDF Metadata Properties
+      </h1>
+      <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base font-medium leading-relaxed">
+        View, modify, or strip hidden author tags, creation dates, document titles, and keywords. Wipe personal identifiers in one tap for total anonymous privacy.
+      </p>
+      
+      <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        <span>🔒 100% Private In-Browser RAM Execution — Files Never Leave Your Device</span>
+      </div>
+    </div>
+
+    <!-- Hidden Input for Main Upload -->
+    <input type="file" id="pdf-file-input" class="hidden" accept="application/pdf" />
+
+    <!-- STEP 1: Empty Upload Dropzone -->
+    <div id="empty-dropzone" class="w-full max-w-3xl mx-auto bg-white dark:bg-[#1C2420] border-2 border-dashed border-[#355E4B]/40 dark:border-emerald-500/40 hover:border-[#274737] dark:hover:border-emerald-400 rounded-3xl p-8 sm:p-12 text-center transition-all duration-300 shadow-xl group cursor-pointer">
+      <div class="max-w-md mx-auto space-y-4">
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-[#FFFBF2] dark:bg-[#2A3630] border border-[#E8DABF] dark:border-[#35453E] flex items-center justify-center text-4xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+          📄
+        </div>
+        
+        <div>
+          <h2 class="text-xl font-extrabold text-[#274737] dark:text-emerald-300">Drop PDF File Here to Edit Metadata</h2>
+          <p class="text-xs text-stone-500 dark:text-stone-400 mt-1 font-medium">
+            Upload any PDF document to inspect or modify hidden properties
+          </p>
+        </div>
+
+        <div>
+          <button type="button" id="select-file-btn" class="px-6 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1E362A] text-white font-extrabold text-sm shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 mx-auto">
+            <i data-lucide="upload" class="w-4 h-4"></i>
+            <span>Select PDF File</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4 text-[11px] font-bold text-stone-500 dark:text-stone-400">
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>⚡ Instant Auto-Extract</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>🧹 One-Tap Wipe</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>🔍 Page Preview</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>🔒 Confidential</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Workbench Studio (Active when File Uploaded) -->
+    <div id="workbench-panel" class="hidden flex flex-col gap-6">
+
+      <!-- Document Summary Bar -->
+      <div class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-[#274737] dark:text-emerald-300">
+            <i data-lucide="file-text" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 id="loaded-file-name" class="font-black text-sm text-[#222E28] dark:text-stone-100 truncate max-w-xs sm:max-w-md">
+              document.pdf
+            </h3>
+            <p id="loaded-file-stats" class="text-xs font-semibold text-stone-500 dark:text-stone-400">
+              1.2 MB • 5 Pages
+            </p>
+          </div>
+        </div>
+
+        <button id="change-file-btn" class="px-3.5 py-2 rounded-xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 dark:hover:bg-[#35453E] text-[#222E28] dark:text-stone-100 text-xs font-bold flex items-center gap-1.5 transition-colors">
+          <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span>Change PDF</span>
+        </button>
+      </div>
+
+      <!-- Dual Panel Studio Grid (Side-by-Side on Desktop, Stacked on Mobile) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left Panel: Metadata Controls Form (Width: 5 columns on desktop) -->
+        <div class="lg:col-span-6 bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 shadow-xl space-y-5">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-stone-100 dark:border-stone-800">
+            <div class="flex items-center gap-2 text-[#274737] dark:text-emerald-300 font-extrabold text-base">
+              <i data-lucide="edit-3" class="w-5 h-5"></i>
+              <span>Edit Document Properties</span>
+            </div>
+            
+            <button id="wipe-metadata-btn" type="button" class="px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-700 dark:text-rose-300 text-xs font-extrabold flex items-center gap-1.5 transition-colors border border-rose-200 dark:border-rose-900/50" title="Clear all author and title tags">
+              <i data-lucide="eraser" class="w-4 h-4"></i>
+              <span>Wipe All (Anonymous)</span>
+            </button>
+          </div>
+
+          <!-- Toast Notification for Wipe Action -->
+          <div id="toast-notice" class="hidden p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs font-bold flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+            <span>Metadata fields cleared! Click "Save & Update Metadata" to export.</span>
+          </div>
+
+          <!-- Metadata Form Controls -->
+          <div class="space-y-4 text-xs font-extrabold text-[#222E28] dark:text-stone-200">
+            
+            <!-- Document Title -->
+            <div class="space-y-1">
+              <label for="meta-title" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                Document Title
+              </label>
+              <input type="text" id="meta-title" placeholder="e.g. Q4 Financial Report 2026" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+            </div>
+
+            <!-- Author / Organization -->
+            <div class="space-y-1">
+              <label for="meta-author" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                Author / Organization
+              </label>
+              <input type="text" id="meta-author" placeholder="e.g. SlowPDF Engineering Team" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+            </div>
+
+            <!-- Subject / Description -->
+            <div class="space-y-1">
+              <label for="meta-subject" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                Subject / Description
+              </label>
+              <textarea id="meta-subject" rows="2" placeholder="e.g. Annual balance sheet and operations overview" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3.5 py-2 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]"></textarea>
+            </div>
+
+            <!-- Keywords / Tags -->
+            <div class="space-y-1">
+              <label for="meta-keywords" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                Keywords / SEO Tags (Comma Separated)
+              </label>
+              <input type="text" id="meta-keywords" placeholder="e.g. finance, report, 2026, balance sheet" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+            </div>
+
+            <!-- Creator & Producer Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label for="meta-creator" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                  Creator Application
+                </label>
+                <input type="text" id="meta-creator" placeholder="e.g. Microsoft Word 365" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-2 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+              </div>
+
+              <div class="space-y-1">
+                <label for="meta-producer" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                  Producer Software
+                </label>
+                <input type="text" id="meta-producer" placeholder="e.g. pdf-lib 1.17.1" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-2 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+              </div>
+            </div>
+
+            <!-- Dates Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                  <label for="meta-creation-date" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                    Creation Date
+                  </label>
+                  <button type="button" id="today-creation-btn" class="text-[10px] text-emerald-700 dark:text-emerald-400 hover:underline">
+                    Set Today
+                  </button>
+                </div>
+                <input type="date" id="meta-creation-date" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-2 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                  <label for="meta-mod-date" class="block text-stone-600 dark:text-stone-400 uppercase tracking-wider text-[10px]">
+                    Modification Date
+                  </label>
+                  <button type="button" id="today-mod-btn" class="text-[10px] text-emerald-700 dark:text-emerald-400 hover:underline">
+                    Set Today
+                  </button>
+                </div>
+                <input type="date" id="meta-mod-date" class="w-full bg-stone-50 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-2 text-xs font-bold text-[#222E28] dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-[#274737]" />
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Desktop Primary Action Button -->
+          <div class="pt-3">
+            <button id="save-metadata-btn" class="w-full py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1E362A] text-white font-extrabold text-sm shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2">
+              <i data-lucide="save" class="w-5 h-5"></i>
+              <span>Save & Update Metadata</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: Document Quick Preview (Width: 6 columns on desktop) -->
+        <div class="lg:col-span-6 bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 shadow-xl flex flex-col items-center space-y-4">
+          
+          <div class="w-full flex items-center justify-between pb-3 border-b border-stone-100 dark:border-stone-800">
+            <div class="flex items-center gap-2 text-[#274737] dark:text-emerald-300 font-extrabold text-sm">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+              <span>Page 1 Quick Preview</span>
+            </div>
+
+            <!-- Floating Zoom Controls -->
+            <div class="flex items-center gap-1 bg-stone-100 dark:bg-[#2A3630] p-1 rounded-xl">
+              <button id="zoom-out-btn" class="p-1 rounded-lg hover:bg-stone-200 dark:hover:bg-[#35453E] text-stone-700 dark:text-stone-200" title="Zoom Out">
+                <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+              </button>
+              <span id="zoom-label" class="px-2 text-[11px] font-bold text-stone-600 dark:text-stone-300">100%</span>
+              <button id="zoom-in-btn" class="p-1 rounded-lg hover:bg-stone-200 dark:hover:bg-[#35453E] text-stone-700 dark:text-stone-200" title="Zoom In">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Page 1 Canvas Parent Container -->
+          <div class="w-full max-h-[550px] overflow-auto bg-stone-100 dark:bg-[#121815] rounded-2xl p-4 flex justify-center border border-stone-200 dark:border-stone-800 shadow-inner">
+            <canvas id="preview-canvas" class="max-w-full h-auto rounded shadow-md block"></canvas>
+          </div>
+
+          <div class="text-[11px] font-semibold text-stone-500 text-center">
+            💡 Verifying the first page ensures you are updating properties on the correct file.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Sticky Action Dock (< 768px) -->
+    <div id="mobile-sticky-dock" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#1C2420]/95 backdrop-blur-md border-t border-stone-200 dark:border-[#2A3630] p-3 shadow-2xl hidden">
+      <button id="mobile-save-metadata-btn" class="w-full py-3 rounded-xl bg-[#274737] text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2">
+        <i data-lucide="save" class="w-4 h-4"></i>
+        <span>Save & Update Metadata</span>
+      </button>
+    </div>
+
+    <!-- STEP 3: Processing Modal Overlay -->
+    <div id="processing-progress-box" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+      <div class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#274737]/10 dark:bg-emerald-500/10 flex items-center justify-center text-3xl animate-bounce">
+          ⚙️
+        </div>
+        <div>
+          <h3 class="text-xl font-black text-[#274737] dark:text-emerald-300">Updating Document Metadata</h3>
+          <p id="progress-status-text" class="text-xs text-stone-500 dark:text-stone-400 mt-1 font-medium">
+            Saving updated properties in browser RAM...
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="w-full h-3 bg-stone-100 dark:bg-[#2A3630] rounded-full overflow-hidden p-0.5 border border-stone-200 dark:border-stone-700">
+            <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-[#355E4B] to-[#274737] rounded-full transition-all duration-200" style="width: 20%;"></div>
+          </div>
+          <div class="flex justify-between text-[11px] font-bold text-stone-500">
+            <span>Client-side RAM Execution</span>
+            <span id="progress-percent-text">20%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Success Celebration Screen -->
+    <div id="success-panel" class="hidden w-full max-w-2xl mx-auto bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-8 sm:p-12 text-center shadow-2xl space-y-6">
+      
+      <div class="w-24 h-24 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/60 border-2 border-emerald-500 flex items-center justify-center text-5xl shadow-lg animate-pulse overflow-hidden p-2">
+        <img src="../assets/images/logo.png" alt="SlowPDF Celebration Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='/assets/images/logo.png';" />
+      </div>
+
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold uppercase tracking-wider">
+          <i data-lucide="check-circle" class="w-4 h-4"></i>
+          <span>Metadata Updated Successfully!</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#274737] dark:text-emerald-300">
+          Your Document is Ready
+        </h2>
+        <p id="success-file-stats" class="text-xs font-semibold text-stone-500 dark:text-stone-400">
+          1.2 MB PDF Document • 100% Client-Side RAM Execution
+        </p>
+      </div>
+
+      <!-- Custom Filename Input Field -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Download File Name:
+        </label>
+        <div class="flex rounded-xl overflow-hidden border border-stone-300 dark:border-stone-700 shadow-xs focus-within:ring-2 focus-within:ring-[#274737]">
+          <input type="text" id="output-filename-input" value="SlowPDF_Updated_Document" class="flex-1 bg-stone-50 dark:bg-[#2A3630] px-4 py-2.5 text-xs font-extrabold text-[#222E28] dark:text-stone-100 focus:outline-none" />
+          <span class="bg-stone-200 dark:bg-[#35453E] px-3.5 py-2.5 text-xs font-extrabold text-stone-600 dark:text-stone-300 flex items-center">
+            .pdf
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <button id="download-pdf-btn" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1E362A] text-white font-black text-sm shadow-xl hover:shadow-2xl transition-all duration-200 flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-5 h-5"></i>
+          <span>Download PDF</span>
+        </button>
+
+        <button id="edit-another-btn" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-[#222E28] dark:text-stone-100 font-extrabold text-sm transition-colors flex items-center justify-center gap-2">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+          <span>Edit Another File</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Locked 10-Banner Carousel Container -->
+    <section class="mt-8 border-t border-stone-200 dark:border-stone-800 pt-8">
+      <div id="pdf-banner-carousel" class="w-full"></div>
+    </section>
+
+    <!-- 500+ Word Semantically Structured SEO Article -->
+    <article class="mt-8 bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 sm:p-10 shadow-sm space-y-6 text-stone-700 dark:text-stone-300 leading-relaxed text-sm">
+      <header class="space-y-2 border-b border-stone-100 dark:border-stone-800 pb-4">
+        <h2 class="text-2xl font-black text-[#274737] dark:text-emerald-300">
+          Free Online PDF Metadata Editor — View, Edit & Remove Hidden PDF Properties
+        </h2>
+        <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">
+          Published by SlowPDF Technical Security Team • 100% Privacy Guaranteed
+        </p>
+      </header>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Understanding Hidden PDF Metadata & Security Risks
+        </h3>
+        <p>
+          Every PDF document created by desktop software like Microsoft Word, Adobe Acrobat, Google Docs, or Apple Pages contains hidden metadata stored inside its header dictionary. This hidden metadata automatically records sensitive personal details including the author's real name, company organization, exact creation date, software software version, computer file path tags, and machine ID codes.
+        </p>
+        <p>
+          When sharing sensitive legal contracts, corporate financial statements, investigative journalist reports, or academic research papers publicly, failing to inspect and clean hidden metadata poses significant data breach risks. Unwittingly leaking author identities or internal folder paths can compromise client confidentiality and organizational privacy.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          How to Edit PDF Metadata in 3 Simple Steps
+        </h3>
+        <ol class="list-decimal pl-5 space-y-2 font-medium">
+          <li><strong>Upload Your PDF Document:</strong> Drag and drop your file into SlowPDF's Metadata Studio. Our auto-extraction engine instantly parses existing document properties.</li>
+          <li><strong>Modify or Wipe Properties:</strong> Edit fields such as Document Title, Author, Subject, and Keywords—or click "Wipe All (Anonymous)" to strip hidden personal tags instantly.</li>
+          <li><strong>Save & Download:</strong> Click "Save & Update Metadata". SlowPDF embeds updated properties directly into browser RAM and exports a pristine PDF file.</li>
+        </ol>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Why SlowPDF is the Best Private Metadata Editor
+        </h3>
+        <p>
+          Traditional PDF metadata editors require uploading confidential PDF documents to third-party cloud servers. Those remote servers store copies of your files on cloud disks, exposing your confidential papers to server leaks and unauthorized web tracking.
+        </p>
+        <p>
+          <strong>SlowPDF guarantees 100% private in-browser RAM execution.</strong> Operating via client-side JavaScript WebAssembly and pdf-lib, all dictionary parsing and property setting happen exclusively inside your physical device's local memory. Zero bytes touch a remote server, ensuring total confidentiality for legal, financial, and personal records.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Next Steps & Complementary PDF Utilities
+        </h3>
+        <p>
+          Once you have cleaned or optimized your PDF metadata, explore our full suite of 100% private client-side PDF utilities:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 font-medium">
+          <li>
+            <a href="protect-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Protect PDF:</a> After cleaning document metadata, encrypt your file with strong AES 256-bit password protection.
+          </li>
+          <li>
+            <a href="compress-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Compress PDF:</a> Shrink document file size before sending via email or uploading to web portals.
+          </li>
+          <li>
+            <a href="add-watermark.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Add Watermark to PDF:</a> Stamp confidential text or company logo watermarks to prevent unauthorized distribution.
+          </li>
+          <li>
+            <a href="edit-pdf.html" class="text-[#355E4B] dark:text-emerald-400 font-bold hover:underline">Edit PDF Studio:</a> Perform direct inline text edits, annotations, and visual whiteouts.
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- 10 FAQ Accordion Section -->
+    <section id="faq-section" class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+      <div class="text-center max-w-xl mx-auto space-y-2">
+        <h2 class="text-2xl font-black text-[#274737] dark:text-emerald-300">
+          Frequently Asked Questions (FAQ)
+        </h2>
+        <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">
+          Everything you need to know about editing and removing PDF metadata.
+        </p>
+      </div>
+
+      <div class="space-y-3 max-w-3xl mx-auto">
+        
+        <!-- Question 1 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>What is PDF metadata and why should I change or remove it?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            PDF metadata contains hidden document properties such as the author's real name, company name, creation dates, software version, and computer filepath tags. Changing or removing metadata prevents accidental privacy leaks before publishing files.
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Can I remove my name and company details completely from a PDF?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            Yes! Click our 'Wipe All Metadata (Anonymous Privacy Mode)' button to strip away all author names, producer tags, subject lines, and creation timestamps in a single tap.
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Does changing metadata alter the visual text or pages of my PDF?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            No. Editing metadata only modifies hidden document header properties. Your PDF's visual layout, page images, vector text, fonts, and formatting remain 100% untouched.
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>How do PDF keywords and titles improve SEO ranking in search engines?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            Search engines like Google index PDF document titles and keywords tags. Setting descriptive titles and target keyphrases helps public eBooks, research papers, and whitepapers rank higher in search results.
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Can recipient software see previously wiped metadata?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            No. Once wiped and exported with SlowPDF, the hidden dictionary tags are permanently overwritten in the exported file structure.
+          </div>
+        </div>
+
+        <!-- Extra 5 Hidden Questions -->
+        <div id="extra-faq-items" class="space-y-3 hidden">
+          
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>How do I change the PDF title that displays in browser tab titles?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Upload your file to SlowPDF, enter your preferred document title into the 'Document Title' field, and click 'Save & Update Metadata'. Browsers will display this updated title in tab headers.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Are my files uploaded to your servers during metadata editing?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Never. All document parsing and metadata modifications happen 100% inside your local device's browser RAM using WebAssembly and pdf-lib. Zero data leaves your physical device.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Can I edit the creation and modification date of a PDF?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Yes! You can pick any custom creation date using our date selectors or click 'Set to Today' to sync timestamps instantly.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Does this tool work on mobile devices and tablets?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Yes! SlowPDF's metadata editor is fully responsive and optimized for mobile screens with a sticky action dock.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Is SlowPDF 100% free with no watermarks?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero registration requirements.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center pt-2">
+          <button id="toggle-all-faq-btn" class="px-5 py-2 rounded-xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-xs font-extrabold text-[#274737] dark:text-emerald-300 transition-colors">
+            View All 10 Questions
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 3. LOCKED MASTER FOOTER                    -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#E8DABF]/40 dark:bg-[#151D19] border-t border-[#D8C7A5] dark:border-stone-800 transition-colors mt-auto py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top 4-Column Directory Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-stone-200/60 dark:border-stone-800/80">
+        
+        <!-- Brand Info Column -->
+        <div class="space-y-4">
+          <a href="../index.html" class="flex items-center gap-2 select-none group">
+            <img src="../assets/images/logo.png" alt="SlowPDF" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='/assets/images/logo.png';" />
+            <span class="text-xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+              Slow <span class="text-[#274737] dark:text-[#5E9B7E]">PDF</span>
+            </span>
+          </a>
+          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+            Made for slow, steady learning • 100% Private In-Browser RAM PDF Engine. Your files never leave your device.
+          </p>
+          <div class="pt-2 text-xs text-stone-500 dark:text-stone-500">
+            © 2026 SlowPDF. All rights reserved. Brand: slowpdf.in
+          </div>
+        </div>
+
+        <!-- Convert Tools Column -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Convert Tools
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="pdf-to-word.html" class="footer-link">PDF to Word</a></li>
+            <li><a href="pdf-to-excel.html" class="footer-link">PDF to Excel</a></li>
+            <li><a href="pdf-to-jpg.html" class="footer-link">PDF to JPG</a></li>
+            <li><a href="images-to-pdf.html" class="footer-link">Images to PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Organize Tools Column -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Organize Tools
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="merge-pdf.html" class="footer-link">Merge PDF</a></li>
+            <li><a href="split-pdf.html" class="footer-link">Split PDF</a></li>
+            <li><a href="rotate-pdf.html" class="footer-link">Rotate PDF</a></li>
+            <li><a href="add-page-numbers.html" class="footer-link">Add Page Numbers</a></li>
+          </ul>
+        </div>
+
+        <!-- Security & Edit Column -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+            Security &amp; Edit
+          </h4>
+          <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="edit-pdf.html" class="footer-link">Edit PDF</a></li>
+            <li><a href="edit-pdf-metadata.html" class="footer-link font-semibold text-[#355E4B] dark:text-emerald-400">Edit PDF Metadata</a></li>
+            <li><a href="protect-pdf.html" class="footer-link">Protect PDF</a></li>
+            <li><a href="add-watermark.html" class="footer-link">Add Watermark</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal, Meta & Social Media Strip -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4 text-xs font-semibold text-stone-600 dark:text-stone-400 flex-wrap">
+          <a href="../pages/privacy.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400">Privacy Policy</a>
+          <span>•</span>
+          <a href="../pages/terms.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400">Terms of Service</a>
+          <span>•</span>
+          <a href="../pages/contact.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400">Contact</a>
+          <span>•</span>
+          <span class="text-stone-500">Built with calm design principles</span>
+        </div>
+        
+        <!-- Social Media Icons Row -->
+        <div class="flex items-center gap-5 text-stone-500 dark:text-stone-400">
+          <a href="#" class="p-1.5 rounded-lg hover:bg-emerald-100/80 hover:text-emerald-950 dark:hover:bg-[#355E4B]/40 dark:hover:text-emerald-300 transition-colors" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 4. JAVASCRIPT ENGINE & EVENT HANDLERS      -->
+  <!-- ========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Drawer & Dark Mode Logic (Matching locked shell template)
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+    if (hamburgerBtn && menuModal) {
+      hamburgerBtn.addEventListener('click', () => {
+        menuModal.classList.remove('hidden');
+        setTimeout(() => {
+          menuModal.classList.remove('opacity-0');
+          document.getElementById('modal-card')?.classList.remove('scale-95');
+        }, 10);
+      });
+
+      const closeDrawer = () => {
+        menuModal.classList.add('opacity-0');
+        document.getElementById('modal-card')?.classList.add('scale-95');
+        setTimeout(() => {
+          menuModal.classList.add('hidden');
+        }, 200);
+      };
+
+      closeModalBtn?.addEventListener('click', closeDrawer);
+      menuModal.addEventListener('click', (e) => {
+        if (e.target === menuModal) closeDrawer();
+      });
+    }
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('slowpdf_theme', isDark ? 'dark' : 'light');
+        const thumb = document.getElementById('dark-mode-thumb');
+        if (thumb) {
+          if (isDark) {
+            thumb.classList.add('translate-x-5');
+            thumb.classList.remove('translate-x-0');
+          } else {
+            thumb.classList.remove('translate-x-5');
+            thumb.classList.add('translate-x-0');
+          }
+        }
+      });
+
+      if (localStorage.getItem('slowpdf_theme') === 'dark' || 
+         (!localStorage.getItem('slowpdf_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        const thumb = document.getElementById('dark-mode-thumb');
+        if (thumb) {
+          thumb.classList.add('translate-x-5');
+          thumb.classList.remove('translate-x-0');
+        }
+      }
+    }
+
+    // =========================================================================
+    // EDIT METADATA ENGINE STATE
+    // =========================================================================
+    let selectedFile = null;
+    let fileArrayBuffer = null;
+    let pdfLibDoc = null;
+    let pdfJsDoc = null;
+    let totalPagesCount = 0;
+    let currentPreviewScale = 0.9;
+    let updatedPdfBlobUrl = null;
+
+    // DOM Elements
+    const fileInput = document.getElementById('pdf-file-input');
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const selectFileBtn = document.getElementById('select-file-btn');
+
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const loadedFileName = document.getElementById('loaded-file-name');
+    const loadedFileStats = document.getElementById('loaded-file-stats');
+    const changeFileBtn = document.getElementById('change-file-btn');
+
+    const metaTitle = document.getElementById('meta-title');
+    const metaAuthor = document.getElementById('meta-author');
+    const metaSubject = document.getElementById('meta-subject');
+    const metaKeywords = document.getElementById('meta-keywords');
+    const metaCreator = document.getElementById('meta-creator');
+    const metaProducer = document.getElementById('meta-producer');
+    const metaCreationDate = document.getElementById('meta-creation-date');
+    const metaModDate = document.getElementById('meta-mod-date');
+
+    const todayCreationBtn = document.getElementById('today-creation-btn');
+    const todayModBtn = document.getElementById('today-mod-btn');
+    const wipeMetadataBtn = document.getElementById('wipe-metadata-btn');
+    const toastNotice = document.getElementById('toast-notice');
+
+    const saveMetadataBtn = document.getElementById('save-metadata-btn');
+    const mobileSaveMetadataBtn = document.getElementById('mobile-save-metadata-btn');
+    const mobileStickyDock = document.getElementById('mobile-sticky-dock');
+
+    const previewCanvas = document.getElementById('preview-canvas');
+    const zoomInBtn = document.getElementById('zoom-in-btn');
+    const zoomOutBtn = document.getElementById('zoom-out-btn');
+    const zoomLabel = document.getElementById('zoom-label');
+
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressPercentText = document.getElementById('progress-percent-text');
+
+    const successPanel = document.getElementById('success-panel');
+    const successFileStats = document.getElementById('success-file-stats');
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const downloadPdfBtn = document.getElementById('download-pdf-btn');
+    const editAnotherBtn = document.getElementById('edit-another-btn');
+
+    // Drag and Drop triggers on main Dropzone
+    ['dragenter', 'dragover'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('border-[#274737]', 'bg-stone-50', 'dark:bg-[#2A3630]');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('border-[#274737]', 'bg-stone-50', 'dark:bg-[#2A3630]');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      emptyDropzone.classList.remove('border-[#274737]', 'bg-stone-50', 'dark:bg-[#2A3630]');
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleFileSelection(e.dataTransfer.files[0]);
+      }
+    });
+
+    emptyDropzone.addEventListener('click', (e) => {
+      if (e.target.closest('#select-file-btn') || e.target === emptyDropzone || e.target.closest('.group')) {
+        fileInput.click();
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleFileSelection(e.target.files[0]);
+      }
+    });
+
+    changeFileBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // Date Shortcuts
+    todayCreationBtn.addEventListener('click', () => {
+      metaCreationDate.value = new Date().toISOString().split('T')[0];
+    });
+
+    todayModBtn.addEventListener('click', () => {
+      metaModDate.value = new Date().toISOString().split('T')[0];
+    });
+
+    // Wipe Metadata Action
+    wipeMetadataBtn.addEventListener('click', () => {
+      metaTitle.value = '';
+      metaAuthor.value = '';
+      metaSubject.value = '';
+      metaKeywords.value = '';
+      metaCreator.value = '';
+      metaProducer.value = '';
+      metaCreationDate.value = '';
+      metaModDate.value = new Date().toISOString().split('T')[0];
+
+      toastNotice.classList.remove('hidden');
+      setTimeout(() => {
+        toastNotice.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Zoom Controls for Page 1 Preview
+    zoomInBtn.addEventListener('click', () => {
+      if (currentPreviewScale < 1.8) {
+        currentPreviewScale += 0.15;
+        zoomLabel.textContent = `${Math.round(currentPreviewScale * 100)}%`;
+        renderPagePreview();
+      }
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+      if (currentPreviewScale > 0.45) {
+        currentPreviewScale -= 0.15;
+        zoomLabel.textContent = `${Math.round(currentPreviewScale * 100)}%`;
+        renderPagePreview();
+      }
+    });
+
+    // Handle File Selection and Parsing
+    async function handleFileSelection(file) {
+      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please upload a valid PDF file.');
+        return;
+      }
+
+      selectedFile = file;
+      fileArrayBuffer = await file.arrayBuffer();
+
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      loadedFileName.textContent = file.name;
+
+      try {
+        // Load PDF.js for Preview (Pass sliced ArrayBuffer so original buffer is not detached by Web Worker)
+        pdfJsDoc = await pdfjsLib.getDocument({ data: fileArrayBuffer.slice(0) }).promise;
+        totalPagesCount = pdfJsDoc.numPages;
+
+        loadedFileStats.textContent = `${sizeMB} MB • ${totalPagesCount} ${totalPagesCount === 1 ? 'Page' : 'Pages'}`;
+
+        // Render Page 1 Preview
+        await renderPagePreview();
+
+        // Load PDFLib for Auto Metadata Extraction (Pass sliced ArrayBuffer)
+        pdfLibDoc = await PDFLib.PDFDocument.load(fileArrayBuffer.slice(0), { ignoreEncryption: true });
+
+        // Extract Existing Metadata
+        const extractedTitle = pdfLibDoc.getTitle() || '';
+        const extractedAuthor = pdfLibDoc.getAuthor() || '';
+        const extractedSubject = pdfLibDoc.getSubject() || '';
+        
+        const rawKeywords = pdfLibDoc.getKeywords();
+        const extractedKeywords = Array.isArray(rawKeywords) ? rawKeywords.join(', ') : (rawKeywords || '');
+        
+        const extractedCreator = pdfLibDoc.getCreator() || '';
+        const extractedProducer = pdfLibDoc.getProducer() || '';
+        const extractedCreationDate = pdfLibDoc.getCreationDate();
+        const extractedModDate = pdfLibDoc.getModificationDate();
+
+        // Format dates YYYY-MM-DD
+        const formatDateInput = (dateObj) => {
+          if (!dateObj || isNaN(dateObj.getTime())) return '';
+          return dateObj.toISOString().split('T')[0];
+        };
+
+        metaTitle.value = extractedTitle;
+        metaAuthor.value = extractedAuthor;
+        metaSubject.value = extractedSubject;
+        metaKeywords.value = extractedKeywords;
+        metaCreator.value = extractedCreator;
+        metaProducer.value = extractedProducer;
+        metaCreationDate.value = formatDateInput(extractedCreationDate) || new Date().toISOString().split('T')[0];
+        metaModDate.value = formatDateInput(extractedModDate) || new Date().toISOString().split('T')[0];
+
+        // Switch View
+        emptyDropzone.classList.add('hidden');
+        successPanel.classList.add('hidden');
+        workbenchPanel.classList.remove('hidden');
+        mobileStickyDock.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Error loading PDF:', err);
+        alert('Failed to parse PDF document. The file may be password protected or corrupted.');
+      }
+    }
+
+    // Render First Page Preview via PDF.js
+    async function renderPagePreview() {
+      if (!pdfJsDoc) return;
+      try {
+        const page = await pdfJsDoc.getPage(1);
+        const dpr = window.devicePixelRatio || 1;
+        const targetScale = 2.0;
+        const scaleVal = currentPreviewScale || 1.2;
+        const baseViewport = page.getViewport({ scale: scaleVal });
+        const viewport = page.getViewport({ scale: scaleVal * targetScale * dpr });
+
+        previewCanvas.width = Math.floor(viewport.width);
+        previewCanvas.height = Math.floor(viewport.height);
+        previewCanvas.style.width = `${Math.floor(baseViewport.width)}px`;
+        previewCanvas.style.height = `${Math.floor(baseViewport.height)}px`;
+        previewCanvas.style.imageRendering = '-webkit-optimize-contrast';
+        previewCanvas.style.imageRendering = 'crisp-edges';
+        previewCanvas.style.display = 'block';
+        previewCanvas.style.margin = '0 auto';
+        previewCanvas.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.08)';
+
+        const ctx = previewCanvas.getContext('2d');
+        await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+      } catch (err) {
+        console.error('Error rendering page 1 preview:', err);
+      }
+    }
+
+    // Save & Update Metadata Execution
+    saveMetadataBtn.addEventListener('click', compileUpdatedPdf);
+    mobileSaveMetadataBtn.addEventListener('click', compileUpdatedPdf);
+
+    async function compileUpdatedPdf() {
+      if (!pdfLibDoc) return;
+
+      processingProgressBox.classList.remove('hidden');
+      progressStatusText.textContent = 'Writing new metadata dictionary entries...';
+      progressBarFill.style.width = '30%';
+      progressPercentText.textContent = '30%';
+
+      setTimeout(async () => {
+        try {
+          const titleVal = metaTitle.value.trim();
+          const authorVal = metaAuthor.value.trim();
+          const subjectVal = metaSubject.value.trim();
+          const keywordsStr = metaKeywords.value.trim();
+          const creatorVal = metaCreator.value.trim();
+          const producerVal = metaProducer.value.trim();
+          const creationDateVal = metaCreationDate.value;
+          const modDateVal = metaModDate.value;
+
+          // Split keywords string into array
+          const keywordsArray = keywordsStr ? keywordsStr.split(',').map(k => k.trim()).filter(Boolean) : [];
+
+          // Apply Values to PDF-Lib
+          pdfLibDoc.setTitle(titleVal);
+          pdfLibDoc.setAuthor(authorVal);
+          pdfLibDoc.setSubject(subjectVal);
+          pdfLibDoc.setKeywords(keywordsArray);
+          pdfLibDoc.setCreator(creatorVal);
+          pdfLibDoc.setProducer(producerVal);
+
+          if (creationDateVal) {
+            pdfLibDoc.setCreationDate(new Date(creationDateVal));
+          }
+          if (modDateVal) {
+            pdfLibDoc.setModificationDate(new Date(modDateVal));
+          } else {
+            pdfLibDoc.setModificationDate(new Date());
+          }
+
+          progressBarFill.style.width = '70%';
+          progressPercentText.textContent = '70%';
+          progressStatusText.textContent = 'Saving document structure in RAM...';
+
+          const updatedBytes = await pdfLibDoc.save({ useObjectStreams: false });
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          const blob = new Blob([updatedBytes], { type: 'application/pdf' });
+          if (updatedPdfBlobUrl) URL.revokeObjectURL(updatedPdfBlobUrl);
+          updatedPdfBlobUrl = URL.createObjectURL(blob);
+
+          const sizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+
+          // Update Success Display
+          successFileStats.textContent = `${sizeMB} MB • ${totalPagesCount} ${totalPagesCount === 1 ? 'Page' : 'Pages'} • Metadata Updated & Saved`;
+
+          // Default Output Filename
+          const origName = selectedFile ? selectedFile.name.replace(/\.[^/.]+$/, '') : 'Document';
+          const cleanName = origName.replace(/[^a-zA-Z0-9_-]/g, '_');
+          outputFilenameInput.value = `SlowPDF_Updated_${cleanName}`;
+
+          // Switch Views
+          workbenchPanel.classList.add('hidden');
+          mobileStickyDock.classList.add('hidden');
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error updating metadata:', err);
+          alert('Failed to update PDF metadata: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+        }
+      }, 100);
+    }
+
+    // Trigger Download PDF File
+    downloadPdfBtn.addEventListener('click', () => {
+      if (!updatedPdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Updated_Document';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = updatedPdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workspace
+    editAnotherBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileArrayBuffer = null;
+      pdfLibDoc = null;
+      pdfJsDoc = null;
+      if (updatedPdfBlobUrl) URL.revokeObjectURL(updatedPdfBlobUrl);
+      updatedPdfBlobUrl = null;
+
+      fileInput.value = '';
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      mobileStickyDock.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('edit-metadata');
+      }
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  </script>
+</body>
+</html>
