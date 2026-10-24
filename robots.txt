@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slowpdf.me/sitemap.xml
+Sitemap: https://missradha0000.github.io/SlowPDF/sitemap.xml
