@@ -7,6 +7,7 @@
   <meta name="description" content="Free online PDF tools that process files 100% in your browser. Merge PDF free without upload, compress PDF client-side, edit, split, crop, sign, and convert PDFs with zero cloud uploads." />
   <meta name="keywords" content="private pdf tools, merge pdf free without upload, compress pdf client side, pdf maker online, offline pdf tools, edit pdf online free, split pdf no upload, secure pdf converter, client side pdf editor, slowpdf" />
   <meta name="robots" content="index, follow" />
+  <meta name="google-site-verification" content="h2CXgF-rASJ7LvkWz71JAk1eGMM1znTTgN7ChjA_oT4" />
   <meta name="theme-color" content="#FFFBF2" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#121815" media="(prefers-color-scheme: dark)" />
 
@@ -1618,6 +1619,7 @@
       applyTheme(false);
     }
 
+    const darkModeToggle = document.getElementById('dark-mode-toggle') || document.getElementById('theme-toggle');
     if (darkModeToggle) {
       darkModeToggle.addEventListener('click', () => {
         const isCurrentlyDark = document.documentElement.classList.contains('dark');
