@@ -273,27 +273,34 @@
         </span>
       </a>
 
-      <!-- Center & Right Nav Links -->
-      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
-        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
-        </a>
-        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
-        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
-        <a href="../pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
-        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
-        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
-        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
-        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      <!-- Center Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-2.5 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
+        <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="../terms.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Terms</a>
       </nav>
 
-      <!-- Far Right: Hamburger Menu Button -->
-      <div class="flex items-center gap-3">
+      <!-- Far Right: Share Button + Hamburger Menu Button -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="header-share-btn"
+          type="button"
+          onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          title="Share Page"
+          aria-label="Share Page"
+        >
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
         <button 
           id="hamburger-btn" 
           type="button"
-          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
@@ -304,35 +311,45 @@
           </svg>
         </button>
       </div>
-    </div>
+    
   </header>
 
   <!-- Preferences Drawer Modal -->
+  <!-- Clean Dropdown Modal / Mobile Menu with Signature Frosted Glassmorphism -->
   <div 
     id="menu-modal" 
-    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-xs hidden transition-opacity duration-300 opacity-0"
     aria-hidden="true"
   >
-    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
-      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
-        <div class="flex items-center gap-2">
-          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
-          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+    <div 
+      id="modal-card" 
+      class="fixed top-20 right-4 sm:right-8 w-84 max-w-[92vw] rounded-2xl p-6 shadow-2xl border border-[#E8DABF] dark:border-stone-700/80 transform transition-all duration-300 scale-95"
+      style="background: rgba(255, 251, 242, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);"
+    >
+      <div class="flex items-center justify-between pb-4 border-b border-[#E8DABF]/80 dark:border-stone-700/60">
+        <div class="flex items-center gap-2.5">
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full shadow-2xs" onerror="this.src='../public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-stone-100 tracking-tight">Slow<span class="text-[#355E4B] dark:text-emerald-400">PDF</span> Menu</span>
         </div>
-        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button 
+          id="close-modal-btn" 
+          type="button"
+          class="close-modal-btn p-1.5 rounded-xl text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white hover:bg-[#E8DABF]/50 dark:hover:bg-stone-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
+          aria-label="Close navigation menu"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- Dark Mode Toggle Switch -->
-      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+      <!-- Dark Mode Toggle Switch (Pill Style) -->
+      <div class="py-3.5 border-b border-[#E8DABF]/80 dark:border-stone-700/60">
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center gap-2.5">
             <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
-            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+            <span class="text-sm font-semibold text-stone-800 dark:text-stone-200">Dark Mode</span>
           </div>
           <button 
-            id="dark-mode-toggle" 
+            id="dark-mode-toggle"
             type="button" 
             role="switch" 
             aria-checked="false"
@@ -344,32 +361,62 @@
         </div>
       </div>
 
-      <!-- Quick Navigation in Drawer -->
-      <div class="py-4 space-y-1">
-        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
+      <!-- Rounded Pill-Style Menu Links -->
+      <div class="py-3.5 space-y-1.5 border-b border-[#E8DABF]/80 dark:border-stone-700/60 text-sm">
+        <div class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2 px-1">Navigation</div>
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Home</span>
         </a>
-        <a href="../#popular-tools" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          All 22 PDF Tools
+        <a href="../index.html#popular-tools" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>All 22 PDF Tools</span>
         </a>
-        <a href="merge-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
-          Merge PDF
+        <a href="../pages/blog.html" class="flex items-center justify-between px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <span class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span>Blog &amp; Articles</span>
+          </span>
+          <span class="text-xs text-emerald-700 dark:text-emerald-400 font-bold px-2 py-0.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60">New</span>
         </a>
-        <a href="compress-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-          Compress PDF
+        <a href="../pages/how-it-works.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>How It Works</span>
         </a>
-        <a href="protect-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          Protect PDF
+        <a href="../pages/learn.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span>Learn &amp; Study Guides</span>
         </a>
-        <a href="unlock-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
-          Unlock PDF
+        <a href="../pages/about.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>About Us</span>
         </a>
+        <a href="../pages/privacy.html" class="flex items-center justify-between px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <span class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Privacy Policy</span>
+          </span>
+          <span class="text-2xs text-emerald-700 dark:text-emerald-400 font-bold px-1.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">Zero-Server</span>
+        </a>
+        <a href="../pages/terms.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl font-semibold text-stone-700 dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800/80 hover:text-[#274737] dark:hover:text-emerald-400 transition-all">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Terms of Service</span>
+        </a>
+      </div>
+
+      <!-- Restored Clean Share this Page Button at Bottom of Menu -->
+      <div class="pt-3.5">
+        <button 
+          type="button" 
+          onclick="window.slowPdfShare({ title: document.title, text: '100% private, client-side PDF tools. No file uploads or server tracking!', url: window.location.href })"
+          class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFFBF2] dark:bg-[#151D19] border border-[#E8DABF] dark:border-stone-700 text-[#2D3748] dark:text-stone-200 hover:bg-[#E8DABF]/60 dark:hover:bg-stone-800 font-bold text-sm transition-all shadow-2xs hover:shadow-xs group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Share this Page"
+        >
+          <svg class="w-4 h-4 text-[#274737] dark:text-emerald-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span>Share this Page</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1232,56 +1279,10 @@
     }
 
     // ----------------------------------------------------
-    // 2. HAMBURGER MENU MODAL
     // ----------------------------------------------------
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const menuModal = document.getElementById('menu-modal');
-    const modalCard = document.getElementById('modal-card');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-    const line1 = document.getElementById('line1');
-    const line2 = document.getElementById('line2');
-    const line3 = document.getElementById('line3');
-    let menuOpen = false;
-
-    function openMenu() {
-      menuOpen = true;
-      menuModal.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        menuModal.classList.remove('opacity-0');
-        modalCard.classList.remove('scale-95');
-        modalCard.classList.add('scale-100');
-      });
-      line1.setAttribute('transform', 'rotate(45 12 12)');
-      line2.classList.add('opacity-0');
-      line3.setAttribute('transform', 'rotate(-45 12 12)');
-      hamburgerBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeMenu() {
-      menuOpen = false;
-      menuModal.classList.add('opacity-0');
-      modalCard.classList.remove('scale-100');
-      modalCard.classList.add('scale-95');
-      setTimeout(() => {
-        if (!menuOpen) menuModal.classList.add('hidden');
-      }, 300);
-      line1.removeAttribute('transform');
-      line2.classList.remove('opacity-0');
-      line3.removeAttribute('transform');
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', () => {
-        if (menuOpen) closeMenu(); else openMenu();
-      });
-    }
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeMenu);
-    if (menuModal) {
-      menuModal.addEventListener('click', (e) => {
-        if (e.target === menuModal) closeMenu();
-      });
-    }
+    // 2. HAMBURGER MENU MODAL
+    // (Handled by menu-modal & nav-memory.js)
+    // ----------------------------------------------------
 
     // ----------------------------------------------------
     // 3. SPLIT PDF WORKBENCH & CLIENT-SIDE ENGINE
@@ -1850,5 +1851,15 @@
       });
     }
   </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+
+
+
+
+
+  <script src="../assets/js/share.js"></script>
 </body>
 </html>

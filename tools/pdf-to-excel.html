@@ -241,27 +241,35 @@
         </span>
       </a>
 
-      <!-- Center Nav Links -->
-      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
-        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
-        </a>
-        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
-        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
-        <a href="../pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
-        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
-        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
-        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
-        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      <!-- Center Desktop Nav Links -->
+      <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold overflow-x-auto no-scrollbar py-1 max-w-[55vw] sm:max-w-none">
+        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
+        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
+        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
+        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
+        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
+        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
       </nav>
 
-      <!-- Far Right: Hamburger Menu Button -->
-      <div class="flex items-center gap-3">
+      <!-- Far Right: Share Button + Hamburger Menu Button -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="header-share-btn"
+          type="button"
+          onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          title="Share Page"
+          aria-label="Share Page"
+        >
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
         <button 
           id="hamburger-btn" 
           type="button"
-          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
@@ -272,7 +280,7 @@
           </svg>
         </button>
       </div>
-    </div>
+    
   </header>
 
   <!-- Clean Dropdown Modal / Mobile Menu -->

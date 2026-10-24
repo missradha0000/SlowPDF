@@ -2,23 +2,27 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  * 
- * SlowPDF (slowpdf.in) — Smart Contextual Navigation Memory & Event-Delegated Mobile Menu Engine
- * Ensures navbar "Home" link routes smartly and mobile menu toggle works 100% on every single page.
+ * SlowPDF (slowpdf.me) — Smart Contextual Navigation Memory & Universal Mobile Menu Engine
+ * Restores navbar links, tracks homepage scroll position, and restores exact scroll location upon returning Home.
  */
 
 (function() {
-  const SESSION_KEY = 'slowpdf_origin';
-  const VALUE_TOOLS_GRID = 'tools_grid';
+  const SCROLL_KEY = 'slowpdf_home_scroll_pos';
+  const FROM_HOME_KEY = 'slowpdf_from_homepage';
 
   // =========================================================================
-  // 1. UNIVERSAL EVENT-DELEGATED MOBILE MENU & DARK MODE ENGINE
+  // 1. UNIVERSAL MOBILE MENU & DARK MODE ENGINE
   // =========================================================================
   function applyTheme(isDark) {
     const toggle = document.getElementById('dark-mode-toggle');
     const thumb = document.getElementById('dark-mode-thumb');
     if (isDark) {
       document.documentElement.classList.add('dark');
-      if (toggle) toggle.setAttribute('aria-checked', 'true');
+      if (toggle) {
+        toggle.setAttribute('aria-checked', 'true');
+        toggle.classList.remove('bg-stone-300');
+        toggle.classList.add('bg-[#355E4B]');
+      }
       if (thumb) {
         thumb.classList.add('translate-x-5');
         thumb.classList.remove('translate-x-0');
@@ -26,7 +30,11 @@
       try { localStorage.setItem('slowpdf_theme', 'dark'); } catch(e) {}
     } else {
       document.documentElement.classList.remove('dark');
-      if (toggle) toggle.setAttribute('aria-checked', 'false');
+      if (toggle) {
+        toggle.setAttribute('aria-checked', 'false');
+        toggle.classList.remove('bg-[#355E4B]');
+        toggle.classList.add('bg-stone-300');
+      }
       if (thumb) {
         thumb.classList.remove('translate-x-5');
         thumb.classList.add('translate-x-0');
@@ -35,7 +43,7 @@
     }
   }
 
-  // Initialize theme as early as possible
+  // Initialize theme early
   try {
     const savedTheme = localStorage.getItem('slowpdf_theme');
     if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -46,16 +54,18 @@
   } catch(e) {}
 
   function openMenuModal(modal, btn) {
+    if (!modal) modal = document.getElementById('menu-modal');
     if (!modal) return;
-    const card = document.getElementById('modal-card') || modal.querySelector('#modal-card') || modal.querySelector('div');
+    const card = document.getElementById('modal-card') || modal.querySelector('#modal-card') || modal.firstElementChild;
+    modal.style.display = 'block';
     modal.classList.remove('hidden');
     modal.setAttribute('aria-hidden', 'false');
     if (btn) btn.setAttribute('aria-expanded', 'true');
     
-    // Trigger browser reflow for CSS transitions
-    void modal.offsetHeight;
+    void modal.offsetHeight; // trigger reflow
     
     modal.classList.remove('opacity-0');
+    modal.classList.add('opacity-100');
     if (card) {
       card.classList.remove('scale-95');
       card.classList.add('scale-100');
@@ -63,8 +73,10 @@
   }
 
   function closeMenuModal(modal, btn) {
+    if (!modal) modal = document.getElementById('menu-modal');
     if (!modal) return;
-    const card = document.getElementById('modal-card') || modal.querySelector('#modal-card') || modal.querySelector('div');
+    const card = document.getElementById('modal-card') || modal.querySelector('#modal-card') || modal.firstElementChild;
+    modal.classList.remove('opacity-100');
     modal.classList.add('opacity-0');
     if (card) {
       card.classList.remove('scale-100');
@@ -75,55 +87,109 @@
     setTimeout(() => {
       if (modal.classList.contains('opacity-0')) {
         modal.classList.add('hidden');
+        modal.style.display = 'none';
       }
-    }, 300);
+    }, 250);
   }
 
-  // Event delegation on document to catch ALL clicks universally
-  document.addEventListener('click', function(e) {
-    // If dedicated mobileMenuDrawer is present, let inline script handle it directly
-    if (document.getElementById('mobileMenuDrawer')) {
-      return;
-    }
+  let isMenuToggling = false;
+  function toggleMenuModal(modal, btn) {
+    if (isMenuToggling) return;
+    isMenuToggling = true;
+    setTimeout(() => { isMenuToggling = false; }, 200);
 
-    // A. Hamburger Button Click
-    const hamburgerBtn = e.target.closest('#hamburger-btn');
+    if (!modal) modal = document.getElementById('menu-modal');
+    if (!modal) return;
+    if (modal.classList.contains('hidden') || modal.classList.contains('opacity-0')) {
+      openMenuModal(modal, btn);
+    } else {
+      closeMenuModal(modal, btn);
+    }
+  }
+
+  function initMobileMenu() {
+    const modal = document.getElementById('menu-modal');
+    if (!modal) return;
+
+    const hamburgerButtons = document.querySelectorAll('#hamburger-btn, #mobileMenuBtn, .hamburger-btn, .mobile-menu-btn');
+    hamburgerButtons.forEach(btn => {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenuModal(modal, btn);
+      };
+    });
+
+    const closeButtons = document.querySelectorAll('#close-modal-btn, #closeMenuBtn, .close-menu-btn, .close-modal-btn');
+    closeButtons.forEach(btn => {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenuModal(modal);
+      };
+    });
+
+    modal.onclick = function(e) {
+      const card = document.getElementById('modal-card');
+      if (card && !card.contains(e.target)) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenuModal(modal);
+      } else if (e.target === modal) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenuModal(modal);
+      }
+    };
+
+    modal.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        closeMenuModal(modal);
+      });
+    });
+
+    const darkToggle = document.getElementById('dark-mode-toggle');
+    if (darkToggle) {
+      darkToggle.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isDark);
+      };
+    }
+  }
+
+  // Event Delegation for Mobile Menu
+  document.addEventListener('click', function(e) {
+    const hamburgerBtn = e.target.closest('#hamburger-btn, #mobileMenuBtn, .hamburger-btn, .mobile-menu-btn');
     if (hamburgerBtn) {
       e.preventDefault();
       e.stopImmediatePropagation();
       const modal = document.getElementById('menu-modal');
-      if (modal) {
-        if (modal.classList.contains('hidden') || modal.classList.contains('opacity-0')) {
-          openMenuModal(modal, hamburgerBtn);
-        } else {
-          closeMenuModal(modal, hamburgerBtn);
-        }
-      }
+      if (modal) toggleMenuModal(modal, hamburgerBtn);
       return;
     }
 
-    // B. Close Modal Button Click
-    const closeBtn = e.target.closest('#close-modal-btn');
+    const closeBtn = e.target.closest('#close-modal-btn, #closeMenuBtn, .close-menu-btn, .close-modal-btn');
     if (closeBtn) {
       e.preventDefault();
       e.stopImmediatePropagation();
       const modal = document.getElementById('menu-modal');
-      const btn = document.getElementById('hamburger-btn');
-      closeMenuModal(modal, btn);
+      closeMenuModal(modal);
       return;
     }
 
-    // C. Modal Backdrop Click
     const modal = document.getElementById('menu-modal');
-    if (modal && e.target === modal) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      const btn = document.getElementById('hamburger-btn');
-      closeMenuModal(modal, btn);
-      return;
+    if (modal && !modal.classList.contains('hidden') && !modal.classList.contains('opacity-0')) {
+      const card = document.getElementById('modal-card');
+      if (card && !card.contains(e.target) && !e.target.closest('#hamburger-btn, #mobileMenuBtn, .hamburger-btn, .mobile-menu-btn')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        closeMenuModal(modal);
+        return;
+      }
     }
 
-    // D. Dark Mode Toggle Click
     const darkToggle = e.target.closest('#dark-mode-toggle');
     if (darkToggle) {
       e.preventDefault();
@@ -134,110 +200,88 @@
     }
   }, true);
 
-  // Escape key listener to close menu modal
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       const modal = document.getElementById('menu-modal');
       if (modal && (!modal.classList.contains('hidden') && !modal.classList.contains('opacity-0'))) {
-        const btn = document.getElementById('hamburger-btn');
-        closeMenuModal(modal, btn);
+        closeMenuModal(modal);
       }
     }
   });
 
   // =========================================================================
-  // 2. HOMEPAGE & TOOL NAVIGATION TRACKING
+  // 2. SMART HOMEPAGE SCROLL TRACKING & RESTORATION ENGINE
   // =========================================================================
-  function initHomepageTracker() {
-    const isHomepage = window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname.endsWith('/') || 
-                       (!window.location.pathname.includes('/tools/') && !window.location.pathname.includes('/pages/'));
+  const pathname = window.location.pathname;
+  const isHomepage = pathname.endsWith('/index.html') || pathname.endsWith('/') || pathname === '';
 
-    if (isHomepage) {
-      function bindLinks() {
-        const toolLinks = document.querySelectorAll('a[href*="tools/"], #tools-container a, #extra-tools a, [data-tool-card]');
-        toolLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            try {
-              sessionStorage.setItem('returnToTools', window.location.href);
-              sessionStorage.setItem(SESSION_KEY, VALUE_TOOLS_GRID);
-            } catch (e) {}
-          });
-        });
+  if (isHomepage) {
+    // 1. Save scroll position whenever a user clicks any tool card or tool link from homepage
+    document.addEventListener('click', function(e) {
+      const toolLink = e.target.closest('a[href*="tools/"], [data-tool-card], #popular-tools a, #hero-buttons a');
+      if (toolLink) {
+        try {
+          const currentY = window.scrollY || window.pageYOffset || 0;
+          sessionStorage.setItem(SCROLL_KEY, currentY.toString());
+          sessionStorage.setItem(FROM_HOME_KEY, 'true');
+        } catch(err) {}
       }
+    });
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bindLinks);
-      } else {
-        bindLinks();
-      }
-    }
-  }
-
-  function initToolPageNavigation() {
-    const isSubfolder = window.location.pathname.includes('/tools/') || window.location.pathname.includes('/pages/');
-
-    function bindHomeLink() {
-      const homeLink = document.getElementById('nav-home-link');
-      const brandHomeLink = document.getElementById('brand-home-link');
-      
-      let cameFromToolsGrid = false;
+    // 2. Restore scroll position on homepage load if arriving back from a tool
+    function restoreScroll() {
       try {
-        const storedOrigin = sessionStorage.getItem(SESSION_KEY);
-        const storedReturn = sessionStorage.getItem('returnToTools');
-        const referrer = document.referrer || '';
-        
-        if (storedReturn || storedOrigin === VALUE_TOOLS_GRID) {
-          cameFromToolsGrid = true;
-        } else if (referrer.includes('index.html') || (referrer && !referrer.includes('/tools/') && !referrer.includes('/pages/'))) {
-          cameFromToolsGrid = true;
+        const savedY = sessionStorage.getItem(SCROLL_KEY);
+        const fromHome = sessionStorage.getItem(FROM_HOME_KEY);
+
+        if (savedY && fromHome === 'true') {
+          const targetY = parseInt(savedY, 10);
+          if (!isNaN(targetY) && targetY > 0) {
+            // Restore position after DOM is rendered
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
+              }, 80);
+            });
+          }
         }
-      } catch (e) {
-        cameFromToolsGrid = false;
-      }
-
-      const targetUrl = isSubfolder 
-        ? (cameFromToolsGrid ? '../index.html#popular-tools' : '../index.html')
-        : (cameFromToolsGrid ? './index.html#popular-tools' : './index.html');
-
-      if (homeLink) {
-        homeLink.href = targetUrl;
-        homeLink.onclick = () => {
-          window.location.href = targetUrl;
-        };
-      }
-
-      if (brandHomeLink) {
-        brandHomeLink.href = targetUrl;
-      }
+        // Clear after single restoration
+        sessionStorage.removeItem(SCROLL_KEY);
+        sessionStorage.removeItem(FROM_HOME_KEY);
+      } catch(err) {}
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', bindHomeLink);
+      document.addEventListener('DOMContentLoaded', restoreScroll);
     } else {
-      bindHomeLink();
+      restoreScroll();
+    }
+  } else {
+    // On subpages / tool pages: wire Home links to return seamlessly
+    function wireHomeLinks() {
+      const homeLinks = document.querySelectorAll('#nav-home-link, #brand-home-link, a[href$="index.html"], a[href$="index.html#popular-tools"]');
+      homeLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Keep sessionStorage intact if coming back to homepage so index.html restores scroll
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', wireHomeLinks);
+    } else {
+      wireHomeLinks();
     }
   }
 
-  initHomepageTracker();
-  initToolPageNavigation();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
 
-  window.SlowPDFNav = {
-    setOriginToolsGrid: function() {
-      try { sessionStorage.setItem(SESSION_KEY, VALUE_TOOLS_GRID); } catch(e) {}
-    },
-    clearOrigin: function() {
-      try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
-    },
-    getSmartHomeUrl: function(isSubfolder = false) {
-      let cameFromTools = false;
-      try {
-        cameFromTools = sessionStorage.getItem(SESSION_KEY) === VALUE_TOOLS_GRID || 
-                        (document.referrer && document.referrer.includes('index.html'));
-      } catch(e) {}
-      return isSubfolder 
-        ? (cameFromTools ? '../index.html#popular-tools' : '../index.html')
-        : (cameFromTools ? './index.html#popular-tools' : './index.html');
-    }
-  };
+  // Expose global helpers
+  window.slowPdfToggleMenu = function() { toggleMenuModal(document.getElementById('menu-modal')); };
+  window.slowPdfOpenMenu = function() { openMenuModal(document.getElementById('menu-modal')); };
+  window.slowPdfCloseMenu = function() { closeMenuModal(document.getElementById('menu-modal')); };
 })();

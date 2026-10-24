@@ -166,6 +166,7 @@
   <script src="../assets/js/banners.js"></script>
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
+  <script src="../assets/js/share.js"></script>
 
   <style>
     /* ==========================================================================
@@ -291,26 +292,35 @@
         </span>
       </a>
 
-      <!-- Center & Right Nav Links -->
-      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold">
-        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-[#2D3748] dark:text-[#2D3748]">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
-        </a>
-        <a href="../#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
-        <a href="../pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
-        <a href="../pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
-        <a href="../pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
-        <a href="../pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
-        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      <!-- Center Desktop Nav Links -->
+      <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold overflow-x-auto no-scrollbar py-1 max-w-[55vw] sm:max-w-none">
+        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
+        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
+        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
+        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
+        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
+        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
       </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="flex items-center gap-3">
+      <!-- Far Right: Share Button + Hamburger Menu Button -->
+      <div class="flex items-center gap-2">
         <button 
-          id="mobileMenuBtn" 
+          id="header-share-btn"
           type="button"
-          class="mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          title="Share Page"
+          aria-label="Share Page"
+        >
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
+        <button 
+          id="hamburger-btn" 
+          type="button"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
@@ -321,7 +331,7 @@
           </svg>
         </button>
       </div>
-    </div>
+    
   </header>
 
   <!-- Preferences Drawer Modal -->
@@ -393,9 +403,23 @@
         <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
         100% Client-Side RAM Processing • Interactive Studio
       </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
         Add Page Numbers to PDF
       </h1>
+        <button 
+          type="button" 
+          onclick="window.slowPdfShare({ title: 'SlowPDF - Add Page Numbers', text: 'Use this fast, private client-side Add Page Numbers directly in your browser!', url: window.location.href })"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBF2] dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-700 text-[#2D3748] dark:text-stone-300 hover:bg-[#E8DABF]/50 dark:hover:bg-stone-800 text-xs font-semibold transition-all shadow-2xs hover:scale-105 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
+          title="Share Add Page Numbers"
+          aria-label="Share this tool"
+        >
+          <svg class="w-3.5 h-3.5 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span>Share</span>
+        </button>
+      </div>
       <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
         Stamp custom header or footer numbers, Roman numerals, and page counts onto your PDF with live visual position controls.
       </p>
@@ -833,10 +857,7 @@
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         FAQ
       </a>
-      <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        Contact
-      </a>
+      
     </div>
   </nav>
 
@@ -1139,7 +1160,7 @@
           <span>•</span>
           <a href="../pages/terms.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400">Terms of Service</a>
           <span>•</span>
-          <a href="../pages/contact.html" class="hover:text-[#355E4B] dark:hover:text-emerald-400">Contact</a>
+          
           <span>•</span>
           <span class="text-stone-500">Built with calm design principles</span>
         </div>
@@ -1843,6 +1864,19 @@
     <a href="../about.html">About</a>
     <a href="../privacy.html">Privacy</a>
     <a href="../terms.html">Terms</a>
+  
+    <button 
+      type="button" 
+      onclick="window.slowPdfShare({ title: document.title, text: 'Check out this free client-side PDF tool on SlowPDF!', url: window.location.href })"
+      class="mobile-share-link"
+      style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.05rem; font-weight: 600; color: #1D3D33; text-decoration: none; padding: 10px 14px; border-radius: 12px; background: #FFFBF2; border: 1.5px solid #E8DABF; cursor: pointer; margin-top: 10px; width: 100%; font-family: inherit; transition: all 0.2s ease;"
+      onmouseover="this.style.background='#E8DABF'"
+      onmouseout="this.style.background='#FFFBF2'"
+      aria-label="Share this Page"
+    >
+      <svg style="width: 18px; height: 18px; stroke: #274737; fill: none;" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+      <span>Share this Page</span>
+    </button>
   </nav>
 </div>
 

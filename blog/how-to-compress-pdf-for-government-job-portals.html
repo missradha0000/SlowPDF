@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Compress PDFs Under 200KB for Government &amp; Job Portals — SlowPDF</title>
+  <meta name="description" content="Step-by-step guide to reducing PDF file size under 200KB or 50KB for state portals, national civil exams, and job upload forms without losing legibility.">
+  <link rel="canonical" href="https://slowpdf.me/blog/how-to-compress-pdf-for-government-job-portals.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Compress PDFs Under 200KB for Government &amp; Job Portals">
+  <meta property="og:description" content="Shrink PDFs safely for strict state and national job application forms.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F4F7F5',
+              500: '#355E4B',
+              600: '#274737',
+              700: '#1E3D30',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFBF2 !important;
+      color: #222E28;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    .dark body {
+      background-color: #121815 !important;
+      color: #F1F5F2;
+    }
+    #site-header {
+      background-color: #E8DABF !important;
+      border-color: #D8C7A5 !important;
+    }
+    .dark #site-header {
+      background-color: #151D19 !important;
+      border-color: #2A3630 !important;
+    }
+    .hidden { display: none !important; }
+  </style>
+
+  <script src="../assets/js/nav-memory.js"></script>
+  <script src="../assets/js/share.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Compress PDFs Under 200KB for Government & Job Portals",
+    "description": "Reduce PDF file sizes safely under strict portal limits without compromising document readability.",
+    "step": [
+      { "@type": "HowToStep", "text": "Open the SlowPDF Compress PDF tool in your browser." },
+      { "@type": "HowToStep", "text": "Select your resume, certificate, or identity proof document." },
+      { "@type": "HowToStep", "text": "Adjust target compression preset (Extreme, Recommended, or Light)." },
+      { "@type": "HowToStep", "text": "Download the optimized compressed PDF file instantly." }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
+
+  <!-- HEADER -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#151D19] border-b border-[#D8C7A5] dark:border-stone-800/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 group focus:outline-none rounded-xl p-1 select-none">
+        <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center">
+          <img src="../assets/images/logo.png" alt="SlowPDF Mascot Logo" class="w-full h-full object-contain drop-shadow-xs transition-transform group-hover:scale-105" onerror="this.src='../public/assets/images/logo.png'" />
+        </div>
+        <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
+          Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
+        </span>
+      </a>
+
+      <!-- Center Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-2.5 text-sm font-semibold">
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
+        <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="../terms.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Terms</a>
+      </nav>
+
+      <!-- Far Right: Share Button + Hamburger Menu Button -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="header-share-btn"
+          type="button"
+          onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          title="Share Page"
+          aria-label="Share Page"
+        >
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
+        <button 
+          id="hamburger-btn" 
+          type="button"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
+          </svg>
+        </button>
+      </div>
+    
+  </header>
+
+  <!-- MAIN ARTICLE -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full flex-1">
+    
+    <div class="mb-8">
+      <a href="../blog.html" class="inline-flex items-center gap-2 text-sm font-bold text-[#355E4B] dark:text-emerald-400 hover:underline">
+        <span>&larr; Back to All Articles</span>
+      </a>
+    </div>
+
+    <header class="mb-10">
+      <div class="flex items-center gap-3 text-xs font-semibold text-emerald-800 dark:text-emerald-400 mb-3">
+        <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60">Practical How-To</span>
+        <span>5 min read</span>
+        <span>&bull;</span>
+        <span>Published Oct 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#222E28] dark:text-white tracking-tight leading-tight mb-4">
+        How to Compress PDFs Under 200KB for Government &amp; Job Portals
+      </h1>
+      <p class="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
+        Struggling with strict 200KB or 100KB file upload limits on government application forms, state portals, or university admissions? Learn how to optimize document stream filters without destroying text sharpness.
+      </p>
+    </header>
+
+    <div class="bg-white dark:bg-[#1C2420] border-2 border-[#E8DABF] dark:border-stone-800 rounded-2xl p-6 mb-10 shadow-sm">
+      <h3 class="text-base font-bold text-[#222E28] dark:text-white mb-2 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+        Quick Solution Summary
+      </h3>
+      <ul class="space-y-2 text-sm text-stone-700 dark:text-stone-300">
+        <li>&bull; Government portals strictly reject files over 200KB (or 50KB for signatures/photo proofs).</li>
+        <li>&bull; Excessive file size is usually caused by uncompressed high-DPI image scans or embedded full font subsets.</li>
+        <li>&bull; SlowPDF's in-browser compressor resamples image streams locally, stripping duplicate font definitions while preserving readable text.</li>
+      </ul>
+    </div>
+
+    <div class="prose prose-stone dark:prose-invert max-w-none text-stone-800 dark:text-stone-200 space-y-6 leading-relaxed">
+      
+      <h2 class="text-2xl font-bold text-[#222E28] dark:text-white mt-8 mb-4">Why Government Portals Enforce Strict File Limits</h2>
+      <p>
+        National recruitment boards, state public service commissions, and passport portals receive millions of applications during peak registration windows. To prevent server storage overload and slow database queries, portal legacy architectures enforce rigid file size ceilings—frequently <strong>200KB max for degree certificates</strong> and <strong>50KB for photo signatures</strong>.
+      </p>
+
+      <h2 class="text-2xl font-bold text-[#222E28] dark:text-white mt-10 mb-4">3 Technical Reasons Your PDF Is Oversized</h2>
+      <ol class="list-decimal pl-6 space-y-3">
+        <li><strong>Uncompressed JPEG Scans:</strong> Phone scanner apps frequently export 300 DPI or 600 DPI images directly into PDF containers, yielding 5MB–10MB files.</li>
+        <li><strong>Embedded TrueType Fonts:</strong> Word processors embed full font tables containing thousands of unused glyphs inside every saved PDF.</li>
+        <li><strong>Unnecessary Metadata Streams:</strong> Photoshop and Acrobat inject thumbnail preview caches and author tracking metadata.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold text-[#222E28] dark:text-white mt-10 mb-4">How to Shrink Your Document Under 200KB on SlowPDF</h2>
+      
+      <div class="space-y-4 my-6">
+        <div class="p-4 rounded-xl bg-white dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-800">
+          <span class="font-bold text-[#355E4B] dark:text-emerald-400">Step 1: Open the Compress PDF Tool</span>
+          <p class="text-sm mt-1 text-stone-600 dark:text-stone-300">Launch our <a href="../tools/compress-pdf.html" class="underline font-semibold text-[#355E4B] dark:text-emerald-400">Compress PDF Tool</a>.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-800">
+          <span class="font-bold text-[#355E4B] dark:text-emerald-400">Step 2: Choose Your Target Preset</span>
+          <p class="text-sm mt-1 text-stone-600 dark:text-stone-300">Select <strong>"High Compression"</strong> if your file is over 2MB, or <strong>"Recommended Compression"</strong> for standard resumes and certificates.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-800">
+          <span class="font-bold text-[#355E4B] dark:text-emerald-400">Step 3: Download &amp; Verify File Size</span>
+          <p class="text-sm mt-1 text-stone-600 dark:text-stone-300">Your browser instantly resamples the document streams in RAM and shows the exact resultant file size (e.g., reduced from 1.8MB down to 142KB).</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 bg-linear-to-r from-[#274737] to-[#1E3D30] text-white rounded-2xl p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-2xl font-bold mb-2">Need to Compress Your Application Document Now?</h3>
+        <p class="text-emerald-100 text-sm max-w-lg">
+          Shrink resumes, marksheets, and passport photos safely in seconds without uploading to external cloud servers.
+        </p>
+      </div>
+      <a href="../tools/compress-pdf.html" class="shrink-0 px-6 py-3.5 rounded-xl bg-[#FFFBF2] text-[#222E28] font-bold text-sm hover:bg-white transition-all shadow-md">
+        Launch Compress Tool &rarr;
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="mt-auto bg-[#FFFBF2] dark:bg-[#0E1310] border-t border-stone-200/80 dark:border-stone-800 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-stone-500">
+      &copy; 2026 Slow PDF &bull; 100% Client-Side Private PDF Utilities
+    </div>
+  </footer>
+
+  <div id="menu-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden opacity-0" style="display: none;" aria-hidden="true">
+    <div class="fixed top-20 right-4 w-80 bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+        <span class="font-bold text-base">SlowPDF Menu</span>
+        <button id="close-modal-btn" class="p-1 text-stone-400">&times;</button>
+      </div>
+      <div class="py-4 space-y-2 text-sm">
+        <a href="../blog.html" class="block font-bold text-[#355E4B]">Blog &amp; Knowledge Base</a>
+        <a href="../tools/compress-pdf.html" class="block text-stone-600">Compress PDF Tool</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

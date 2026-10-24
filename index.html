@@ -3,15 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SlowPDF — Your Slow & Steady Study Partner | 100% Private PDF Tools</title>
-  <meta name="description" content="Simple, calm, and reliable zero-server PDF tools designed to help you study and work at your own pace. 100% client-side privacy, free forever." />
-  <meta property="og:title" content="SlowPDF — Your Slow & Steady Study Partner" />
-  <meta property="og:description" content="Simple, calm, and reliable zero-server PDF tools. No cloud uploads. Files processed in local RAM." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://slowpdf.in" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>SlowPDF – 100% Private Client-Side PDF Tools | Merge, Compress, Edit No Upload</title>
+  <meta name="description" content="Free online PDF tools that process files 100% in your browser. Merge PDF free without upload, compress PDF client-side, edit, split, crop, sign, and convert PDFs with zero cloud uploads." />
+  <meta name="keywords" content="private pdf tools, merge pdf free without upload, compress pdf client side, pdf maker online, offline pdf tools, edit pdf online free, split pdf no upload, secure pdf converter, client side pdf editor, slowpdf" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#FFFBF2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#121815" media="(prefers-color-scheme: dark)" />
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://slowpdf.me/" />
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/images/logo.png" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:site_name" content="SlowPDF" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowpdf.me/" />
+  <meta property="og:title" content="SlowPDF – 100% Private Client-Side PDF Tools | Merge, Compress, Edit No Upload" />
+  <meta property="og:description" content="Free online PDF tools that process files 100% in your browser. Merge PDF free without upload, compress PDF client-side, edit, split, crop, sign, and convert PDFs with zero cloud uploads." />
+  <meta property="og:image" content="https://slowpdf.me/assets/images/banner1.jpg" />
+  <meta property="og:image:secure_url" content="https://slowpdf.me/assets/images/banner1.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SlowPDF — Calm, Private & Powerful Zero-Server PDF Tools with the Smart Tortoise Mascot" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://slowpdf.me/" />
+  <meta name="twitter:title" content="SlowPDF – 100% Private Client-Side PDF Tools | Merge, Compress, Edit No Upload" />
+  <meta name="twitter:description" content="Free online PDF tools that process files 100% in your browser. Merge PDF free without upload, compress PDF client-side, edit, split, crop, sign, and convert PDFs with zero cloud uploads." />
+  <meta name="twitter:image" content="https://slowpdf.me/assets/images/banner1.jpg" />
+  <meta name="twitter:image:alt" content="SlowPDF — 100% Private Client-Side PDF Tools" />
+
+  <!-- Schema.org JSON-LD Structured Data for Search Engine Indexing & Google Rich Results -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SlowPDF",
+      "url": "https://slowpdf.me/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All modern web browsers (Chrome, Firefox, Safari, Edge)",
+      "description": "Free online PDF tools that run 100% in your browser. Merge PDF free without upload, compress PDF client-side, edit, split, crop, sign, and convert PDFs with zero cloud servers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Merge PDF Free Without Upload",
+        "Compress PDF Client-Side to 20KB, 50KB, 100KB",
+        "Split PDF Pages Offline",
+        "Crop PDF Margins & Trim Whitespace",
+        "Edit PDF Text & Add Signatures",
+        "Erase, Whiteout & Redact Sensitive Info",
+        "Convert PDF to Word, Excel, and JPG",
+        "OCR Scanned PDF to Searchable Text",
+        "Password Protect and Unlock PDFs",
+        "100% Client-Side In-Memory Processing"
+      ],
+      "image": "https://slowpdf.me/assets/images/banner1.jpg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SlowPDF",
+        "url": "https://slowpdf.me/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://slowpdf.me/assets/images/logo.png"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are my PDF files uploaded to any server or database?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SlowPDF uses a zero-server architecture. All operations—including merging, splitting, OCR, and compression—execute locally inside your browser's WebAssembly sandbox. Your files never touch a remote storage bucket or third-party cloud."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does client-side PDF processing actually work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When you open a PDF, modern web standards allow your browser to read the file into an ArrayBuffer in local RAM. WebAssembly compiled binaries (like MuPDF, pdf-lib, and Tesseract) process the data directly on your device’s CPU and GPU, eliminating network roundtrips."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there file size limits on SlowPDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Traditional platforms enforce artificial 25MB or 50MB file size caps so they can upsell paid subscriptions. On SlowPDF, the only limit is the available RAM on your device. You can easily merge, compress, or split 500MB+ textbook scans on modern laptops or phones without arbitrary restrictions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an internet connection to use SlowPDF after loading?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once the page and its WebAssembly worker scripts are cached in your browser, you can disconnect your internet, turn on Airplane Mode, and continue merging, splitting, or compressing your documents without interruption."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SlowPDF really 100% free with no subscription traps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, SlowPDF is completely free for all users. We do not require credit card information, user sign-ups, or subscriptions. We are supported by our passionate community of self-paced learners and educators worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which web browsers and operating systems are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SlowPDF is compatible with all modern browsers that support WebAssembly and ES6 modules, including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, Brave, and Opera across Windows, macOS, Linux, iOS, and Android."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the OCR feature work locally on scanned documents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our OCR engine executes an in-browser Tesseract WebAssembly engine with neural-network language recognition models. The optical scan runs directly on your CPU/GPU hardware threads, extracting high-fidelity machine-readable text without transmitting page images to any cloud service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can SlowPDF be used by schools, universities, and enterprise organizations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Educational institutions and legal firms frequently prefer SlowPDF specifically because it eliminates third-party data processing agreements and FERPA compliance risks. No student records or proprietary legal briefs leave institutional workstations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I accidentally close the tab while processing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you close the tab, your browser instantly releases the allocated memory and the temporary document buffers are purged immediately. No ghost copies remain anywhere. Your original files on your hard drive remain untouched."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is it named SlowPDF if the processing speed is instantaneous?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "\"Slow\" is an homage to the Slow Movement (like Slow Food and Slow Living). It represents pacing, thoughtfulness, calmness, and deliberate focus against the manic, ad-saturated rush of the modern web. The actual execution runs at near-native RAM speeds!"
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+<!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -50,6 +207,7 @@
   <script src="assets/js/banners.js"></script>
   <script src="assets/js/carousel.js"></script>
   <script src="assets/js/nav-memory.js"></script>
+  <script src="assets/js/share.js"></script>
 
   <style>
     /* ==========================================================================
@@ -169,21 +327,21 @@
       border-top-color: #355E4B;
     }
 
-    /* Glassmorphism Search Bar Pill with Translucent Frosted Glass */
+    /* Glassmorphism Search Bar Pill with Translucent Frosted Glass inside Green Hero */
     .glass-search-bar {
-      background: rgba(255, 253, 248, 0.45) !important;
+      background: rgba(255, 255, 255, 0.2) !important;
       backdrop-filter: blur(16px) saturate(180%) !important;
       -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-      border: 1.5px solid rgba(43, 76, 59, 0.45) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
       border-radius: 9999px !important;
-      box-shadow: 0 18px 38px rgba(43, 76, 59, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
     }
     .dark .glass-search-bar {
-      background: rgba(28, 36, 32, 0.55) !important;
+      background: rgba(0, 0, 0, 0.35) !important;
       backdrop-filter: blur(16px) saturate(180%) !important;
       -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-      border-color: rgba(53, 94, 75, 0.5) !important;
-      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.22) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.1) !important;
     }
 
     /* Mascot gentle float animation */
@@ -203,7 +361,7 @@
       75% { transform: translateY(-5px) rotate(-1deg) scale(1.04); }
     }
     .mascot-peeking {
-      filter: drop-shadow(0 6px 14px rgba(39, 71, 55, 0.18));
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .search-pill-focused .mascot-peeking,
@@ -211,44 +369,28 @@
       animation: mascotBounce 1.2s ease-in-out infinite;
     }
 
-    /* Neumorphic Frosted Category Filter Dock Container */
-    .category-filter-dock {
-      background: rgba(245, 239, 230, 0.85) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border: 1px solid rgba(43, 76, 59, 0.12) !important;
-      border-radius: 38px !important;
-      box-shadow: 0 10px 30px rgba(43, 76, 59, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
-      padding: 14px 24px !important;
-    }
-    .dark .category-filter-dock {
-      background: rgba(26, 35, 31, 0.85) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border-color: rgba(53, 94, 75, 0.25) !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.05) !important;
-    }
-
-    /* Category Chip Styles */
+    /* Category Chip Styles inside Green Hero */
     .category-chip {
       border-radius: 20px !important;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .category-chip.active {
-      background-color: #1C382F !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 4px 12px rgba(28, 56, 47, 0.25) !important;
+      background-color: #FFFFFF !important;
+      color: #274737 !important;
+      border-color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
     }
     .category-chip.active svg {
-      stroke: #FFFFFF !important;
+      stroke: #274737 !important;
     }
     .category-chip:not(.active) {
-      background-color: rgba(234, 226, 213, 0.75) !important;
-      color: #1C382F !important;
+      background-color: rgba(255, 255, 255, 0.16) !important;
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
     }
-    .dark .category-chip:not(.active) {
-      background-color: rgba(40, 52, 45, 0.75) !important;
-      color: #E2E8E4 !important;
+    .category-chip:not(.active):hover {
+      background-color: rgba(255, 255, 255, 0.28) !important;
+      color: #FFFFFF !important;
     }
     .category-chip:not(.active):hover {
       background-color: #DFD6C8 !important;
@@ -344,6 +486,7 @@
       color: #a7f3d0;
       font-weight: 600;
     }
+      .hidden { display: none !important; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
@@ -374,24 +517,34 @@
         </span>
       </a>
 
-      <!-- Center & Right Nav Links with Blog Included -->
-      <nav class="hidden md:flex items-center gap-2.5 text-sm font-semibold">
-        <a href="index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
-        <a href="#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
-        <a href="pages/blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
-        <a href="pages/learn.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Learn</a>
-        <a href="pages/about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
-        <a href="pages/contact.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Contact</a>
-        <a href="pages/privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
-        <a href="#faq-section" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">FAQ</a>
+      <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold overflow-x-auto no-scrollbar py-1 max-w-[55vw] sm:max-w-none">
+        <a id="nav-home-link" href="index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Home</a>
+        <a href="#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Tools</a>
+        <a href="blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
+        <a href="about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
+        <a href="privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
+        <a href="terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
       </nav>
 
-      <!-- Far Right: Hamburger Menu Button -->
-      <div class="flex items-center gap-3">
+      <!-- Far Right: Share Button + Hamburger Menu Button -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="header-share-btn"
+          type="button"
+          onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          title="Share Page"
+          aria-label="Share Page"
+        >
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
         <button 
           id="hamburger-btn" 
           type="button"
-          class="p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
@@ -402,87 +555,8 @@
           </svg>
         </button>
       </div>
-    </div>
+    
   </header>
-
-  <!-- Clean Dropdown Modal / Mobile Menu with Blog -->
-  <div 
-    id="menu-modal" 
-    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
-    aria-hidden="true"
-  >
-    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
-      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
-        <div class="flex items-center gap-2">
-          <img src="assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
-          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
-        </div>
-        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Dark Mode Toggle Switch -->
-      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
-        <div class="flex items-center justify-between w-full">
-          <div class="flex items-center gap-2.5">
-            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
-            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
-          </div>
-          <button 
-            id="dark-mode-toggle"
-            type="button" 
-            role="switch" 
-            aria-checked="false"
-            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
-          >
-            <span class="sr-only">Toggle dark mode</span>
-            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Navigation & Legal Links with Blog -->
-      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="pages/blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Blog &amp; Articles</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
-        </a>
-        <a href="pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
-        <a href="pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
-        <a href="pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
-        <a href="pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Privacy Policy</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
-        </a>
-        <a href="pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
-        <a href="pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
-      </div>
-
-      <!-- Social Media Icons in Menu -->
-      <div class="pt-4">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center justify-between px-2 text-stone-500 dark:text-stone-400">
-          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Instagram">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Facebook">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="X">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="YouTube">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="GitHub">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ========================================== -->
   <!-- 2. HERO SECTION                            -->
@@ -491,85 +565,199 @@
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6 w-full">
     <div 
       id="hero-banner-container"
-      class="hero-gradient rounded-2xl p-6 sm:p-10 lg:p-14 text-white shadow-xl shadow-[#274737]/20 relative overflow-visible flex flex-col lg:flex-row items-center justify-between gap-8 transition-all"
+      class="hero-gradient rounded-2xl p-6 sm:p-10 lg:p-12 text-white shadow-xl shadow-[#274737]/20 relative overflow-visible flex flex-col gap-6 transition-all"
     >
       <!-- Background ambient glows -->
       <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-24 right-1/3 w-80 h-80 bg-emerald-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
-      <!-- Left Side Content -->
-      <div class="relative z-10 max-w-2xl text-left w-full">
-        
-        <!-- Live Slide Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-emerald-100 text-xs font-semibold mb-3 tracking-wide" id="hero-badge">
-          100% Client-Side Privacy
-        </div>
+      <!-- Top Row: Left Content + Right Mascot -->
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8 w-full">
+        <!-- Left Side Content -->
+        <div class="relative z-10 max-w-2xl text-left w-full">
+          
+          <!-- Live Slide Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-emerald-100 text-xs font-semibold mb-3 tracking-wide" id="hero-badge">
+            100% Client-Side Privacy
+          </div>
 
-        <!-- Headline -->
-        <h1 
-          id="hero-headline"
-          class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.18]"
-        >
-          Your Slow &amp; Steady Study Partner — Powerful PDF Tools
-        </h1>
-
-        <!-- Subtitle -->
-        <p 
-          id="hero-subtitle"
-          class="mt-3 sm:mt-5 text-white/85 text-sm sm:text-lg leading-relaxed max-w-xl font-normal"
-        >
-          Simple, calm, and reliable PDF tools designed to help you study and work at your own pace. No rush. No clutter. Just what you need.
-        </p>
-
-        <!-- Action Buttons -->
-        <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4" id="hero-buttons">
-          <a 
-            id="hero-primary-btn"
-            href="#popular-tools" 
-            class="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-base text-[#274737] bg-white hover:bg-stone-100 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          <!-- Headline -->
+          <h1 
+            id="hero-headline"
+            class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.18]"
           >
-            Explore All Tools
-          </a>
+            Your Slow &amp; Steady Study Partner — Powerful PDF Tools
+          </h1>
 
-          <a 
-            id="hero-secondary-btn"
-            href="pages/how-it-works.html" 
-            class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium text-xs sm:text-base text-white border-2 border-white/80 hover:bg-white/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          <!-- Subtitle -->
+          <p 
+            id="hero-subtitle"
+            class="mt-3 sm:mt-5 text-white/85 text-sm sm:text-lg leading-relaxed max-w-xl font-normal"
           >
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <span id="hero-secondary-text">How It Works</span>
-          </a>
+            Simple, calm, and reliable PDF tools designed to help you study and work at your own pace. No rush. No clutter. Just what you need.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4" id="hero-buttons">
+            <a 
+              id="hero-primary-btn"
+              href="#popular-tools" 
+              class="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-base text-[#274737] bg-white hover:bg-stone-100 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Explore All Tools
+            </a>
+
+            <a 
+              id="hero-secondary-btn"
+              href="pages/how-it-works.html" 
+              class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium text-xs sm:text-base text-white border-2 border-white/80 hover:bg-white/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span id="hero-secondary-text">How It Works</span>
+            </a>
+          </div>
+
+          <!-- Trust Marker / Features Bullets -->
+          <div class="mt-6 sm:mt-8 pt-5 border-t border-white/15 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/75" id="hero-bullets">
+            <span class="flex items-center gap-1.5 font-medium">
+              <svg class="w-4 h-4 text-emerald-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              Zero-Server Security
+            </span>
+            <span>•</span>
+            <span>100% In-Browser Memory</span>
+            <span>•</span>
+            <span>Free Forever</span>
+          </div>
+
         </div>
 
-        <!-- Trust Marker / Features Bullets -->
-        <div class="mt-6 sm:mt-8 pt-5 border-t border-white/15 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/75" id="hero-bullets">
-          <span class="flex items-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-emerald-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            Zero-Server Security
-          </span>
-          <span>•</span>
-          <span>100% In-Browser Memory</span>
-          <span>•</span>
-          <span>Free Forever</span>
+        <!-- Right Side: Animated 3D Nerdy Tortoise Mascot with Spectacles -->
+        <div class="relative z-10 w-full lg:w-auto flex justify-center lg:justify-end shrink-0 bg-transparent overflow-visible pt-2 lg:pt-0">
+          <div class="mascot-backlight relative bg-transparent overflow-visible animate-gentle-float dark:bg-emerald-500/10 dark:rounded-full p-2">
+            <img 
+              src="assets/images/tortoise.png" 
+              alt="SlowPDF Nerdy Tortoise Mascot with Spectacles" 
+              class="mascot-blend dark:mix-blend-normal opacity-100 object-contain max-h-52 sm:max-h-64 md:max-h-72 lg:max-h-80 w-auto mx-auto drop-shadow-xl"
+              onerror="this.src='public/assets/images/tortoise.png'"
+            />
+          </div>
         </div>
-
       </div>
 
-      <!-- Right Side: Animated 3D Nerdy Tortoise Mascot with Spectacles -->
-      <!-- Completely Transparent: mix-blend-mode: multiply; inline style, object-contain max-h-56 mx-auto for mobile -->
-      <!-- Right Side: Animated 3D Nerdy Tortoise Mascot with Spectacles -->
-      <!-- Universal Light/Dark standard: Transparent in light, normal opacity with radial backlight in dark -->
-      <div class="relative z-10 w-full lg:w-auto flex justify-center lg:justify-end shrink-0 bg-transparent overflow-visible pt-2 lg:pt-0">
-        <div class="mascot-backlight relative bg-transparent overflow-visible animate-gentle-float dark:bg-emerald-500/10 dark:rounded-full p-2">
-          <img 
-            src="assets/images/tortoise.png" 
-            alt="SlowPDF Nerdy Tortoise Mascot with Spectacles" 
-            class="mascot-blend dark:mix-blend-normal opacity-100 object-contain max-h-56 sm:max-h-72 md:max-h-80 lg:max-h-92 w-auto mx-auto drop-shadow-xl"
-            onerror="this.src='public/assets/images/tortoise.png'"
-          />
+      <!-- Frosted Glass Search Bar Container INSIDE Green Hero Banner -->
+      <div id="search-card-container" class="w-full max-w-4xl mx-auto pt-6 border-t border-white/15 relative z-20">
+        
+        <!-- Top Right Peeking Mascot & Speech Bubble Wrapper (Positioned above search bar) -->
+        <div class="absolute z-30 flex flex-col items-end pointer-events-none select-none" style="top: -20px; right: 28px;">
+          <!-- Floating Speech Bubble -->
+          <div id="speech-bubble-box" class="speech-bubble rounded-2xl px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#1D3D33] dark:text-[#E2E8E4] flex items-center gap-1.5 mb-1 tracking-wide shadow-xs pointer-events-auto">
+            <span class="text-sm">🐢</span>
+            <span id="speech-message">Ready to search!</span>
+          </div>
+
+          <!-- Full Tortoise Mascot -->
+          <div class="relative overflow-visible z-30 animate-mascot-float">
+            <img 
+              src="assets/images/logo.png" 
+              alt="SlowPDF Tortoise Mascot" 
+              class="mascot-peeking w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-md overflow-visible"
+              onerror="this.src='public/assets/images/logo.png'"
+            />
+          </div>
         </div>
+
+        <!-- Pill Shaped Search Bar Box with True Translucent Frosted Glass -->
+        <div 
+          id="search-box-card"
+          class="glass-search-bar rounded-full h-14 sm:h-16 px-5 sm:px-7 flex items-center relative transition-all duration-300 focus-within:ring-4 focus-within:ring-white/30"
+        >
+          <!-- Magnifying Glass Icon -->
+          <div class="shrink-0 text-white/90">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+
+          <!-- Text Input Field (White text & translucent white placeholder for high contrast over green) -->
+          <div class="w-full pl-3 sm:pl-4 pr-10 flex flex-col justify-center">
+            <input 
+              type="text" 
+              id="tool-search-input" 
+              placeholder="Search tools... (e.g. Dark Mode, Crop, Sign, Merge, Compress)"
+              class="w-full bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-white placeholder-white/70 text-sm sm:text-base font-semibold tracking-tight shadow-none ring-0"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Clear Button [✖] -->
+          <button 
+            type="button" 
+            id="search-clear-btn" 
+            class="shrink-0 p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-colors hidden focus:outline-none z-20"
+            aria-label="Clear search"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Category Filter Dock Container -->
+        <div class="mt-4 category-filter-dock flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap overflow-x-auto no-scrollbar scroll-smooth">
+          
+          <!-- [🟢 All] Button -->
+          <button type="button" class="category-chip active px-4 py-2 rounded-[20px] text-xs sm:text-sm font-bold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="all">
+            <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            </svg>
+            <span>All</span>
+          </button>
+          
+          <!-- [Edit & Sign] Button -->
+          <button type="button" class="category-chip px-4 py-2 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="edit-sign">
+            <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            <span>Edit &amp; Sign</span>
+          </button>
+
+          <!-- [Color & Print] Button -->
+          <button type="button" class="category-chip px-4 py-2 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="color-print">
+            <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span>Color &amp; Print</span>
+          </button>
+
+          <!-- [Convert] Button -->
+          <button type="button" class="category-chip px-4 py-2 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="convert">
+            <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6"></path>
+              <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+            </svg>
+            <span>Convert</span>
+          </button>
+
+          <!-- [Organize] Button -->
+          <button type="button" class="category-chip px-4 py-2 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="organize">
+            <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Organize</span>
+          </button>
+
+        </div>
+
       </div>
 
     </div>
@@ -583,22 +771,22 @@
   <nav class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4" aria-label="Quick mobile navigation">
     <div class="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth">
       <a href="index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 001 1v4a1 1 0 001 1m-6 0h6"/></svg>
         Home
       </a>
       <a href="#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
         Tools
       </a>
-      <a href="pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
+      <a href="blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
         Blog
       </a>
-      <a href="pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
+      <a href="about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         About
       </a>
-      <a href="pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
+      <a href="privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         Privacy
       </a>
@@ -606,9 +794,9 @@
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         FAQ
       </a>
-      <a href="pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        Contact
+      <a href="terms.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Terms
       </a>
     </div>
   </nav>
@@ -627,120 +815,6 @@
       <p class="mt-2 text-stone-600 dark:text-stone-400 text-sm sm:text-base max-w-lg mx-auto">
         Click any tool to launch its dedicated, 100% client-side editor. No servers, no uploads.
       </p>
-    </div>
-
-    <!-- Interactive Tool Search Card (Exact Match to Design Reference) -->
-    <div id="search-card-container" class="max-w-4xl mx-auto my-8 sm:my-12 relative px-2 sm:px-0">
-      
-      <!-- Top Right Peeking Mascot & Speech Bubble Wrapper (Positioned at top: -46px, right: 48px with NO CLIPPING) -->
-      <div class="absolute z-30 flex flex-col items-end pointer-events-none select-none" style="top: -46px; right: 48px;">
-        <!-- Floating Speech Bubble -->
-        <div id="speech-bubble-box" class="speech-bubble rounded-2xl px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#1D3D33] dark:text-[#E2E8E4] flex items-center gap-1.5 mb-1.5 tracking-wide shadow-xs pointer-events-auto">
-          <span class="text-sm">🐢</span>
-          <span id="speech-message">Ready to search!</span>
-        </div>
-
-        <!-- Full Tortoise Mascot (Zero Clipping, Gentle Float Animation) -->
-        <div class="relative overflow-visible z-30 animate-mascot-float">
-          <img 
-            src="assets/images/logo.png" 
-            alt="SlowPDF Tortoise Mascot" 
-            class="mascot-peeking w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-md overflow-visible"
-            onerror="this.src='public/assets/images/logo.png'"
-          />
-        </div>
-      </div>
-
-      <!-- Pill Shaped Search Bar Box with True Translucent Frosted Glass -->
-      <div 
-        id="search-box-card"
-        class="glass-search-bar rounded-full h-16 sm:h-20 px-5 sm:px-8 flex items-center relative transition-all duration-300 focus-within:ring-4 focus-within:ring-[#2B4C3B]/20"
-      >
-        <!-- Magnifying Glass Icon -->
-        <div class="shrink-0 text-[#2B4C3B] dark:text-[#5E9B7E]">
-          <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </div>
-
-        <!-- Text Input Field (Fully Transparent, Zero Outline) -->
-        <div class="w-full pl-3 sm:pl-5 pr-10 flex flex-col justify-center">
-          <input 
-            type="text" 
-            id="tool-search-input" 
-            placeholder="Search tools... (e.g. Dark Mode, Crop, Sign, Merge, Compress)"
-            class="w-full bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-stone-900 dark:text-stone-100 placeholder-[#637069] dark:placeholder-stone-400 text-sm sm:text-base md:text-lg font-semibold tracking-tight shadow-none ring-0"
-            autocomplete="off"
-          />
-        </div>
-
-        <!-- Clear Button [✖] -->
-        <button 
-          type="button" 
-          id="search-clear-btn" 
-          class="shrink-0 p-1.5 rounded-full text-stone-400 hover:text-[#1D3D33] dark:hover:text-stone-200 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-colors hidden focus:outline-none z-20"
-          aria-label="Clear search"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Bottom Neumorphic Frosted Category Filter Dock Container -->
-      <div class="mt-4 sm:mt-6 category-filter-dock flex items-center justify-center gap-2.5 sm:gap-3 flex-wrap overflow-x-auto no-scrollbar scroll-smooth">
-        
-        <!-- [🟢 All] Button with 4-square grid icon -->
-        <button type="button" class="category-chip active px-4 sm:px-5 py-2.5 rounded-[20px] text-xs sm:text-sm font-bold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="all">
-          <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-          </svg>
-          <span>All</span>
-        </button>
-        
-        <!-- [Edit & Sign] Button with Pen/Pencil Icon -->
-        <button type="button" class="category-chip px-4 sm:px-5 py-2.5 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="edit-sign">
-          <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-          </svg>
-          <span>Edit &amp; Sign</span>
-        </button>
-
-        <!-- [Color & Print] Button with Printer Icon -->
-        <button type="button" class="category-chip px-4 sm:px-5 py-2.5 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="color-print">
-          <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9"></polyline>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-            <rect x="6" y="14" width="12" height="8"></rect>
-          </svg>
-          <span>Color &amp; Print</span>
-        </button>
-
-        <!-- [Convert] Button with Sync/Arrows Icon -->
-        <button type="button" class="category-chip px-4 sm:px-5 py-2.5 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="convert">
-          <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21.5 2v6h-6"></path>
-            <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
-          </svg>
-          <span>Convert</span>
-        </button>
-
-        <!-- [Organize] Button with Folder Icon -->
-        <button type="button" class="category-chip px-4 sm:px-5 py-2.5 rounded-[20px] text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 cursor-pointer select-none" data-category="organize">
-          <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>Organize</span>
-        </button>
-
-      </div>
-
     </div>
 
     <!-- 5-Column Grid on Desktop -->
@@ -1441,7 +1515,7 @@
           <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
             <li><a href="index.html" class="footer-link">Home</a></li>
             <li><a href="#popular-tools" class="footer-link">All Tools</a></li>
-            <li><a href="pages/blog.html" class="footer-link">Blog &amp; Articles</a></li>
+            <li><a href="blog.html" class="footer-link">Blog &amp; Articles</a></li>
             <li><a href="pages/how-it-works.html" class="footer-link">How It Works</a></li>
             <li><a href="pages/learn.html" class="footer-link">Learn</a></li>
             <li><a href="pages/about.html" class="footer-link">About Us</a></li>
@@ -1468,11 +1542,12 @@
             Legal &amp; Help
           </h4>
           <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+            <li><a href="pages/about.html" class="footer-link">About SlowPDF</a></li>
             <li><a href="pages/privacy.html" class="footer-link">Privacy Policy</a></li>
             <li><a href="pages/terms.html" class="footer-link">Terms &amp; Conditions</a></li>
             <li><a href="pages/security.html" class="footer-link">Security Architecture</a></li>
             <li><a href="#faq-section" class="footer-link">FAQ</a></li>
-            <li><a href="pages/contact.html" class="footer-link">Contact</a></li>
+            
           </ul>
         </div>
 
@@ -1514,22 +1589,25 @@
     // ----------------------------------------------------
     // A. Dark Mode Persistence & Handler (Untouched UI)
     // ----------------------------------------------------
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const darkModeThumb = document.getElementById('dark-mode-thumb');
-    
     function applyTheme(isDark) {
+      const toggle = document.getElementById('dark-mode-toggle');
+      const thumb = document.getElementById('dark-mode-thumb');
       if (isDark) {
         document.documentElement.classList.add('dark');
-        darkModeToggle.setAttribute('aria-checked', 'true');
-        darkModeThumb.classList.add('translate-x-5');
-        darkModeThumb.classList.remove('translate-x-0');
-        localStorage.setItem('slowpdf_theme', 'dark');
+        if (toggle) toggle.setAttribute('aria-checked', 'true');
+        if (thumb) {
+          thumb.classList.add('translate-x-5');
+          thumb.classList.remove('translate-x-0');
+        }
+        try { localStorage.setItem('slowpdf_theme', 'dark'); } catch(e) {}
       } else {
         document.documentElement.classList.remove('dark');
-        darkModeToggle.setAttribute('aria-checked', 'false');
-        darkModeThumb.classList.remove('translate-x-5');
-        darkModeThumb.classList.add('translate-x-0');
-        localStorage.setItem('slowpdf_theme', 'light');
+        if (toggle) toggle.setAttribute('aria-checked', 'false');
+        if (thumb) {
+          thumb.classList.remove('translate-x-5');
+          thumb.classList.add('translate-x-0');
+        }
+        try { localStorage.setItem('slowpdf_theme', 'light'); } catch(e) {}
       }
     }
 
@@ -1540,10 +1618,12 @@
       applyTheme(false);
     }
 
-    darkModeToggle.addEventListener('click', () => {
-      const isCurrentlyDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isCurrentlyDark);
-    });
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isCurrentlyDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isCurrentlyDark);
+      });
+    }
 
     // ----------------------------------------------------
     // B. Hamburger Modal Menu Open / Close
@@ -1798,5 +1878,85 @@
 
   <!-- Vite module entry if needed by dev server -->
   <script type="module" src="/src/main.tsx"></script>
+  <!-- Dedicated Mobile Navigation & Preferences Modal -->
+  <div 
+    id="menu-modal" 
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    style="display: none;"
+    aria-hidden="true"
+  >
+    <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
+          <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
+        </div>
+        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Dark Mode Toggle Switch -->
+      <div class="py-4 border-b border-stone-100 dark:border-stone-700/60">
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
+          </div>
+          <button 
+            id="dark-mode-toggle" 
+            type="button" 
+            role="switch" 
+            aria-checked="false"
+            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-stone-300 dark:bg-[#355E4B]"
+          >
+            <span class="sr-only">Toggle dark mode</span>
+            <span id="dark-mode-thumb" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation & Legal Links with Blog -->
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
+        <a href="blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Blog &amp; Articles</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
+        </a>
+        <a href="pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
+        <a href="pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
+        <a href="pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
+        <a href="pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Privacy Policy</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
+        </a>
+        <a href="pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
+        <a href="pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
+      </div>
+
+      <!-- Social Media Icons in Menu -->
+      <div class="pt-4">
+        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
+        <div class="flex items-center justify-between px-2 text-stone-500 dark:text-stone-400">
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="hover:text-[#355E4B] dark:hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
