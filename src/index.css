@@ -1,48 +1,31 @@
-@import "tailwindcss";
-
 /* ==========================================================================
    BODY / PAGE BACKGROUND COLOR SPECIFICATION:
    - HEX: #FFFBF2
-   - RGB: rgb(255, 251, 242)
-   - HSL: 42°, 100%, 97%
-   - HSV Profile: 42°, 5%, 100%
-   - CMYK: 0%, 2%, 5%, 0%
    ========================================================================== */
 body {
-  background-color: #FFFBF2 !important; /* HSV: 42°, 5%, 100% | RGB: (255, 251, 242) */
+  background-color: #FFFBF2 !important;
+}
+
+.dark body {
+  background-color: #121815 !important;
 }
 
 /* ==========================================================================
    TOP HEADER / NAVBAR BACKGROUND COLOR SPECIFICATION:
    - HEX: #E8DABF
-   - RGB: rgb(232, 218, 191)
-   - HSL: 40°, 47%, 83%
-   - HSV Profile: 40°, 18%, 91%
-   - CMYK: 0%, 6%, 18%, 9%
    ========================================================================== */
 #site-header,
 header.site-header {
-  background-color: #E8DABF !important; /* HSV: 40°, 18%, 91% | RGB: (232, 218, 191) */
+  background-color: #E8DABF !important;
 }
 
-/* ==========================================================================
-   CAROUSEL BANNER FOREST GREEN GRADIENT:
-   - Deep rich forest green gradient matching the theme
-   - Guaranteed contrast against white headline and light sage text
-   ========================================================================== */
+/* Carousel Banner Forest Green Gradient */
 .banner-card-gradient {
   background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
   color: #ffffff !important;
 }
 
-/* ==========================================================================
-   GLOBAL RESPONSIVE HEADER NAVIGATION RULES
-   - On Mobile screens (max-width: 768px):
-     Hide all center navigation links, tool shortcuts, and nav containers.
-     Top bar shows ONLY Logo + Name (Left) and Share + Hamburger buttons (Right).
-   - On Tablet/Desktop screens (min-width: 769px):
-     Show center navigation links neatly aligned.
-   ========================================================================== */
+/* Global Responsive Header Navigation Rules */
 @media (max-width: 768px) {
   #site-header,
   header.site-header,
@@ -66,4 +49,3 @@ header.site-header {
     display: flex !important;
   }
 }
-
