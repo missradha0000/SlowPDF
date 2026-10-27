@@ -241,6 +241,21 @@
     ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
     ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
   
+    @media (max-width: 768px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+  
     /* Mobile Navigation Layout: Hide top header nav on screens <= 768px, show on >= 769px */
     @media (max-width: 768px) {
       #site-header,
@@ -293,14 +308,13 @@
       </a>
 
       <!-- Center Desktop Nav Links -->
-      <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
       <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
-        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
-        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
-        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
-        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
-        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
-        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
+        <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="../terms.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Terms</a>
       </nav>
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
@@ -428,25 +442,11 @@
     <div class="text-center max-w-2xl mx-auto mb-8">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
         <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        100% In-Browser RAM Processing • Zero Cloud Upload
+        100% In-Browser Memory • Zero Cloud Uploads
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
         Compress PDF Online Free
       </h1>
-        <button 
-          type="button" 
-          onclick="window.slowPdfShare({ title: 'SlowPDF - Compress PDF', text: 'Use this fast, private client-side Compress PDF directly in your browser!', url: window.location.href })"
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBF2] dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-700 text-[#2D3748] dark:text-stone-300 hover:bg-[#E8DABF]/50 dark:hover:bg-stone-800 text-xs font-semibold transition-all shadow-2xs hover:scale-105 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
-          title="Share Compress PDF"
-          aria-label="Share this tool"
-        >
-          <svg class="w-3.5 h-3.5 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-          </svg>
-          <span>Share</span>
-        </button>
-      </div>
       <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
         Reduce PDF file size to 20KB, 50KB, 100KB, or custom target size without sacrificing readability. 100% private in-browser compression.
       </p>
@@ -802,7 +802,10 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           FAQ
         </a>
-        
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
       </div>
     </nav>
   </main>
@@ -1313,6 +1316,7 @@
           Legal &amp; Support
         </h4>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Home</a></li>
           <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
           <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
