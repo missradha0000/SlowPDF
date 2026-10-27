@@ -34,3 +34,36 @@ header.site-header {
   background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   GLOBAL RESPONSIVE HEADER NAVIGATION RULES
+   - On Mobile screens (max-width: 768px):
+     Hide all center navigation links, tool shortcuts, and nav containers.
+     Top bar shows ONLY Logo + Name (Left) and Share + Hamburger buttons (Right).
+   - On Tablet/Desktop screens (min-width: 769px):
+     Show center navigation links neatly aligned.
+   ========================================================================== */
+@media (max-width: 768px) {
+  #site-header,
+  header.site-header,
+  header {
+    overflow-x: hidden !important;
+  }
+
+  #site-header nav,
+  header.site-header nav,
+  header nav,
+  #site-header .nav-link,
+  header.site-header .nav-link {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  #site-header nav,
+  header.site-header nav,
+  header nav {
+    display: flex !important;
+  }
+}
+

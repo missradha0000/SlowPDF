@@ -178,6 +178,7 @@
   <script src="../assets/js/banners.js"></script>
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
+  <script src="../assets/js/pdf-engine.js"></script>
 
   <style>
     /* ==========================================================================
@@ -328,6 +329,30 @@
         display: flex !important;
       }
     }
+  
+    /* Mobile Navigation Layout: Hide top header nav on screens <= 768px, show on >= 769px */
+    @media (max-width: 768px) {
+      #site-header,
+      header.site-header,
+      header {
+        overflow-x: hidden !important;
+      }
+      #site-header nav,
+      header.site-header nav,
+      header nav,
+      #site-header .nav-link,
+      header.site-header .nav-link {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">

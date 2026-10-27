@@ -178,6 +178,7 @@
   <script src="../assets/js/banners.js"></script>
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
+  <script src="../assets/js/pdf-engine.js"></script>
   <script src="../assets/js/share.js"></script>
 
   <style>
@@ -314,6 +315,30 @@
     .dark ::-webkit-scrollbar-track { background: #121815; }
     ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
     ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  
+    /* Mobile Navigation Layout: Hide top header nav on screens <= 768px, show on >= 769px */
+    @media (max-width: 768px) {
+      #site-header,
+      header.site-header,
+      header {
+        overflow-x: hidden !important;
+      }
+      #site-header nav,
+      header.site-header nav,
+      header nav,
+      #site-header .nav-link,
+      header.site-header .nav-link {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
@@ -341,7 +366,7 @@
 
       <!-- Center Desktop Nav Links -->
       <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
-      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold overflow-x-auto no-scrollbar py-1 max-w-[55vw] sm:max-w-none">
+      <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
         <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
         <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
         <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
