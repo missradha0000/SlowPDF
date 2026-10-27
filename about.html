@@ -167,7 +167,21 @@
       top: 100px;
     }
 
-        .hidden { display: none !important; }
+    @media (max-width: 768px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
@@ -193,8 +207,8 @@
         </span>
       </a>
 
-      <!-- Center Header Nav Buttons (Visible on Mobile & Desktop) -->
-      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold overflow-x-auto no-scrollbar py-1 max-w-[55vw] sm:max-w-none">
+      <!-- Center Header Nav Buttons (Hidden on Mobile <=768px, Visible on Desktop >=769px) -->
+      <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
         <a id="nav-home-link" href="index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
         <a href="index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Tools</a>
         <a href="blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>

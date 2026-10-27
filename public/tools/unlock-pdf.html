@@ -216,6 +216,21 @@
     .dark ::-webkit-scrollbar-track { background: #121815; }
     ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
     ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  
+    @media (max-width: 768px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
@@ -245,7 +260,7 @@
       </a>
 
       <!-- Center Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-2.5 text-sm font-semibold">
+      <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
         <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
         <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
         <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>

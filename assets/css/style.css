@@ -311,3 +311,27 @@ header.site-header #hamburger-btn:hover,
   color: #a7f3d0;
   font-weight: 600;
 }
+
+/* ==========================================================================
+   7. TOP HEADER NAVIGATION MOBILE RESPONSIVE LAYOUT
+   - On mobile screens (max-width: 768px): Completely hide top header navigation
+     buttons/links and disable horizontal scrolling.
+   - On tablets & desktop screens (min-width: 769px): Keep all navigation
+     buttons visible and neatly aligned horizontally in top header as normal.
+   ========================================================================== */
+@media (max-width: 768px) {
+  #site-header nav,
+  header.site-header nav,
+  header nav {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  #site-header nav,
+  header.site-header nav,
+  header nav {
+    display: flex !important;
+  }
+}
+

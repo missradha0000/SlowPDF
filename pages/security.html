@@ -11,6 +11,21 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FFFBF2; }
       .hidden { display: none !important; }
+  
+    @media (max-width: 768px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
   </style>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/share.js"></script>
