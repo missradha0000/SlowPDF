@@ -328,9 +328,11 @@
   </header>
 
   <!-- Preferences Drawer Modal -->
+      <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
+    style="display: none;"
     aria-hidden="true"
   >
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
@@ -339,7 +341,7 @@
           <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
-        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
+        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -352,7 +354,7 @@
             <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
           </div>
           <button 
-            id="dark-mode-toggle"
+            id="dark-mode-toggle" 
             type="button" 
             role="switch" 
             aria-checked="false"
@@ -364,866 +366,72 @@
         </div>
       </div>
 
-      <!-- Quick Navigation in Drawer -->
-      <div class="py-4 space-y-1">
-        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
+      <!-- Navigation Links -->
+      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
+        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
+        <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Blog &amp; Articles</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
         </a>
-        <a href="../#popular-tools" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          All 22 PDF Tools
+        <a href="../pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
+        <a href="../pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
+        <a href="../pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
+        <a href="../pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+          <span>Privacy Policy</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
         </a>
-        <a href="merge-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
-          Merge PDF
-        </a>
-        <a href="unlock-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
-          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
-          Unlock PDF
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- 2. HERO & CLIENT-SIDE PROTECT WORKBENCH    -->
-  <!-- ========================================== -->
-  <main class="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
-    
-    <!-- Title & Breadcrumb -->
-    <div class="text-center max-w-2xl mx-auto mb-8">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-        100% In-Browser RAM Security • Zero Cloud Storage
-      </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
-        Protect PDF Files Free Online
-      </h1>
-      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
-        Encrypt your confidential documents with military-grade passwords directly in browser RAM. Standard PDF viewers will strictly require your password to view content.
-      </p>
-    </div>
-
-    <!-- Hidden File Input -->
-    <input 
-      type="file" 
-      id="pdf-file-input" 
-      accept=".pdf,application/pdf" 
-      class="hidden" 
-    />
-
-    <!-- WORKBENCH CARD CONTAINER -->
-    <div class="tool-card rounded-3xl p-6 sm:p-10 transition-all duration-300 relative overflow-hidden">
-
-      <!-- ========================================== -->
-      <!-- VIEW A: EMPTY DROPZONE STATE               -->
-      <!-- ========================================== -->
-      <div 
-        id="empty-dropzone" 
-        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
-      >
-        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
-          <!-- Padlock & Key Protection Icon -->
-          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-          </svg>
-        </div>
-
-        <h3 class="text-lg sm:text-xl font-bold text-[#222E28] dark:text-white mb-2">
-          Drop your PDF file here to protect
-        </h3>
-        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6">
-          Files are encrypted locally in your browser memory buffer using WebAssembly. Zero bytes leave your computer.
-        </p>
-
-        <button 
-          type="button" 
-          id="browse-btn"
-          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          Select PDF File
-        </button>
-
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-stone-500 dark:text-stone-400">
-          <span class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Standard ISO 32000 Encryption
-          </span>
-          <span class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Adobe Reader &amp; Chrome Verified
-          </span>
-          <span class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            No File Size Limits
-          </span>
-        </div>
+        <a href="../pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
+        <a href="../pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
       </div>
 
-      <!-- ========================================== -->
-      <!-- VIEW B: ACTIVE ENCRYPTION WORKBENCH        -->
-      <!-- ========================================== -->
-      <div id="active-workbench" class="hidden space-y-6">
-        
-        <!-- Document Information Card -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
-          <div class="flex items-center gap-3.5 min-w-0">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            </div>
-            <div class="min-w-0">
-              <h4 id="file-name-text" class="text-base font-bold text-[#222E28] dark:text-white truncate" title="document.pdf">
-                document.pdf
-              </h4>
-              <p id="file-size-text" class="text-xs text-stone-500 dark:text-stone-400">
-                1.4 MB • 4 Pages • Ready to Protect
-              </p>
-            </div>
-          </div>
-
-          <button 
-            type="button" 
-            id="choose-different-file-btn"
-            class="text-xs font-semibold text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200 py-1.5 px-3 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-white dark:hover:bg-stone-800 transition-colors self-start sm:self-center"
-          >
-            Change File
-          </button>
-        </div>
-
-        <!-- Alert Banner (Dynamic: Error or Warning) -->
-        <div id="alert-box" class="hidden p-4 rounded-xl text-sm font-medium border flex items-start gap-3">
-          <div id="alert-icon" class="shrink-0 mt-0.5"></div>
-          <div id="alert-message" class="flex-1 leading-relaxed"></div>
-        </div>
-
-        <!-- PASSWORD CONFIGURATION FORM -->
-        <div id="password-form-section" class="space-y-5">
-          
-          <!-- Field 1: Main Password -->
-          <div>
-            <div class="flex items-center justify-between mb-1.5">
-              <label for="pdf-password-input" class="block text-sm font-bold text-[#222E28] dark:text-white">
-                Enter a Strong Password
-              </label>
-              <!-- Strength Badge -->
-              <span id="password-strength-badge" class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400">
-                Enter password
-              </span>
-            </div>
-            <div class="relative">
-              <input 
-                type="password" 
-                id="pdf-password-input" 
-                placeholder="Choose a password (min 4 characters)..." 
-                class="w-full px-4 py-3.5 pr-12 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all"
-                autocomplete="new-password"
-              />
-              <button 
-                type="button" 
-                id="toggle-password-btn" 
-                class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 focus:outline-none"
-                aria-label="Toggle password visibility"
-              >
-                <svg id="eye-icon-1" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                <svg id="eye-slash-icon-1" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
-              </button>
-            </div>
-            <!-- Strength Progress Bar -->
-            <div class="w-full h-1.5 bg-stone-100 dark:bg-stone-800 rounded-full mt-2 overflow-hidden">
-              <div id="strength-bar" class="h-full w-0 bg-rose-500 transition-all duration-300"></div>
-            </div>
-          </div>
-
-          <!-- Field 2: Confirm Password -->
-          <div>
-            <label for="pdf-password-confirm" class="block text-sm font-bold text-[#222E28] dark:text-white mb-1.5">
-              Re-enter Password
-            </label>
-            <div class="relative">
-              <input 
-                type="password" 
-                id="pdf-password-confirm" 
-                placeholder="Confirm your password..." 
-                class="w-full px-4 py-3.5 pr-12 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all"
-                autocomplete="new-password"
-              />
-              <button 
-                type="button" 
-                id="toggle-confirm-btn" 
-                class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 focus:outline-none"
-                aria-label="Toggle confirm password visibility"
-              >
-                <svg id="eye-icon-2" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                <svg id="eye-slash-icon-2" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
-              </button>
-            </div>
-            <!-- Match indicator message -->
-            <p id="password-match-text" class="mt-1.5 text-xs text-stone-500 dark:text-stone-400">
-              Please enter the same password in both fields.
-            </p>
-          </div>
-
-          <!-- Action Button Container -->
-          <div class="pt-3">
-            <button 
-              type="button" 
-              id="protect-action-btn"
-              class="w-full py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B] disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span id="protect-btn-text">Encrypt &amp; Protect PDF</span>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- ========================================== -->
-      <!-- VIEW C: SUCCESS & DOWNLOAD PANEL           -->
-      <!-- ========================================== -->
-      <div id="success-panel" class="hidden text-center py-6 sm:py-8 space-y-6">
-        
-        <!-- Cute 3D glasses tortoise mascot celebration display (Universal Light/Dark Standard) -->
-        <div class="relative inline-block mx-auto mb-1">
-          <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
-            <img 
-              src="../assets/images/mascot/tortoise-hero.png" 
-              alt="SlowPDF Mascot Protect Celebration" 
-              class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
-              onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
-            />
-          </div>
-          <!-- Small green celebration badge near mascot -->
-          <span class="absolute -bottom-1 -right-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-            PDF Successfully Encrypted!
-          </span>
-        </div>
-
-        <div>
-          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-[#274737] dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
-            Protected &amp; Locked
-          </span>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
-            Your PDF is Secure!
-          </h3>
-          <p id="success-description" class="mt-2 text-stone-600 dark:text-stone-300 text-sm max-w-md mx-auto leading-relaxed">
-            Standard PDF viewers (Adobe Acrobat, Chrome, Apple Preview) will strictly require your password before displaying this document.
-          </p>
-        </div>
-
-        <!-- Protected File Details Box -->
-        <div class="max-w-md mx-auto p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 text-left flex items-center justify-between text-xs sm:text-sm">
-          <div class="min-w-0 pr-3">
-            <p class="font-bold text-[#222E28] dark:text-white truncate" id="protected-file-name">
-              SlowPDF_Protected_Document.pdf
-            </p>
-            <p class="text-stone-500 dark:text-stone-400 text-xs" id="protected-file-stats">
-              1.4 MB • Complete Encryption
-            </p>
-          </div>
-          <span class="shrink-0 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 text-xs">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            Encrypted in RAM
-          </span>
-        </div>
-
-        <!-- Editable Output File Name Input (Clean, small, optional) -->
-        <div class="max-w-md mx-auto text-left space-y-1.5">
-          <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
-            Save File As (Optional Custom Name):
-          </label>
-          <div class="relative flex items-center">
-            <input 
-              type="text" 
-              id="output-filename-input" 
-              value="SlowPDF_Protected_Document" 
-              class="w-full px-3.5 py-2.5 pr-14 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
-              placeholder="SlowPDF_Protected_Document"
-            />
-            <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
-              .pdf
-            </span>
-          </div>
-        </div>
-
-        <!-- Download & Reset Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
-          <a 
-            id="download-protected-btn" 
-            href="#" 
-            download="SlowPDF_Protected_Document.pdf"
-            class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            Download Protected PDF
+      <!-- Social Media Icons in Menu -->
+      <div class="pt-4">
+        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
+        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
+          <!-- WhatsApp (#25D366) -->
+          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
+             aria-label="WhatsApp" title="WhatsApp">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           </a>
-          <button 
-            type="button" 
-            id="reset-workbench-btn" 
-            class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-          >
-            Protect Another PDF
-          </button>
-        </div>
-
-    </div>
-
-    <!-- ========================================== -->
-    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP           -->
-    <!-- Horizontal 1-tap navigation chips          -->
-    <!-- ========================================== -->
-    <nav class="w-full max-w-4xl mx-auto mt-6 px-2" aria-label="Quick mobile navigation">
-      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
-        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          Home
-        </a>
-        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-          Tools
-        </a>
-        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-          Blog
-        </a>
-        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          About
-        </a>
-        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          Privacy
-        </a>
-        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          FAQ
-        </a>
-        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          Contact
-        </a>
-      </div>
-    </nav>
-  </main>
-
-  <!-- =================================================================== -->
-  <!-- 3. COMPANION TOOLS 10-BANNER CAROUSEL (ZERO GHOSTING / FLUID HEIGHT) -->
-  <!-- =================================================================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
-        Explore More Private PDF Tools
-      </h2>
-      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
-        Discover zero-server tools built for calm, private document work.
-      </p>
-    </div>
-
-    <!-- Carousel Viewport container -->
-    <div 
-      id="carousel-wrapper" 
-      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
-      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
-    >
-      <!-- Slides Container (Absolute/Relative Isolated Slides Stack) -->
-      <div 
-        id="carousel-slides" 
-        class="relative w-full overflow-hidden"
-      >
-        <!-- 10 Companion Banner Slides populated dynamically via SLOWPDF_BANNERS.toolsPromo & carousel.js -->
-      </div>
-    </div>
-
-    <!-- Outside Navigation/Pagination Dots -->
-    <div 
-      id="carousel-dots" 
-      class="mt-4 flex justify-center items-center gap-2"
-    >
-      <!-- 10 Dots injected via carousel.js -->
-    </div>
-  </section>
-
-  <!-- ========================================== -->
-  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
-  <!-- ========================================== -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
-    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
-      
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
-          How to Password Protect PDF Files Online for Free
-        </h2>
-        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300">
-          In an era where personal data leaks, identity theft, and corporate breaches are rampant, securing PDF documents before emailing, archiving, or sharing them is non-negotiable. Whether delivering medical records, client tax filings, confidential legal agreements, or unpublished research drafts, applying cryptographic password protection ensures only intended recipients can access your work.
-        </p>
-        <p class="mt-4 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-          Unlike standard web utilities that demand you upload your unencrypted files to third-party cloud servers, SlowPDF performs the entire cryptographic encryption routine <strong>inside your local browser memory</strong> using WebAssembly and client-side JavaScript. Your file and secret password never leave your device.
-        </p>
-      </div>
-
-      <!-- 3-Step Walkthrough Grid -->
-      <div>
-        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-6">
-          How to Encrypt a PDF in 3 Easy Steps
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
-            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
-              1
-            </div>
-            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
-              Select or Drop PDF
-            </h4>
-            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
-              Drag your unencrypted PDF into the workbench or click "Select PDF File" from your computer or smartphone.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
-            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
-              2
-            </div>
-            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
-              Set Your Password
-            </h4>
-            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
-              Type your desired password and re-enter it to confirm. The real-time strength meter verifies password complexity.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
-            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
-              3
-            </div>
-            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
-              Encrypt in RAM &amp; Save
-            </h4>
-            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
-              Click Encrypt. Your browser encodes standard ISO 32000 encryption dictionaries in seconds. Download your protected file instantly.
-            </p>
-          </div>
+          <!-- Telegram (#229ED9) -->
+          <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
+             aria-label="Telegram" title="Telegram">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <!-- YouTube (#FF0000) -->
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
+             aria-label="YouTube" title="YouTube">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <!-- Instagram (#E1306C / Gradient) -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
+             style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+             aria-label="Instagram" title="Instagram">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- Facebook (#1877F2) -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
+             aria-label="Facebook" title="Facebook">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- X / Twitter (#000000) -->
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" 
+             aria-label="X / Twitter" title="X / Twitter">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </div>
 
-      <!-- In-Depth Educational Article Content -->
-      <div class="space-y-6 pt-4 border-t border-stone-200 dark:border-stone-800">
-        <div>
-          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
-            Zero-Server Security: Why In-Browser Encryption Matters
-          </h3>
-          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-            Most online PDF tools process documents on cloud web servers. When you upload a private contract or bank statement to a traditional converter, that server reads your document in plaintext, generates an encrypted copy, and temporarily stores both on its physical storage drive. This introduces major exposure to server breaches, regulatory violations (HIPAA, GDPR), and unmonitored employee access.
-          </p>
-          <p class="mt-3 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-            SlowPDF’s zero-server architecture runs the cryptographic engine entirely inside your browser’s local sandbox. The encryption keys are generated and applied within volatile device RAM. Once you close the tab or browser window, all memory buffers are wiped permanently without leaving any trace.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
-            Universal Adobe Reader &amp; Mobile Viewer Compatibility
-          </h3>
-          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-            SlowPDF generates standardized Adobe Acrobat ISO 32000-compliant encryption tables. This means your password-protected PDF is universally recognized across all platforms:
-          </p>
-          <ul class="mt-3 space-y-2 list-disc list-inside text-sm sm:text-base text-stone-600 dark:text-stone-300">
-            <li><strong>Desktop Software:</strong> Adobe Acrobat Reader DC, Foxit PDF, Apple Preview on macOS, and Windows PDF Viewer.</li>
-            <li><strong>Web Browsers:</strong> Google Chrome, Microsoft Edge, Safari, and Mozilla Firefox.</li>
-            <li><strong>Mobile Devices:</strong> iOS Files app, Android PDF Viewer, and Google Drive Preview.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-3">
-            Tips for Choosing a Bulletproof PDF Password
-          </h3>
-          <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-            A secure password combines uppercase and lowercase letters, numerals, and special punctuation symbols (e.g. <code class="text-xs bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded font-mono">!@#$%^&amp;*</code>). Avoid common dictionary words, birthdays, or repetitive digits. Always store your chosen passphrase securely in a password manager so you can share it with intended recipients.
-          </p>
-        </div>
-      </div>
-
-      <!-- Feature Comparison Table -->
-      <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
-        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-4">
-          SlowPDF vs Traditional Cloud PDF Protection Services
-        </h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs sm:text-sm border-collapse">
-            <thead>
-              <tr class="border-b border-stone-200 dark:border-stone-700 text-[#222E28] dark:text-white font-bold">
-                <th class="py-3 pr-4">Feature</th>
-                <th class="py-3 px-4 text-[#355E4B] dark:text-emerald-400">SlowPDF (Zero-Server)</th>
-                <th class="py-3 pl-4 text-stone-500">Traditional Cloud Services</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
-              <tr>
-                <td class="py-3 pr-4 font-semibold">Data Privacy</td>
-                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% In-Browser RAM (Zero Cloud Upload)</td>
-                <td class="py-3 pl-4 text-stone-500">Uploaded to third-party server disks</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 font-semibold">Password Transmission</td>
-                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Never sent over network</td>
-                <td class="py-3 pl-4 text-stone-500">Transmitted over HTTP to remote servers</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 font-semibold">File Size Limits</td>
-                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Unlimited (Bound only by device RAM)</td>
-                <td class="py-3 pl-4 text-stone-500">25MB-50MB paywall caps</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 font-semibold">Processing Speed</td>
-                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Instant local cryptographic generation</td>
-                <td class="py-3 pl-4 text-stone-500">Slow upload queues, conversion delays</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 font-semibold">Cost &amp; Ads</td>
-                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% Free Forever • No Registration</td>
-                <td class="py-3 pl-4 text-stone-500">Subscriptions, email gates, watermark trials</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================== -->
-  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
-  <!-- ========================================== -->
-  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
-    <div class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
-        Frequently Asked Questions: Protecting PDFs
-      </h2>
-      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
-        Everything you need to know about encrypting documents with SlowPDF.
-      </p>
-    </div>
-
-    <!-- Accordion Wrapper -->
-    <div class="space-y-3.5" id="faq-accordion">
-      
-      <!-- FAQ 1 (Visible) -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            1. Are my PDF documents or passwords stored on SlowPDF servers?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Never. SlowPDF operates on a strict zero-server architecture. Your documents and passwords are processed entirely in client-side memory using WebAssembly. Once you close this tab, the RAM buffer is immediately cleared.
-        </div>
-      </div>
-
-      <!-- FAQ 2 (Visible) -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            2. Will recipients be forced to enter the password to open the file?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Yes. The generated document contains standard ISO 32000 encryption dictionaries. Standard viewers—including Adobe Acrobat Reader, Google Chrome, Safari, Apple Preview, and smartphone viewers—will prompt for the password before rendering any pages.
-        </div>
-      </div>
-
-      <!-- FAQ 3 (Visible) -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            3. What happens if I forget the password I set?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Because SlowPDF does not store your passwords on any server, there is no master recovery key or reset link. Make sure to keep your password safe in a secure password manager or note.
-        </div>
-      </div>
-
-      <!-- FAQ 4-10 (Collapsible under 'View All 10 Questions') -->
-      <div id="extra-faqs" class="hidden space-y-3.5">
-        
-        <!-- FAQ 4 -->
-        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-              4. Can I password-protect large PDFs or textbooks?
-            </span>
-            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Yes! Because the computation happens on your local device CPU, SlowPDF imposes no artificial 25MB or 50MB file size limits. You can encrypt large manuals or portfolios without paying for premium tiers.
-        </div>
-      </div>
-
-      <!-- FAQ 5 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            5. What encryption standard does SlowPDF use?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          SlowPDF produces standard ISO 32000-compliant encrypted documents with standard security handlers (/Filter /Standard) and 128-bit key derivation, ensuring maximum cross-platform compatibility across all PDF viewing engines.
-        </div>
-      </div>
-
-      <!-- FAQ 6 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            6. Can I later remove the password from this protected PDF?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Yes! You can use SlowPDF’s companion Unlock PDF tool anytime. Simply upload the protected document, enter your password once, and download a clean unrestricted copy.
-        </div>
-      </div>
-
-      <!-- FAQ 7 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            7. Will protecting a PDF change the visual quality of text or images?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          No. SlowPDF renders and encodes pages at high retina-sharp density (144-200 DPI), preserving typography, crisp vector lines, logos, and photographs without degradation.
-        </div>
-      </div>
-
-      <!-- FAQ 8 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            8. What happens if I upload an already encrypted PDF file?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          SlowPDF inspects incoming files automatically. If a PDF is already password-locked, the tool alerts you and recommends opening it in the Unlock PDF tool to change or remove the existing password.
-        </div>
-      </div>
-
-      <!-- FAQ 9 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            9. Does SlowPDF work on mobile devices and iPads?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Yes! SlowPDF is completely responsive and optimized for mobile touchscreens, tablets, and desktop browsers. It runs seamlessly on Safari on iOS and Chrome on Android.
-        </div>
-      </div>
-
-      <!-- FAQ 10 -->
-      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
-        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
-          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
-            10. Is this tool completely free with no hidden watermarks?
-          </span>
-          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-          </span>
-        </button>
-        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
-          Yes. SlowPDF is 100% free with no subscription traps, no account registration, and zero promotional watermarks stamped onto your documents.
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Expand/Collapse Button -->
-    <div class="text-center pt-4">
-      <button 
-        id="toggle-faqs-btn" 
-        type="button" 
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-[#222E28] dark:text-white font-bold text-xs sm:text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
-      >
-        <span id="faq-btn-text">View All 10 Questions</span>
-        <svg id="faq-chevron" class="w-4 h-4 text-stone-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </button>
-    </div>
-
-  </div>
-</section>
-
-  <!-- ========================================== -->
-  <!-- 6. EXACT MASTER FOOTER                     -->
-  <!-- ========================================== -->
-  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Main Footer Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
-      
-      <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
-      <div class="lg:col-span-2 space-y-4">
-        <a href="../index.html" class="flex items-center gap-3 group">
-          <img 
-            src="../assets/images/logo.png" 
-            alt="SlowPDF Brand Logo" 
-            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
-            onerror="this.src='../public/assets/images/logo.png'"
-          />
-          <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
-            Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
-          </span>
-        </a>
-        <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
-          Fast, Private &amp; Free Client-Side Tools. Made for slow, steady learning. Your files never leave your device.
-        </p>
-
-        <!-- Social Icons in Official Brand Colors -->
-        <div class="pt-2 space-y-3">
-          <div class="flex items-center gap-3 flex-wrap">
-            <!-- WhatsApp (#25D366) -->
-            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
-               aria-label="WhatsApp" title="WhatsApp">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            </a>
-            <!-- Telegram (#229ED9) -->
-            <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
-               aria-label="Telegram" title="Telegram">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            </a>
-            <!-- YouTube (#FF0000) -->
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
-               aria-label="YouTube" title="YouTube">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-            <!-- Instagram (#E1306C / Gradient) -->
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
-               style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
-               aria-label="Instagram" title="Instagram">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <!-- Facebook (#1877F2) -->
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
-               aria-label="Facebook" title="Facebook">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <!-- X / Twitter (#000000) -->
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-               class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all dark:bg-stone-800" 
-               aria-label="X / Twitter" title="X / Twitter">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-          </div>
-
-          <!-- Share Website Button directly below social icons -->
-          <div>
-            <button id="footer-share-btn" 
-                    onclick="if (navigator.share) { navigator.share({title: 'SlowPDF', text: 'Fast, Private & Free Client-Side PDF Tools', url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); alert('SlowPDF link copied to clipboard!'); }" 
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-              <span>Share Website</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 1: Primary Tools -->
-      <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
-          PDF Tools
-        </h4>
-        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-          <li><a href="../tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
-          <li><a href="../tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
-          <li><a href="../tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
-          <li><a href="../tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
-          <li><a href="../tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
-          <li><a href="../tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
-          <li><a href="../tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
-          <li><a href="../tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 2: More Tools & Blog -->
-      <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
-          More Utilities
-        </h4>
-        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-          <li><a href="../tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
-          <li><a href="../tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
-          <li><a href="../tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
-          <li><a href="../tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
-          <li><a href="../tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
-          <li><a href="../blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
-          <li><a href="../pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
-          <li><a href="../pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Legal & Support -->
-      <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
-          Legal &amp; Support
-        </h4>
-        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-semibold text-emerald-800 dark:text-emerald-300">Home</a></li>
-          <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
-          <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
-          <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="../pages/terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
-          <li><a href="../pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
-          <li><a href="../index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Bottom Copyright Strip -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-      <div>
-        <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">
-          © 2026 SlowPDF • Crafted with ❤️ by Tveezal
-        </p>
-        <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-          Fast, Private &amp; Free Client-Side Tools.
-        </p>
-      </div>
-      <div class="text-xs text-stone-400 dark:text-stone-500">
-        100% In-Browser Computation
+      <!-- Bottom Drawer Credit -->
+      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
+        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
       </div>
     </div>
   </div>
