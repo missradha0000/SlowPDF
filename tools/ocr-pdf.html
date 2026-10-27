@@ -383,11 +383,9 @@
   </header>
 
   <!-- Clean Dropdown Modal / Mobile Menu -->
-      <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
-    style="display: none;"
     aria-hidden="true"
   >
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
@@ -396,7 +394,7 @@
           <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
-        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -409,7 +407,7 @@
             <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
           </div>
           <button 
-            id="dark-mode-toggle" 
+            id="dark-mode-toggle"
             type="button" 
             role="switch" 
             aria-checked="false"
@@ -422,10 +420,9 @@
       </div>
 
       <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
-        <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+        <a href="../pages/blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
           <span>Blog &amp; Articles</span>
           <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
         </a>
@@ -439,57 +436,1307 @@
         <a href="../pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
         <a href="../pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
       </div>
+    </div>
+  </div>
 
-      <!-- Social Media Icons in Menu -->
-      <div class="pt-4">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <!-- WhatsApp (#25D366) -->
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="WhatsApp" title="WhatsApp">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <!-- Telegram (#229ED9) -->
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Telegram" title="Telegram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <!-- YouTube (#FF0000) -->
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="YouTube" title="YouTube">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <!-- Instagram (#E1306C / Gradient) -->
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
-             aria-label="Instagram" title="Instagram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <!-- Facebook (#1877F2) -->
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Facebook" title="Facebook">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <!-- X / Twitter (#000000) -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" 
-             aria-label="X / Twitter" title="X / Twitter">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+  <!-- ========================================== -->
+  <!-- 2. OCR PDF WORKBENCH                       -->
+  <!-- ========================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 w-full flex-1">
+    
+    <!-- Title & Privacy Trust Pill -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 text-xs font-semibold mb-3 shadow-2xs">
+        <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        OCR PDF &amp; Image Scanner
+      </h1>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Recognize text in scanned PDFs or photos and turn them into searchable PDFs or raw editable text files.
+      </p>
+    </div>
+
+    <!-- Hidden native file input -->
+    <input type="file" id="pdf-file-input" accept=".pdf,application/pdf,image/png,image/jpeg" class="hidden" />
+
+    <!-- WORKBENCH STATE 1: Empty Dropzone -->
+    <div 
+      id="empty-dropzone" 
+      class="w-full bg-white dark:bg-[#1C2420] rounded-2xl border-2 border-dashed border-[#D8C7A5] dark:border-stone-700/80 p-8 sm:p-14 text-center cursor-pointer shadow-sm hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200 group relative flex flex-col items-center justify-center min-h-[320px]"
+    >
+      <div class="w-20 h-20 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200 shadow-2xs">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-[#F1F5F2] mb-1.5">
+        Choose a scanned PDF file or drag &amp; drop here
+      </h3>
+      <p class="text-stone-500 dark:text-stone-400 text-sm max-w-md mb-6">
+        Select any scanned document or image. Recognized page-by-page in Web Workers without uploading to remote servers.
+      </p>
+      <button 
+        type="button" 
+        id="browse-btn"
+        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        Select Scanned Document
+      </button>
+      <div class="mt-6 flex items-center gap-4 text-xs text-stone-500 dark:text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Multi-Language Tesseract.js
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Searchable PDF / Raw Text
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Zero Cloud Storage
+        </span>
+      </div>
+    </div>
+
+    <!-- WORKBENCH STATE 2: File Selected & Scan Controls -->
+    <div id="active-workbench" class="hidden w-full space-y-6">
+      
+      <!-- Selected File Info Banner -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-5 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <h4 class="font-bold text-base text-[#222E28] dark:text-[#F1F5F2] truncate" id="file-title-display">
+              ScannedDocument.pdf
+            </h4>
+            <p class="text-xs text-stone-500 dark:text-stone-400" id="file-meta-display">
+              Size: 2.1 MB • Total Pages: 2
+            </p>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="change-file-btn"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Choose Different File
+        </button>
+      </div>
+
+      <!-- OCR Settings Box -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm space-y-6">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- Language Selector -->
+          <div>
+            <label for="ocr-language-select" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+              Recognition Language:
+            </label>
+            <select 
+              id="ocr-language-select" 
+              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-sm font-semibold text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+            >
+              <option value="eng" selected>English (Default)</option>
+              <option value="hin">Hindi (हिन्दी)</option>
+              <option value="eng+hin">Auto-Detect / English + Hindi</option>
+            </select>
+          </div>
+
+          <!-- Output Mode Selector -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+              Output Format:
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="p-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 cursor-pointer flex items-center gap-2 hover:border-[#355E4B] transition-colors">
+                <input type="radio" name="ocr-output-mode" value="pdf" checked class="text-[#355E4B] focus:ring-[#355E4B]" />
+                <span class="text-xs font-bold text-[#222E28] dark:text-white">Searchable PDF</span>
+              </label>
+              <label class="p-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 cursor-pointer flex items-center gap-2 hover:border-[#355E4B] transition-colors">
+                <input type="radio" name="ocr-output-mode" value="txt" class="text-[#355E4B] focus:ring-[#355E4B]" />
+                <span class="text-xs font-bold text-[#222E28] dark:text-white">Extract Text (.txt)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Box (Hidden initially) -->
+        <div id="ocr-progress-box" class="hidden p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-emerald-900 dark:text-emerald-300">
+            <span id="ocr-status-text">Initializing OCR Engine...</span>
+            <span id="ocr-percent-text">0%</span>
+          </div>
+          <div class="w-full h-2.5 bg-emerald-200/60 dark:bg-emerald-900/60 rounded-full overflow-hidden">
+            <div id="ocr-progress-bar" class="h-full bg-[#355E4B] dark:bg-emerald-400 transition-all duration-200 w-0"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Execute Conversion Trigger Bar -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="w-full md:w-auto flex-1 max-w-md">
+          <label for="output-filename" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5">
+            OCR Output File Name:
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="output-filename" 
+              value="SlowPDF_OCR_Document" 
+              class="w-full px-4 py-2.5 pr-14 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-sm font-semibold text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+            />
+            <span class="absolute right-3.5 top-2.5 text-xs font-bold text-stone-400" id="filename-ext-tag">.pdf</span>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="convert-action-btn"
+          class="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          <span id="convert-btn-text">Start OCR Recognition</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- WORKBENCH STATE 3: Success & Download Panel -->
+    <div id="success-panel" class="hidden w-full bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-emerald-300/80 dark:border-emerald-700/80 shadow-xl text-center space-y-6">
+      
+      <!-- Mascot celebration display -->
+      <div class="relative inline-block mx-auto mb-1">
+        <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+          <img 
+            src="../assets/images/mascot/tortoise-hero.png" 
+            alt="SlowPDF Mascot Conversion Celebration" 
+            class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+            onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+          />
+        </div>
+        <span class="absolute -bottom-1 -right-1 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+          OCR Completed Successfully!
+        </span>
+      </div>
+
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+          Text Recognition Finished!
+        </h3>
+        <p class="mt-2 text-stone-600 dark:text-stone-300 text-sm sm:text-base max-w-lg mx-auto" id="success-description">
+          Optical character recognition has processed your document entirely inside local browser memory.
+        </p>
+      </div>
+
+      <!-- Live Editable Text Preview Box (If text output chosen) -->
+      <div id="text-result-box" class="hidden max-w-xl mx-auto text-left space-y-2">
+        <div class="flex items-center justify-between">
+          <label for="extracted-text-area" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+            Recognized Text Preview:
+          </label>
+          <button 
+            type="button" 
+            id="copy-text-btn" 
+            class="text-xs font-bold text-[#355E4B] dark:text-emerald-400 hover:underline flex items-center gap-1"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+            <span id="copy-btn-label">Copy Text</span>
+          </button>
+        </div>
+        <textarea 
+          id="extracted-text-area" 
+          rows="6" 
+          class="w-full p-3.5 text-xs font-mono rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-[#222E28] dark:text-stone-200 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        ></textarea>
+      </div>
+
+      <!-- Editable Output File Name Input -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="success-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Save File As (Optional Custom Name):
+        </label>
+        <div class="relative flex items-center">
+          <input 
+            type="text" 
+            id="success-filename-input" 
+            value="SlowPDF_OCR_Document" 
+            class="w-full px-3.5 py-2.5 pr-16 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+            placeholder="SlowPDF_OCR_Document"
+          />
+          <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none" id="success-ext-tag">
+            .pdf
+          </span>
         </div>
       </div>
 
-      <!-- Bottom Drawer Credit -->
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+        <a 
+          id="download-ocr-btn" 
+          href="#" 
+          download="SlowPDF_OCR_Document.pdf"
+          class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span id="download-btn-label">Download Searchable PDF</span>
+        </a>
+        <button 
+          type="button" 
+          id="reset-workbench-btn"
+          class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          Scan Another PDF
+        </button>
+      </div>
+
+      <div class="pt-4 border-t border-stone-100 dark:border-stone-800 text-xs text-stone-400">
+        100% Client-Side Privacy: The character recognition was computed directly in RAM and will be deleted when you close this tab.
+      </div>
+    </div>
+
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto mt-6 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <!-- 1. H2 Overview -->
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          What is OCR PDF &amp; What Does This Page Offer?
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          <strong>OCR PDF</strong> (Optical Character Recognition for Portable Document Format) is an advanced optical recognition technology that analyzes pixel shapes inside scanned paper documents, photos, or non-selectable PDFs to recognize text characters, numeric digits, and structural paragraphs. When you scan a physical contract or book page using an office scanner or mobile device, the resulting PDF file is effectively a static image — preventing software from highlighting text or searching keywords.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          This free online <strong>OCR PDF tool by SlowPDF</strong> provides a zero-server, privacy-first solution that transforms flat image scans into fully searchable, selectable PDF files or extracts raw text into editable document streams. Built upon WebAssembly-compiled <strong>Tesseract.js</strong> neural engines and <strong>PDF.js</strong> rendering pipelines, our recognition engine processes every page directly inside isolated Web Worker browser threads without sending your files to remote cloud servers.
+        </p>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          Whether digitizing historical records, extracting tables from scanned invoices, or rendering textbook photos searchable, SlowPDF delivers high-precision character recognition while protecting your confidential records in local browser RAM.
+        </p>
+      </div>
+
+      <!-- 2. H3 3-Step Guide -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-6">
+          How to Use OCR PDF in 3 Simple Steps
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">1</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Upload Scanned File</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Drag and drop any scanned PDF, PNG, or JPG document directly into the upload dropzone.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 1: Upload</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">2</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Set Parameters</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Choose your document's recognition language (English, Hindi, or Auto-Detect) and select Searchable PDF or Raw Text (.txt) output format.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 2: Configure</span>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-[#355E4B] text-white font-extrabold text-base flex items-center justify-center mb-4">3</div>
+              <h4 class="font-bold text-lg text-[#222E28] dark:text-white mb-2">Start &amp; Download</h4>
+              <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                Click "Start OCR Recognition". Monitor live percentage progress, copy extracted text, or download your searchable document.
+              </p>
+            </div>
+            <span class="mt-4 inline-block text-[11px] font-bold uppercase tracking-wider text-[#355E4B] dark:text-emerald-400">Step 3: Download</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. H3 Why SlowPDF is the Best Alternative -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Why SlowPDF is the Best Alternative
+        </h3>
+        <p class="text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300 mb-4">
+          Unlike online PDF converters like iLovePDF or Smallpdf that require transmitting private files to external cloud servers, SlowPDF runs on a <strong>100% Zero-Server Local Browser Architecture</strong>.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              RAM-Only Processing
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              All image rendering and text recognition happen directly inside your computer's active volatile browser memory.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Zero Waiting Queues
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              No server queue throttling or hourly delays. Recognition begins instantly utilizing your local GPU/CPU hardware.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+              No File Limits or Watermarks
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Process unlimited pages with zero subscription paywalls, forced registration, or watermark logos.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h5 class="font-bold text-sm text-[#222E28] dark:text-emerald-300 mb-1 flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              100% Free Offline Execution
+            </h5>
+            <p class="text-xs text-stone-600 dark:text-stone-400">
+              Once loaded in your browser, you can turn off Wi-Fi or go offline and perform optical recognition locally.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. H3 Key Features & Technical Capabilities -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-white mb-4">
+          Key Features &amp; Technical Capabilities
+        </h3>
+        <ul class="space-y-3 text-sm sm:text-base text-stone-600 dark:text-stone-300">
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Sub-Pixel Canvas Precision:</strong> Scanned pages are rendered onto offscreen HTML5 canvases at 2x crisp DPI resolution, ensuring max optical contrast for character classification algorithms.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Orientation &amp; Layout Retention:</strong> Invisible text overlays embedded with `pdf-lib` mirror exact bounding box coordinates, allowing precise mouse text selecting and Ctrl+F searching over images.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Zero Compression Loss:</strong> High-resolution JPEG images of original scans are preserved in the output Searchable PDF without blur, distortion, or color shifts.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Multi-Language Neural Engine:</strong> Built-in trained neural language datasets for English (`eng`), Hindi (`hin`), and bilingual mixed-language documents.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-[#355E4B]/10 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+            <div>
+              <strong>Universal Cross-Platform Compatibility:</strong> Fully optimized for desktop computers, laptops, tablets, and smartphones across Windows, macOS, Linux, iOS, and Android.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: OCR PDF
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Everything you need to know about scanning and recognizing text in PDFs.
+      </p>
+    </div>
+
+    <div class="space-y-3.5" id="faq-accordion">
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. What languages does the OCR engine support?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          SlowPDF supports English (`eng`), Hindi (`hin`), and Auto-Detect multi-lingual recognition.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. What is a "Searchable PDF"?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          A Searchable PDF preserves your document's original visual appearance while embedding an invisible text layer over the image so you can select, copy, and search keywords using Ctrl+F.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. Are my scanned documents sent to remote cloud servers?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. All OCR character recognition runs in local Web Worker threads using Tesseract.js directly inside your browser memory.
+        </div>
+      </div>
+
+      <div id="extra-faqs" class="hidden space-y-3.5">
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. Can I copy the recognized text directly to my clipboard?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, select the "Extract Text Only" output mode to see a live editable text box with a 1-click "Copy Text" button.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. How does OCR quality depend on scan resolution?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Clearer, higher DPI scan images produce higher character accuracy. SlowPDF renders PDF pages at 2x crisp canvas resolution before running character recognition.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. Can I scan single image files like PNG or JPG?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes! You can drop both scanned PDF files and PNG/JPG document photos directly into the scanner.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. Is there a page count limit?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            No cloud caps! Multi-page documents process sequentially page-by-page.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Does this work offline?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Once loaded in browser memory, you can turn off Wi-Fi or go offline and continue running local character recognition.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. Does it work on smartphones?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, fully compatible with mobile browsers on iOS and Android devices.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. Why is this OCR tool 100% free with no watermark?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Because character recognition is computed locally on your device hardware, SlowPDF incurs no server bills for processing. We keep student tools free and watermark-free.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER FOOTER                           -->
+  <!-- ========================================== -->
+  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+      
+      <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Brand Logo" 
+            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+          <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
+            Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
+          </span>
+        </a>
+        <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+          Fast, Private &amp; Free Client-Side Tools. Made for slow, steady learning. Your files never leave your device.
+        </p>
+
+        <!-- Social Icons in Official Brand Colors -->
+        <div class="pt-2 space-y-3">
+          <div class="flex items-center gap-3 flex-wrap">
+            <!-- WhatsApp (#25D366) -->
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="WhatsApp" title="WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+            <!-- Telegram (#229ED9) -->
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Telegram" title="Telegram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <!-- YouTube (#FF0000) -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="YouTube" title="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- Instagram (#E1306C / Gradient) -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+               aria-label="Instagram" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Facebook (#1877F2) -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Facebook" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- X / Twitter (#000000) -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all dark:bg-stone-800" 
+               aria-label="X / Twitter" title="X / Twitter">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+
+          <!-- Share Website Button directly below social icons -->
+          <div>
+            <button id="footer-share-btn" 
+                    onclick="if (navigator.share) { navigator.share({title: 'SlowPDF', text: 'Fast, Private & Free Client-Side PDF Tools', url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); alert('SlowPDF link copied to clipboard!'); }" 
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+              <span>Share Website</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 1: Primary Tools -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          PDF Tools
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+          <li><a href="../tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+          <li><a href="../tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+          <li><a href="../tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+          <li><a href="../tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
+          <li><a href="../tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
+          <li><a href="../tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+          <li><a href="../tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: More Tools & Blog -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          More Utilities
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+          <li><a href="../tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+          <li><a href="../tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
+          <li><a href="../tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
+          <li><a href="../tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
+          <li><a href="../blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
+          <li><a href="../pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
+          <li><a href="../pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          Legal &amp; Support
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
+          <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
+          <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="../pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
+          <li><a href="../index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Strip -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">
+          © 2026 SlowPDF • Crafted with ❤️ by Tveezal
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+          Fast, Private &amp; Free Client-Side Tools.
+        </p>
+      </div>
+      <div class="text-xs text-stone-400 dark:text-stone-500">
+        100% In-Browser Computation
       </div>
     </div>
   </div>
+</footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT CONVERSION ENGINE               -->
+  <!-- ========================================== -->
+  <script>
+    // 1. Configure PDF.js Worker
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    // 2. Dark Mode Switcher
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeThumb = document.getElementById('dark-mode-thumb');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'true');
+          darkModeToggle.classList.remove('bg-stone-300');
+          darkModeToggle.classList.add('bg-[#355E4B]');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-0');
+          darkModeThumb.classList.add('translate-x-5');
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'false');
+          darkModeToggle.classList.remove('bg-[#355E4B]');
+          darkModeToggle.classList.add('bg-stone-300');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-5');
+          darkModeThumb.classList.add('translate-x-0');
+        }
+      }
+    }
+
+    const savedTheme = localStorage.getItem('slowpdf_theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : systemPrefersDark);
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isDark);
+        localStorage.setItem('slowpdf_theme', !isDark ? 'dark' : 'light');
+      });
+    }
+
+    // 3. Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      menuModal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        menuModal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      });
+    }
+    function closeMenu() {
+      menuOpen = false;
+      menuModal.classList.add('opacity-0');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => { if (!menuOpen) menuModal.classList.add('hidden'); }, 300);
+    }
+    // (Navigation and modal drawer handled universally by nav-memory.js);
+
+    // 4. OCR Engine State & Handlers
+    let currentPdfBuffer = null;
+    let currentPdfName = '';
+    let pdfPageCount = 0;
+    let pdfDocInstance = null;
+    let isImageFile = false;
+    let loadedImageElement = null;
+
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const activeWorkbench = document.getElementById('active-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const fileInput = document.getElementById('pdf-file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const changeFileBtn = document.getElementById('change-file-btn');
+    const fileTitleDisplay = document.getElementById('file-title-display');
+    const fileMetaDisplay = document.getElementById('file-meta-display');
+    const ocrLanguageSelect = document.getElementById('ocr-language-select');
+    const ocrProgressBox = document.getElementById('ocr-progress-box');
+    const ocrStatusText = document.getElementById('ocr-status-text');
+    const ocrPercentText = document.getElementById('ocr-percent-text');
+    const ocrProgressBar = document.getElementById('ocr-progress-bar');
+    const outputFilenameInput = document.getElementById('output-filename');
+    const filenameExtTag = document.getElementById('filename-ext-tag');
+    const convertActionBtn = document.getElementById('convert-action-btn');
+    const convertBtnText = document.getElementById('convert-btn-text');
+    const textResultBox = document.getElementById('text-result-box');
+    const extractedTextArea = document.getElementById('extracted-text-area');
+    const copyTextBtn = document.getElementById('copy-text-btn');
+    const copyBtnLabel = document.getElementById('copy-btn-label');
+    const downloadOcrBtn = document.getElementById('download-ocr-btn');
+    const downloadBtnLabel = document.getElementById('download-btn-label');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+    const successDescription = document.getElementById('success-description');
+    const successExtTag = document.getElementById('success-ext-tag');
+
+    emptyDropzone.addEventListener('click', () => fileInput.click());
+    if (browseBtn) browseBtn.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
+    if (changeFileBtn) changeFileBtn.addEventListener('click', () => fileInput.click());
+
+    // Update extension tag based on output radio
+    document.querySelectorAll('input[name="ocr-output-mode"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const mode = document.querySelector('input[name="ocr-output-mode"]:checked')?.value || 'pdf';
+        filenameExtTag.textContent = mode === 'txt' ? '.txt' : '.pdf';
+      });
+    });
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault(); e.stopPropagation();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files);
+      if (files.length > 0) processSelectedFile(files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) processSelectedFile(e.target.files[0]);
+    });
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024, sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    async function processSelectedFile(file) {
+      currentPdfName = file.name;
+      const cleanBaseName = file.name.replace(/\.(pdf|png|jpg|jpeg)$/i, '').trim();
+      outputFilenameInput.value = `SlowPDF_OCR_${cleanBaseName}`;
+
+      isImageFile = file.type.startsWith('image/');
+
+      try {
+        currentPdfBuffer = await file.arrayBuffer();
+
+        if (isImageFile) {
+          pdfPageCount = 1;
+          fileTitleDisplay.textContent = file.name;
+          fileMetaDisplay.textContent = `Size: ${formatBytes(file.size)} • Scanned Image File`;
+
+          const blob = new Blob([currentPdfBuffer], { type: file.type });
+          const url = URL.createObjectURL(blob);
+          loadedImageElement = new Image();
+          loadedImageElement.src = url;
+          await new Promise((res) => loadedImageElement.onload = res);
+
+        } else {
+          const loadingTask = pdfjsLib.getDocument({ data: currentPdfBuffer.slice(0) });
+          pdfDocInstance = await loadingTask.promise;
+          pdfPageCount = pdfDocInstance.numPages;
+
+          fileTitleDisplay.textContent = file.name;
+          fileMetaDisplay.textContent = `Size: ${formatBytes(file.size)} • Total Pages: ${pdfPageCount}`;
+        }
+
+        emptyDropzone.classList.add('hidden');
+        activeWorkbench.classList.remove('hidden');
+        successPanel.classList.add('hidden');
+        ocrProgressBox.classList.add('hidden');
+
+      } catch (err) {
+        console.error('Error reading document:', err);
+        alert('Could not read file. Please select a valid PDF or image document.');
+      }
+    }
+
+    // Execute Client-Side Tesseract OCR Engine
+    convertActionBtn.addEventListener('click', async () => {
+      if (!currentPdfBuffer) return;
+
+      const lang = ocrLanguageSelect.value;
+      const outputMode = document.querySelector('input[name="ocr-output-mode"]:checked')?.value || 'pdf';
+
+      convertActionBtn.disabled = true;
+      convertBtnText.textContent = 'Processing OCR Recognition...';
+      ocrProgressBox.classList.remove('hidden');
+      ocrProgressBar.style.width = '0%';
+      ocrPercentText.textContent = '0%';
+      ocrStatusText.textContent = 'Initializing Tesseract Web Worker thread...';
+
+      try {
+        const worker = await Tesseract.createWorker(lang, 1, {
+          logger: m => {
+            if (m.status === 'recognizing text') {
+              const p = Math.round(m.progress * 100);
+              ocrProgressBar.style.width = `${p}%`;
+              ocrPercentText.textContent = `${p}%`;
+            }
+          }
+        });
+
+        let accumulatedText = [];
+        let searchablePdfBytes = null;
+
+        if (isImageFile) {
+          ocrStatusText.textContent = 'Scanning image character structures...';
+          const res = await worker.recognize(loadedImageElement);
+          accumulatedText.push(`--- Image OCR Result ---\n${res.data.text}`);
+
+          if (outputMode === 'pdf') {
+            // Build Searchable PDF using pdf-lib
+            const pdfDoc = await PDFLib.PDFDocument.create();
+            const page = pdfDoc.addPage([loadedImageElement.width, loadedImageElement.height]);
+
+            const imageEmbed = fileInput.files[0]?.type === 'image/png' 
+              ? await pdfDoc.embedPng(currentPdfBuffer)
+              : await pdfDoc.embedJpg(currentPdfBuffer);
+
+            page.drawImage(imageEmbed, { x: 0, y: 0, width: loadedImageElement.width, height: loadedImageElement.height });
+            
+            // Draw invisible text layer
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            page.drawText(res.data.text, {
+              x: 20,
+              y: loadedImageElement.height - 40,
+              size: 10,
+              font: font,
+              color: PDFLib.rgb(0, 0, 0),
+              opacity: 0.01 // Invisible searchable layer
+            });
+
+            searchablePdfBytes = await pdfDoc.save();
+          }
+
+        } else {
+          // Process PDF Pages Sequentially
+          const pdfDocForExport = outputMode === 'pdf' ? await PDFLib.PDFDocument.create() : null;
+          const standardFont = outputMode === 'pdf' ? await pdfDocForExport.embedFont(PDFLib.StandardFonts.Helvetica) : null;
+
+          for (let pNum = 1; pNum <= pdfPageCount; pNum++) {
+            ocrStatusText.textContent = `Processing Page ${pNum} of ${pdfPageCount}...`;
+            ocrProgressBar.style.width = `${Math.round(((pNum - 1) / pdfPageCount) * 100)}%`;
+
+            const page = await pdfDocInstance.getPage(pNum);
+            const viewport = page.getViewport({ scale: 2.0 });
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+            const res = await worker.recognize(canvas);
+            accumulatedText.push(`--- Page ${pNum} ---\n${res.data.text}`);
+
+            if (outputMode === 'pdf') {
+              const pageImageJpeg = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.9));
+              const pageImageBytes = await pageImageJpeg.arrayBuffer();
+              const pageImageEmbed = await pdfDocForExport.embedJpg(pageImageBytes);
+
+              const exportPage = pdfDocForExport.addPage([viewport.width / 2, viewport.height / 2]);
+              exportPage.drawImage(pageImageEmbed, {
+                x: 0,
+                y: 0,
+                width: viewport.width / 2,
+                height: viewport.height / 2
+              });
+
+              // Add searchable text layer
+              exportPage.drawText(res.data.text, {
+                x: 10,
+                y: (viewport.height / 2) - 20,
+                size: 8,
+                font: standardFont,
+                color: PDFLib.rgb(0, 0, 0),
+                opacity: 0.01
+              });
+            }
+          }
+
+          if (outputMode === 'pdf') {
+            searchablePdfBytes = await pdfDocForExport.save();
+          }
+        }
+
+        await worker.terminate();
+
+        // Prepare Success UI
+        const fullRecognizedText = accumulatedText.join('\n\n');
+        const baseName = outputFilenameInput.value.trim().replace(/(\.pdf|\.txt)+$/i, '').trim() || 'SlowPDF_OCR_Document';
+
+        if (outputMode === 'txt') {
+          const txtBlob = new Blob([fullRecognizedText], { type: 'text/plain;charset=utf-8' });
+          const downloadUrl = URL.createObjectURL(txtBlob);
+
+          textResultBox.classList.remove('hidden');
+          extractedTextArea.value = fullRecognizedText;
+
+          setupDownloadView(downloadUrl, `${baseName}.txt`, '.txt', `Successfully recognized characters across ${pdfPageCount} page${pdfPageCount > 1 ? 's' : ''} into raw editable text (${formatBytes(txtBlob.size)}).`, 'Download Raw Text (.txt)');
+
+        } else {
+          const pdfBlob = new Blob([searchablePdfBytes], { type: 'application/pdf' });
+          const downloadUrl = URL.createObjectURL(pdfBlob);
+
+          textResultBox.classList.add('hidden');
+
+          setupDownloadView(downloadUrl, `${baseName}.pdf`, '.pdf', `Successfully generated an accessible Searchable PDF with embedded text layer (${formatBytes(pdfBlob.size)}).`, 'Download Searchable PDF');
+        }
+
+      } catch (err) {
+        console.error('Error during OCR processing:', err);
+        alert('An error occurred during text recognition. Please try again.');
+      } finally {
+        convertActionBtn.disabled = false;
+        convertBtnText.textContent = 'Start OCR Recognition';
+        ocrProgressBox.classList.add('hidden');
+      }
+    });
+
+    function setupDownloadView(url, defaultFileName, extension, descriptionText, buttonLabel) {
+      const successFilenameInput = document.getElementById('success-filename-input');
+      const cleanName = defaultFileName.replace(new RegExp(`${extension.replace('.', '\\.')}$`, 'i'), '');
+
+      successExtTag.textContent = extension;
+      downloadBtnLabel.textContent = buttonLabel;
+
+      if (successFilenameInput) {
+        successFilenameInput.value = cleanName;
+        successFilenameInput.oninput = () => {
+          let name = successFilenameInput.value.trim().replace(new RegExp(`${extension.replace('.', '\\.')}$`, 'i'), '').trim() || cleanName;
+          downloadOcrBtn.download = `${name}${extension}`;
+          downloadOcrBtn.setAttribute('download', `${name}${extension}`);
+        };
+      }
+
+      downloadOcrBtn.href = url;
+      downloadOcrBtn.download = defaultFileName;
+      downloadOcrBtn.setAttribute('download', defaultFileName);
+
+      successDescription.textContent = descriptionText;
+
+      activeWorkbench.classList.add('hidden');
+      successPanel.classList.remove('hidden');
+    }
+
+    // Copy to Clipboard
+    copyTextBtn.addEventListener('click', () => {
+      extractedTextArea.select();
+      navigator.clipboard.writeText(extractedTextArea.value);
+      copyBtnLabel.textContent = 'Copied!';
+      setTimeout(() => copyBtnLabel.textContent = 'Copy Text', 2000);
+    });
+
+    // Reset Workbench
+    resetWorkbenchBtn.addEventListener('click', () => {
+      currentPdfBuffer = null;
+      pdfDocInstance = null;
+      loadedImageElement = null;
+      emptyDropzone.classList.remove('hidden');
+      activeWorkbench.classList.add('hidden');
+      successPanel.classList.add('hidden');
+      fileInput.value = '';
+    });
+
+    // 5. Accordion FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      if (trigger && content) {
+        trigger.addEventListener('click', () => {
+          const isOpen = !content.classList.contains('hidden');
+          if (isOpen) {
+            content.classList.add('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          } else {
+            content.classList.remove('hidden');
+            if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          }
+        });
+      }
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
 
 <script>
   (function() {

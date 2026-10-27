@@ -336,20 +336,18 @@
   </header>
 
   <!-- Preferences Drawer Modal -->
-      <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
-    style="display: none;"
     aria-hidden="true"
   >
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
       <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
         <div class="flex items-center gap-2">
-          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
+          <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.onerror=null; this.src='/assets/images/logo.png';" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
-        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -374,75 +372,1334 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
-        <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Blog &amp; Articles</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
         </a>
-        <a href="../pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
-        <a href="../pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
-        <a href="../pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
-        <a href="../pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Privacy Policy</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
+        <a href="images-to-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-[#355E4B] dark:text-emerald-400 bg-stone-100 dark:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Images to PDF
         </a>
-        <a href="../pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
-        <a href="../pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
-      </div>
-
-      <!-- Social Media Icons in Menu -->
-      <div class="pt-4">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <!-- WhatsApp (#25D366) -->
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="WhatsApp" title="WhatsApp">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <!-- Telegram (#229ED9) -->
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Telegram" title="Telegram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <!-- YouTube (#FF0000) -->
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="YouTube" title="YouTube">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <!-- Instagram (#E1306C / Gradient) -->
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
-             aria-label="Instagram" title="Instagram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <!-- Facebook (#1877F2) -->
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Facebook" title="Facebook">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <!-- X / Twitter (#000000) -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" 
-             aria-label="X / Twitter" title="X / Twitter">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Bottom Drawer Credit -->
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
+        <a href="edit-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          Edit PDF
+        </a>
+        <a href="add-watermark.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Add Watermark
+        </a>
       </div>
     </div>
   </div>
+
+  <!-- ========================================== -->
+  <!-- 2. INNER TOOL WORKBENCH CONTAINER          -->
+  <!-- ========================================== -->
+  <main id="tool-workbench" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full flex flex-col gap-8">
+
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-1 border border-emerald-300/40">
+        <i data-lucide="images" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+        <span>100% In-Browser RAM Processing</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#222E28] dark:text-white tracking-tight leading-tight">
+        Convert Images to PDF
+      </h1>
+      <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base font-medium leading-relaxed">
+        Combine JPG, PNG, WebP, GIF, and BMP photos into a high-quality PDF document instantly. Adjust layout, order, margins, and page numbers with 100% private in-browser RAM execution.
+      </p>
+      
+      <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        <span>🔒 100% Private In-Browser Processing — Photos Never Leave Your Device</span>
+      </div>
+    </div>
+
+    <!-- Hidden Input for Main Upload -->
+    <input type="file" id="image-file-input" class="hidden" multiple accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,image/bmp" />
+    
+    <!-- Hidden Input for Appending Additional Images -->
+    <input type="file" id="append-file-input" class="hidden" multiple accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,image/bmp" />
+
+    <!-- STEP 1: Empty Upload Dropzone -->
+    <div id="empty-dropzone" class="w-full max-w-3xl mx-auto bg-white dark:bg-[#1C2420] border-2 border-dashed border-[#355E4B]/40 dark:border-emerald-500/40 hover:border-[#274737] dark:hover:border-emerald-400 rounded-3xl p-8 sm:p-12 text-center transition-all duration-300 shadow-xl group cursor-pointer">
+      <div class="max-w-md mx-auto space-y-4">
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-[#FFFBF2] dark:bg-[#2A3630] border border-[#E8DABF] dark:border-[#35453E] flex items-center justify-center text-4xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+          🖼️
+        </div>
+        
+        <div>
+          <h2 class="text-xl font-extrabold text-[#274737] dark:text-emerald-300">Drop Images Here to Build PDF</h2>
+          <p class="text-xs text-stone-500 dark:text-stone-400 mt-1 font-medium">
+            Select JPG, PNG, WebP, GIF, or BMP files (Multiple selection allowed)
+          </p>
+        </div>
+
+        <div>
+          <button type="button" id="select-files-btn" class="px-6 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1E362A] text-white font-extrabold text-sm shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 mx-auto">
+            <i data-lucide="upload" class="w-4 h-4"></i>
+            <span>Select Image Files</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4 text-[11px] font-bold text-stone-500 dark:text-stone-400">
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>⚡ Instant RAM</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>🖼️ JPG/PNG/WebP</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>📄 A4/Letter/Fit</span>
+          </div>
+          <div class="flex items-center justify-center gap-1 bg-stone-100 dark:bg-[#2A3630] py-1.5 px-2 rounded-lg">
+            <span>🔒 Confidential</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Workbench Studio (Active when Queue Has Images) -->
+    <div id="workbench-panel" class="hidden flex flex-col gap-6">
+
+      <!-- Conversion Settings Ribbon (Normal Flow - Scrolls naturally with document) -->
+      <div class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-4">
+        
+        <!-- Left Sizing & Orientation Controls -->
+        <div class="flex flex-wrap items-center gap-4 text-xs font-extrabold text-[#222E28] dark:text-stone-200">
+          
+          <!-- Orientation -->
+          <div class="flex flex-col gap-1">
+            <label class="text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400">Orientation</label>
+            <select id="setting-orientation" class="bg-stone-100 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#274737]">
+              <option value="auto">Auto-Detect (Match Image)</option>
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+
+          <!-- Page Format -->
+          <div class="flex flex-col gap-1">
+            <label class="text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400">Page Sizing</label>
+            <select id="setting-page-format" class="bg-stone-100 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#274737]">
+              <option value="fit" selected>Fit to Image (No Canvas Border)</option>
+              <option value="a4">Standard A4 (595 × 842 pt)</option>
+              <option value="letter">US Letter (612 × 792 pt)</option>
+            </select>
+          </div>
+
+          <!-- Margins -->
+          <div class="flex flex-col gap-1">
+            <label class="text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-400">Page Margins</label>
+            <select id="setting-margin" class="bg-stone-100 dark:bg-[#2A3630] border border-stone-300 dark:border-stone-700 rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#274737]">
+              <option value="0" selected>No Margin (0 pt)</option>
+              <option value="10">Small Margin (10 pt)</option>
+              <option value="20">Normal Margin (20 pt)</option>
+            </select>
+          </div>
+
+          <!-- Stamp Page Numbers Checkbox -->
+          <div class="flex items-center gap-2 pt-4">
+            <input type="checkbox" id="setting-stamp-numbers" class="w-4 h-4 text-[#274737] rounded border-stone-300 focus:ring-[#274737]" checked />
+            <label for="setting-stamp-numbers" class="cursor-pointer select-none">Stamp Page Numbers</label>
+          </div>
+
+        </div>
+
+        <!-- Right Quick Action Toolbar -->
+        <div class="flex items-center gap-2 ml-auto">
+          
+          <button id="append-images-btn" class="px-3.5 py-2 rounded-xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 dark:hover:bg-[#35453E] text-[#222E28] dark:text-stone-100 text-xs font-bold flex items-center gap-1.5 transition-colors" title="Add extra photos to this batch">
+            <i data-lucide="image-plus" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+            <span>+ Add More</span>
+          </button>
+
+          <button id="clear-all-images-btn" class="px-3 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-700 dark:text-rose-300 text-xs font-bold flex items-center gap-1 transition-colors" title="Remove all images">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+            <span>Clear</span>
+          </button>
+
+          <button id="convert-images-btn" class="px-5 py-2.5 rounded-xl bg-[#274737] hover:bg-[#1E362A] text-white font-extrabold text-xs shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2">
+            <i data-lucide="file-check" class="w-4 h-4"></i>
+            <span id="convert-btn-text">Convert 0 Images to PDF</span>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Queue Meta Bar -->
+      <div class="flex items-center justify-between text-xs font-bold text-stone-600 dark:text-stone-400 px-2">
+        <div class="flex items-center gap-2">
+          <span>Total Images: <strong id="total-images-badge" class="text-[#274737] dark:text-emerald-300">0</strong></span>
+          <span>•</span>
+          <span>Total Size: <strong id="total-size-badge" class="text-[#274737] dark:text-emerald-300">0 MB</strong></span>
+        </div>
+        <div class="text-[11px] text-stone-500">
+          💡 Drag cards or use Move Up/Down buttons to reorder pages
+        </div>
+      </div>
+
+      <!-- Full-Width Vertical Image Stack Container -->
+      <div id="image-cards-container" class="space-y-4">
+        <!-- Rendered image cards will be dynamically injected here -->
+      </div>
+
+    </div>
+
+    <!-- STEP 3: Processing Modal Overlay -->
+    <div id="processing-progress-box" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+      <div class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#274737]/10 dark:bg-emerald-500/10 flex items-center justify-center text-3xl animate-bounce">
+          ⚙️
+        </div>
+        <div>
+          <h3 class="text-xl font-black text-[#274737] dark:text-emerald-300">Building Your PDF</h3>
+          <p id="progress-status-text" class="text-xs text-stone-500 dark:text-stone-400 mt-1 font-medium">
+            Processing image layers in browser RAM...
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="w-full h-3 bg-stone-100 dark:bg-[#2A3630] rounded-full overflow-hidden p-0.5 border border-stone-200 dark:border-stone-700">
+            <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-[#355E4B] to-[#274737] rounded-full transition-all duration-200" style="width: 10%;"></div>
+          </div>
+          <div class="flex justify-between text-[11px] font-bold text-stone-500">
+            <span>Client-side RAM Execution</span>
+            <span id="progress-percent-text">10%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Success Celebration Screen -->
+    <div id="success-panel" class="hidden w-full max-w-2xl mx-auto bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-8 sm:p-12 text-center shadow-2xl space-y-6">
+      
+      <div class="w-24 h-24 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/60 border-2 border-emerald-500 flex items-center justify-center text-5xl shadow-lg animate-pulse overflow-hidden p-2">
+        <img src="../assets/images/logo.png" alt="SlowPDF Celebration Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='/assets/images/logo.png';" />
+      </div>
+
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold uppercase tracking-wider">
+          <i data-lucide="check-circle" class="w-4 h-4"></i>
+          <span>PDF Created Successfully!</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#274737] dark:text-emerald-300">
+          Your PDF Document is Ready
+        </h2>
+        <p id="success-file-stats" class="text-xs font-semibold text-stone-500 dark:text-stone-400">
+          5 Images • 2.4 MB PDF Document • 100% Client-Side RAM Processing
+        </p>
+      </div>
+
+      <!-- Custom Filename Input Field -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Download File Name:
+        </label>
+        <div class="flex rounded-xl overflow-hidden border border-stone-300 dark:border-stone-700 shadow-xs focus-within:ring-2 focus-within:ring-[#274737]">
+          <input type="text" id="output-filename-input" value="SlowPDF_Converted_Images" class="flex-1 bg-stone-50 dark:bg-[#2A3630] px-4 py-2.5 text-xs font-extrabold text-[#222E28] dark:text-stone-100 focus:outline-none" />
+          <span class="bg-stone-200 dark:bg-[#35453E] px-3.5 py-2.5 text-xs font-extrabold text-stone-600 dark:text-stone-300 flex items-center">
+            .pdf
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <button id="download-converted-pdf-btn" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1E362A] text-white font-black text-sm shadow-xl hover:shadow-2xl transition-all duration-200 flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-5 h-5"></i>
+          <span>Download PDF File</span>
+        </button>
+
+        <button id="convert-another-btn" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-[#222E28] dark:text-stone-100 font-extrabold text-sm transition-colors flex items-center justify-center gap-2">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+          <span>Convert Another Batch</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Locked 10-Banner Carousel Container -->
+    <section class="mt-8 border-t border-stone-200 dark:border-stone-800 pt-8">
+      <div id="pdf-banner-carousel" class="w-full"></div>
+    </section>
+
+    <!-- 500+ Word Semantically Structured SEO Article -->
+    <article class="mt-8 bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 sm:p-10 shadow-sm space-y-6 text-stone-700 dark:text-stone-300 leading-relaxed text-sm">
+      <header class="space-y-2 border-b border-stone-100 dark:border-stone-800 pb-4">
+        <h2 class="text-2xl font-black text-[#274737] dark:text-emerald-300">
+          The Definitive Free Images to PDF Converter: Convert JPG, PNG & WebP Safely in Your Browser
+        </h2>
+        <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">
+          Published by SlowPDF Technical Engineering Team • 100% Privacy Guaranteed
+        </p>
+      </header>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Why Convert Image Photos to PDF Documents?
+        </h3>
+        <p>
+          Whether you are submitting scanned passports, proof of address utility bills, design mockups, photo receipts, or university homework assignments, converting loose image files (JPG, PNG, WebP) into a single unified PDF document is the gold standard for professional document presentation. Sending individual image files via email or messaging apps often leads to mismatched page ordering, compressed lossy image resolution, and formatting chaos across different mobile screens and desktop viewports.
+        </p>
+        <p>
+          A single compiled PDF document locks your photos into exact sequential order, ensures standardized page sizing (such as ISO A4 or US Letter), preserves high-definition image vectors, and guarantees that any recipient will view your document exactly as intended, regardless of operating system or hardware.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          The SlowPDF Client-Side RAM Advantage: Zero Server Uploads
+        </h3>
+        <p>
+          Traditional online PDF converters require you to upload your sensitive personal photos, financial tax receipts, or confidential identity documents to remote cloud servers. Those third-party servers parse your images, store them in temporary file buckets, and subject your private photos to data breach risks and unauthorized web tracking.
+        </p>
+        <p>
+          <strong>SlowPDF revolutionizes PDF utility software through 100% in-browser RAM execution.</strong> Built on modern JavaScript WebAssembly and client-side HTML5 canvas technology, our Images to PDF engine processes every pixel directly inside your device's local memory. Your photos never leave your browser, never touch a server disk, and never traverse third-party networks. When you close your browser tab, all temporary memory buffers are instantly purged.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Key Studio Features & Customization
+        </h3>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>Universal Image Support:</strong> Batch combine JPG, JPEG, PNG, WebP, GIF, and BMP photos into a single PDF document.</li>
+          <li><strong>Drag-and-Drop & Move Controls:</strong> Reorder image cards seamlessly with intuitive Move Up, Move Down, and HTML5 drag handles.</li>
+          <li><strong>Individual 90° Image Rotation:</strong> Fix sideways or upside-down smartphone photo captures prior to PDF compilation.</li>
+          <li><strong>Flexible Page Sizing:</strong> Choose between 'Fit to Image' (zero white borders around photos), 'Standard A4', or 'US Letter'.</li>
+          <li><strong>Custom Page Margins & Orientation:</strong> Select zero margin, small (10pt), or normal (20pt) margins alongside Auto, Portrait, or Landscape orientation.</li>
+          <li><strong>Automatic Page Numbering:</strong> Stamp elegant, vectorized page numbers ('Page X of Total') at the bottom center of each page.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h3 class="text-lg font-extrabold text-[#274737] dark:text-emerald-400">
+          Step-by-Step Guide: Converting Images to PDF in Seconds
+        </h3>
+        <ol class="list-decimal pl-5 space-y-2 font-medium">
+          <li><strong>Upload Your Photos:</strong> Drag and drop your image files into the upload box or click "Select Image Files". You can select multiple photos at once.</li>
+          <li><strong>Arrange & Rotate:</strong> Review your vertical image stack. Use the "Move Up" and "Move Down" buttons to set page sequence, and click "Rotate 90°" to fix photo orientations.</li>
+          <li><strong>Customize Layout:</strong> Select your preferred Page Sizing (Fit to Image, A4, or Letter), Page Margins, and toggle "Stamp Page Numbers" if desired.</li>
+          <li><strong>Convert & Download:</strong> Click "Convert Images to PDF & Download". SlowPDF compiles your document in milliseconds directly inside browser RAM.</li>
+        </ol>
+      </section>
+    </article>
+
+    <!-- 10 FAQ Accordion Section -->
+    <section id="faq-section" class="bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+      <div class="text-center max-w-xl mx-auto space-y-2">
+        <h2 class="text-2xl font-black text-[#274737] dark:text-emerald-300">
+          Frequently Asked Questions (FAQ)
+        </h2>
+        <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">
+          Everything you need to know about converting images to PDF with SlowPDF.
+        </p>
+      </div>
+
+      <div class="space-y-3 max-w-3xl mx-auto">
+        
+        <!-- Question 1 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>How do I convert multiple image files into a single PDF?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            Drag and drop your JPG, PNG, or WebP images into SlowPDF's conversion studio. Reorder your photos using the Move Up/Down buttons or drag handles, adjust page margins and orientation if desired, then click "Convert Images to PDF & Download".
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Which image formats are supported for PDF conversion?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            SlowPDF supports all popular image formats including JPG, JPEG, PNG, WebP, GIF, and BMP. You can mix and match different image formats in a single batch.
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Are my uploaded photos or document images sent to any server?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            Never. All image processing and PDF compilation take place 100% inside your local web browser's RAM using WebAssembly and HTML5 Canvas. Zero data leaves your physical device.
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>Can I reorder or rotate images before generating the PDF?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            Yes! Each image card includes 'Move Up', 'Move Down', and 90° rotation controls so you can fix upside-down scans and arrange your pages in exact sequential order.
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+          <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+            <span>What page sizing options are available (e.g., A4 vs original photo size)?</span>
+            <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+          </button>
+          <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+            You can choose 'Fit to Image' (each PDF page matches the exact dimensions of the photo), 'Standard A4', or 'US Letter'. You can also select portrait or landscape orientation.
+          </div>
+        </div>
+
+        <!-- Extra 5 Hidden Questions -->
+        <div id="extra-faq-items" class="space-y-3 hidden">
+          
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>How do I add page numbers to the converted PDF?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Simply check the 'Stamp Page Numbers' checkbox in the studio settings. SlowPDF will automatically stamp crisp vector page numbers ('Page X of Total') at the bottom of each page.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Is there a limit on file size or maximum number of images?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              There are zero arbitrary limits! Because conversion happens directly in your browser RAM, you can combine dozens or hundreds of high-resolution photos without queue delays.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Will converting PNG images lose alpha transparency?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              No. SlowPDF processes PNG alpha transparency cleanly using HTML5 Canvas rendering, blending transparent backgrounds smoothly onto clean white PDF pages.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Does this tool work on iPhone, iPad, and Android mobile devices?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Yes! The Images to PDF converter is fully responsive and optimized for mobile touchscreens, allowing you to convert camera roll photos into PDFs directly on your mobile device.
+            </div>
+          </div>
+
+          <div class="faq-item border border-stone-200 dark:border-stone-800 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-[#2A3630]/40">
+            <button class="faq-trigger w-full px-5 py-4 text-left font-extrabold text-sm text-[#222E28] dark:text-stone-100 flex items-center justify-between gap-4">
+              <span>Is SlowPDF Images to PDF converter completely free without watermark?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-4 h-4 transition-transform duration-200 text-[#274737] dark:text-emerald-400"></i>
+            </button>
+            <div class="faq-content px-5 pb-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed hidden">
+              Yes! SlowPDF is 100% free with zero watermarks, zero subscription fees, and zero required account sign-ups.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center pt-2">
+          <button id="toggle-all-faq-btn" class="px-5 py-2 rounded-xl bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-xs font-extrabold text-[#274737] dark:text-emerald-300 transition-colors">
+            View All 10 Questions
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 3. LOCKED MASTER FOOTER                    -->
+  <!-- ========================================== -->
+  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+      
+      <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Brand Logo" 
+            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+          <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
+            Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
+          </span>
+        </a>
+        <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+          Fast, Private &amp; Free Client-Side Tools. Made for slow, steady learning. Your files never leave your device.
+        </p>
+
+        <!-- Social Icons in Official Brand Colors -->
+        <div class="pt-2 space-y-3">
+          <div class="flex items-center gap-3 flex-wrap">
+            <!-- WhatsApp (#25D366) -->
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="WhatsApp" title="WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+            <!-- Telegram (#229ED9) -->
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Telegram" title="Telegram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <!-- YouTube (#FF0000) -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="YouTube" title="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- Instagram (#E1306C / Gradient) -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+               aria-label="Instagram" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Facebook (#1877F2) -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Facebook" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- X / Twitter (#000000) -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all dark:bg-stone-800" 
+               aria-label="X / Twitter" title="X / Twitter">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+
+          <!-- Share Website Button directly below social icons -->
+          <div>
+            <button id="footer-share-btn" 
+                    onclick="if (navigator.share) { navigator.share({title: 'SlowPDF', text: 'Fast, Private & Free Client-Side PDF Tools', url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); alert('SlowPDF link copied to clipboard!'); }" 
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+              <span>Share Website</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 1: Primary Tools -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          PDF Tools
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+          <li><a href="../tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+          <li><a href="../tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+          <li><a href="../tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+          <li><a href="../tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
+          <li><a href="../tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
+          <li><a href="../tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+          <li><a href="../tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: More Tools & Blog -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          More Utilities
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+          <li><a href="../tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+          <li><a href="../tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
+          <li><a href="../tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
+          <li><a href="../tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
+          <li><a href="../blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
+          <li><a href="../pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
+          <li><a href="../pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          Legal &amp; Support
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
+          <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
+          <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="../pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
+          <li><a href="../index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Strip -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">
+          © 2026 SlowPDF • Crafted with ❤️ by Tveezal
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+          Fast, Private &amp; Free Client-Side Tools.
+        </p>
+      </div>
+      <div class="text-xs text-stone-400 dark:text-stone-500">
+        100% In-Browser Computation
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- ========================================== -->
+  <!-- 4. JAVASCRIPT ENGINE & EVENT HANDLERS      -->
+  <!-- ========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Drawer & Dark Mode Logic (Matching locked shell template)
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+    // (Navigation and modal drawer handled universally by nav-memory.js)
+
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('slowpdf_theme', isDark ? 'dark' : 'light');
+        const thumb = document.getElementById('dark-mode-thumb');
+        if (thumb) {
+          if (isDark) {
+            thumb.classList.add('translate-x-5');
+            thumb.classList.remove('translate-x-0');
+          } else {
+            thumb.classList.remove('translate-x-5');
+            thumb.classList.add('translate-x-0');
+          }
+        }
+      });
+
+      if (localStorage.getItem('slowpdf_theme') === 'dark' || 
+         (!localStorage.getItem('slowpdf_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        const thumb = document.getElementById('dark-mode-thumb');
+        if (thumb) {
+          thumb.classList.add('translate-x-5');
+          thumb.classList.remove('translate-x-0');
+        }
+      }
+    }
+
+    // =========================================================================
+    // IMAGES TO PDF ENGINE STATE
+    // =========================================================================
+    let imagesQueue = []; // Array of { id, file, dataUrl, width, height, size, type, rotation }
+    let generatedPdfBlobUrl = null;
+
+    // DOM Elements
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const selectFilesBtn = document.getElementById('select-files-btn');
+    const imageFileInput = document.getElementById('image-file-input');
+    const appendFileInput = document.getElementById('append-file-input');
+    const appendImagesBtn = document.getElementById('append-images-btn');
+
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const imageCardsContainer = document.getElementById('image-cards-container');
+    const totalImagesBadge = document.getElementById('total-images-badge');
+    const totalSizeBadge = document.getElementById('total-size-badge');
+    const convertBtnText = document.getElementById('convert-btn-text');
+
+    const settingOrientation = document.getElementById('setting-orientation');
+    const settingPageFormat = document.getElementById('setting-page-format');
+    const settingMargin = document.getElementById('setting-margin');
+    const settingStampNumbers = document.getElementById('setting-stamp-numbers');
+
+    const clearAllImagesBtn = document.getElementById('clear-all-images-btn');
+    const convertImagesBtn = document.getElementById('convert-images-btn');
+
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressPercentText = document.getElementById('progress-percent-text');
+
+    const successPanel = document.getElementById('success-panel');
+    const successFileStats = document.getElementById('success-file-stats');
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const downloadConvertedPdfBtn = document.getElementById('download-converted-pdf-btn');
+    const convertAnotherBtn = document.getElementById('convert-another-btn');
+
+    // Drag and Drop triggers on main Dropzone
+    ['dragenter', 'dragover'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('border-[#274737]', 'bg-stone-50', 'dark:bg-[#2A3630]');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('border-[#274737]', 'bg-stone-50', 'dark:bg-[#2A3630]');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+      if (files.length > 0) handleIncomingFiles(files);
+    });
+
+    emptyDropzone.addEventListener('click', (e) => {
+      if (e.target.closest('#select-files-btn') || e.target === emptyDropzone || e.target.closest('.group')) {
+        imageFileInput.click();
+      }
+    });
+
+    imageFileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0) handleIncomingFiles(files);
+    });
+
+    appendImagesBtn.addEventListener('click', () => {
+      appendFileInput.click();
+    });
+
+    appendFileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0) handleIncomingFiles(files);
+    });
+
+    // Handle Incoming Files
+    async function handleIncomingFiles(files) {
+      for (const file of files) {
+        if (!file.type.startsWith('image/')) continue;
+
+        try {
+          const dataUrl = await readFileAsDataUrl(file);
+          const dims = await getImageDimensions(dataUrl);
+
+          imagesQueue.push({
+            id: 'img_' + Math.random().toString(36).substr(2, 9),
+            file: file,
+            dataUrl: dataUrl,
+            width: dims.width,
+            height: dims.height,
+            size: file.size,
+            type: file.type.replace('image/', '').toUpperCase(),
+            rotation: 0
+          });
+        } catch (err) {
+          console.error('Failed to read image file:', file.name, err);
+        }
+      }
+
+      renderWorkbenchCards();
+    }
+
+    // Helper: Read File to Data URL
+    function readFileAsDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = (e) => reject(e);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Helper: Get Image Natural Dimensions
+    function getImageDimensions(dataUrl) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve({ width: img.naturalWidth || img.width, height: img.naturalHeight || img.height });
+        img.onerror = () => resolve({ width: 800, height: 600 });
+        img.src = dataUrl;
+      });
+    }
+
+    // Render Full-Width Vertical Image Stack Cards
+    function renderWorkbenchCards() {
+      if (imagesQueue.length === 0) {
+        workbenchPanel.classList.add('hidden');
+        emptyDropzone.classList.remove('hidden');
+        return;
+      }
+
+      emptyDropzone.classList.add('hidden');
+      workbenchPanel.classList.remove('hidden');
+
+      imageCardsContainer.innerHTML = '';
+
+      let totalBytes = 0;
+
+      imagesQueue.forEach((imgItem, index) => {
+        totalBytes += imgItem.size;
+
+        const sizeMB = (imgItem.size / (1024 * 1024)).toFixed(2);
+        const pageNum = index + 1;
+        const totalPages = imagesQueue.length;
+
+        const card = document.createElement('div');
+        card.className = 'image-card bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-[#2A3630] rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200';
+        card.dataset.index = index;
+        card.draggable = true;
+
+        card.innerHTML = `
+          <div class="flex flex-col md:flex-row items-center gap-4">
+            
+            <!-- Left Header / Badge / Drag Handle -->
+            <div class="w-full md:w-auto flex items-center justify-between md:justify-start gap-3">
+              <div class="flex items-center gap-2">
+                <span class="cursor-grab active:cursor-grabbing p-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] text-stone-400 hover:text-stone-600 dark:hover:text-stone-200" title="Drag to reorder">
+                  <i data-lucide="grip-vertical" class="w-4 h-4"></i>
+                </span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#274737] text-white text-xs font-black shadow-xs">
+                  Page ${pageNum} of ${totalPages}
+                </span>
+              </div>
+
+              <!-- Mobile controls bar -->
+              <div class="flex md:hidden items-center gap-1">
+                <button class="btn-move-up p-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-stone-700 dark:text-stone-200 text-xs font-bold ${index === 0 ? 'opacity-40 pointer-events-none' : ''}" title="Move Up">
+                  <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                </button>
+                <button class="btn-move-down p-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-stone-700 dark:text-stone-200 text-xs font-bold ${index === totalPages - 1 ? 'opacity-40 pointer-events-none' : ''}" title="Move Down">
+                  <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </button>
+                <button class="btn-rotate p-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-stone-700 dark:text-stone-200 text-xs font-bold" title="Rotate 90°">
+                  <i data-lucide="rotate-cw" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                </button>
+                <button class="btn-delete p-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-600 text-xs font-bold" title="Delete image">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Center High-Res Image Preview Box -->
+            <div class="w-full md:w-48 h-48 sm:h-52 bg-stone-100 dark:bg-[#121815] rounded-xl overflow-hidden flex items-center justify-center p-2 border border-stone-200 dark:border-stone-800 shadow-inner">
+              <img src="${imgItem.dataUrl}" alt="${imgItem.file.name}" class="max-h-full max-w-full object-contain transition-transform duration-300" style="transform: rotate(${imgItem.rotation}deg)" />
+            </div>
+
+            <!-- Right Info Details -->
+            <div class="flex-1 w-full space-y-2 text-xs font-semibold text-stone-600 dark:text-stone-300 text-left">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-sm text-[#222E28] dark:text-stone-100 truncate max-w-[220px] sm:max-w-xs" title="${imgItem.file.name}">
+                  ${imgItem.file.name}
+                </span>
+                <span class="px-2 py-0.5 rounded-md bg-stone-100 dark:bg-[#2A3630] text-[10px] font-bold uppercase text-stone-500">
+                  ${imgItem.type}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-stone-500 dark:text-stone-400">
+                <div>Dimensions: <strong class="text-stone-800 dark:text-stone-200">${imgItem.width} × ${imgItem.height} px</strong></div>
+                <div>File Size: <strong class="text-stone-800 dark:text-stone-200">${sizeMB} MB</strong></div>
+                <div>Orientation: <strong class="text-stone-800 dark:text-stone-200">${imgItem.width >= imgItem.height ? 'Landscape' : 'Portrait'}</strong></div>
+                <div>Rotation: <strong class="text-emerald-700 dark:text-emerald-400">${imgItem.rotation}°</strong></div>
+              </div>
+            </div>
+
+            <!-- Desktop Right Action Controls -->
+            <div class="hidden md:flex flex-col gap-1.5 pl-4 border-l border-stone-100 dark:border-stone-800">
+              <button class="btn-move-up px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-stone-700 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 ${index === 0 ? 'opacity-40 pointer-events-none' : ''}">
+                <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+                <span>Move Up</span>
+              </button>
+              <button class="btn-move-down px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-[#2A3630] hover:bg-stone-200 text-stone-700 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 ${index === totalPages - 1 ? 'opacity-40 pointer-events-none' : ''}">
+                <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+                <span>Move Down</span>
+              </button>
+              <button class="btn-rotate px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+                <span>Rotate 90°</span>
+              </button>
+              <button class="btn-delete px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-700 dark:text-rose-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                <span>Delete</span>
+              </button>
+            </div>
+
+          </div>
+        `;
+
+        // Event listeners for card buttons
+        card.querySelectorAll('.btn-move-up').forEach(btn => {
+          btn.addEventListener('click', () => moveImageInQueue(index, index - 1));
+        });
+
+        card.querySelectorAll('.btn-move-down').forEach(btn => {
+          btn.addEventListener('click', () => moveImageInQueue(index, index + 1));
+        });
+
+        card.querySelectorAll('.btn-rotate').forEach(btn => {
+          btn.addEventListener('click', () => {
+            imagesQueue[index].rotation = (imagesQueue[index].rotation + 90) % 360;
+            renderWorkbenchCards();
+          });
+        });
+
+        card.querySelectorAll('.btn-delete').forEach(btn => {
+          btn.addEventListener('click', () => {
+            imagesQueue.splice(index, 1);
+            renderWorkbenchCards();
+          });
+        });
+
+        // HTML5 Drag and Drop events
+        card.addEventListener('dragstart', (e) => {
+          card.classList.add('image-card-dragging');
+          e.dataTransfer.setData('text/plain', index);
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('image-card-dragging');
+        });
+
+        card.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          card.classList.add('image-card-drag-over');
+        });
+
+        card.addEventListener('dragleave', () => {
+          card.classList.remove('image-card-drag-over');
+        });
+
+        card.addEventListener('drop', (e) => {
+          e.preventDefault();
+          card.classList.remove('image-card-drag-over');
+          const sourceIdx = parseInt(e.dataTransfer.getData('text/plain'), 10);
+          if (!isNaN(sourceIdx) && sourceIdx !== index) {
+            moveImageInQueue(sourceIdx, index);
+          }
+        });
+
+        imageCardsContainer.appendChild(card);
+      });
+
+      // Update Badges and Text
+      totalImagesBadge.textContent = imagesQueue.length;
+      totalSizeBadge.textContent = `${(totalBytes / (1024 * 1024)).toFixed(2)} MB`;
+      convertBtnText.textContent = `Convert ${imagesQueue.length} ${imagesQueue.length === 1 ? 'Image' : 'Images'} to PDF`;
+
+      lucide.createIcons();
+    }
+
+    // Move Image in Queue
+    function moveImageInQueue(fromIdx, toIdx) {
+      if (toIdx < 0 || toIdx >= imagesQueue.length) return;
+      const movedItem = imagesQueue.splice(fromIdx, 1)[0];
+      imagesQueue.splice(toIdx, 0, movedItem);
+      renderWorkbenchCards();
+    }
+
+    // Clear All
+    clearAllImagesBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to remove all uploaded images?')) {
+        imagesQueue = [];
+        renderWorkbenchCards();
+      }
+    });
+
+    // =========================================================================
+    // CLIENT-SIDE HIGH-PERFORMANCE PDF-LIB COMPILATION ENGINE
+    // =========================================================================
+    convertImagesBtn.addEventListener('click', compileImagesToPdf);
+
+    async function compileImagesToPdf() {
+      if (imagesQueue.length === 0) return;
+
+      processingProgressBox.classList.remove('hidden');
+      progressStatusText.textContent = 'Optimizing and downscaling image frames concurrently...';
+      progressBarFill.style.width = '10%';
+      progressPercentText.textContent = '10%';
+
+      setTimeout(async () => {
+        try {
+          const pdfDoc = await PDFLib.PDFDocument.create();
+
+          const orientationOpt = settingOrientation.value; // 'auto', 'portrait', 'landscape'
+          const pageFormatOpt = settingPageFormat.value;   // 'fit', 'a4', 'letter'
+          const marginPts = parseInt(settingMargin.value, 10) || 0;
+          const stampNumbers = settingStampNumbers.checked;
+
+          const totalCount = imagesQueue.length;
+          let completedCount = 0;
+
+          // STEP 1: PARALLEL IMAGE PROCESSING & CANVASES DOWNSCALING
+          const processedFrames = await Promise.all(
+            imagesQueue.map(async (imgItem) => {
+              const frame = await processImageToOptimizedBytes(imgItem.dataUrl, imgItem.rotation);
+              completedCount++;
+              const percent = Math.min(80, Math.round(10 + (completedCount / totalCount) * 70));
+              progressBarFill.style.width = `${percent}%`;
+              progressPercentText.textContent = `${percent}%`;
+              progressStatusText.textContent = `Optimized ${completedCount} of ${totalCount} images...`;
+              return frame;
+            })
+          );
+
+          // STEP 2: EMBED OPTIMIZED JPEG FRAMES INTO PDF-LIB
+          progressBarFill.style.width = '85%';
+          progressPercentText.textContent = '85%';
+          progressStatusText.textContent = 'Embedding optimized frames into PDF pages...';
+
+          let fontHelvetica = null;
+          if (stampNumbers) {
+            fontHelvetica = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+          }
+
+          for (let i = 0; i < totalCount; i++) {
+            const frame = processedFrames[i];
+            const embeddedImg = await pdfDoc.embedJpg(frame.uint8Array);
+
+            const naturalWidth = frame.width;
+            const naturalHeight = frame.height;
+
+            // Determine Target Page Dimensions (in points: 1 pt = 1/72 inch)
+            let pageWidth, pageHeight;
+
+            if (pageFormatOpt === 'a4') {
+              pageWidth = 595.28;
+              pageHeight = 841.89;
+            } else if (pageFormatOpt === 'letter') {
+              pageWidth = 612.0;
+              pageHeight = 792.0;
+            } else {
+              // 'fit' mode: page size equals image size + margins
+              pageWidth = naturalWidth + (marginPts * 2);
+              pageHeight = naturalHeight + (marginPts * 2);
+            }
+
+            // Apply Orientation override if required
+            if (orientationOpt === 'portrait' && pageWidth > pageHeight) {
+              const temp = pageWidth;
+              pageWidth = pageHeight;
+              pageHeight = temp;
+            } else if (orientationOpt === 'landscape' && pageHeight > pageWidth) {
+              const temp = pageWidth;
+              pageWidth = pageHeight;
+              pageHeight = temp;
+            }
+
+            // Add Page
+            const page = pdfDoc.addPage([pageWidth, pageHeight]);
+
+            // Printable Area inside Margins
+            const printableW = pageWidth - (marginPts * 2);
+            const printableH = pageHeight - (marginPts * 2);
+
+            // Calculate scaled image size preserving aspect ratio
+            const aspect = naturalWidth / naturalHeight;
+            let drawW, drawH;
+
+            if (printableW / printableH < aspect) {
+              drawW = printableW;
+              drawH = printableW / aspect;
+            } else {
+              drawH = printableH;
+              drawW = printableH * aspect;
+            }
+
+            // Center image in printable area
+            const drawX = marginPts + (printableW - drawW) / 2;
+            const drawY = marginPts + (printableH - drawH) / 2;
+
+            // Draw Embedded Image
+            page.drawImage(embeddedImg, {
+              x: drawX,
+              y: drawY,
+              width: drawW,
+              height: drawH
+            });
+
+            // Stamp Page Numbers if enabled
+            if (stampNumbers && fontHelvetica) {
+              const pageStr = `Page ${i + 1} of ${totalCount}`;
+              const fontSize = 10;
+              const textWidth = fontHelvetica.widthOfTextAtSize(pageStr, fontSize);
+              const textX = (pageWidth - textWidth) / 2;
+              const textY = Math.max(10, marginPts > 0 ? marginPts / 2 : 15);
+
+              page.drawText(pageStr, {
+                x: textX,
+                y: textY,
+                size: fontSize,
+                font: fontHelvetica,
+                color: PDFLib.rgb(0.3, 0.3, 0.3)
+              });
+            }
+          }
+
+          // STEP 3: FAST SERIALIZATION
+          progressStatusText.textContent = 'Serializing PDF document in RAM...';
+          progressBarFill.style.width = '95%';
+          progressPercentText.textContent = '95%';
+
+          const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+          if (generatedPdfBlobUrl) URL.revokeObjectURL(generatedPdfBlobUrl);
+          generatedPdfBlobUrl = URL.createObjectURL(blob);
+
+          const pdfSizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+
+          // Update Success Display
+          successFileStats.textContent = `${totalCount} ${totalCount === 1 ? 'Image' : 'Images'} • ${pdfSizeMB} MB PDF Document • Fast Client-Side Parallel RAM Execution`;
+
+          // Default Output Filename
+          const firstFileName = imagesQueue[0].file.name.replace(/\.[^/.]+$/, '');
+          const cleanName = firstFileName.replace(/[^a-zA-Z0-9_-]/g, '_');
+          outputFilenameInput.value = `SlowPDF_Converted_${cleanName}`;
+
+          // Switch Views
+          workbenchPanel.classList.add('hidden');
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error compiling Images to PDF:', err);
+          alert('Failed to generate PDF: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+        }
+      }, 50);
+    }
+
+    // Helper: Fast Concurrent Image Downscaling & Rotation to JPEG Bytes
+    function processImageToOptimizedBytes(dataUrl, rotation) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          const maxDim = 1800; // Max dimension in pixels for high DPI print quality with ultra-light RAM footprint
+          const isRotated90or270 = rotation % 180 !== 0;
+
+          const naturalW = isRotated90or270 ? img.naturalHeight : img.naturalWidth;
+          const naturalH = isRotated90or270 ? img.naturalWidth : img.naturalHeight;
+
+          // Calculate downscale ratio
+          const scale = Math.min(1.0, maxDim / Math.max(naturalW, naturalH));
+          const targetW = Math.round(naturalW * scale);
+          const targetH = Math.round(naturalH * scale);
+
+          const canvas = document.createElement('canvas');
+          canvas.width = targetW;
+          canvas.height = targetH;
+          const ctx = canvas.getContext('2d');
+
+          // White background fill (prevents black background on PNG alpha)
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, targetW, targetH);
+
+          // Rotate around center
+          ctx.translate(targetW / 2, targetH / 2);
+          ctx.rotate((rotation * Math.PI) / 180);
+
+          const drawW = isRotated90or270 ? targetH : targetW;
+          const drawH = isRotated90or270 ? targetW : targetH;
+
+          ctx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
+
+          // Fast JPEG blob generation at 0.85 quality
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              reject(new Error('Canvas downscaling failed'));
+              return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => {
+              resolve({
+                uint8Array: new Uint8Array(reader.result),
+                width: targetW,
+                height: targetH
+              });
+            };
+            reader.onerror = (e) => reject(e);
+            reader.readAsArrayBuffer(blob);
+          }, 'image/jpeg', 0.85);
+        };
+        img.onerror = (err) => reject(err);
+        img.src = dataUrl;
+      });
+    }
+
+    // Trigger Download PDF File
+    downloadConvertedPdfBtn.addEventListener('click', () => {
+      if (!generatedPdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Converted_Images';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = generatedPdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workspace to Convert Another Batch
+    convertAnotherBtn.addEventListener('click', () => {
+      imagesQueue = [];
+      if (generatedPdfBlobUrl) URL.revokeObjectURL(generatedPdfBlobUrl);
+      generatedPdfBlobUrl = null;
+
+      imageFileInput.value = '';
+      appendFileInput.value = '';
+      imageCardsContainer.innerHTML = '';
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('images-to-pdf');
+      }
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
 
 <script>
   (function() {

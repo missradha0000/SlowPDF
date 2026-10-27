@@ -349,11 +349,9 @@
   </header>
 
   <!-- Clean Dropdown Modal / Preferences -->
-      <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
-    style="display: none;"
     aria-hidden="true"
   >
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
@@ -362,7 +360,7 @@
           <img src="assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
-        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -375,7 +373,7 @@
             <span class="text-sm font-semibold text-stone-700 dark:text-stone-200">Dark Mode</span>
           </div>
           <button 
-            id="dark-mode-toggle" 
+            id="dark-mode-toggle"
             type="button" 
             role="switch" 
             aria-checked="false"
@@ -387,74 +385,464 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+      <!-- Navigation & Legal Links -->
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
-        <a href="blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Blog &amp; Articles</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
+        <a href="index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Home</a>
+        <a href="index.html#popular-tools" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Tools Grid</a>
+        <a href="about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About SlowPDF</a>
+        <a href="privacy.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Privacy Policy</a>
+        <a href="terms.html" class="flex items-center justify-between text-[#274737] dark:text-emerald-400 font-bold py-1">
+          <span>Terms of Service</span>
+          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Agreement</span>
         </a>
-        <a href="pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
-        <a href="pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
-        <a href="pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
-        <a href="pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Privacy Policy</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
-        </a>
-        <a href="pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
-        <a href="pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
       </div>
+    </div>
+  </div>
 
-      <!-- Social Media Icons in Menu -->
-      <div class="pt-4">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <!-- WhatsApp (#25D366) -->
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="WhatsApp" title="WhatsApp">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <!-- Telegram (#229ED9) -->
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Telegram" title="Telegram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <!-- YouTube (#FF0000) -->
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="YouTube" title="YouTube">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <!-- Instagram (#E1306C / Gradient) -->
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
-             aria-label="Instagram" title="Instagram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <!-- Facebook (#1877F2) -->
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Facebook" title="Facebook">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <!-- X / Twitter (#000000) -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" 
-             aria-label="X / Twitter" title="X / Twitter">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+  <!-- Hero Header Section -->
+  <section class="w-full py-12 md:py-16 bg-gradient-to-b from-[#E8DABF]/40 to-transparent border-b border-[#E8DABF]/60">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 text-xs sm:text-sm font-semibold mb-6">
+        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <span>Binding Legal Disclaimers &amp; Responsibilities</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1E362A] dark:text-white tracking-tight mb-5">
+        Terms of Service &amp; User Agreement
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-stone-600 dark:text-stone-300 max-w-3xl mx-auto leading-relaxed">
+        SlowPDF is provided free of charge, with strict As-Is liability limits. Please review your responsibilities regarding document backups, device capabilities, and unauthorized scam warnings.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-stone-500 dark:text-stone-400">
+        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Always Maintain Original File Backups</span>
+        <span>•</span>
+        <span>100% Free Forever</span>
+        <span>•</span>
+        <span>Zero Commercial Liability</span>
+        <span>•</span>
+        <span>Effective Date: October 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout with Sticky TOC -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Sticky Table of Contents (Desktop Sidebar) -->
+      <aside class="hidden lg:block lg:col-span-3 sticky-toc">
+        <div class="policy-card p-5 rounded-2xl">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4">Table of Contents</h3>
+          <nav class="space-y-2 text-xs font-medium">
+            <a href="#fraud-alert" class="block text-red-600 dark:text-red-400 font-bold py-1 transition-colors">⚠️ CRITICAL PAYMENT FRAUD WARNING</a>
+            <a href="#acceptance" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">1. Acceptance of Terms</a>
+            <a href="#as-is" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">2. Strict "As-Is" &amp; "As-Available"</a>
+            <a href="#backup-responsibility" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">3. Data Loss &amp; User Backup Duty</a>
+            <a href="#ownership" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">4. 100% User Document Ownership</a>
+            <a href="#acceptable-use" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">5. Acceptable Use &amp; Prohibitions</a>
+            <a href="#open-source" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">6. Open-Source Libraries</a>
+            <a href="#liability-cap" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">7. Total Limitation of Liability</a>
+            <a href="#indemnity" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">8. Indemnification</a>
+            <a href="#governing-law" class="block text-stone-700 dark:text-stone-300 hover:text-[#274737] dark:hover:text-emerald-400 py-1 transition-colors">9. Governing Law &amp; Severability</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Document Body (9 Columns) -->
+      <article class="lg:col-span-9 space-y-10">
+
+        <!-- CRITICAL PAYMENT & EXTORTION FRAUD WARNING (PROMINENT CALLOUT BOX) -->
+        <section id="fraud-alert" class="fraud-warning-box p-8 md:p-10 rounded-3xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-md">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <div>
+              <span class="text-xs font-black tracking-widest text-red-600 dark:text-red-400 uppercase">Public Safety Notice</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-red-950 dark:text-red-100 mt-1 mb-3">
+                CRITICAL PAYMENT &amp; EXTORTION FRAUD WARNING
+              </h2>
+              <div class="space-y-3 text-red-950 dark:text-red-200 text-sm sm:text-base leading-relaxed">
+                <p>
+                  <strong>SlowPDF IS 100% FREE.</strong> We do not charge subscription fees, we do not have premium tiers, and we do not maintain payment gateways.
+                </p>
+                <p class="font-bold">
+                  We NEVER ask for money, credit card numbers, debit cards, UPI payments, bank transfers, PayPal, cryptocurrency, or "unlock fees".
+                </p>
+                <div class="p-4 rounded-xl bg-white/80 dark:bg-black/40 border border-red-300 dark:border-red-800 text-xs sm:text-sm text-red-900 dark:text-red-300 font-semibold leading-relaxed">
+                  🚨 If any website, email, Telegram group, WhatsApp message, or individual contacts you demanding payment to "recover", "unlock", or "process" a document using the SlowPDF name, YOU ARE TARGETED BY A CRIMINAL SCAM. Never send money. Report any such extortion attempt immediately to your local cybercrime authorities.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1. Acceptance of Terms -->
+        <section id="acceptance" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">1</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Acceptance of Terms &amp; Scope of Agreement</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            By visiting, browsing, or utilizing any client-side tool provided on <strong>SlowPDF (slowpdf.in)</strong>, you enter into a legally binding agreement to be bound by these Terms of Service, our Privacy Policy, and all applicable local, national, and international laws.
+          </p>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed text-sm">
+            If you do not agree with every provision set forth in this document, you must cease using SlowPDF immediately. Your continued use constitutes irrevocable acceptance of these terms.
+          </p>
+        </section>
+
+        <!-- 2. Strict As-Is Disclaimer -->
+        <section id="as-is" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">2</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Strict "As-Is" &amp; "As-Available" Disclaimers</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            SlowPDF is an independent, non-commercial software initiative provided strictly on an <strong>"AS-IS"</strong> and <strong>"AS-AVAILABLE"</strong> basis, without warranties, guarantees, or conditions of any kind, whether express, statutory, or implied.
+          </p>
+          <div class="callout-box p-6 rounded-2xl mb-6">
+            <h4 class="font-bold text-[#1E362A] dark:text-emerald-300 text-sm mb-2">Exclusion of All Statutory Warranties:</h4>
+            <p class="text-stone-700 dark:text-stone-300 text-sm leading-relaxed mb-2">
+              To the maximum extent permitted by applicable law, SlowPDF and its maintainers expressly disclaim all warranties, including but not limited to:
+            </p>
+            <ul class="list-disc list-inside space-y-1 text-xs text-stone-600 dark:text-stone-400">
+              <li>Implied warranties of merchantability and fitness for a particular purpose.</li>
+              <li>Warranties that PDF manipulations will be 100% bug-free, lossless, or mathematically exact.</li>
+              <li>Warranties of uninterrupted service, server uptime, or browser compatibility.</li>
+              <li>Warranties that output documents will conform to specific government or court submission standards.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 3. Data Loss & User Backup Duty -->
+        <section id="backup-responsibility" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">3</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Data Loss, Browser Limitations &amp; User Backup Duty</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            Because all file parsing, splitting, merging, conversion, and rendering takes place directly inside your computer or smartphone's web browser memory (RAM), execution stability is governed strictly by your personal hardware, operating system, and browser engine.
+          </p>
+
+          <div class="callout-amber p-6 rounded-2xl mb-6">
+            <h4 class="font-bold text-amber-900 dark:text-amber-200 text-sm mb-2">MANDATORY USER BACKUP REQUIREMENT:</h4>
+            <p class="text-stone-700 dark:text-stone-300 text-sm leading-relaxed mb-3">
+              <strong>YOU MUST ALWAYS MAINTAIN AN ORIGINAL, UNMODIFIED BACKUP COPY OF YOUR DOCUMENT ON YOUR HARD DRIVE OR SECURE STORAGE PRIOR TO USING ANY SLOWPDF TOOL.</strong>
+            </p>
+            <p class="text-stone-700 dark:text-stone-300 text-xs leading-relaxed">
+              If your web browser crashes due to an out-of-memory error (e.g. attempting to rasterize a 500MB scan on a device with low RAM), if your battery dies, if an operating system freeze occurs, or if a corrupt PDF byte stream causes a download failure, <strong>THE RESPONSIBILITY LIES SOLELY AND EXCLUSIVELY WITH THE USER</strong>. SlowPDF and its creators accept ZERO legal, financial, or technical liability for lost, corrupted, damaged, or unrecoverable documents.
+            </p>
+          </div>
+
+          <h3 class="text-lg font-bold text-[#1E362A] dark:text-white mb-2">Technical Realities of In-Browser PDF Processing:</h3>
+          <p class="text-sm text-stone-700 dark:text-stone-300 leading-relaxed mb-2">
+            Users must understand the physical constraints of client-side JavaScript execution:
+          </p>
+          <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+            <li>Standard mobile web browsers limit single-tab RAM usage to 1.5GB – 2GB. Attempting to merge dozens of high-DPI scans can trigger silent browser tab terminations.</li>
+            <li>Damaged, malformed, or proprietary non-standard PDF formats created by old printers may not deserialize correctly in open-source parsers.</li>
+            <li>SlowPDF cannot restore or undo an operation once a browser tab is closed because we hold zero file records.</li>
+          </ul>
+        </section>
+
+        <!-- 4. 100% User Document Ownership -->
+        <section id="ownership" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">4</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">100% Intellectual Property &amp; Document Ownership</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            We believe that your thoughts, homework, research, and contracts belong exclusively to you.
+          </p>
+          <div class="space-y-3 text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            <p>
+              <strong>You Retain Absolute Ownership:</strong> You retain full, complete, and unencumbered copyright, patent rights, trade secret protections, and intellectual property ownership over all PDF documents, images, text selections, and data files processed using SlowPDF.
+            </p>
+            <p>
+              <strong>No Implied License Granted:</strong> SlowPDF does not claim, demand, or acquire any license, sublicense, viewing right, training right, or commercial exploitation right over your content. Because files are processed in your local RAM and never uploaded to our infrastructure, we do not possess the technical capability to view or store your files.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. Acceptable Use & Prohibitions -->
+        <section id="acceptable-use" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">5</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Permitted Use &amp; Strictly Prohibited Conduct</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            SlowPDF is provided for personal, academic, professional, and commercial productivity. You are free to use our tools to sign invoices, compress homework, edit research papers, and organize client contracts.
+          </p>
+          
+          <h3 class="text-lg font-bold text-red-900 dark:text-red-300 mb-3">You Expressly Agree NOT To:</h3>
+          <ul class="list-disc list-inside space-y-2 text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            <li>Deploy automated scrapers, headless scrapers, or bot swarms against SlowPDF's web infrastructure to artificially inflate server bandwidth.</li>
+            <li>Attempt to inject malicious payloads, cross-site scripting (XSS) vectors, or buffer overflow exploits into our client-side parsing libraries.</li>
+            <li>Frame, mirror, or repackage SlowPDF inside commercial iframe paywalls or deceive third parties into paying for our free tools.</li>
+            <li>Impersonate SlowPDF, our creators, or our tortoise mascot in fraudulent email phishing or payment solicitation schemes.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Open-Source Libraries -->
+        <section id="open-source" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">6</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Open-Source Libraries &amp; Attributions</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            SlowPDF stands proudly on the shoulders of giants in the open-source community. Our in-browser toolset leverages battle-tested libraries including:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-stone-600 dark:text-stone-400 mb-4">
+            <div class="p-3 rounded-xl bg-[#FFFBF2] dark:bg-[#151D19] border border-[#E8DABF] dark:border-stone-800">
+              <strong>pdf-lib</strong> (MIT License) — In-browser PDF generation, modification, page rotation, and metadata handling.
+            </div>
+            <div class="p-3 rounded-xl bg-[#FFFBF2] dark:bg-[#151D19] border border-[#E8DABF] dark:border-stone-800">
+              <strong>PDF.js by Mozilla</strong> (Apache 2.0) — High-fidelity standard PDF rendering and canvas rasterization.
+            </div>
+            <div class="p-3 rounded-xl bg-[#FFFBF2] dark:bg-[#151D19] border border-[#E8DABF] dark:border-stone-800">
+              <strong>Tesseract.js</strong> (Apache 2.0) — Pure JavaScript and WebAssembly Optical Character Recognition engine.
+            </div>
+            <div class="p-3 rounded-xl bg-[#FFFBF2] dark:bg-[#151D19] border border-[#E8DABF] dark:border-stone-800">
+              <strong>Lucide Icons &amp; Tailwind CSS</strong> (ISC / MIT) — Minimalist iconography and utility-first styling.
+            </div>
+          </div>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            All respective copyrights and licenses remain the sole property of their respective creators and contributors.
+          </p>
+        </section>
+
+        <!-- 7. Total Limitation of Liability -->
+        <section id="liability-cap" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">7</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Total Limitation of Liability &amp; Maximum Damage Cap</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed mb-4">
+            TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW:
+          </p>
+          <div class="space-y-3 text-sm text-stone-700 dark:text-stone-300 leading-relaxed uppercase font-semibold text-xs sm:text-sm">
+            <p>
+              IN NO EVENT SHALL SLOWPDF, ITS INDEPENDENT DEVELOPERS, CONTRIBUTORS, AFFILIATES, OR HOSTING PROVIDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF PROFITS, LOSS OF REVENUE, LOSS OF BUSINESS, LOSS OF DATA, GOODWILL, WORK STOPPAGE, COMPUTER FAILURE, OR SYSTEM MALFUNCTION) ARISING FROM OR RELATED TO YOUR USE OF OR INABILITY TO USE THE TOOLS.
+            </p>
+            <p class="text-red-700 dark:text-red-400">
+              OUR AGGREGATE CUMULATIVE LIABILITY FOR ALL CLAIMS OF ANY NATURE WHATSOEVER SHALL BE STRICTLY LIMITED TO ZERO DOLLARS AND ZERO CENTS ($0.00 USD), REFLECTING THE ENTIRELY FREE AND UNCOMPENSATED NATURE OF THIS SERVICE.
+            </p>
+          </div>
+        </section>
+
+        <!-- 8. Indemnification -->
+        <section id="indemnity" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">8</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Indemnification</h2>
+          </div>
+          <p class="text-stone-700 dark:text-stone-300 leading-relaxed text-sm">
+            You agree to defend, indemnify, and hold harmless SlowPDF, its individual maintainers, and contributors from and against any third-party claims, liabilities, damages, losses, costs, or legal expenses (including reasonable attorney fees) arising from: (a) your breach of these Terms of Service, (b) your violation of any third-party intellectual property rights contained within files processed through your local browser, or (c) your misuse of the service.
+          </p>
+        </section>
+
+        <!-- 9. Governing Law & Severability -->
+        <section id="governing-law" class="policy-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-[#274737] text-white flex items-center justify-center font-bold text-sm">9</span>
+            <h2 class="text-2xl font-bold text-[#1E362A] dark:text-white">Governing Law, Severability &amp; Entire Agreement</h2>
+          </div>
+          <div class="space-y-4 text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            <p>
+              <strong>Severability:</strong> If any provision of these Terms is deemed unlawful, void, or unenforceable by an arbitrator or court of competent jurisdiction, that specific provision shall be deemed severable and shall not affect the validity and enforceability of the remaining provisions.
+            </p>
+            <p>
+              <strong>Entire Agreement:</strong> These Terms of Service, together with our Privacy Policy, constitute the complete and exclusive understanding between you and SlowPDF regarding the use of our web application.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-stone-100 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-stone-500">
+              Terms Version: 2026.1 • Published: October 2026
+            </div>
+            <a href="about.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#274737] dark:text-emerald-400 hover:underline">
+              Read Our Story &amp; Philosophy →
+            </a>
+          </div>
+        </section>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MASTER FOOTER                              -->
+  <!-- ========================================== -->
+  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+      
+      <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img 
+            src="assets/images/logo.png" 
+            alt="SlowPDF Brand Logo" 
+            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
+            onerror="this.src='public/assets/images/logo.png'"
+          />
+          <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
+            Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
+          </span>
+        </a>
+        <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+          Fast, Private &amp; Free Client-Side Tools. Made for slow, steady learning. Your files never leave your device.
+        </p>
+
+        <!-- Social Icons in Official Brand Colors -->
+        <div class="pt-2 space-y-3">
+          <div class="flex items-center gap-3 flex-wrap">
+            <!-- WhatsApp (#25D366) -->
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="WhatsApp" title="WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+            <!-- Telegram (#229ED9) -->
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Telegram" title="Telegram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <!-- YouTube (#FF0000) -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="YouTube" title="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- Instagram (#E1306C / Gradient) -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+               aria-label="Instagram" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Facebook (#1877F2) -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Facebook" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- X / Twitter (#000000) -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all dark:bg-stone-800" 
+               aria-label="X / Twitter" title="X / Twitter">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+
+          <!-- Share Website Button directly below social icons -->
+          <div>
+            <button id="footer-share-btn" 
+                    onclick="if (navigator.share) { navigator.share({title: 'SlowPDF', text: 'Fast, Private & Free Client-Side PDF Tools', url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); alert('SlowPDF link copied to clipboard!'); }" 
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+              <span>Share Website</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Bottom Drawer Credit -->
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
+      <!-- Column 1: Primary Tools -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          PDF Tools
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+          <li><a href="tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+          <li><a href="tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+          <li><a href="tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+          <li><a href="tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
+          <li><a href="tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
+          <li><a href="tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+          <li><a href="tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: More Tools & Blog -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          More Utilities
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+          <li><a href="tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+          <li><a href="tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
+          <li><a href="tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
+          <li><a href="tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
+          <li><a href="blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
+          <li><a href="pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
+          <li><a href="pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          Legal &amp; Support
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
+          <li><a href="pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
+          <li><a href="pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="pages/terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
+          <li><a href="index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Strip -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">
+          © 2026 SlowPDF • Crafted with ❤️ by Tveezal
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+          Fast, Private &amp; Free Client-Side Tools.
+        </p>
+      </div>
+      <div class="text-xs text-stone-400 dark:text-stone-500">
+        100% In-Browser Computation
       </div>
     </div>
+  </div>
+</footer>
+
+  <!-- Dedicated Mobile Menu Drawer -->
+  <div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+    <div class="mobile-drawer-header">
+      <span class="drawer-title">Menu</span>
+      <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#popular-tools">Tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    
+    <button 
+      type="button" 
+      onclick="window.slowPdfShare({ title: document.title, text: 'Check out this free client-side PDF tool on SlowPDF!', url: window.location.href })"
+      class="mobile-share-link"
+      style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.05rem; font-weight: 600; color: #1D3D33; text-decoration: none; padding: 10px 14px; border-radius: 12px; background: #FFFBF2; border: 1.5px solid #E8DABF; cursor: pointer; margin-top: 10px; width: 100%; font-family: inherit; transition: all 0.2s ease;"
+      onmouseover="this.style.background='#E8DABF'"
+      onmouseout="this.style.background='#FFFBF2'"
+      aria-label="Share this Page"
+    >
+      <svg style="width: 18px; height: 18px; stroke: #274737; fill: none;" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+      <span>Share this Page</span>
+    </button>
+  </nav>
   </div>
 
   <script>

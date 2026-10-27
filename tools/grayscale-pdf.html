@@ -375,11 +375,9 @@
   </header>
 
   <!-- Preferences Drawer Modal -->
-      <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
-    style="display: none;"
     aria-hidden="true"
   >
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
@@ -388,7 +386,7 @@
           <img src="../assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
-        <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
+        <button id="close-modal-btn" class="p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -413,75 +411,1156 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
-        <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Blog &amp; Articles</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
+      <div class="py-4 space-y-1">
+        <a href="../index.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
         </a>
-        <a href="../pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
-        <a href="../pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
-        <a href="../pages/about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
-        <a href="../pages/privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
-          <span>Privacy Policy</span>
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
+        <a href="compress-pdf.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          Compress PDF
         </a>
-        <a href="../pages/terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
-        <a href="../pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
-      </div>
-
-      <!-- Social Media Icons in Menu -->
-      <div class="pt-4">
-        <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <!-- WhatsApp (#25D366) -->
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="WhatsApp" title="WhatsApp">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <!-- Telegram (#229ED9) -->
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Telegram" title="Telegram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <!-- YouTube (#FF0000) -->
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="YouTube" title="YouTube">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <!-- Instagram (#E1306C / Gradient) -->
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
-             aria-label="Instagram" title="Instagram">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <!-- Facebook (#1877F2) -->
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" 
-             aria-label="Facebook" title="Facebook">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <!-- X / Twitter (#000000) -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" 
-             aria-label="X / Twitter" title="X / Twitter">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Bottom Drawer Credit -->
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
+        <a href="pdf-color-tint.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+          Color Inverter
+        </a>
+        <a href="add-page-numbers.html" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+          <svg class="w-4 h-4 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+          Add Page Numbers
+        </a>
       </div>
     </div>
   </div>
+
+  <!-- ========================================== -->
+  <!-- 2. INNER TOOL WORKBENCH CONTAINER          -->
+  <!-- ========================================== -->
+  <main id="tool-workbench" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full">
+    
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Save Printer Ink • 100% In-Browser RAM Processing
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Convert PDF to Grayscale & B&W
+      </h1>
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Turn color PDF files into crisp black and white. Save printing toner, whiten background noise, and sharpen text with real-time canvas preview.
+      </p>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-4 sm:p-8 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+        </div>
+
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Choose a PDF file or drop here
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6 leading-relaxed">
+          Open any color PDF to apply balanced grayscale, high-contrast print saver, or pure monochrome black & white.
+        </p>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('pdf-file-input').click()"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF Document
+        </button>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW B: GRAYSCALE STUDIO WORKBENCH         -->
+      <!-- ========================================== -->
+      <div id="workbench-panel" class="hidden space-y-6">
+        
+        <!-- File Info Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#274737] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <h4 id="file-name-display" class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white truncate">document.pdf</h4>
+              <p id="file-meta-display" class="text-xs text-stone-500 dark:text-stone-400">Loading document pages...</p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            onclick="document.getElementById('pdf-file-input').click()"
+            class="px-4 py-2 rounded-xl text-xs font-bold text-[#274737] dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/60 hover:bg-emerald-200/80 dark:hover:bg-emerald-900/80 transition-colors shrink-0"
+          >
+            Change PDF
+          </button>
+        </div>
+
+        <!-- TOP TOOLBAR & GRAYSCALE CONTROLS -->
+        <div class="bg-stone-100/90 dark:bg-[#161F1B] p-4 sm:p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800 space-y-4">
+          
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            
+            <!-- Grayscale Mode Selector Pills -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider w-full sm:w-auto mb-1 sm:mb-0">Conversion Mode:</span>
+              
+              <button 
+                type="button" 
+                id="mode-std-btn" 
+                class="mode-pill-btn active flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                title="Standard ITU-R BT.601 balanced luminance conversion"
+              >
+                <span>🔘</span>
+                <span>Standard Grayscale</span>
+              </button>
+
+              <button 
+                type="button" 
+                id="mode-print-btn" 
+                class="mode-pill-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                title="Whitens background grays and deepens dark text for ultra-clear ink saving"
+              >
+                <span>🖨️</span>
+                <span>High-Contrast B&W (Print Saver)</span>
+              </button>
+
+              <button 
+                type="button" 
+                id="mode-mono-btn" 
+                class="mode-pill-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                title="Strictly black and white pixels with zero gray tones"
+              >
+                <span>🌑</span>
+                <span>Pure Monochrome</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- PRECISION SLIDERS -->
+          <div class="pt-3 border-t border-stone-200/80 dark:border-stone-800/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Contrast Boost Slider -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-stone-700 dark:text-stone-300">
+                <label for="contrast-slider">Contrast Boost:</label>
+                <span id="contrast-val-display" class="font-extrabold text-[#274737] dark:text-emerald-400">100%</span>
+              </div>
+              <input 
+                type="range" 
+                id="contrast-slider" 
+                min="80" 
+                max="150" 
+                value="100" 
+                class="w-full h-2 bg-stone-200 dark:bg-stone-700 rounded-lg appearance-none cursor-pointer accent-[#274737]"
+              />
+            </div>
+
+            <!-- Whitespace Whiten Slider -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-stone-700 dark:text-stone-300">
+                <label for="whiten-slider">Whitespace Whiten / Clean Background:</label>
+                <span id="whiten-val-display" class="font-extrabold text-[#274737] dark:text-emerald-400">20%</span>
+              </div>
+              <input 
+                type="range" 
+                id="whiten-slider" 
+                min="0" 
+                max="100" 
+                value="20" 
+                class="w-full h-2 bg-stone-200 dark:bg-stone-700 rounded-lg appearance-none cursor-pointer accent-[#274737]"
+              />
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- CONTINUOUS LIVE CANVAS VIEWER -->
+        <div id="continuous-viewer-container" class="space-y-8 flex flex-col items-center py-6 bg-stone-200/50 dark:bg-stone-900/40 p-4 sm:p-6 rounded-2xl border border-stone-200 dark:border-stone-800 min-h-[450px]">
+          <!-- Page cards with live grayscale pixel filter will be appended here -->
+        </div>
+
+        <!-- PRIMARY ACTION DOCK & FILENAME INPUT -->
+        <div class="pt-6 border-t border-stone-200 dark:border-stone-800 space-y-4">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div class="flex-1 max-w-md">
+              <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-400 mb-1">
+                Output File Name:
+              </label>
+              <input 
+                type="text" 
+                id="output-filename-input" 
+                value="SlowPDF_Grayscale_Document" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 font-semibold text-sm focus:ring-2 focus:ring-[#355E4B] focus:outline-none"
+              />
+            </div>
+
+            <button 
+              type="button" 
+              id="apply-grayscale-btn" 
+              class="px-8 py-4 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 shrink-0"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              Convert to Grayscale & Download PDF
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW C: PROCESSING PROGRESS MODAL STATE    -->
+      <!-- ========================================== -->
+      <div id="processing-progress-box" class="hidden py-16 text-center space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-100 dark:bg-emerald-950/70 text-[#274737] dark:text-emerald-400 flex items-center justify-center animate-spin">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+          Converting Pixel Luminance in RAM...
+        </h3>
+        <p id="progress-status-text" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto">
+          Reassembling grayscale pages with high-DPI resolution...
+        </p>
+
+        <div class="max-w-md mx-auto bg-stone-200 dark:bg-stone-800 h-3 rounded-full overflow-hidden">
+          <div id="progress-bar-fill" class="bg-[#274737] dark:bg-emerald-500 h-full w-0 transition-all duration-300"></div>
+        </div>
+        <span id="progress-percent-text" class="text-xs font-extrabold text-[#274737] dark:text-emerald-400">0%</span>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW D: MASCOT CELEBRATION SUCCESS STATE   -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden py-10 text-center space-y-6">
+        <div class="relative w-28 h-28 mx-auto">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Mascot Celebrating" 
+            class="w-full h-full object-contain mascot-celebration animate-bounce"
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+        </div>
+
+        <div class="space-y-2 max-w-md mx-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            PDF Converted to Grayscale!
+          </h3>
+          <p id="success-file-stats-display" class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+            Color layers converted • Ink-saving B&W document created
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 max-w-md mx-auto text-left space-y-1">
+          <span class="text-2xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">Grayscale Output File:</span>
+          <p id="success-file-name-display" class="text-sm font-bold text-[#222E28] dark:text-white truncate">SlowPDF_Grayscale_Document.pdf</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+          <button 
+            type="button" 
+            id="download-bw-pdf-btn" 
+            class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download B&W PDF
+          </button>
+
+          <button 
+            type="button" 
+            id="convert-another-btn" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-700 transition-all"
+          >
+            Convert Another PDF
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 3. MANDATORY 10-BANNER PROMO CAROUSEL      -->
+  <!-- ========================================== -->
+  <section id="promo-carousel-section" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+    <!-- Rendered dynamically by assets/js/carousel.js -->
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. 500+ WORD TECHNICAL SEO ARTICLE         -->
+  <!-- ========================================== -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-12 space-y-8 text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+    <div class="border-b border-stone-200 dark:border-stone-800 pb-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Free Online PDF Grayscale Converter — Turn Color PDF to Black and White
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
+        Learn how to convert color PDF documents to black and white, save printer ink, clean gray background noise, and boost document readability.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">🔘</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Standard Grayscale</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Uses standard ITU-R BT.601 luminance algorithms (`Y = 0.299*R + 0.587*G + 0.114*B`) for smooth multi-tone gray transitions.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">🖨️</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Print & Toner Saver Mode</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Whitens light gray background shadows and deepens dark text for ultra-clear, cost-effective photocopy printing.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center font-bold text-lg">🌑</div>
+        <h3 class="text-lg font-bold text-[#222E28] dark:text-white">Pure Monochrome 1-Bit</h3>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Converts all canvas pixels strictly into pure black or pure white with zero intermediate gray tones for faxing and archival scans.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+        Why Convert Color PDF Documents to Black & White?
+      </h3>
+      <p>
+        Printing color PDF files on standard office printers rapidly drains expensive color ink cartridges. Converting your files to grayscale or high-contrast black and white forces printers to use standard monochrome black toner, reducing printing costs by up to 60%.
+      </p>
+      <p>
+        In addition, grayscale conversion reduces file size, strips away distracting background gradients, and enhances legibility when making physical paper photocopies.
+      </p>
+    </div>
+
+    <div class="bg-emerald-50/60 dark:bg-emerald-950/30 p-6 rounded-2xl border border-emerald-200/70 dark:border-emerald-800/60 space-y-3">
+      <h4 class="font-bold text-base text-[#274737] dark:text-emerald-300 flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        100% In-Browser Local Memory Security
+      </h4>
+      <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300">
+        Converting personal tax records, legal briefs, or confidential business proposals to grayscale should never compromise document security. SlowPDF performs all pixel transformations and PDF re-assembly inside local browser RAM. No files leave your device.
+      </p>
+    </div>
+  </article>
+
+  <!-- ========================================== -->
+  <!-- 5. 10 FAQ ACCORDION ITEMS WITH JSON-LD     -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 space-y-6">
+    <div class="text-center space-y-2">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+        Everything you need to know about converting color PDFs to black and white.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How does converting PDF to grayscale save printing ink and toner?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Converting color images and text to grayscale replaces expensive cyan, magenta, and yellow ink with single-color black toner. High-Contrast B&W mode further whitens background grays, reducing overall toner consumption by up to 60%.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>What is the difference between Standard Grayscale, High-Contrast B&W, and Pure Monochrome?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Standard Grayscale preserves smooth multi-tone gray shades. High-Contrast B&W whitens background light grays for clear photocopy printing. Pure Monochrome converts all pixels strictly into pure black or pure white with zero gray tones.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Can I remove gray background shadows from scanned documents or notes?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Yes! Use our 'Brightness / Whitespace Whiten' slider to strip away muddy gray scanner shadows and camera page creases, producing crisp white paper backgrounds.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>How does the Contrast Boost slider sharpen text?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          The Contrast Boost slider increases the luminance separation between text and paper backgrounds, darkening faded ink letters and sharpening fine document details.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+          <span>Are my confidential files uploaded to any server during conversion?</span>
+          <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+          Never. All page rendering, pixel luminance transformation, and PDF file re-assembly happen 100% inside your browser RAM using WebAssembly. Zero files leave your physical device.
+        </div>
+      </div>
+
+      <!-- Extra FAQs Container -->
+      <div id="extra-faq-items" class="hidden space-y-3">
+        
+        <!-- FAQ 6 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does converting to grayscale reduce PDF file size?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! Removing 24-bit RGB color information and re-encoding pages in single-channel grayscale significantly reduces file size, making PDFs easier to email.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Can I preview the grayscale effect before downloading?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! The live document canvas provides instant visual feedback as you adjust modes, contrast, and whiten sliders.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does this tool work on scanned book pages and smartphone photos?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF processes both native vector PDFs and scanned image documents with high-DPI rendering.
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Does this tool work on mobile devices and tablets?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF's grayscale studio adapts dynamically for mobile screens with touch-friendly sliders and continuous page scroll.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
+            <span>Is SlowPDF Grayscale PDF 100% free with no watermarks?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800 pt-3">
+            Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="text-center pt-2">
+      <button 
+        type="button" 
+        id="toggle-all-faq-btn" 
+        class="px-6 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-xs font-bold text-[#274737] dark:text-emerald-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
+      >
+        View All 10 Questions
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER RICH FOOTER (100% LOCKED)        -->
+  <!-- ========================================== -->
+  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
+      
+      <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <img 
+            src="../assets/images/logo.png" 
+            alt="SlowPDF Brand Logo" 
+            class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
+            onerror="this.src='../public/assets/images/logo.png'"
+          />
+          <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
+            Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
+          </span>
+        </a>
+        <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-sm">
+          Fast, Private &amp; Free Client-Side Tools. Made for slow, steady learning. Your files never leave your device.
+        </p>
+
+        <!-- Social Icons in Official Brand Colors -->
+        <div class="pt-2 space-y-3">
+          <div class="flex items-center gap-3 flex-wrap">
+            <!-- WhatsApp (#25D366) -->
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="WhatsApp" title="WhatsApp">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+            <!-- Telegram (#229ED9) -->
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Telegram" title="Telegram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <!-- YouTube (#FF0000) -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="YouTube" title="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- Instagram (#E1306C / Gradient) -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"
+               aria-label="Instagram" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Facebook (#1877F2) -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all" 
+               aria-label="Facebook" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- X / Twitter (#000000) -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+               class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 hover:shadow-md transition-all dark:bg-stone-800" 
+               aria-label="X / Twitter" title="X / Twitter">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+
+          <!-- Share Website Button directly below social icons -->
+          <div>
+            <button id="footer-share-btn" 
+                    onclick="if (navigator.share) { navigator.share({title: 'SlowPDF', text: 'Fast, Private & Free Client-Side PDF Tools', url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); alert('SlowPDF link copied to clipboard!'); }" 
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+              <span>Share Website</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 1: Primary Tools -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          PDF Tools
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+          <li><a href="../tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+          <li><a href="../tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+          <li><a href="../tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+          <li><a href="../tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
+          <li><a href="../tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
+          <li><a href="../tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+          <li><a href="../tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: More Tools & Blog -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          More Utilities
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+          <li><a href="../tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+          <li><a href="../tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
+          <li><a href="../tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
+          <li><a href="../tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
+          <li><a href="../blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
+          <li><a href="../pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
+          <li><a href="../pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Legal & Support -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+          Legal &amp; Support
+        </h4>
+        <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
+          <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
+          <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="../pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
+          <li><a href="../index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Strip -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <p class="text-sm font-semibold text-stone-800 dark:text-stone-200">
+          © 2026 SlowPDF • Crafted with ❤️ by Tveezal
+        </p>
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+          Fast, Private &amp; Free Client-Side Tools.
+        </p>
+      </div>
+      <div class="text-xs text-stone-400 dark:text-stone-500">
+        100% In-Browser Computation
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- ========================================== -->
+  <!-- 7. GRAYSCALE ENGINE SCRIPT                 -->
+  <!-- ========================================== -->
+  <script>
+    // Global Application State
+    let selectedFile = null;
+    let fileArrayBuffer = null;
+    let pdfDocObj = null;
+    let grayscalePdfBlobUrl = null;
+
+    let totalPages = 0;
+    const RENDER_SCALE = 1.3;
+
+    // Grayscale Settings
+    let activeMode = 'std'; // 'std' | 'print' | 'mono'
+    let contrastVal = 100;  // 80 to 150
+    let whitenVal = 20;     // 0 to 100
+
+    // Store rendered page canvas objects
+    let pageCanvasObjects = []; // { pageNum, rawCanvas, renderCtx, displayCanvas, displayCtx, viewport }
+
+    // DOM Elements
+    const fileInput = document.getElementById('pdf-file-input');
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const successPanel = document.getElementById('success-panel');
+
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const fileMetaDisplay = document.getElementById('file-meta-display');
+    const continuousViewerContainer = document.getElementById('continuous-viewer-container');
+
+    const modeStdBtn = document.getElementById('mode-std-btn');
+    const modePrintBtn = document.getElementById('mode-print-btn');
+    const modeMonoBtn = document.getElementById('mode-mono-btn');
+
+    const contrastSlider = document.getElementById('contrast-slider');
+    const contrastValDisplay = document.getElementById('contrast-val-display');
+
+    const whitenSlider = document.getElementById('whiten-slider');
+    const whitenValDisplay = document.getElementById('whiten-val-display');
+
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const applyGrayscaleBtn = document.getElementById('apply-grayscale-btn');
+
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressPercentText = document.getElementById('progress-percent-text');
+
+    const successFileNameDisplay = document.getElementById('success-file-name-display');
+    const successFileStatsDisplay = document.getElementById('success-file-stats-display');
+    const downloadBwPdfBtn = document.getElementById('download-bw-pdf-btn');
+    const convertAnotherBtn = document.getElementById('convert-another-btn');
+
+    // Mode Selector Mechanics
+    const modeButtons = [
+      { btn: modeStdBtn, mode: 'std' },
+      { btn: modePrintBtn, mode: 'print' },
+      { btn: modeMonoBtn, mode: 'mono' }
+    ];
+
+    modeButtons.forEach(item => {
+      item.btn.addEventListener('click', () => {
+        modeButtons.forEach(b => b.btn.classList.remove('active'));
+        item.btn.classList.add('active');
+        activeMode = item.mode;
+        reprocessAllPageFilterPreviews();
+      });
+    });
+
+    // Sliders Event Handlers
+    contrastSlider.addEventListener('input', (e) => {
+      contrastVal = parseInt(e.target.value, 10);
+      contrastValDisplay.textContent = `${contrastVal}%`;
+      reprocessAllPageFilterPreviews();
+    });
+
+    whitenSlider.addEventListener('input', (e) => {
+      whitenVal = parseInt(e.target.value, 10);
+      whitenValDisplay.textContent = `${whitenVal}%`;
+      reprocessAllPageFilterPreviews();
+    });
+
+    // File Input & Drag Drop
+    fileInput.addEventListener('change', handleFileSelection);
+
+    ['dragover', 'dragenter'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      emptyDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelection();
+      }
+    });
+
+    async function handleFileSelection() {
+      if (!fileInput.files || fileInput.files.length === 0) return;
+
+      selectedFile = fileInput.files[0];
+      if (selectedFile.type !== 'application/pdf' && !selectedFile.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a valid PDF file.');
+        return;
+      }
+
+      const sizeMB = (selectedFile.size / (1024 * 1024)).toFixed(2);
+      fileNameDisplay.textContent = selectedFile.name;
+      fileMetaDisplay.textContent = `${sizeMB} MB • Reading document pages...`;
+
+      const baseName = selectedFile.name.replace(/\.pdf$/i, '');
+      outputFilenameInput.value = `SlowPDF_Grayscale_${baseName}`;
+
+      emptyDropzone.classList.add('hidden');
+      workbenchPanel.classList.remove('hidden');
+
+      try {
+        fileArrayBuffer = await selectedFile.arrayBuffer();
+
+        const loadingTask = pdfjsLib.getDocument({ data: fileArrayBuffer.slice(0) });
+        pdfDocObj = await loadingTask.promise;
+
+        totalPages = pdfDocObj.numPages;
+        fileMetaDisplay.textContent = `${sizeMB} MB • ${totalPages} Page${totalPages > 1 ? 's' : ''} • Ready for Grayscale`;
+
+        continuousViewerContainer.innerHTML = '';
+        pageCanvasObjects = [];
+
+        for (let i = 1; i <= totalPages; i++) {
+          await renderPageCard(i);
+        }
+
+      } catch (err) {
+        console.error('Error opening PDF:', err);
+        alert('Failed to load PDF file: ' + err.message);
+        workbenchPanel.classList.add('hidden');
+        emptyDropzone.classList.remove('hidden');
+      }
+    }
+
+    // Render Page Card
+    async function renderPageCard(pageNum) {
+      const page = await pdfDocObj.getPage(pageNum);
+      const dpr = window.devicePixelRatio || 1;
+      const targetScale = 2.0;
+      const baseViewport = page.getViewport({ scale: 1.2 });
+      const viewport = page.getViewport({ scale: 1.2 * targetScale * dpr });
+
+      const card = document.createElement('div');
+      card.className = 'w-full max-w-3xl flex flex-col items-center space-y-2';
+
+      const pagePill = document.createElement('div');
+      pagePill.className = 'px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold shadow-2xs';
+      pagePill.textContent = `Page ${pageNum} of ${totalPages}`;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'page-canvas-wrapper max-w-full';
+      wrapper.style.width = `${Math.floor(baseViewport.width)}px`;
+      wrapper.style.height = 'auto';
+
+      // Offscreen Raw PDF Canvas (original color render)
+      const rawCanvas = document.createElement('canvas');
+      rawCanvas.width = Math.floor(viewport.width);
+      rawCanvas.height = Math.floor(viewport.height);
+      const rawCtx = rawCanvas.getContext('2d');
+      await page.render({ canvasContext: rawCtx, viewport: viewport }).promise;
+
+      // On-Screen Display Canvas
+      const displayCanvas = document.createElement('canvas');
+      displayCanvas.className = 'block w-full h-auto rounded shadow-md';
+      displayCanvas.style.imageRendering = '-webkit-optimize-contrast';
+      displayCanvas.style.imageRendering = 'crisp-edges';
+      displayCanvas.style.display = 'block';
+      displayCanvas.style.margin = '0 auto';
+      displayCanvas.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.08)';
+      displayCanvas.width = Math.floor(viewport.width);
+      displayCanvas.height = Math.floor(viewport.height);
+      displayCanvas.style.width = `${Math.floor(baseViewport.width)}px`;
+      displayCanvas.style.height = `${Math.floor(baseViewport.height)}px`;
+      const displayCtx = displayCanvas.getContext('2d');
+
+      wrapper.appendChild(displayCanvas);
+      card.appendChild(pagePill);
+      card.appendChild(wrapper);
+
+      continuousViewerContainer.appendChild(card);
+
+      const pageObj = {
+        pageNum,
+        rawCanvas,
+        rawCtx,
+        displayCanvas,
+        displayCtx,
+        viewport
+      };
+
+      pageCanvasObjects.push(pageObj);
+
+      // Process initial grayscale preview
+      applyGrayscaleToPage(pageObj);
+    }
+
+    // Reprocess All Page Previews
+    function reprocessAllPageFilterPreviews() {
+      pageCanvasObjects.forEach(applyGrayscaleToPage);
+    }
+
+    // Per-Pixel Grayscale Transformation Engine
+    function applyGrayscaleToPage(pageObj) {
+      const { rawCanvas, rawCtx, displayCanvas, displayCtx } = pageObj;
+      const w = rawCanvas.width;
+      const h = rawCanvas.height;
+
+      // Copy raw image bytes
+      const imgData = rawCtx.getImageData(0, 0, w, h);
+      const data = imgData.data;
+
+      const cFactor = (259 * (contrastVal + 255)) / (255 * (259 - contrastVal));
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        // Standard ITU-R BT.601 Luminance
+        let lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+        // Apply Contrast Boost
+        if (contrastVal !== 100) {
+          lum = cFactor * (lum - 128) + 128;
+        }
+
+        // Apply Mode Specific Transformations & Whiteness Thresholding
+        if (activeMode === 'print') {
+          // Whitens light grays to pure paper white and darkens text
+          if (lum > (255 - whitenVal * 1.5)) {
+            lum = 255;
+          } else {
+            lum = lum * 0.85;
+          }
+        } else if (activeMode === 'mono') {
+          // Strict 1-bit black & white threshold
+          const threshold = 128 - (whitenVal - 20);
+          lum = lum >= threshold ? 255 : 0;
+        } else {
+          // Standard Grayscale with optional background whitening
+          if (whitenVal > 0 && lum > (255 - whitenVal * 1.2)) {
+            lum = 255;
+          }
+        }
+
+        lum = Math.max(0, Math.min(255, lum));
+
+        data[i] = lum;
+        data[i + 1] = lum;
+        data[i + 2] = lum;
+      }
+
+      displayCtx.putImageData(imgData, 0, 0);
+    }
+
+    // Primary Action Button: Convert to Grayscale & Reassemble PDF
+    applyGrayscaleBtn.addEventListener('click', async () => {
+      if (!selectedFile || pageCanvasObjects.length === 0) return;
+
+      workbenchPanel.classList.add('hidden');
+      processingProgressBox.classList.remove('hidden');
+
+      progressStatusText.textContent = 'Rendering high-DPI grayscale pages in RAM...';
+      progressBarFill.style.width = '20%';
+      progressPercentText.textContent = '20%';
+
+      setTimeout(async () => {
+        try {
+          const pdfLibDoc = await PDFLib.PDFDocument.create();
+
+          for (let i = 0; i < totalPages; i++) {
+            const pageObj = pageCanvasObjects[i];
+            const pct = Math.round(20 + ((i + 1) / totalPages) * 70);
+            progressBarFill.style.width = `${pct}%`;
+            progressPercentText.textContent = `${pct}%`;
+            progressStatusText.textContent = `Reassembling page ${i + 1} of ${totalPages}...`;
+
+            // Export high quality JPEG from display canvas
+            const jpgDataUrl = pageObj.displayCanvas.toDataURL('image/jpeg', 0.90);
+            const jpgBytes = await fetch(jpgDataUrl).then(res => res.arrayBuffer());
+
+            const embeddedJpg = await pdfLibDoc.embedJpg(jpgBytes);
+
+            const pdfWidth = pageObj.viewport.width / RENDER_SCALE;
+            const pdfHeight = pageObj.viewport.height / RENDER_SCALE;
+
+            const pdfPage = pdfLibDoc.addPage([pdfWidth, pdfHeight]);
+            pdfPage.drawImage(embeddedJpg, {
+              x: 0,
+              y: 0,
+              width: pdfWidth,
+              height: pdfHeight
+            });
+          }
+
+          progressBarFill.style.width = '95%';
+          progressPercentText.textContent = '95%';
+          progressStatusText.textContent = 'Finalizing grayscale PDF file...';
+
+          const grayscaleBytes = await pdfLibDoc.save();
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          const blob = new Blob([grayscaleBytes], { type: 'application/pdf' });
+          if (grayscalePdfBlobUrl) URL.revokeObjectURL(grayscalePdfBlobUrl);
+          grayscalePdfBlobUrl = URL.createObjectURL(blob);
+
+          const sizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+          const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Grayscale_Document';
+          const modeLabel = activeMode === 'print' ? 'High-Contrast B&W' : (activeMode === 'mono' ? 'Pure Monochrome' : 'Standard Grayscale');
+
+          successFileNameDisplay.textContent = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+          successFileStatsDisplay.textContent = `${sizeMB} MB • ${totalPages} Page${totalPages > 1 ? 's' : ''} • ${modeLabel}`;
+
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error converting PDF to grayscale:', err);
+          alert('Failed to convert PDF to grayscale: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+          workbenchPanel.classList.remove('hidden');
+        }
+      }, 100);
+    });
+
+    // Download B&W PDF
+    downloadBwPdfBtn.addEventListener('click', () => {
+      if (!grayscalePdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Grayscale_Document';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = grayscalePdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workflow to Convert Another PDF
+    convertAnotherBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileArrayBuffer = null;
+      pdfDocObj = null;
+      if (grayscalePdfBlobUrl) URL.revokeObjectURL(grayscalePdfBlobUrl);
+      grayscalePdfBlobUrl = null;
+
+      fileInput.value = '';
+      pageCanvasObjects = [];
+      continuousViewerContainer.innerHTML = '';
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('grayscale-pdf');
+      }
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
 
 <script>
   (function() {
