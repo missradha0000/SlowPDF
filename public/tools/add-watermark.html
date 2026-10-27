@@ -467,27 +467,14 @@
     
     <!-- Title & Breadcrumb -->
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Full-Page Reader • 100% In-Browser RAM Processing
+            <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
         Add Watermark to PDF
       </h1>
-        <button 
-          type="button" 
-          onclick="window.slowPdfShare({ title: 'SlowPDF - Add Watermark', text: 'Use this fast, private client-side Add Watermark directly in your browser!', url: window.location.href })"
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBF2] dark:bg-[#1C2420] border border-[#E8DABF] dark:border-stone-700 text-[#2D3748] dark:text-stone-300 hover:bg-[#E8DABF]/50 dark:hover:bg-stone-800 text-xs font-semibold transition-all shadow-2xs hover:scale-105 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B]"
-          title="Share Add Watermark"
-          aria-label="Share this tool"
-        >
-          <svg class="w-3.5 h-3.5 text-[#355E4B] dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-          </svg>
-          <span>Share</span>
-        </button>
-      </div>
       <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
         Stamp text or company logos with live opacity, diagonal rotation, and dense tile grid patterns across your document.
       </p>
@@ -930,43 +917,65 @@
 
     </div>
 
+      <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto my-8 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto py-2 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
   </main>
-
-  <!-- ========================================== -->
-  <!-- UNIVERSAL MOBILE QUICK-NAV STRIP           -->
-  <!-- ========================================== -->
-  <nav class="w-full max-w-5xl mx-auto px-4 mb-8" aria-label="Quick mobile navigation">
-    <div class="flex items-center justify-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
-      <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        Home
-      </a>
-      <a href="../#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-        Tools
-      </a>
-      <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-        Blog
-      </a>
-      <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        About
-      </a>
-      <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Privacy
-      </a>
-      <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-2xs shrink-0 flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        FAQ
-      </a>
-      
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
     </div>
-  </nav>
-
-  <!-- ========================================== -->
-  <!-- 10-BANNER PROMO CAROUSEL CONTAINER         -->
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
+  </section>
   <!-- ========================================== -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
     <div id="carousel-container"></div>
@@ -1077,9 +1086,7 @@
             Upload your PDF to SlowPDF, click one of our quick preset pills (CONFIDENTIAL, DRAFT, SAMPLE, COPY, DO NOT SHARE), adjust opacity and angle, then click 'Apply Watermark &amp; Download PDF'.
           </div>
         </div>
-
-        <!-- Question 2 -->
-        <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
           <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
             <span>2. Can I upload my own company logo as a watermark?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1088,9 +1095,7 @@
             Yes! Switch to the 'Image / Logo Watermark' tab, upload any transparent PNG, JPG, or WebP logo, scale it to your desired size, and apply it across your document.
           </div>
         </div>
-
-        <!-- Question 3 -->
-        <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
           <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
             <span>3. How do I make the watermark semi-transparent so it doesn't block text?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1099,11 +1104,8 @@
             Use our live Opacity slider to set transparency from 5% (ultra-faint) to 100% (solid). Default 25% provides optimal readability while ensuring strong copyright protection.
           </div>
         </div>
-
-        <!-- Hidden Questions 4-10 (Expandable) -->
-        <div id="extra-faq-items" class="hidden space-y-3">
-          
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+      <div id="extra-faqs" class="hidden space-y-3.5">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>4. What is the difference between Single Center and Repeated Grid modes?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1112,8 +1114,7 @@
               'Single Center' places one large watermark neatly in the middle of each page. 'Repeated Grid' tiles the watermark repeatedly across the entire page to prevent unauthorized cropping or scanning.
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>5. Can I apply watermarks behind page content instead of on top?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1122,8 +1123,7 @@
               Yes! Toggle between 'Stamp Over Content (High Security)' and 'Stamp Behind Content' in the studio controls.
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>6. Does watermarking a PDF affect image resolution or vector text quality?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1132,8 +1132,7 @@
               No. SlowPDF embeds vector text objects or high-resolution PNG bytes directly into PDF page layers using pdf-lib, preserving 100% of original vector clarity.
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>7. Are my confidential files or company logos uploaded to any server?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1142,8 +1141,7 @@
               Never. All document processing and logo embedding happen 100% inside your local device's browser RAM using WebAssembly. No files leave your physical device.
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>8. Can I watermark specific pages instead of the whole file?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1152,8 +1150,7 @@
               Yes. Choose between 'All Pages', 'Only First Page', or enter a custom range (e.g., 2-10).
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>9. Does this tool work on mobile devices and tablets?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1162,8 +1159,7 @@
               Yes! SlowPDF's watermark studio adapts dynamically for mobile devices with a responsive top control dock and full-width continuous page preview.
             </div>
           </div>
-
-          <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
             <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
               <span>10. Is SlowPDF Add Watermark completely free without forced branding?</span>
               <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1172,6 +1168,7 @@
               Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero mandatory registrations.
             </div>
           </div>
+      </div>
 
         </div>
 
@@ -1187,7 +1184,19 @@
         </div>
 
       </div>
-    </section>
+        <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  </section>
 
   </article>
 
@@ -1310,6 +1319,7 @@
           Legal &amp; Support
         </h4>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Home</a></li>
           <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
           <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
@@ -2264,6 +2274,28 @@
       initMenu();
     }
   })();
-</script>
+
+    // Accordion toggle & View All FAQ handler
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'Show Fewer Questions';
+          if (faqChevron) faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'View All 10 Questions';
+          if (faqChevron) faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+
+  </script>
 </body>
 </html>

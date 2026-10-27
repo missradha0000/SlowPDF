@@ -12,12 +12,12 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Merge PDF Files Online — 100% Private Local Processing | SlowPDF</title>
-  <meta name="description" content="Combine multiple PDF documents into a single organized file directly inside your browser." />
-  <meta property="og:title" content="Merge PDF Files Online | SlowPDF" />
-  <meta property="og:description" content="Combine multiple PDF documents into a single organized file directly inside your browser." />
+  <title>Merge PDF Files Online Free — 100% Private Local Processing | SlowPDF</title>
+  <meta name="description" content="Combine multiple PDF documents into one ordered file directly in your browser. 100% client-side memory processing. Zero server uploads, unlimited file size, completely free." />
+  <meta property="og:title" content="Merge PDF Files Online — Private & Fast | SlowPDF" />
+  <meta property="og:description" content="Merge multiple PDF files in seconds with zero cloud uploads. Safe, private, and unlimited." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://slowpdf.me/tools/merge-pdf.html" />
+  <meta property="og:url" content="https://slowpdf.in/tools/merge-pdf.html" />
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,12 +62,19 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
-  <script src="../assets/js/share.js"></script>
 
   <style>
+    /* ==========================================================================
+       BODY / PAGE BACKGROUND COLOR SPECIFICATION:
+       - HEX: #FFFBF2
+       - RGB: rgb(255, 251, 242)
+       - HSL: 42°, 100%, 97%
+       - HSV Profile: 42°, 5%, 100%
+       - CMYK: 0%, 2%, 5%, 0%
+       ========================================================================== */
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #FFFBF2 !important;
+      background-color: #FFFBF2 !important; /* HSV: 42°, 5%, 100% | RGB: (255, 251, 242) */
       color: #222E28;
       transition: background-color 0.3s ease, color 0.3s ease;
       -webkit-font-smoothing: antialiased;
@@ -77,20 +84,29 @@
       color: #F1F5F2;
     }
 
+    /* ==========================================================================
+       TOP HEADER / NAVBAR BACKGROUND COLOR SPECIFICATION:
+       - HEX: #E8DABF
+       - RGB: rgb(232, 218, 191)
+       - HSL: 40°, 47%, 83%
+       - HSV Profile: 40°, 18%, 91%
+       - CMYK: 0%, 6%, 18%, 9%
+       ========================================================================== */
     #site-header,
     header.site-header {
-      background-color: #E8DABF !important;
+      background-color: #E8DABF !important; /* HSV: 40°, 18%, 91% | RGB: (232, 218, 191) */
     }
     .dark #site-header,
     .dark header.site-header {
       background-color: #151D19 !important;
     }
 
+    /* Soft floating cards against #FFFBF2 */
     .tool-card {
       background-color: #FFFFFF;
       border: 1px solid rgba(226, 218, 202, 0.7);
-      box-shadow: 0 4px 18px -2px rgba(60, 50, 30, 0.05);
-      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .dark .tool-card {
       background-color: #1C2420;
@@ -99,15 +115,21 @@
       box-shadow: none;
     }
 
+    /* Header mascot gentle idle breathing (subtle, non-distorting) */
+    @keyframes headerMascotFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-2px);
+      }
+    }
     .header-mascot-idle {
       animation: headerMascotFloat 3.5s ease-in-out infinite;
       will-change: transform;
     }
-    @keyframes headerMascotFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-2px); }
-    }
 
+    /* Drag over active state */
     .dragover-active {
       border-color: #355E4B !important;
       background-color: rgba(53, 94, 75, 0.05) !important;
@@ -118,28 +140,130 @@
       border-color: #5E9B7E !important;
     }
 
+    /* Hide scrollbars for smooth carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Carousel Banner Deep Forest Green Gradient */
     .banner-card-gradient {
       background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
       color: #ffffff !important;
     }
 
+    /* Custom Webkit Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFFBF2;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #121815;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C4D3CB;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #355E4B;
+    }
+
+    /* High contrast navbar link styling on #E8DABF */
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #1A261F;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F;
+    }
+    .dark .nav-link {
+      color: #E2E8E4;
+    }
+    .dark .nav-link:hover {
+      background-color: rgba(53, 94, 75, 0.4);
+      color: #A7F3D0;
+    }
+
+    /* High contrast footer link styling */
+    .footer-link {
+      display: inline-block;
+      transition: all 0.2s ease;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.5rem;
+      margin: -0.25rem -0.5rem;
+    }
+    .footer-link:hover {
+      background-color: rgba(209, 250, 229, 0.8);
+      color: #064e3b;
+      font-weight: 600;
+    }
+    .dark .footer-link:hover {
+      background-color: rgba(53, 94, 75, 0.35);
+      color: #a7f3d0;
+      font-weight: 600;
+    }
+  
     @media (max-width: 768px) {
-      #site-header, header.site-header, header { overflow-x: hidden !important; }
-      #site-header nav, header.site-header nav, header nav, #site-header .nav-link, header.site-header .nav-link { display: none !important; }
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
     }
     @media (min-width: 769px) {
-      #site-header nav, header.site-header nav, header nav { display: flex !important; }
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
     }
+  
+    /* Mobile Navigation Layout: Hide top header nav on screens <= 768px, show on >= 769px */
+    @media (max-width: 768px) {
+      #site-header,
+      header.site-header,
+      header {
+        overflow-x: hidden !important;
+      }
+      #site-header nav,
+      header.site-header nav,
+      header nav,
+      #site-header .nav-link,
+      header.site-header .nav-link {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
 
-  <!-- 1. TOP HEADER / NAVBAR -->
-  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#151D19] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-stone-800/80 shadow-xs" style="background-color: #E8DABF !important;">
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR                     -->
+  <!-- Background: #E8DABF                        -->
+  <!-- Left: [Tortoise Logo] [Slow PDF]           -->
+  <!-- Smart "Home" Link: Returns to origin       -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo & Title -->
+      <!-- Left: Brand Logo & Title: [Tortoise Mascot Logo] [Slow PDF] -->
       <a id="brand-home-link" href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+        <!-- Tortoise Mascot Logo on the LEFT -->
         <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
           <img 
             src="../assets/images/logo.png" 
@@ -148,6 +272,8 @@
             onerror="this.src='../public/assets/images/logo.png'"
           />
         </div>
+
+        <!-- Brand Text "Slow PDF" cleanly centered and balanced on the right -->
         <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
           Slow <span class="text-[#1E3D30] dark:text-[#1E3D30] ml-1">PDF</span>
         </span>
@@ -155,12 +281,12 @@
 
       <!-- Center Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
-        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
-        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
-        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
-        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
-        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
-        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
+        <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="../terms.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Terms</a>
       </nav>
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
@@ -169,30 +295,33 @@
           id="header-share-btn"
           type="button"
           onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
-          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           title="Share Page"
           aria-label="Share Page"
         >
-          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
         </button>
         <button 
           id="hamburger-btn" 
           type="button"
-          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
           <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
-            <line x1="4" y1="6" x2="20" y2="6" id="line1" />
-            <line x1="4" y1="12" x2="20" y2="12" id="line2" />
-            <line x1="4" y1="18" x2="20" y2="18" id="line3" />
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
           </svg>
         </button>
       </div>
     
   </header>
 
-  <!-- 2. QUICK PREFERENCES DRAWER MODAL -->
+  <!-- Clean Dropdown Modal / Mobile Menu with Blog -->
+  <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
@@ -230,10 +359,10 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+      <!-- Navigation & Legal Links with Blog -->
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
+        <a href="/" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Home</a>
         <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
           <span>Blog &amp; Articles</span>
           <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
@@ -252,238 +381,618 @@
       <!-- Social Media Icons in Menu -->
       <div class="pt-4">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="WhatsApp" title="WhatsApp"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="Telegram" title="Telegram"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="YouTube" title="YouTube"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);" aria-label="Instagram" title="Instagram"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="Facebook" title="Facebook"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" aria-label="X / Twitter" title="X / Twitter"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <div class="flex items-center justify-between px-1">
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#E4405F]" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#1877F2]" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#000000] dark:text-white" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#FF0000]" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#24A1DE]" aria-label="Telegram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#25D366]" aria-label="WhatsApp">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
         </div>
-      </div>
-
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
       </div>
     </div>
   </div>
 
-  <!-- 3. MAIN TOOL CONTAINER WORKSPACE -->
-  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 sm:py-12 w-full">
+  <!-- ========================================== -->
+  <!-- 2. MERGE PDF WORKBENCH SECTION             -->
+  <!-- Pure Client-Side Execution in Local RAM    -->
+  <!-- ========================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 w-full flex-1">
     
-    <!-- Hero Title & Badge -->
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-      <span class="inline-block px-3.5 py-1.5 rounded-full bg-[#355E4B]/10 dark:bg-[#355E4B]/30 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3">
-        100% Client-Side Memory Processing • Zero Cloud Uploads
-      </span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#222E28] dark:text-white tracking-tight leading-tight mb-4">
-        Merge PDF Files Online
+    <!-- Title & Privacy Trust Pill -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 text-xs font-semibold mb-3 shadow-2xs">
+        <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Merge PDF Files
       </h1>
-      <p class="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto leading-relaxed">
-        Combine multiple PDF documents into a single organized file directly inside your browser.
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Combine multiple PDF documents into a single, perfectly ordered file in seconds. Drag, reorder pages, and merge with total privacy.
       </p>
     </div>
 
-    <!-- Main Interactive Card -->
-    <div class="tool-card rounded-3xl p-6 sm:p-10 shadow-xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800">
+    <!-- Hidden native file input (supports multiple) -->
+    <input type="file" id="pdf-file-input" multiple accept=".pdf,application/pdf" class="hidden" />
+
+    <!-- WORKBENCH STATE 1: Empty Dropzone -->
+    <div 
+      id="empty-dropzone" 
+      class="w-full bg-white dark:bg-[#1C2420] rounded-2xl border-2 border-dashed border-[#D8C7A5] dark:border-stone-700/80 p-8 sm:p-14 text-center cursor-pointer shadow-sm hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200 group relative flex flex-col items-center justify-center min-h-[320px]"
+    >
+      <div class="w-20 h-20 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200 shadow-2xs">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-[#222E28] dark:text-[#F1F5F2] mb-1.5">
+        Choose PDF files or drag &amp; drop here
+      </h3>
+      <p class="text-stone-500 dark:text-stone-400 text-sm max-w-md mb-6">
+        Select 2 or more PDF documents. Files are processed locally in your browser's RAM without hitting any remote server.
+      </p>
+      <button 
+        type="button" 
+        id="browse-btn"
+        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        Select PDF Files
+      </button>
+      <div class="mt-6 flex items-center gap-4 text-xs text-stone-500 dark:text-stone-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Unlimited File Size
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          No Cloud Transfer
+        </span>
+        <span>•</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Reorder with Arrows
+        </span>
+      </div>
+    </div>
+
+    <!-- WORKBENCH STATE 2: File Queue & Reordering Active -->
+    <div id="active-workbench" class="hidden w-full space-y-6">
       
-      <!-- STATE 1: EMPTY DROPZONE -->
-      <div id="empty-dropzone" class="w-full">
-        <div 
-          id="dropzone" 
-          class="border-3 border-dashed border-[#355E4B]/30 dark:border-stone-700 hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center transition-all duration-300 cursor-pointer bg-stone-50/50 dark:bg-stone-900/30 hover:bg-stone-100/60 dark:hover:bg-stone-900/50 flex flex-col items-center justify-center gap-4"
+      <!-- Queue Action Bar -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-4 sm:p-5 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-[#355E4B] dark:text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">
+            <span id="queue-count-badge">0</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-[#F1F5F2]" id="queue-summary-text">
+              0 Files Selected
+            </h4>
+            <p class="text-xs text-stone-500 dark:text-stone-400" id="queue-stats-text">
+              Total Pages: 0 • Estimated Output: 0 KB
+            </p>
+          </div>
+        </div>
+
+        <!-- Add More / Clear Buttons -->
+        <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+          <button 
+            type="button" 
+            id="add-more-btn"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-[#274737] dark:text-emerald-300 hover:bg-emerald-100 transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add More PDFs
+          </button>
+          <button 
+            type="button" 
+            id="clear-all-btn"
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- File List Container with Reordering -->
+      <div id="file-items-list" class="space-y-3">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Output Name & Merge Trigger Bar -->
+      <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="w-full md:w-auto flex-1 max-w-md">
+          <label for="output-filename" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1.5">
+            Merged File Name:
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="output-filename" 
+              value="slowpdf-merged.pdf" 
+              class="w-full px-4 py-2.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 text-sm font-semibold text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+            />
+            <span class="absolute right-3.5 top-2.5 text-xs font-bold text-stone-400">PDF</span>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="merge-action-btn"
+          class="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-base text-white bg-[#355E4B] hover:bg-[#274737] dark:bg-emerald-700 dark:hover:bg-emerald-600 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <input 
-            type="file" 
-            id="pdf-file-input" 
-            class="hidden" 
-            multiple 
-            accept=".pdf,application/pdf"
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+          <span id="merge-btn-text">Merge PDFs Now</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- WORKBENCH STATE 3: Success & Download Panel -->
+    <div id="success-panel" class="hidden w-full bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-emerald-300/80 dark:border-emerald-700/80 shadow-xl text-center space-y-6">
+      
+      <!-- Cute 3D glasses tortoise mascot celebration display (Universal Light/Dark Standard) -->
+      <div class="relative inline-block mx-auto mb-1">
+        <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+          <img 
+            src="../assets/images/mascot/tortoise-hero.png" 
+            alt="SlowPDF Mascot Merge Celebration" 
+            class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+            onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
           />
+        </div>
+        <!-- Small green Merged celebration badge near mascot -->
+        <span class="absolute -bottom-1 -right-1 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+          PDFs Successfully Merged!
+        </span>
+      </div>
 
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#355E4B]/10 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center shadow-inner">
-            <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-          </div>
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+          Merge Complete!
+        </h3>
+        <p class="mt-2 text-stone-600 dark:text-stone-300 text-sm sm:text-base max-w-lg mx-auto" id="success-description">
+          Your documents have been seamlessly unified into a clean single PDF in local browser memory.
+        </p>
+      </div>
 
-          <div>
-            <p class="text-lg sm:text-xl font-bold text-[#222E28] dark:text-white">
-              Drag & Drop PDF files here
+      <!-- Editable Output File Name Input (Clean, small, optional) -->
+      <div class="max-w-md mx-auto text-left space-y-1.5">
+        <label for="success-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+          Save File As (Optional Custom Name):
+        </label>
+        <div class="relative flex items-center">
+          <input 
+            type="text" 
+            id="success-filename-input" 
+            value="SlowPDF_Merged_Document" 
+            class="w-full px-3.5 py-2.5 pr-14 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+            placeholder="SlowPDF_Merged_Document"
+          />
+          <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+            .pdf
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-md mx-auto">
+        <a 
+          id="download-merged-btn" 
+          href="#" 
+          download="SlowPDF_Merged_Document.pdf"
+          class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Merged PDF
+        </a>
+        <button 
+          type="button" 
+          id="reset-workbench-btn"
+          class="w-full sm:w-auto py-4 px-5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 font-bold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        >
+          Merge Another Batch
+        </button>
+      </div>
+
+      <div class="pt-4 border-t border-stone-100 dark:border-stone-800 text-xs text-stone-400">
+        100% Client-Side Privacy: The merged file was synthesized directly in RAM and will be deleted when you close this tab.
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP           -->
+    <!-- Horizontal 1-tap navigation chips          -->
+    <!-- ========================================== -->
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto my-8 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto py-2 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED 15-BANNER CAROUSEL                                     -->
+  <!-- Loaded dynamically from SLOWPDF_BANNERS.mergePdf                    -->
+  <!-- Aspect ratio: aspect-[16/9] sm:aspect-[16/6] md:aspect-[21/6]       -->
+  <!-- Outside dots (mt-4 flex justify-center space-x-2), NO arrows        -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+
+    <!-- Carousel Viewport container (Zero distortion, zero clipping, deep forest green gradient background) -->
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <!-- Slides Container (Absolute/Relative Isolated Slides Stack) -->
+      <div 
+        id="carousel-slides" 
+        class="relative w-full overflow-hidden"
+      >
+        <!-- 10 Companion Banner Slides populated dynamically via SLOWPDF_BANNERS.toolsPromo & carousel.js -->
+      </div>
+    </div>
+
+    <!-- Outside Navigation/Pagination Dots (Completely below banner, mt-4 flex justify-center items-center gap-2) -->
+    <div 
+      id="carousel-dots" 
+      class="mt-4 flex justify-center items-center gap-2"
+    >
+      <!-- 10 Dots injected via carousel.js -->
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. RICH SEO CONTENT & HOW-TO GUIDE         -->
+  <!-- 400+ Words of High-Ranking Semantic Copy   -->
+  <!-- ========================================== -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full text-stone-700 dark:text-stone-300">
+    <div class="bg-white dark:bg-[#1C2420] rounded-2xl p-8 sm:p-12 border border-stone-200 dark:border-stone-800 shadow-sm space-y-10">
+      
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-4">
+          How to Merge PDF Files Free Online Without Server Uploads
+        </h2>
+        <p class="text-base sm:text-lg leading-relaxed text-stone-600 dark:text-stone-300">
+          Merging PDF files is one of the most frequent tasks students, educators, legal professionals, and remote workers encounter every day. Whether assembling lecture notes into a single study guide, concatenating multi-part tax documents, or compiling signed contracts with supporting appendices, having a fast, reliable, and completely private tool is essential.
+        </p>
+        <p class="mt-4 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          Unlike conventional PDF web services that force you to upload your sensitive documents to remote cloud storage clusters, SlowPDF utilizes modern <strong>WebAssembly (WASM) and client-side JavaScript (<code class="text-xs bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded font-mono">pdf-lib</code>)</strong>. Every byte of your PDF documents is read, parsed, reordered, and stitched together exclusively inside your computer or mobile device’s random-access memory (RAM).
+        </p>
+      </div>
+
+      <!-- 3-Step Walkthrough Grid -->
+      <div>
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-6">
+          Simple 3-Step Walkthrough:
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              1
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Select or Drop PDFs
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Drag and drop two or more PDF files into the workbench, or click "Select PDF Files" to choose them from your device.
             </p>
-            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
-              or click below to choose files from your device
+          </div>
+
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              2
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Organize &amp; Reorder
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Use the Up and Down arrow buttons next to each document to order them in the exact sequence you want them to appear in your final file.
             </p>
           </div>
 
-          <button 
-            type="button" 
-            id="browse-btn"
-            class="px-7 py-3.5 rounded-full font-bold text-sm bg-[#274737] hover:bg-[#1E362A] text-white shadow-md hover:shadow-lg transition-all transform hover:scale-105"
-          >
-            Select PDF Files
-          </button>
-        </div>
-
-        <!-- Trust Bullets -->
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs font-semibold text-stone-500 dark:text-stone-400">
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> 100% In-Browser Memory
-          </div>
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> Unlimited File Size
-          </div>
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> Zero Server Uploads
+          <div class="p-5 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+            <div class="w-8 h-8 rounded-full bg-[#355E4B] text-white font-bold text-sm flex items-center justify-center mb-3">
+              3
+            </div>
+            <h4 class="font-bold text-base text-[#222E28] dark:text-white mb-1.5">
+              Merge in RAM &amp; Save
+            </h4>
+            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+              Click "Merge PDFs Now". Your browser combines the pages in milliseconds. Click "Download Merged PDF" to save your pristine file.
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- STATE 2: ACTIVE WORKBENCH -->
-      <div id="active-workbench" class="hidden w-full space-y-6">
-        <div class="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-stone-800">
-          <div>
-            <h3 class="text-lg font-bold text-[#222E28] dark:text-white" id="file-title-display">Selected Document</h3>
-            <p class="text-xs text-stone-500 dark:text-stone-400" id="file-meta-display">Ready for processing</p>
-          </div>
-          <button 
-            type="button" 
-            id="change-file-btn" 
-            class="text-xs font-bold text-[#355E4B] dark:text-emerald-400 hover:underline"
-          >
-            Change File
-          </button>
-        </div>
-
-        <!-- Files List / Queue -->
-        <div id="files-queue-container" class="space-y-3 max-h-60 overflow-y-auto pr-1"></div>
-
-        <!-- Action Button Box -->
-        <div class="pt-4 flex justify-end">
-          <button 
-            type="button" 
-            id="process-action-btn" 
-            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base bg-[#274737] hover:bg-[#1E362A] text-white shadow-lg hover:shadow-xl transition-all"
-          >
-            Merge PDFs Now
-          </button>
-        </div>
-      </div>
-
-      <!-- STATE 3: PROGRESS BOX -->
-      <div id="processing-progress-box" class="hidden w-full py-8 text-center space-y-4">
-        <div class="w-16 h-16 mx-auto rounded-full bg-[#355E4B]/10 dark:bg-emerald-950/60 flex items-center justify-center text-[#274737] dark:text-emerald-400 animate-spin">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
-        </div>
-        <div>
-          <p id="progress-status-text" class="text-base font-bold text-[#222E28] dark:text-white">Processing PDF in background worker...</p>
-          <p id="progress-percent-text" class="text-2xl font-extrabold text-[#355E4B] dark:text-emerald-400 mt-1">20%</p>
-        </div>
-        <div class="w-full max-w-md mx-auto h-3 rounded-full bg-stone-200 dark:bg-stone-800 overflow-hidden">
-          <div id="progress-bar-fill" class="h-full bg-[#355E4B] dark:bg-emerald-500 transition-all duration-300 w-1/5"></div>
-        </div>
-      </div>
-
-      <!-- STATE 4: SUCCESS PANEL -->
-      <div id="success-panel" class="hidden w-full py-6 text-center space-y-6">
-        <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-lg">
-          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <div>
-          <h3 class="text-2xl font-extrabold text-[#222E28] dark:text-white">Task Completed Successfully!</h3>
-          <p class="text-sm text-stone-500 dark:text-stone-400 mt-1" id="success-description">Processed 100% locally in your browser memory.</p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-          <button 
-            type="button" 
-            id="download-result-btn" 
-            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base bg-[#274737] hover:bg-[#1E362A] text-white shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            Download Processed PDF
-          </button>
-          <button 
-            type="button" 
-            id="reset-btn" 
-            class="w-full sm:w-auto px-6 py-4 rounded-full font-bold text-sm bg-stone-200 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-800 dark:text-white transition-all"
-          >
-            Process Another File
-          </button>
+      <!-- Comparison: Client-Side vs Cloud Uploads -->
+      <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-4">
+          Why Client-Side RAM Processing is Superior
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-stone-200 dark:border-stone-700 text-[#222E28] dark:text-white font-bold">
+                <th class="py-3 pr-4">Feature</th>
+                <th class="py-3 px-4 text-[#355E4B] dark:text-emerald-400">SlowPDF (Zero-Server)</th>
+                <th class="py-3 pl-4 text-stone-500">Traditional Cloud PDF Tools</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Data Privacy</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">100% Private (Never leaves device RAM)</td>
+                <td class="py-3 pl-4 text-stone-500">Files uploaded to third-party servers</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">File Size Limits</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Unlimited (Bound only by local device RAM)</td>
+                <td class="py-3 pl-4 text-stone-500">Strict 25MB or 50MB paywall limit</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Processing Speed</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Instantaneous (No network upload/download lag)</td>
+                <td class="py-3 pl-4 text-stone-500">Slow upload queues, server waitlists</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold">Subscription &amp; Ads</td>
+                <td class="py-3 px-4 text-emerald-700 dark:text-emerald-300 font-medium">Completely Free Forever • No Watermark</td>
+                <td class="py-3 pl-4 text-stone-500">Aggressive upsells, trials, forced signups</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
     </div>
+  </section>
 
-    <!-- FAQ Section -->
-    
-    <div class="mt-12 sm:mt-16 max-w-3xl mx-auto">
-      <h2 class="text-2xl font-extrabold text-[#222E28] dark:text-white mb-6 text-center">Frequently Asked Questions</h2>
-      <div class="space-y-4">
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Are my PDF files stored on any remote cloud server?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              No. SlowPDF uses a zero-server architecture. All operations execute locally inside your browser memory sandbox.
-            </div>
-          </div>
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Is there a limit on PDF file size?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              There are no artificial limits. The only limit is your available device RAM.
-            </div>
-          </div>
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Does SlowPDF require user registration or payment?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              SlowPDF is 100% free with zero registration, subscription traps, or credit card requirements.
-            </div>
-          </div>
-        
+  <!-- ========================================== -->
+  <!-- 5. ACCORDION FAQ SECTION (10 QUESTIONS)    -->
+  <!-- ========================================== -->
+  <section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full scroll-mt-24">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2]">
+        Frequently Asked Questions: Merging PDFs
+      </h2>
+      <p class="mt-2 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Everything you need to know about merging documents safely with SlowPDF.
+      </p>
+    </div>
+
+    <!-- Accordion Wrapper -->
+    <div class="space-y-3.5" id="faq-accordion">
+      
+      <!-- FAQ 1 (Visible by default) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            1. How many PDF files can I merge together at once?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          There is no hard limit on the number of documents you can combine. You can merge 2, 10, or 50+ files into a single unified PDF. The only factor is your device's available browser memory.
+        </div>
       </div>
-    </div>
-  
-    </div>
 
-    <!-- Banner Carousel -->
-    <section id="promo-carousel-section" class="mt-12 sm:mt-16 w-full"></section>
+      <!-- FAQ 2 (Visible by default) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            2. Are my uploaded documents stored on any remote cloud server?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Never. SlowPDF operates on a strict zero-server architecture. Your documents are processed entirely in client-side memory using WebAssembly. Once you close this tab, the RAM buffer is immediately cleared.
+        </div>
+      </div>
 
-  
-      <article class="mt-12 sm:mt-16 max-w-4xl mx-auto space-y-6 text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">Why In-Browser Client-Side PDF Merging Matters</h2>
-        <p>In today's digital workflow, combining multiple PDF documents is a daily task for students, legal professionals, researchers, and administrative personnel. Whether you are assembling college study notes, merging financial statements, or stitching multi-part legal contracts, traditional online PDF converters force you to upload confidential files to remote cloud servers.</p>
-        <p>Uploading documents to third-party web servers introduces severe privacy risks, including data breaches, unauthorized cloud storage retention, and potential regulatory non-compliance (such as FERPA, HIPAA, or GDPR). SlowPDF completely eliminates these security vectors by utilizing WebAssembly and client-side JavaScript execution.</p>
+      <!-- FAQ 3 (Visible by default) -->
+      <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+        <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+          <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+            3. Can I rearrange the file order before merging?
+          </span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          </span>
+        </button>
+        <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+          Yes! In the file queue, use the intuitive Up and Down arrow buttons to shift any document higher or lower in the queue. The final file will be created in the exact order shown.
+        </div>
+      </div>
+
+      <!-- FAQ 4-10 (Collapsible under 'View All 10 Questions') -->
+      <div id="extra-faqs" class="hidden space-y-3.5">
         
-        <h3 class="text-xl font-bold text-[#222E28] dark:text-white">Zero Cloud Upload Architecture</h3>
-        <p>When you select or drag PDF files into SlowPDF, your browser allocates local RAM buffers using the File API. The document bytes are read into WebAssembly memory streams, where <code>pdf-lib</code> compiles and arranges the page objects locally on your device's CPU hardware. No network packets containing your document contents are ever transmitted over the internet.</p>
-        
-        <h3 class="text-xl font-bold text-[#222E28] dark:text-white">Step-by-Step Guide to Merging PDFs Privately</h3>
-        <ol class="list-decimal pl-5 space-y-2">
-          <li><strong>Select or Drag Files:</strong> Click "Select PDF Files" or drag your documents directly into the green dashed dropzone.</li>
-          <li><strong>Arrange Order:</strong> Drag and drop the selected file cards to reorder them in your desired sequence.</li>
-          <li><strong>Execute High-Speed Merge:</strong> Click "Merge PDFs Now". Our background Web Worker processes the files in 2-3 seconds.</li>
-          <li><strong>Download Instantly:</strong> Save your newly merged document directly to your hard drive with zero cloud delay.</li>
-        </ol>
-      </article>
-    
-</main>
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              4. Will merging reduce the visual quality of fonts or images in my PDFs?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            No. The internal PDF stream objects, vector glyphs, embedded fonts, and high-resolution raster images are copied losslessly without compression or downsampling.
+          </div>
+        </div>
 
-  <!-- 4. FOOTER -->
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              5. What is the maximum file size limit for merging PDFs on SlowPDF?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            There are no arbitrary cloud caps (like 25MB). You can merge files as large as your device's memory allows—frequently handling several hundred megabytes without difficulty.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              6. Can I merge password-protected or encrypted PDFs?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Encrypted documents require their security flags to be unlocked first. Please use our companion Unlock PDF tool to remove the security password before merging.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              7. Does this work offline if I lose my internet connection?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes! Once this page has loaded into your browser cache, you can disconnect your Wi-Fi or turn on Airplane Mode and continue merging documents completely offline.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              8. Can I merge PDFs on my iPhone, iPad, or Android phone?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, SlowPDF is fully responsive and supports Safari on iOS, Chrome on Android, and all other modern mobile browsers with full touch drag and drop capabilities.
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              9. Will interactive form fields, bookmarks, or hyperlinks be preserved?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Yes, page content, text streams, and standard annotations are copied accurately into the destination document dictionary.
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item bg-white dark:bg-[#1C2420] rounded-2xl border border-stone-200/70 dark:border-stone-800 shadow-2xs transition-all">
+          <button type="button" class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#355E4B] rounded-2xl">
+            <span class="font-bold text-sm sm:text-base text-[#222E28] dark:text-white">
+              10. Why is this PDF merger 100% free with no watermark?
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-4 pt-1 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed border-t border-stone-100 dark:border-stone-800/60">
+            Because processing occurs directly on your machine's hardware, SlowPDF does not incur expensive cloud computing and bandwidth bills for your files. We believe student tools should be private, calm, and free.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Toggle All 10 Questions Button -->
+    <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. MASTER FOOTER                           -->
+  <!-- ========================================== -->
   <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Grid -->
@@ -600,7 +1109,7 @@
           Legal &amp; Support
         </h4>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-semibold text-emerald-800 dark:text-emerald-300">Home</a></li>
+          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Home</a></li>
           <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
           <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
@@ -629,187 +1138,564 @@
   </div>
 </footer>
 
-  <!-- Page Interactivity Script -->
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: MERGE LOGIC & CAROUSEL         -->
+  <!-- ========================================== -->
   <script>
-    (function() {
-      const dropzone = document.getElementById('dropzone');
-      const fileInput = document.getElementById('pdf-file-input');
-      const browseBtn = document.getElementById('browse-btn');
-      const emptyDropzone = document.getElementById('empty-dropzone');
-      const activeWorkbench = document.getElementById('active-workbench');
-      const progressBox = document.getElementById('processing-progress-box');
-      const successPanel = document.getElementById('success-panel');
-      
-      const fileTitleDisplay = document.getElementById('file-title-display');
-      const fileMetaDisplay = document.getElementById('file-meta-display');
-      const filesQueueContainer = document.getElementById('files-queue-container');
-      const changeFileBtn = document.getElementById('change-file-btn');
-      const processActionBtn = document.getElementById('process-action-btn');
-      
-      const progressStatusText = document.getElementById('progress-status-text');
-      const progressPercentText = document.getElementById('progress-percent-text');
-      const progressBarFill = document.getElementById('progress-bar-fill');
-      
-      const downloadResultBtn = document.getElementById('download-result-btn');
-      const resetBtn = document.getElementById('reset-btn');
+    // ----------------------------------------------------
+    // 1. DARK MODE THEME PERSISTENCE
+    // ----------------------------------------------------
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeThumb = document.getElementById('dark-mode-thumb');
 
-      let selectedFiles = [];
-      let processedBlobUrl = null;
-
-      if (browseBtn && fileInput) {
-        browseBtn.onclick = () => fileInput.click();
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'true');
+          darkModeToggle.classList.remove('bg-stone-300');
+          darkModeToggle.classList.add('bg-[#355E4B]');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-0');
+          darkModeThumb.classList.add('translate-x-5');
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (darkModeToggle) {
+          darkModeToggle.setAttribute('aria-checked', 'false');
+          darkModeToggle.classList.remove('bg-[#355E4B]');
+          darkModeToggle.classList.add('bg-stone-300');
+        }
+        if (darkModeThumb) {
+          darkModeThumb.classList.remove('translate-x-5');
+          darkModeThumb.classList.add('translate-x-0');
+        }
       }
-      if (dropzone && fileInput) {
-        dropzone.onclick = (e) => {
-          if (e.target !== browseBtn) fileInput.click();
-        };
+    }
 
-        dropzone.ondragover = (e) => {
-          e.preventDefault();
-          dropzone.classList.add('dragover-active');
-        };
-        dropzone.ondragleave = () => {
-          dropzone.classList.remove('dragover-active');
-        };
-        dropzone.ondrop = (e) => {
-          e.preventDefault();
-          dropzone.classList.remove('dragover-active');
-          if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            handleFiles(Array.from(e.dataTransfer.files));
-          }
-        };
-      }
+    const savedTheme = localStorage.getItem('slowpdf_theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    applyTheme(initialDark);
 
-      if (fileInput) {
-        fileInput.onchange = (e) => {
-          if (e.target.files && e.target.files.length > 0) {
-            handleFiles(Array.from(e.target.files));
-          }
-        };
-      }
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isCurrentDark = document.documentElement.classList.contains('dark');
+        const nextDark = !isCurrentDark;
+        applyTheme(nextDark);
+        localStorage.setItem('slowpdf_theme', nextDark ? 'dark' : 'light');
+      });
+    }
 
-      function handleFiles(files) {
-        selectedFiles = files;
-        if (selectedFiles.length === 0) return;
+    // ----------------------------------------------------
+    // 2. HAMBURGER MENU MODAL
+    // ----------------------------------------------------
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+    let menuOpen = false;
 
-        fileTitleDisplay.textContent = selectedFiles.length === 1 ? selectedFiles[0].name : `${selectedFiles.length} Files Selected`;
-        const totalMB = (selectedFiles.reduce((acc, f) => acc + f.size, 0) / (1024 * 1024)).toFixed(2);
-        fileMetaDisplay.textContent = `Total Size: ${totalMB} MB • Ready for client-side processing`;
+    function openMenu() {
+      menuOpen = true;
+      menuModal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        menuModal.classList.remove('opacity-0');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      });
+      line1.setAttribute('transform', 'rotate(45 12 12)');
+      line2.classList.add('opacity-0');
+      line3.setAttribute('transform', 'rotate(-45 12 12)');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
 
-        filesQueueContainer.innerHTML = selectedFiles.map((f, i) => `
-          <div class="flex items-center justify-between p-3 rounded-xl bg-stone-100 dark:bg-stone-800/60 text-xs font-semibold">
-            <span class="truncate max-w-xs">${f.name}</span>
-            <span class="text-stone-500">${(f.size / 1024).toFixed(1)} KB</span>
-          </div>
-        `).join('');
+    function closeMenu() {
+      menuOpen = false;
+      menuModal.classList.add('opacity-0');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => {
+        if (!menuOpen) menuModal.classList.add('hidden');
+      }, 300);
+      line1.removeAttribute('transform');
+      line2.classList.remove('opacity-0');
+      line3.removeAttribute('transform');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
 
-        emptyDropzone.classList.add('hidden');
-        activeWorkbench.classList.remove('hidden');
-      }
+    // (Navigation and modal drawer handled universally by nav-memory.js)
 
-      if (changeFileBtn) {
-        changeFileBtn.onclick = () => {
-          selectedFiles = [];
-          if (fileInput) fileInput.value = '';
-          activeWorkbench.classList.add('hidden');
-          emptyDropzone.classList.remove('hidden');
-        };
-      }
+    // ----------------------------------------------------
+    // 3. CLIENT-SIDE MERGE PDF ENGINE
+    // ----------------------------------------------------
+    let pdfQueue = []; // Array of { id, name, size, pageCount, arrayBuffer }
 
-      if (processActionBtn) {
-        processActionBtn.onclick = async () => {
-          if (selectedFiles.length === 0) return;
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const activeWorkbench = document.getElementById('active-workbench');
+    const successPanel = document.getElementById('success-panel');
+    const fileInput = document.getElementById('pdf-file-input');
+    const browseBtn = document.getElementById('browse-btn');
+    const addMoreBtn = document.getElementById('add-more-btn');
+    const clearAllBtn = document.getElementById('clear-all-btn');
+    const fileItemsList = document.getElementById('file-items-list');
+    const queueCountBadge = document.getElementById('queue-count-badge');
+    const queueSummaryText = document.getElementById('queue-summary-text');
+    const queueStatsText = document.getElementById('queue-stats-text');
+    const mergeActionBtn = document.getElementById('merge-action-btn');
+    const mergeBtnText = document.getElementById('merge-btn-text');
+    const outputFilenameInput = document.getElementById('output-filename');
+    const downloadMergedBtn = document.getElementById('download-merged-btn');
+    const resetWorkbenchBtn = document.getElementById('reset-workbench-btn');
+    const successDescription = document.getElementById('success-description');
 
-          activeWorkbench.classList.add('hidden');
-          progressBox.classList.remove('hidden');
+    // Trigger file chooser
+    if (emptyDropzone) emptyDropzone.addEventListener('click', (e) => {
+      if (e.target === browseBtn || browseBtn.contains(e.target)) return;
+      fileInput.click();
+    });
+    if (browseBtn) browseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput.click();
+    });
+    if (addMoreBtn) addMoreBtn.addEventListener('click', () => fileInput.click());
 
-          const updateProgress = (pct, msg) => {
-            progressBarFill.style.width = `${pct}%`;
-            progressPercentText.textContent = `${pct}%`;
-            progressStatusText.textContent = msg || `Processing... ${pct}%`;
-          };
+    // Drag and drop handlers on empty dropzone
+    ['dragenter', 'dragover'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+    emptyDropzone.addEventListener('drop', (e) => {
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+      if (files.length > 0) handleIncomingFiles(files);
+    });
 
+    // File input change
+    fileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0) handleIncomingFiles(files);
+      fileInput.value = ''; // reset so same files can be re-selected
+    });
+
+    // Format file sizes
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Process incoming files into queue
+    async function handleIncomingFiles(files) {
+      for (const file of files) {
+        try {
+          const buffer = await file.arrayBuffer();
+          // Load document to extract exact page count using pdf-lib
+          let pageCount = 1;
           try {
-            updateProgress(20, 'Reading files into memory...');
-
-            const filePayloads = [];
-            const transferables = [];
-
-            for (const file of selectedFiles) {
-              const arrayBuffer = await file.arrayBuffer();
-              filePayloads.push({ name: file.name, arrayBuffer });
-              transferables.push(arrayBuffer);
-            }
-
-            updateProgress(50, 'Executing background Web Worker engine...');
-
-            const result = await window.SlowPDFEngine.execute(
-              'MERGE',
-              { files: filePayloads },
-              transferables,
-              updateProgress
-            );
-
-            if (result && result.success && result.pdfBytes) {
-              updateProgress(100, 'Done!');
-              const blob = new Blob([result.pdfBytes], { type: 'application/pdf' });
-              if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-              processedBlobUrl = URL.createObjectURL(blob);
-
-              setTimeout(() => {
-                progressBox.classList.add('hidden');
-                successPanel.classList.remove('hidden');
-              }, 400);
-            } else {
-              throw new Error('Worker returned unsuccessful result.');
-            }
+            const pdfDoc = await PDFLib.PDFDocument.load(buffer.slice(0), { ignoreEncryption: true });
+            pageCount = pdfDoc.getPageCount();
           } catch (err) {
-            console.warn('Worker fallback executed:', err);
-            // Fallback for PDFLib
-            try {
-              updateProgress(70, 'Fallback execution on main thread...');
-              const result = await window.SlowPDFEngine.executeFallback('MERGE', { files: selectedFiles }, updateProgress);
-              if (result && result.pdfBytes) {
-                const blob = new Blob([result.pdfBytes], { type: 'application/pdf' });
-                if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-                processedBlobUrl = URL.createObjectURL(blob);
-                progressBox.classList.add('hidden');
-                successPanel.classList.remove('hidden');
-              }
-            } catch (fallbackErr) {
-              alert('Error processing PDF: ' + fallbackErr.message);
-              progressBox.classList.add('hidden');
-              activeWorkbench.classList.remove('hidden');
-            }
+            console.warn('Could not read page count:', err);
           }
-        };
+
+          pdfQueue.push({
+            id: 'doc_' + Math.random().toString(36).substring(2, 9),
+            name: file.name,
+            size: file.size,
+            pageCount: pageCount,
+            arrayBuffer: buffer
+          });
+        } catch (err) {
+          console.error('Error reading PDF file:', err);
+        }
+      }
+      renderQueue();
+    }
+
+    // Render file queue
+    function renderQueue() {
+      if (pdfQueue.length === 0) {
+        emptyDropzone.classList.remove('hidden');
+        activeWorkbench.classList.add('hidden');
+        successPanel.classList.add('hidden');
+        return;
       }
 
-      if (downloadResultBtn) {
-        downloadResultBtn.onclick = () => {
-          if (!processedBlobUrl) return;
-          const a = document.createElement('a');
-          a.href = processedBlobUrl;
-          a.download = 'merge-pdf_processed.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        };
-      }
+      emptyDropzone.classList.add('hidden');
+      activeWorkbench.classList.remove('hidden');
+      successPanel.classList.add('hidden');
 
-      if (resetBtn) {
-        resetBtn.onclick = () => {
-          selectedFiles = [];
-          if (fileInput) fileInput.value = '';
-          if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-          processedBlobUrl = null;
+      // Update summary
+      const totalPages = pdfQueue.reduce((acc, f) => acc + f.pageCount, 0);
+      const totalBytes = pdfQueue.reduce((acc, f) => acc + f.size, 0);
 
-          successPanel.classList.add('hidden');
-          activeWorkbench.classList.add('hidden');
-          emptyDropzone.classList.remove('hidden');
-        };
+      queueCountBadge.textContent = pdfQueue.length;
+      queueSummaryText.textContent = `${pdfQueue.length} Document${pdfQueue.length > 1 ? 's' : ''} Ready to Merge`;
+      queueStatsText.textContent = `Total Pages: ${totalPages} • Estimated Size: ~${formatBytes(totalBytes)}`;
+
+      // Render items
+      fileItemsList.innerHTML = '';
+      pdfQueue.forEach((file, index) => {
+        const item = document.createElement('div');
+        item.className = 'tool-card rounded-xl p-4 flex items-center justify-between gap-4 transition-all hover:border-[#355E4B]';
+        
+        const isFirst = index === 0;
+        const isLast = index === pdfQueue.length - 1;
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3.5 min-w-0 flex-1">
+            <span class="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-[#355E4B] dark:text-emerald-400 font-bold text-xs flex items-center justify-center shrink-0">
+              #${index + 1}
+            </span>
+            <div class="w-9 h-9 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h5 class="text-sm font-bold text-[#222E28] dark:text-white truncate" title="${file.name}">
+                ${file.name}
+              </h5>
+              <p class="text-xs text-stone-500 dark:text-stone-400">
+                ${file.pageCount} Page${file.pageCount > 1 ? 's' : ''} • ${formatBytes(file.size)}
+              </p>
+            </div>
+          </div>
+
+          <!-- Reorder & Delete Controls -->
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button 
+              type="button" 
+              class="move-up-btn p-1.5 rounded-lg border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors" 
+              data-index="${index}" 
+              ${isFirst ? 'disabled' : ''}
+              title="Move up"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+            </button>
+            <button 
+              type="button" 
+              class="move-down-btn p-1.5 rounded-lg border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors" 
+              data-index="${index}" 
+              ${isLast ? 'disabled' : ''}
+              title="Move down"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <button 
+              type="button" 
+              class="remove-btn p-1.5 rounded-lg text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors ml-1" 
+              data-index="${index}"
+              title="Remove file"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        `;
+        fileItemsList.appendChild(item);
+      });
+
+      // Bind move and remove buttons
+      document.querySelectorAll('.move-up-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+          if (idx > 0) {
+            const temp = pdfQueue[idx];
+            pdfQueue[idx] = pdfQueue[idx - 1];
+            pdfQueue[idx - 1] = temp;
+            renderQueue();
+          }
+        });
+      });
+
+      document.querySelectorAll('.move-down-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+          if (idx < pdfQueue.length - 1) {
+            const temp = pdfQueue[idx];
+            pdfQueue[idx] = pdfQueue[idx + 1];
+            pdfQueue[idx + 1] = temp;
+            renderQueue();
+          }
+        });
+      });
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+          pdfQueue.splice(idx, 1);
+          renderQueue();
+        });
+      });
+
+      mergeActionBtn.disabled = pdfQueue.length < 2;
+      if (pdfQueue.length < 2) {
+        mergeBtnText.textContent = 'Add at least 2 files to merge';
+      } else {
+        mergeBtnText.textContent = `Merge ${pdfQueue.length} PDFs Now`;
       }
-    })();
+    }
+
+    // Clear all files
+    clearAllBtn.addEventListener('click', () => {
+      pdfQueue = [];
+      renderQueue();
+    });
+
+    // Execute Client-Side Merge
+    mergeActionBtn.addEventListener('click', async () => {
+      if (pdfQueue.length < 2) return;
+
+      mergeActionBtn.disabled = true;
+      mergeBtnText.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Merging Documents in RAM...
+      `;
+
+      try {
+        const mergedPdf = await PDFLib.PDFDocument.create();
+
+        for (let i = 0; i < pdfQueue.length; i++) {
+          const item = pdfQueue[i];
+          const srcDoc = await PDFLib.PDFDocument.load(item.arrayBuffer.slice(0), { ignoreEncryption: true });
+          const copiedPages = await mergedPdf.copyPages(srcDoc, srcDoc.getPageIndices());
+          copiedPages.forEach((page) => mergedPdf.addPage(page));
+        }
+
+        const mergedBytes = await mergedPdf.save();
+        const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+
+        const successFilenameInput = document.getElementById('success-filename-input');
+        const defaultBaseName = 'SlowPDF_Merged_Document';
+
+        function computeMergeDownloadName() {
+          let userVal = (successFilenameInput && successFilenameInput.value ? successFilenameInput.value.trim() : '') || (outputFilenameInput ? outputFilenameInput.value.trim() : '') || defaultBaseName;
+          userVal = userVal.replace(/(\.pdf)+$/i, '').trim();
+          if (!userVal) userVal = defaultBaseName;
+          return `${userVal}.pdf`;
+        }
+
+        if (successFilenameInput) {
+          successFilenameInput.value = (outputFilenameInput && outputFilenameInput.value.trim()) ? outputFilenameInput.value.trim().replace(/\.pdf$/i, '') : defaultBaseName;
+          successFilenameInput.oninput = () => {
+            const currentName = computeMergeDownloadName();
+            downloadMergedBtn.download = currentName;
+            downloadMergedBtn.setAttribute('download', currentName);
+          };
+        }
+
+        const finalFileName = computeMergeDownloadName();
+        downloadMergedBtn.href = url;
+        downloadMergedBtn.download = finalFileName;
+        downloadMergedBtn.setAttribute('download', finalFileName);
+
+        downloadMergedBtn.onclick = () => {
+          const latestName = computeMergeDownloadName();
+          downloadMergedBtn.download = latestName;
+          downloadMergedBtn.setAttribute('download', latestName);
+        };
+
+        const totalPages = mergedPdf.getPageCount();
+        const totalSize = formatBytes(mergedBytes.byteLength);
+        successDescription.textContent = `Successfully merged ${pdfQueue.length} documents into a single ${totalPages}-page PDF (${totalSize}) with zero cloud uploads.`;
+
+        // Switch to success view
+        activeWorkbench.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Error during client-side merge:', err);
+        alert('An error occurred while merging your PDF documents. Please make sure the files are valid and not password-protected.');
+      } finally {
+        mergeActionBtn.disabled = false;
+        mergeBtnText.textContent = `Merge ${pdfQueue.length} PDFs Now`;
+      }
+    });
+
+    // Reset Workbench to Merge More Files
+    resetWorkbenchBtn.addEventListener('click', () => {
+      pdfQueue = [];
+      renderQueue();
+    });
+
+    // -------------------------------------------------------------------------
+    // 4. CAROUSEL INITIALIZATION
+    // Centralized carousel engine from assets/js/carousel.js handles rendering
+    // -------------------------------------------------------------------------
+
+    // ----------------------------------------------------
+    // 5. ACCORDION FAQ LOGIC
+    // ----------------------------------------------------
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon svg');
+
+      trigger.addEventListener('click', () => {
+        const isOpen = !content.classList.contains('hidden');
+        if (isOpen) {
+          content.classList.add('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>';
+          item.classList.remove('ring-1', 'ring-[#355E4B]');
+        } else {
+          content.classList.remove('hidden');
+          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/>';
+          item.classList.add('ring-1', 'ring-[#355E4B]');
+        }
+      });
+    });
+
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          faqBtnText.textContent = 'Show Fewer Questions';
+          faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          faqBtnText.textContent = 'View All 10 Questions';
+          faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+
   </script>
+
+<!-- ========================================== -->
+<!-- MOBILE NAVIGATION DRAWER & INLINE SCRIPT  -->
+<!-- ========================================== -->
+<style>
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #FFFBF2;
+    z-index: 999999;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+  }
+  .mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #E8DABF;
+  }
+  .drawer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1D3D33;
+    font-family: inherit;
+  }
+  .close-menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #1D3D33;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mobile-nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1D3D33;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(232, 218, 191, 0.3);
+    border: 1px solid rgba(39, 71, 55, 0.12);
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-links a:hover {
+    background: #E8DABF;
+    color: #1D3D33;
+  }
+</style>
+
+<div id="mobileMenuDrawer" class="mobile-menu-drawer" style="display:none;">
+  <div class="mobile-drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button id="closeMenuBtn" class="close-menu-btn">&times;</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#popular-tools">Tools</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+</div>
+
+<script>
+  (function() {
+    function initMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn') || document.getElementById('hamburger-btn') || document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-icon');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const closeBtn = document.getElementById('closeMenuBtn');
+      
+      if (!menuBtn || !drawer) return;
+
+      menuBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        drawer.style.display = (drawer.style.display === 'none' || drawer.style.display === '') ? 'flex' : 'none';
+      };
+
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          drawer.style.display = 'none';
+        };
+      }
+
+      document.addEventListener('click', function(e) {
+        if (drawer.style.display === 'flex' && !drawer.contains(e.target) && !menuBtn.contains(e.target)) {
+          drawer.style.display = 'none';
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+      initMenu();
+    }
+  })();
+</script>
 </body>
 </html>

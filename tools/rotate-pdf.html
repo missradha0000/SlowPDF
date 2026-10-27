@@ -11,13 +11,121 @@
   gtag("config", "G-K8MGQ1D3QQ");
 </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rotate PDF Pages — 100% Private Local Processing | SlowPDF</title>
-  <meta name="description" content="Rotate upside-down scanned pages or landscape diagrams to perfect portrait orientation." />
-  <meta property="og:title" content="Rotate PDF Pages | SlowPDF" />
-  <meta property="og:description" content="Rotate upside-down scanned pages or landscape diagrams to perfect portrait orientation." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+  <title>Free Online PDF Page Rotator — Rotate Single or All Pages Permanently | SlowPDF</title>
+  <meta name="description" content="Rotate single PDF pages or entire multi-page documents 90°, 180°, or 270° online for free. 100% private in-browser RAM rotation with pdf-lib. Zero cloud uploads, permanent metadata fix." />
+  <meta property="og:title" content="Free Online PDF Page Rotator — Rotate Single or All Pages Permanently | SlowPDF" />
+  <meta property="og:description" content="Rotate individual PDF pages or all pages at once 90°, 180°, or 270°. 100% private client-side processing, zero server uploads, vector quality preservation." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://slowpdf.me/tools/rotate-pdf.html" />
+  <meta property="og:url" content="https://slowpdf.in/tools/rotate-pdf.html" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SlowPDF Rotate PDF",
+        "url": "https://slowpdf.in/tools/rotate-pdf.html",
+        "description": "100% client-side private PDF rotation tool to turn individual or all PDF pages 90°, 180°, or 270° permanently inside browser local RAM.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I rotate only one page instead of the whole file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF lets you rotate individual pages independently using the ↺ and ↻ buttons on each page thumbnail, or rotate all pages together in a single tap."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will the rotated PDF remain in the correct orientation permanently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SlowPDF updates the native PDF page rotation dictionary inside the file metadata using pdf-lib. The new orientation is permanently saved across all viewers, including Adobe Acrobat, Google Drive, Apple Preview, and mobile PDF apps."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does rotating a PDF reduce its text or image quality?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Rotating pages only modifies the orientation angle metadata tags. Text sharpness, vector artwork, embedded high-resolution images, links, and fonts remain 100% untouched without any re-compression loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I rotate scanned contracts or receipts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. You can upload any scanned PDF, photograph document, or digital contract, orient sideways or upside-down pages correctly, and save a clean PDF instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it safe to rotate confidential documents on SlowPDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "100% safe. SlowPDF operates entirely in your device's browser RAM using WebAssembly and Web Workers. No file or personal data is ever uploaded, stored, or transmitted to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I rotate pages by 180 degrees?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simply click the Rotate Right (↻ 90°) or Rotate Left (↺ 90°) button twice on any page thumbnail or use the batch action bar to rotate all pages by 180 degrees."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool work on mobile phones without installing apps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF features a mobile-optimized view with touch-friendly thumbnail buttons and a sticky bottom dock that works seamlessly on iOS Safari, Android Chrome, and tablets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to bookmarks and hyperlinks inside the rotated PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All existing bookmarks, interactive links, outline structures, and form fields are completely preserved in your rotated PDF document."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there any file size or page count limitation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There are no cloud limits, artificial queues, or page caps. You can process large multi-page PDF files bound only by your device's available memory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SlowPDF really 100% free with no watermarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! SlowPDF is completely free to use with zero hidden subscriptions, zero account registrations, and zero added watermarks."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,17 +162,27 @@
     };
   </script>
 
-  <!-- PDF-Lib v1.17.1 for Client-Side PDF Processing -->
+  <!-- PDF.js & PDF-Lib Client-Side Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    }
+  </script>
 
   <!-- Centralized Banners, Carousel Engine and Smart Navigation Memory -->
   <script src="../assets/js/banners.js"></script>
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
-  <script src="../assets/js/share.js"></script>
 
   <style>
+    /* ==========================================================================
+       LOCKED THEME SPECIFICATION:
+       - Page background: #FFFBF2 !important
+       - Header background: #E8DABF !important
+       ========================================================================== */
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: #FFFBF2 !important;
@@ -83,14 +201,14 @@
     }
     .dark #site-header,
     .dark header.site-header {
-      background-color: #151D19 !important;
+      background-color: #E8DABF !important;
     }
 
     .tool-card {
       background-color: #FFFFFF;
       border: 1px solid rgba(226, 218, 202, 0.7);
-      box-shadow: 0 4px 18px -2px rgba(60, 50, 30, 0.05);
-      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px -2px rgba(60, 50, 30, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .dark .tool-card {
       background-color: #1C2420;
@@ -99,13 +217,13 @@
       box-shadow: none;
     }
 
-    .header-mascot-idle {
-      animation: headerMascotFloat 3.5s ease-in-out infinite;
-      will-change: transform;
-    }
     @keyframes headerMascotFloat {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-2px); }
+    }
+    .header-mascot-idle {
+      animation: headerMascotFloat 3.5s ease-in-out infinite;
+      will-change: transform;
     }
 
     .dragover-active {
@@ -118,24 +236,79 @@
       border-color: #5E9B7E !important;
     }
 
-    .banner-card-gradient {
-      background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;
-      color: #ffffff !important;
+    .nav-link {
+      transition: all 0.2s ease;
+      color: #2D3748 !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      background-color: rgba(39, 71, 55, 0.14);
+      color: #0B140F !important;
     }
 
+    .mascot-celebration {
+      background-color: transparent !important;
+      object-fit: contain;
+    }
+
+    /* Page Thumbnail Animation */
+    .thumbnail-card-canvas {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center center;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFFBF2; }
+    .dark ::-webkit-scrollbar-track { background: #121815; }
+    ::-webkit-scrollbar-thumb { background: #C4D3CB; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #355E4B; }
+  
     @media (max-width: 768px) {
-      #site-header, header.site-header, header { overflow-x: hidden !important; }
-      #site-header nav, header.site-header nav, header nav, #site-header .nav-link, header.site-header .nav-link { display: none !important; }
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: none !important;
+      }
     }
     @media (min-width: 769px) {
-      #site-header nav, header.site-header nav, header nav { display: flex !important; }
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
     }
+  
+    /* Mobile Navigation Layout: Hide top header nav on screens <= 768px, show on >= 769px */
+    @media (max-width: 768px) {
+      #site-header,
+      header.site-header,
+      header {
+        overflow-x: hidden !important;
+      }
+      #site-header nav,
+      header.site-header nav,
+      header nav,
+      #site-header .nav-link,
+      header.site-header .nav-link {
+        display: none !important;
+      }
+    }
+    @media (min-width: 769px) {
+      #site-header nav,
+      header.site-header nav,
+      header nav {
+        display: flex !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
 
-  <!-- 1. TOP HEADER / NAVBAR -->
-  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#151D19] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-stone-800/80 shadow-xs" style="background-color: #E8DABF !important;">
+  <!-- ========================================== -->
+  <!-- 1. TOP HEADER / NAVBAR                     -->
+  <!-- ========================================== -->
+  <header id="site-header" class="site-header w-full sticky top-0 z-40 bg-[#E8DABF] dark:bg-[#E8DABF] transition-colors duration-300 border-b border-[#D8C7A5] dark:border-[#D8C7A5] shadow-xs" style="background-color: #E8DABF !important;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo & Title -->
@@ -155,12 +328,12 @@
 
       <!-- Center Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
-        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
-        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105">Tools</a>
-        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
-        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
-        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
-        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
+        <a id="nav-home-link" href="../index.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Home</a>
+        <a href="../index.html#popular-tools" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Tools</a>
+        <a href="../blog.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Blog</a>
+        <a href="../about.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">About</a>
+        <a href="../privacy.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Privacy</a>
+        <a href="../terms.html" class="nav-link px-3 py-1.5 rounded-lg text-[#2D3748] dark:text-[#2D3748]">Terms</a>
       </nav>
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
@@ -169,30 +342,33 @@
           id="header-share-btn"
           type="button"
           onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
-          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none"
+          class="w-10 h-10 flex items-center justify-center rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           title="Share Page"
           aria-label="Share Page"
         >
-          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+          <svg class="w-5 h-5 text-[#2D3748] dark:text-[#2D3748]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
         </button>
         <button 
           id="hamburger-btn" 
           type="button"
-          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none"
+          class="hamburger-btn mobile-menu-btn p-2.5 rounded-xl text-[#2D3748] dark:text-[#2D3748] hover:bg-[#2D3748]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
           <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
-            <line x1="4" y1="6" x2="20" y2="6" id="line1" />
-            <line x1="4" y1="12" x2="20" y2="12" id="line2" />
-            <line x1="4" y1="18" x2="20" y2="18" id="line3" />
+            <line x1="4" y1="6" x2="20" y2="6" id="line1" class="transition-transform duration-200" />
+            <line x1="4" y1="12" x2="20" y2="12" id="line2" class="transition-opacity duration-200" />
+            <line x1="4" y1="18" x2="20" y2="18" id="line3" class="transition-transform duration-200" />
           </svg>
         </button>
       </div>
     
   </header>
 
-  <!-- 2. QUICK PREFERENCES DRAWER MODAL -->
+  <!-- Preferences Drawer Modal -->
+  <!-- Dedicated Mobile Navigation & Preferences Modal -->
   <div 
     id="menu-modal" 
     class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0"
@@ -230,10 +406,10 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="py-4 space-y-2 border-b border-stone-100 dark:border-stone-700/60 text-sm">
+      <!-- Navigation & Legal Links with Blog -->
+      <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1 font-medium">Home</a>
+        <a href="/" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Home</a>
         <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
           <span>Blog &amp; Articles</span>
           <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
@@ -252,238 +428,602 @@
       <!-- Social Media Icons in Menu -->
       <div class="pt-4">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Connect With Us</div>
-        <div class="flex items-center flex-wrap gap-2.5 px-1 text-stone-500 dark:text-stone-400" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-start;">
-          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="WhatsApp" title="WhatsApp"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#229ED9] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="Telegram" title="Telegram"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="YouTube" title="YouTube"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);" aria-label="Instagram" title="Instagram"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform" aria-label="Facebook" title="Facebook"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shadow-xs hover:scale-110 transition-transform dark:bg-stone-800" aria-label="X / Twitter" title="X / Twitter"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <div class="flex items-center justify-between px-1">
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#E4405F]" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#1877F2]" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#000000] dark:text-white" aria-label="X">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#FF0000]" aria-label="YouTube">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#24A1DE]" aria-label="Telegram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          </a>
+          <a href="#" class="p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 transform hover:scale-110 text-[#25D366]" aria-label="WhatsApp">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
         </div>
-      </div>
-
-      <div class="pt-3 mt-3 border-t border-stone-100 dark:border-stone-700/60 text-center">
-        <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Crafted with ❤️ by Tveezal</p>
       </div>
     </div>
   </div>
 
-  <!-- 3. MAIN TOOL CONTAINER WORKSPACE -->
-  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 sm:py-12 w-full">
+  <!-- ========================================== -->
+  <!-- 2. HERO & ROTATE PDF WORKBENCH             -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
     
-    <!-- Hero Title & Badge -->
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-      <span class="inline-block px-3.5 py-1.5 rounded-full bg-[#355E4B]/10 dark:bg-[#355E4B]/30 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3">
-        Instant 90° / 180° Orientation Adjuster
-      </span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#222E28] dark:text-white tracking-tight leading-tight mb-4">
-        Rotate PDF Pages
+    <!-- Title & Breadcrumb -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+            <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
+        Rotate PDF Pages Online Free
       </h1>
-      <p class="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto leading-relaxed">
-        Rotate upside-down scanned pages or landscape diagrams to perfect portrait orientation.
+      <p class="mt-3 text-stone-600 dark:text-stone-400 text-sm sm:text-base leading-relaxed">
+        Fix upside-down or sideways pages permanently. Rotate single pages or whole documents 90°, 180°, or 270° in local browser memory.
       </p>
     </div>
 
-    <!-- Main Interactive Card -->
-    <div class="tool-card rounded-3xl p-6 sm:p-10 shadow-xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800">
-      
-      <!-- STATE 1: EMPTY DROPZONE -->
-      <div id="empty-dropzone" class="w-full">
-        <div 
-          id="dropzone" 
-          class="border-3 border-dashed border-[#355E4B]/30 dark:border-stone-700 hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center transition-all duration-300 cursor-pointer bg-stone-50/50 dark:bg-stone-900/30 hover:bg-stone-100/60 dark:hover:bg-stone-900/50 flex flex-col items-center justify-center gap-4"
+    <!-- Hidden File Input -->
+    <input 
+      type="file" 
+      id="pdf-file-input" 
+      accept=".pdf,application/pdf" 
+      class="hidden" 
+    />
+
+    <!-- WORKBENCH CARD CONTAINER -->
+    <div class="tool-card rounded-3xl p-4 sm:p-8 transition-all duration-300 relative overflow-hidden">
+
+      <!-- ========================================== -->
+      <!-- VIEW A: EMPTY DROPZONE STATE               -->
+      <!-- ========================================== -->
+      <div 
+        id="empty-dropzone" 
+        class="border-2 border-dashed border-[#C5D5CC] dark:border-[#2D3E35] hover:border-[#355E4B] dark:hover:border-emerald-500 rounded-2xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 bg-stone-50/50 dark:bg-[#161F1B]/50 group"
+      >
+        <div class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-[#355E4B] dark:text-emerald-400 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+          <!-- Rotate Arrows Icon -->
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </div>
+
+        <h3 class="text-xl font-bold text-[#222E28] dark:text-white mb-2">
+          Choose a PDF file or drag &amp; drop here
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 max-w-md mx-auto mb-6 leading-relaxed">
+          Supports multi-page documents, scanned files, contracts, and receipts. Files never leave your browser RAM.
+        </p>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('pdf-file-input').click()"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
         >
-          <input 
-            type="file" 
-            id="pdf-file-input" 
-            class="hidden" 
-             
-            accept=".pdf,application/pdf"
-          />
-
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#355E4B]/10 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-400 flex items-center justify-center shadow-inner">
-            <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-          </div>
-
-          <div>
-            <p class="text-lg sm:text-xl font-bold text-[#222E28] dark:text-white">
-              Drag & Drop PDF files here
-            </p>
-            <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
-              or click below to choose files from your device
-            </p>
-          </div>
-
-          <button 
-            type="button" 
-            id="browse-btn"
-            class="px-7 py-3.5 rounded-full font-bold text-sm bg-[#274737] hover:bg-[#1E362A] text-white shadow-md hover:shadow-lg transition-all transform hover:scale-105"
-          >
-            Select PDF Files
-          </button>
-        </div>
-
-        <!-- Trust Bullets -->
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs font-semibold text-stone-500 dark:text-stone-400">
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> 100% In-Browser Memory
-          </div>
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> Unlimited File Size
-          </div>
-          <div class="flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-100/60 dark:bg-stone-800/40">
-            <span class="text-emerald-600">✓</span> Zero Server Uploads
-          </div>
-        </div>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Select PDF Document
+        </button>
       </div>
 
-      <!-- STATE 2: ACTIVE WORKBENCH -->
-      <div id="active-workbench" class="hidden w-full space-y-6">
-        <div class="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-stone-800">
-          <div>
-            <h3 class="text-lg font-bold text-[#222E28] dark:text-white" id="file-title-display">Selected Document</h3>
-            <p class="text-xs text-stone-500 dark:text-stone-400" id="file-meta-display">Ready for processing</p>
+      <!-- ========================================== -->
+      <!-- VIEW B: ROTATION WORKSPACE & THUMBNAIL GRID-->
+      <!-- ========================================== -->
+      <div id="workbench-panel" class="hidden space-y-6">
+        
+        <!-- File Info Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-[#274737] dark:text-emerald-300 flex items-center justify-center shrink-0 font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-extrabold text-sm sm:text-base text-[#222E28] dark:text-white truncate" id="loaded-file-name">
+                Document.pdf
+              </p>
+              <p class="text-xs text-stone-500 dark:text-stone-400" id="loaded-file-stats">
+                0 MB • 0 Pages
+              </p>
+            </div>
           </div>
+
           <button 
             type="button" 
-            id="change-file-btn" 
-            class="text-xs font-bold text-[#355E4B] dark:text-emerald-400 hover:underline"
+            id="change-file-btn"
+            class="text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white py-2 px-3.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#161F1B] hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors self-start sm:self-center shrink-0 flex items-center gap-1.5"
           >
-            Change File
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Change PDF
           </button>
         </div>
 
-        <!-- Files List / Queue -->
-        <div id="files-queue-container" class="space-y-3 max-h-60 overflow-y-auto pr-1"></div>
+        <!-- GLOBAL BATCH ACTION BAR (Top Control Strip) -->
+        <div class="sticky top-20 z-30 p-3 sm:p-4 rounded-2xl bg-white/95 dark:bg-[#1C2420]/95 backdrop-blur-md border border-stone-200 dark:border-stone-700 shadow-md flex flex-wrap items-center justify-between gap-3">
+          
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-[#274737] dark:text-emerald-300 text-xs font-extrabold" id="page-count-badge">
+              0 Pages
+            </span>
+            <span class="hidden sm:inline text-xs text-stone-500 dark:text-stone-400">
+              Click individual page controls or rotate all
+            </span>
+          </div>
 
-        <!-- Action Button Box -->
-        <div class="pt-4 flex justify-end">
-          <button 
-            type="button" 
-            id="process-action-btn" 
-            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base bg-[#274737] hover:bg-[#1E362A] text-white shadow-lg hover:shadow-xl transition-all"
-          >
-            Rotate PDF Pages
-          </button>
+          <!-- Batch Action Buttons -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <button 
+              type="button" 
+              id="rotate-all-left-btn"
+              class="py-2 px-3 sm:px-3.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 hover:bg-emerald-50 hover:border-emerald-300 text-xs font-bold text-[#222E28] dark:text-white transition-all flex items-center gap-1.5"
+              title="Rotate all pages 90° left"
+            >
+              <span class="text-base leading-none">↺</span>
+              <span>Rotate All Left</span>
+            </button>
+
+            <button 
+              type="button" 
+              id="rotate-all-right-btn"
+              class="py-2 px-3 sm:px-3.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-900 hover:bg-emerald-50 hover:border-emerald-300 text-xs font-bold text-[#222E28] dark:text-white transition-all flex items-center gap-1.5"
+              title="Rotate all pages 90° right"
+            >
+              <span class="text-base leading-none">↻</span>
+              <span>Rotate All Right</span>
+            </button>
+
+            <button 
+              type="button" 
+              id="reset-all-btn"
+              class="py-2 px-2.5 sm:px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#161F1B] hover:bg-rose-50 hover:text-rose-700 hover:border-rose-200 text-xs font-semibold text-stone-600 dark:text-stone-300 transition-all"
+              title="Reset all rotations to original angles"
+            >
+              Reset All
+            </button>
+
+            <button 
+              type="button" 
+              id="save-pdf-desktop-btn"
+              class="py-2.5 px-5 rounded-xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 focus:outline-none"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+              <span>Save &amp; Download PDF</span>
+            </button>
+          </div>
         </div>
+
+        <!-- VISUAL THUMBNAIL GRID -->
+        <!-- Desktop: 4-5 cols, Mobile: 2 cols -->
+        <div 
+          id="thumbnail-grid" 
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5 pt-2"
+        >
+          <!-- Dynamic Thumbnail Cards Rendered via JS -->
+        </div>
+
+        <!-- Loading / Progress Box -->
+        <div id="processing-progress-box" class="hidden space-y-2 p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40">
+          <div class="flex items-center justify-between text-xs font-bold text-[#222E28] dark:text-white">
+            <span id="progress-status-text">Saving rotation metadata in local RAM...</span>
+            <span id="progress-percent-text">0%</span>
+          </div>
+          <div class="w-full bg-stone-200 dark:bg-stone-700 rounded-full h-2.5 overflow-hidden">
+            <div id="progress-bar-fill" class="bg-[#355E4B] dark:bg-emerald-500 h-2.5 rounded-full transition-all duration-200" style="width: 0%"></div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- STATE 3: PROGRESS BOX -->
-      <div id="processing-progress-box" class="hidden w-full py-8 text-center space-y-4">
-        <div class="w-16 h-16 mx-auto rounded-full bg-[#355E4B]/10 dark:bg-emerald-950/60 flex items-center justify-center text-[#274737] dark:text-emerald-400 animate-spin">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
+      <!-- ========================================== -->
+      <!-- VIEW C: SUCCESS & DOWNLOAD PANEL           -->
+      <!-- ========================================== -->
+      <div id="success-panel" class="hidden text-center py-6 sm:py-8 space-y-6">
+        
+        <!-- Cute 3D glasses tortoise mascot celebration display -->
+        <div class="relative inline-block mx-auto mb-1">
+          <div class="mascot-backlight w-24 h-24 sm:w-28 sm:h-28 mx-auto flex items-center justify-center dark:bg-emerald-500/10 dark:rounded-full p-2 transition-all">
+            <img 
+              src="../assets/images/mascot/tortoise-hero.png" 
+              alt="SlowPDF Mascot Rotate Celebration" 
+              class="mascot-celebration dark:mix-blend-normal opacity-100 w-full h-full object-contain filter drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+              onerror="this.src='../public/assets/images/mascot/tortoise-hero.png'"
+            />
+          </div>
+          <span class="absolute -bottom-1 -right-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[11px] font-extrabold tracking-wide uppercase shadow-sm border border-emerald-400/40">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            PDF Rotated Successfully!
+          </span>
         </div>
+
         <div>
-          <p id="progress-status-text" class="text-base font-bold text-[#222E28] dark:text-white">Processing PDF in background worker...</p>
-          <p id="progress-percent-text" class="text-2xl font-extrabold text-[#355E4B] dark:text-emerald-400 mt-1">20%</p>
-        </div>
-        <div class="w-full max-w-md mx-auto h-3 rounded-full bg-stone-200 dark:bg-stone-800 overflow-hidden">
-          <div id="progress-bar-fill" class="h-full bg-[#355E4B] dark:bg-emerald-500 transition-all duration-300 w-1/5"></div>
-        </div>
-      </div>
-
-      <!-- STATE 4: SUCCESS PANEL -->
-      <div id="success-panel" class="hidden w-full py-6 text-center space-y-6">
-        <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-lg">
-          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <div>
-          <h3 class="text-2xl font-extrabold text-[#222E28] dark:text-white">Task Completed Successfully!</h3>
-          <p class="text-sm text-stone-500 dark:text-stone-400 mt-1" id="success-description">Processed 100% locally in your browser memory.</p>
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-[#274737] dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            Orientation Saved
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white">
+            Your Rotated PDF is Ready!
+          </h3>
+          <p class="mt-2 text-stone-600 dark:text-stone-300 text-sm max-w-md mx-auto leading-relaxed">
+            All page angles have been permanently updated in browser RAM. Download your fixed PDF below.
+          </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <!-- Output File Name & Stat Details -->
+        <div class="max-w-md mx-auto p-4 rounded-xl bg-stone-50 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 text-left flex items-center justify-between text-xs sm:text-sm">
+          <div class="min-w-0 pr-3">
+            <p class="font-bold text-[#222E28] dark:text-white truncate" id="success-file-name-display">
+              SlowPDF_Rotated_Document.pdf
+            </p>
+            <p class="text-stone-500 dark:text-stone-400 text-xs" id="success-file-stats-display">
+              0 MB • Permanent Page Angles Saved
+            </p>
+          </div>
+          <span class="shrink-0 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 text-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Processed in RAM
+          </span>
+        </div>
+
+        <!-- Editable Output File Name Input -->
+        <div class="max-w-md mx-auto text-left space-y-1.5">
+          <label for="output-filename-input" class="block text-xs font-bold text-stone-600 dark:text-stone-300">
+            Save File As (Custom Editable File Name):
+          </label>
+          <div class="relative flex items-center">
+            <input 
+              type="text" 
+              id="output-filename-input" 
+              value="SlowPDF_Rotated_Document" 
+              class="w-full px-3.5 py-2.5 pr-14 text-xs sm:text-sm font-semibold rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] text-[#222E28] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#355E4B] transition-all shadow-xs"
+              placeholder="SlowPDF_Rotated_Document"
+            />
+            <span class="absolute right-3.5 text-xs font-bold text-stone-400 dark:text-stone-500 pointer-events-none select-none">
+              .pdf
+            </span>
+          </div>
+        </div>
+
+        <!-- Primary & Secondary Action Buttons -->
+        <div class="max-w-md mx-auto space-y-3 pt-2">
           <button 
             type="button" 
-            id="download-result-btn" 
-            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base bg-[#274737] hover:bg-[#1E362A] text-white shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+            id="download-rotated-pdf-btn"
+            class="w-full py-4 px-6 rounded-2xl bg-[#274737] hover:bg-[#1e382b] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-[#355E4B]"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            Download Processed PDF
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>Download Rotated PDF</span>
           </button>
+
           <button 
             type="button" 
-            id="reset-btn" 
-            class="w-full sm:w-auto px-6 py-4 rounded-full font-bold text-sm bg-stone-200 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-800 dark:text-white transition-all"
+            id="rotate-another-pdf-btn"
+            class="w-full py-3 px-6 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#161F1B] hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 font-bold text-sm transition-all flex items-center justify-center gap-2"
           >
-            Process Another File
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>Rotate Another PDF</span>
           </button>
         </div>
+
       </div>
 
     </div>
 
-    <!-- FAQ Section -->
+  </main>
+
+  <!-- MOBILE STICKY BOTTOM ACTION DOCK (< 768px) -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 dark:bg-[#1C2420]/95 backdrop-blur-md border-t border-stone-200 dark:border-stone-800 shadow-lg hidden" id="mobile-sticky-dock">
+    <div class="flex items-center gap-2">
+      <button 
+        type="button" 
+        id="mobile-rotate-all-btn"
+        class="flex-1 py-3 px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-xs font-bold text-[#222E28] dark:text-white flex items-center justify-center gap-1.5"
+      >
+        <span class="text-sm">↻</span>
+        <span>Rotate All ↻</span>
+      </button>
+
+      <button 
+        type="button" 
+        id="mobile-save-pdf-btn"
+        class="flex-1 py-3 px-4 rounded-xl bg-[#274737] text-white font-extrabold text-xs shadow-md flex items-center justify-center gap-1.5"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+        <span>Save PDF</span>
+      </button>
+    </div>
+  </div>
+
+    <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto my-8 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto py-2 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
+  </section>
+  <!-- ========================================== -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+    <div id="carousel-container"></div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 500+ WORD COMPREHENSIVE SEO ARTICLE SECTION-->
+  <!-- ========================================== -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 space-y-10 text-stone-700 dark:text-stone-300">
     
-    <div class="mt-12 sm:mt-16 max-w-3xl mx-auto">
-      <h2 class="text-2xl font-extrabold text-[#222E28] dark:text-white mb-6 text-center">Frequently Asked Questions</h2>
-      <div class="space-y-4">
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Are my PDF files stored on any remote cloud server?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              No. SlowPDF uses a zero-server architecture. All operations execute locally inside your browser memory sandbox.
-            </div>
-          </div>
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Is there a limit on PDF file size?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              There are no artificial limits. The only limit is your available device RAM.
-            </div>
-          </div>
-        
-          <div class="faq-item p-5 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs transition-all">
-            <button type="button" class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none">
-              <span class="font-bold text-base text-[#222E28] dark:text-white pr-4">Does SlowPDF require user registration or payment?</span>
-              <span class="faq-icon w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center shrink-0 text-[#355E4B] dark:text-emerald-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-              </span>
-            </button>
-            <div class="faq-content hidden mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              SlowPDF is 100% free with zero registration, subscription traps, or credit card requirements.
-            </div>
-          </div>
-        
+    <header class="space-y-3">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">
+        Free Online PDF Page Rotator — Rotate Single or All Pages Permanently
+      </h2>
+      <p class="text-sm sm:text-base leading-relaxed">
+        Scanning contracts, receipts, or academic papers often results in sideways or upside-down pages that disrupt reading and digital archiving. With <strong>SlowPDF Rotate PDF</strong>, you can instantly turn individual pages or whole multi-page documents to their correct orientation—permanently fixing page angles directly inside your browser.
+      </p>
+    </header>
+
+    <div class="p-6 rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200 dark:border-stone-800 shadow-xs space-y-4">
+      <h3 class="text-lg font-bold text-[#222E28] dark:text-white flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-950 text-[#274737] dark:text-emerald-300 text-xs">1</span>
+        How to Rotate PDF Pages in 3 Simple Steps
+      </h3>
+      <ol class="list-decimal list-inside space-y-2 text-sm leading-relaxed pl-2">
+        <li><strong>Upload Your PDF Document:</strong> Drag and drop any multi-page PDF or click "Select PDF Document". Your file is loaded instantly into browser local memory.</li>
+        <li><strong>Set Orientation Angles:</strong> Click the <strong>↺ (Rotate Left)</strong> or <strong>↻ (Rotate Right)</strong> buttons on individual page thumbnail cards, or use "Rotate All" to turn the entire document 90°, 180°, or 270°.</li>
+        <li><strong>Download Your Permanent PDF:</strong> Click "Save &amp; Download PDF". SlowPDF updates the native page metadata tags using client-side JavaScript and generates a fresh, clean PDF file ready for use.</li>
+      </ol>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">
+        Why SlowPDF is the Best Tool for Rotating Documents
+      </h3>
+      <p class="text-sm sm:text-base leading-relaxed">
+        Unlike cloud-based PDF tools that upload confidential contracts to external servers, SlowPDF executes 100% of page rendering and rotation inside your device's browser RAM using <code>pdf-lib</code> and <code>PDF.js</code>. No files leave your device, ensuring total security and zero data exposure.
+      </p>
+
+      <ul class="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm pt-2">
+        <li class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-900/40 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span><strong>Permanent Metadata Fix:</strong> Updates native PDF rotation tags so pages open correctly in Adobe Acrobat, Google Drive, and mobile readers.</span>
+        </li>
+        <li class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-900/40 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span><strong>Zero Quality Loss:</strong> Preserves original vector artwork, crisp typography, hyperlinks, and embedded images without re-compression.</span>
+        </li>
+        <li class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-900/40 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span><strong>100% In-Browser RAM Security:</strong> Your confidential tax filings, medical reports, and legal contracts stay 100% local.</span>
+        </li>
+        <li class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-900/40 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span><strong>No Caps &amp; Offline Ready:</strong> Process large multi-page PDF files smoothly without paywalls, sign-ups, or limits.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- STRATEGIC INTERNAL SEO LINKS -->
+    <div class="p-6 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 space-y-3">
+      <h3 class="text-lg font-bold text-[#222E28] dark:text-white">
+        Next Steps After Rotating Your PDF
+      </h3>
+      <p class="text-xs sm:text-sm leading-relaxed">
+        Once you've oriented your pages correctly, explore our companion browser tools to refine and manage your documents:
+      </p>
+      <div class="grid sm:grid-cols-2 gap-2.5 text-xs sm:text-sm pt-1">
+        <a href="compress-pdf.html" class="p-3 rounded-xl bg-white dark:bg-[#161F1B] border border-stone-200 dark:border-stone-800 hover:border-[#355E4B] dark:hover:border-emerald-500 font-semibold text-[#274737] dark:text-emerald-300 flex items-center justify-between group transition-all">
+          <span>After fixing page orientations, reduce file size with <strong>Compress PDF</strong>.</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="split-pdf.html" class="p-3 rounded-xl bg-white dark:bg-[#161F1B] border border-stone-200 dark:border-stone-800 hover:border-[#355E4B] dark:hover:border-emerald-500 font-semibold text-[#274737] dark:text-emerald-300 flex items-center justify-between group transition-all">
+          <span>Need to extract specific rotated pages? Try our <strong>Split PDF</strong> tool.</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="merge-pdf.html" class="p-3 rounded-xl bg-white dark:bg-[#161F1B] border border-stone-200 dark:border-stone-800 hover:border-[#355E4B] dark:hover:border-emerald-500 font-semibold text-[#274737] dark:text-emerald-300 flex items-center justify-between group transition-all">
+          <span>Combine rotated documents into a single file with <strong>Merge PDF</strong>.</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="protect-pdf.html" class="p-3 rounded-xl bg-white dark:bg-[#161F1B] border border-stone-200 dark:border-stone-800 hover:border-[#355E4B] dark:hover:border-emerald-500 font-semibold text-[#274737] dark:text-emerald-300 flex items-center justify-between group transition-all">
+          <span>Encrypt and password-protect your newly oriented document using <strong>Protect PDF</strong>.</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
-  
+
+    <!-- 10 FAQ ACCORDION SECTION -->
+    <section id="faq-section" class="space-y-6 pt-4">
+      <div class="text-center max-w-xl mx-auto">
+        <h3 class="text-2xl font-extrabold text-[#222E28] dark:text-white">
+          Frequently Asked Questions
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
+          Everything you need to know about rotating PDF documents on SlowPDF.
+        </p>
+      </div>
+
+      <div class="space-y-3" id="faq-accordion-container">
+        
+        <!-- Question 1 -->
+        <div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+          <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+            <span>1. Can I rotate only one page instead of the whole file?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+            Yes! SlowPDF gives you complete granular control over every page. You can click the ↺ and ↻ buttons on any individual page thumbnail card to rotate just that single page, or click "Rotate All" if you need to turn the entire document together.
+          </div>
+        </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+          <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+            <span>2. Will the rotated PDF remain in the correct orientation permanently?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+            Yes. SlowPDF updates the native PDF page rotation dictionary inside the file metadata using pdf-lib. The new orientation is permanently saved across all viewers, including Adobe Acrobat, Google Drive, Apple Preview, and mobile PDF apps.
+          </div>
+        </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+          <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+            <span>3. Does rotating a PDF reduce its text or image quality?</span>
+            <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+            No. Rotating pages only modifies the orientation angle metadata tags. Text sharpness, vector artwork, embedded high-resolution images, links, and fonts remain 100% untouched without any re-compression loss.
+          </div>
+        </div>
+      <div id="extra-faqs" class="hidden space-y-3.5">
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>4. Can I rotate scanned contracts or receipts?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              Absolutely. You can upload any scanned PDF, photograph document, or digital contract, orient sideways or upside-down pages correctly, and save a clean PDF instantly.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>5. Is it safe to rotate confidential documents on SlowPDF?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              100% safe. SlowPDF operates entirely in your device's browser RAM using WebAssembly and Web Workers. No file or personal data is ever uploaded, stored, or transmitted to any server.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>6. How do I rotate pages by 180 degrees?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              Simply click the Rotate Right (↻ 90°) or Rotate Left (↺ 90°) button twice on any page thumbnail or use the batch action bar to rotate all pages by 180 degrees.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>7. Does this tool work on mobile phones without installing apps?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              Yes! SlowPDF features a mobile-optimized view with touch-friendly thumbnail buttons and a sticky bottom dock that works seamlessly on iOS Safari, Android Chrome, and tablets.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>8. What happens to bookmarks and hyperlinks inside the rotated PDF?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              All existing bookmarks, interactive links, outline structures, and form fields are completely preserved in your rotated PDF document.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>9. Is there any file size or page count limitation?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              There are no cloud limits, artificial queues, or page caps. You can process large multi-page PDF files bound only by your device's available memory.
+            </div>
+          </div>
+<div class="faq-item rounded-2xl bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 overflow-hidden">
+            <button type="button" class="faq-trigger w-full p-4 sm:p-5 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-3 focus:outline-none">
+              <span>10. Is SlowPDF really 100% free with no watermarks?</span>
+              <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content px-4 sm:px-5 pb-5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+              Yes! SlowPDF is completely free to use with zero hidden subscriptions, zero account registrations, and zero added watermarks.
+            </div>
+          </div>
+      </div>
+
+        </div>
+
+        <!-- Accordion Toggle Button -->
+        <div class="text-center pt-2">
+          <button 
+            type="button" 
+            id="toggle-all-faq-btn"
+            class="py-2.5 px-5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#161F1B] hover:bg-stone-100 dark:hover:bg-stone-800 text-xs font-bold text-[#222E28] dark:text-white transition-all"
+          >
+            View All 10 Questions
+          </button>
+        </div>
+
+      </div>
+        <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
     </div>
+  </section>
 
-    <!-- Banner Carousel -->
-    <section id="promo-carousel-section" class="mt-12 sm:mt-16 w-full"></section>
+  </article>
 
-  
-    <article class="mt-12 sm:mt-16 max-w-4xl mx-auto space-y-6 text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight">Complete Guide to ROTATE PDF</h2>
-      <p>Fast, private & free client-side PDF utility.</p>
-      <p>SlowPDF provides professional-grade PDF utilities that execute 100% locally inside your web browser. Utilizing modern WebAssembly and modern JavaScript APIs, your files are processed in local device memory without ever touching remote cloud servers.</p>
-
-      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">Why Choose Zero-Server Client-Side Execution?</h3>
-      <p>Traditional PDF websites upload your files to remote storage buckets, creating privacy hazards for sensitive documents like tax returns, transcripts, contracts, and personal records. SlowPDF guarantees complete privacy because data streams remain strictly inside your device's RAM sandbox.</p>
-
-      <h3 class="text-xl font-bold text-[#222E28] dark:text-white">Step-by-Step Instructions</h3>
-      <ol class="list-decimal pl-5 space-y-2">
-        <li><strong>Select Document:</strong> Choose or drag your PDF file into the dropzone.</li>
-        <li><strong>Configure Options:</strong> Set your preferred options in the workbench panel.</li>
-        <li><strong>Process Privately:</strong> Click the action button to process the file in local memory.</li>
-        <li><strong>Download Result:</strong> Save your newly processed document directly to your hard drive.</li>
-      </ol>
-    </article>
-  
-</main>
-
-  <!-- 4. FOOTER -->
+  <!-- ========================================== -->
+  <!-- EXACT MASTER FOOTER                        -->
+  <!-- ========================================== -->
   <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Grid -->
@@ -600,7 +1140,7 @@
           Legal &amp; Support
         </h4>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-semibold text-emerald-800 dark:text-emerald-300">Home</a></li>
+          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Home</a></li>
           <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
           <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
@@ -629,187 +1169,483 @@
   </div>
 </footer>
 
-  <!-- Page Interactivity Script -->
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT ENGINE & EVENT HANDLERS         -->
+  <!-- ========================================== -->
   <script>
-    (function() {
-      const dropzone = document.getElementById('dropzone');
-      const fileInput = document.getElementById('pdf-file-input');
-      const browseBtn = document.getElementById('browse-btn');
-      const emptyDropzone = document.getElementById('empty-dropzone');
-      const activeWorkbench = document.getElementById('active-workbench');
-      const progressBox = document.getElementById('processing-progress-box');
-      const successPanel = document.getElementById('success-panel');
-      
-      const fileTitleDisplay = document.getElementById('file-title-display');
-      const fileMetaDisplay = document.getElementById('file-meta-display');
-      const filesQueueContainer = document.getElementById('files-queue-container');
-      const changeFileBtn = document.getElementById('change-file-btn');
-      const processActionBtn = document.getElementById('process-action-btn');
-      
-      const progressStatusText = document.getElementById('progress-status-text');
-      const progressPercentText = document.getElementById('progress-percent-text');
-      const progressBarFill = document.getElementById('progress-bar-fill');
-      
-      const downloadResultBtn = document.getElementById('download-result-btn');
-      const resetBtn = document.getElementById('reset-btn');
+    // Global Application State
+    let selectedFile = null;
+    let fileArrayBuffer = null;
+    let pdfDocObj = null;
+    let totalPagesCount = 0;
+    let originalRotations = []; // Degrees: 0, 90, 180, 270
+    let userRotations = [];     // User Delta Degrees: 0, 90, 180, 270
+    let rotatedPdfBlobUrl = null;
 
-      let selectedFiles = [];
-      let processedBlobUrl = null;
+    // DOM Elements
+    const fileInput = document.getElementById('pdf-file-input');
+    const emptyDropzone = document.getElementById('empty-dropzone');
+    const workbenchPanel = document.getElementById('workbench-panel');
+    const successPanel = document.getElementById('success-panel');
+    const loadedFileName = document.getElementById('loaded-file-name');
+    const loadedFileStats = document.getElementById('loaded-file-stats');
+    const pageCountBadge = document.getElementById('page-count-badge');
+    const thumbnailGrid = document.getElementById('thumbnail-grid');
+    const changeFileBtn = document.getElementById('change-file-btn');
+    const mobileStickyDock = document.getElementById('mobile-sticky-dock');
 
-      if (browseBtn && fileInput) {
-        browseBtn.onclick = () => fileInput.click();
-      }
-      if (dropzone && fileInput) {
-        dropzone.onclick = (e) => {
-          if (e.target !== browseBtn) fileInput.click();
-        };
+    // Action Buttons
+    const rotateAllLeftBtn = document.getElementById('rotate-all-left-btn');
+    const rotateAllRightBtn = document.getElementById('rotate-all-right-btn');
+    const resetAllBtn = document.getElementById('reset-all-btn');
+    const savePdfDesktopBtn = document.getElementById('save-pdf-desktop-btn');
+    const mobileRotateAllBtn = document.getElementById('mobile-rotate-all-btn');
+    const mobileSavePdfBtn = document.getElementById('mobile-save-pdf-btn');
 
-        dropzone.ondragover = (e) => {
-          e.preventDefault();
-          dropzone.classList.add('dragover-active');
-        };
-        dropzone.ondragleave = () => {
-          dropzone.classList.remove('dragover-active');
-        };
-        dropzone.ondrop = (e) => {
-          e.preventDefault();
-          dropzone.classList.remove('dragover-active');
-          if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            handleFiles(Array.from(e.dataTransfer.files));
+    // Progress Elements
+    const processingProgressBox = document.getElementById('processing-progress-box');
+    const progressStatusText = document.getElementById('progress-status-text');
+    const progressPercentText = document.getElementById('progress-percent-text');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+
+    // Success Screen Elements
+    const successFileNameDisplay = document.getElementById('success-file-name-display');
+    const successFileStatsDisplay = document.getElementById('success-file-stats-display');
+    const outputFilenameInput = document.getElementById('output-filename-input');
+    const downloadRotatedPdfBtn = document.getElementById('download-rotated-pdf-btn');
+    const rotateAnotherPdfBtn = document.getElementById('rotate-another-pdf-btn');
+
+    // Hamburger & Drawer Logic
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menuModal = document.getElementById('menu-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+    // (Navigation and modal drawer handled universally by nav-memory.js)
+
+    // Dark Mode Switch
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('slowpdf_theme', isDark ? 'dark' : 'light');
+        const thumb = document.getElementById('dark-mode-thumb');
+        if (thumb) {
+          if (isDark) {
+            thumb.classList.add('translate-x-5');
+            thumb.classList.remove('translate-x-0');
+          } else {
+            thumb.classList.remove('translate-x-5');
+            thumb.classList.add('translate-x-0');
           }
-        };
+        }
+      });
+    }
+
+    // File Selection Handlers
+    emptyDropzone.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleFileSelection(e.target.files[0]);
+      }
+    });
+
+    // Drag and drop events
+    ['dragover', 'dragenter'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.add('dragover-active');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      emptyDropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        emptyDropzone.classList.remove('dragover-active');
+      });
+    });
+
+    emptyDropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleFileSelection(e.dataTransfer.files[0]);
+      }
+    });
+
+    changeFileBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // Handle File Selection & Load Document
+    async function handleFileSelection(file) {
+      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please select a valid PDF file.');
+        return;
       }
 
-      if (fileInput) {
-        fileInput.onchange = (e) => {
-          if (e.target.files && e.target.files.length > 0) {
-            handleFiles(Array.from(e.target.files));
-          }
-        };
-      }
+      selectedFile = file;
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      loadedFileName.textContent = file.name;
+      loadedFileStats.textContent = `${sizeMB} MB • Loading pages...`;
 
-      function handleFiles(files) {
-        selectedFiles = files;
-        if (selectedFiles.length === 0) return;
+      // Read ArrayBuffer
+      fileArrayBuffer = await file.arrayBuffer();
 
-        fileTitleDisplay.textContent = selectedFiles.length === 1 ? selectedFiles[0].name : `${selectedFiles.length} Files Selected`;
-        const totalMB = (selectedFiles.reduce((acc, f) => acc + f.size, 0) / (1024 * 1024)).toFixed(2);
-        fileMetaDisplay.textContent = `Total Size: ${totalMB} MB • Ready for client-side processing`;
+      try {
+        // Load in PDF.js for thumbnail rendering
+        const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(fileArrayBuffer) });
+        pdfDocObj = await loadingTask.promise;
+        totalPagesCount = pdfDocObj.numPages;
 
-        filesQueueContainer.innerHTML = selectedFiles.map((f, i) => `
-          <div class="flex items-center justify-between p-3 rounded-xl bg-stone-100 dark:bg-stone-800/60 text-xs font-semibold">
-            <span class="truncate max-w-xs">${f.name}</span>
-            <span class="text-stone-500">${(f.size / 1024).toFixed(1)} KB</span>
-          </div>
-        `).join('');
+        originalRotations = new Array(totalPagesCount).fill(0);
+        userRotations = new Array(totalPagesCount).fill(0);
 
+        // Fetch original page rotations using pdf-lib
+        try {
+          const pdfLibDoc = await PDFLib.PDFDocument.load(fileArrayBuffer);
+          const pdfLibPages = pdfLibDoc.getPages();
+          pdfLibPages.forEach((p, idx) => {
+            originalRotations[idx] = p.getRotation().angle || 0;
+          });
+        } catch (err) {
+          console.warn('Fallback to 0 original rotations:', err);
+        }
+
+        loadedFileStats.textContent = `${sizeMB} MB • ${totalPagesCount} Page${totalPagesCount > 1 ? 's' : ''}`;
+        pageCountBadge.textContent = `${totalPagesCount} Page${totalPagesCount > 1 ? 's' : ''}`;
+
+        // Prepare File Name for Export
+        const cleanName = file.name.replace(/\.pdf$/i, '');
+        outputFilenameInput.value = `SlowPDF_Rotated_${cleanName}`;
+
+        // Switch Views
         emptyDropzone.classList.add('hidden');
-        activeWorkbench.classList.remove('hidden');
-      }
+        successPanel.classList.add('hidden');
+        workbenchPanel.classList.remove('hidden');
+        if (window.innerWidth < 768) {
+          mobileStickyDock.classList.remove('hidden');
+        }
 
-      if (changeFileBtn) {
-        changeFileBtn.onclick = () => {
-          selectedFiles = [];
-          if (fileInput) fileInput.value = '';
-          activeWorkbench.classList.add('hidden');
-          emptyDropzone.classList.remove('hidden');
+        // Render Thumbnail Cards
+        renderThumbnailGrid();
+
+      } catch (error) {
+        console.error('Error parsing PDF:', error);
+        alert('Failed to load PDF document. The file may be password-protected or corrupted.');
+      }
+    }
+
+    // Render Thumbnail Cards Grid
+    async function renderThumbnailGrid() {
+      thumbnailGrid.innerHTML = '';
+
+      for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
+        const pageIdx = pageNum - 1;
+        
+        // Create Card Wrapper
+        const card = document.createElement('div');
+        card.className = 'tool-card rounded-2xl p-3 flex flex-col items-center relative group transition-all shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500';
+        card.dataset.pageIdx = pageIdx;
+
+        // Angle Badge Calculation
+        const totalAngle = (originalRotations[pageIdx] + userRotations[pageIdx]) % 360;
+
+        card.innerHTML = `
+          <div class="w-full flex items-center justify-between text-xs font-extrabold text-[#222E28] dark:text-white mb-2 px-1">
+            <span class="px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800">Page ${pageNum}</span>
+            <span class="angle-badge px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-[#274737] dark:text-emerald-300 font-mono text-[11px]">${totalAngle}°</span>
+          </div>
+
+          <div class="relative w-full h-44 sm:h-52 bg-stone-100 dark:bg-stone-900 rounded-xl overflow-hidden flex items-center justify-center p-2 mb-3">
+            <div class="canvas-wrapper thumbnail-card-canvas flex items-center justify-center max-w-full max-h-full">
+              <canvas class="max-w-full max-h-full object-contain rounded shadow-xs"></canvas>
+            </div>
+          </div>
+
+          <!-- Individual Page Controls -->
+          <div class="w-full flex items-center justify-center gap-2">
+            <button 
+              type="button" 
+              class="rotate-left-btn flex-1 py-1.5 px-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-stone-700 dark:text-stone-200 font-bold text-xs flex items-center justify-center gap-1 transition-all"
+              title="Rotate left 90°"
+            >
+              <span class="text-sm leading-none">↺</span>
+              <span class="text-[11px]">↺ 90°</span>
+            </button>
+
+            <button 
+              type="button" 
+              class="rotate-right-btn flex-1 py-1.5 px-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-stone-700 dark:text-stone-200 font-bold text-xs flex items-center justify-center gap-1 transition-all"
+              title="Rotate right 90°"
+            >
+              <span class="text-sm leading-none">↻</span>
+              <span class="text-[11px]">↻ 90°</span>
+            </button>
+          </div>
+        `;
+
+        thumbnailGrid.appendChild(card);
+
+        // Render Canvas
+        const canvas = card.querySelector('canvas');
+        const canvasWrapper = card.querySelector('.canvas-wrapper');
+        
+        // Render PDF page to Canvas
+        renderPageToCanvas(pageNum, canvas, canvasWrapper, pageIdx);
+
+        // Bind Individual Page Buttons
+        const leftBtn = card.querySelector('.rotate-left-btn');
+        const rightBtn = card.querySelector('.rotate-right-btn');
+
+        leftBtn.addEventListener('click', () => {
+          userRotations[pageIdx] = (userRotations[pageIdx] - 90 + 360) % 360;
+          updateCardOrientation(card, pageIdx);
+        });
+
+        rightBtn.addEventListener('click', () => {
+          userRotations[pageIdx] = (userRotations[pageIdx] + 90) % 360;
+          updateCardOrientation(card, pageIdx);
+        });
+      }
+    }
+
+    // Render individual PDF page on canvas
+    async function renderPageToCanvas(pageNum, canvas, canvasWrapper, pageIdx) {
+      try {
+        const page = await pdfDocObj.getPage(pageNum);
+        const dpr = window.devicePixelRatio || 1;
+        const targetScale = 2.0;
+        const baseViewport = page.getViewport({ scale: 0.4 });
+        const viewport = page.getViewport({ scale: 0.4 * targetScale * dpr });
+        
+        canvas.width = Math.floor(viewport.width);
+        canvas.height = Math.floor(viewport.height);
+        canvas.style.width = `${Math.floor(baseViewport.width)}px`;
+        canvas.style.height = `${Math.floor(baseViewport.height)}px`;
+        canvas.style.imageRendering = '-webkit-optimize-contrast';
+        canvas.style.imageRendering = 'crisp-edges';
+
+        const ctx = canvas.getContext('2d');
+        const renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
         };
+
+        await page.render(renderContext).promise;
+
+        // Apply current user rotation CSS transform
+        updateCardOrientation(canvas.closest('.tool-card'), pageIdx);
+
+      } catch (err) {
+        console.error(`Error rendering page ${pageNum}:`, err);
+      }
+    }
+
+    // Update single card visual rotation & angle badge
+    function updateCardOrientation(card, pageIdx) {
+      if (!card) return;
+      const canvasWrapper = card.querySelector('.canvas-wrapper');
+      const angleBadge = card.querySelector('.angle-badge');
+
+      const userAngle = userRotations[pageIdx];
+      const totalAngle = ((originalRotations[pageIdx] + userAngle) % 360 + 360) % 360;
+
+      if (canvasWrapper) {
+        canvasWrapper.style.transform = `rotate(${userAngle}deg)`;
       }
 
-      if (processActionBtn) {
-        processActionBtn.onclick = async () => {
-          if (selectedFiles.length === 0) return;
-
-          activeWorkbench.classList.add('hidden');
-          progressBox.classList.remove('hidden');
-
-          const updateProgress = (pct, msg) => {
-            progressBarFill.style.width = `${pct}%`;
-            progressPercentText.textContent = `${pct}%`;
-            progressStatusText.textContent = msg || `Processing... ${pct}%`;
-          };
-
-          try {
-            updateProgress(20, 'Reading files into memory...');
-
-            const filePayloads = [];
-            const transferables = [];
-
-            for (const file of selectedFiles) {
-              const arrayBuffer = await file.arrayBuffer();
-              filePayloads.push({ name: file.name, arrayBuffer });
-              transferables.push(arrayBuffer);
-            }
-
-            updateProgress(50, 'Executing background Web Worker engine...');
-
-            const result = await window.SlowPDFEngine.execute(
-              'ROTATE',
-              { files: filePayloads },
-              transferables,
-              updateProgress
-            );
-
-            if (result && result.success && result.pdfBytes) {
-              updateProgress(100, 'Done!');
-              const blob = new Blob([result.pdfBytes], { type: 'application/pdf' });
-              if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-              processedBlobUrl = URL.createObjectURL(blob);
-
-              setTimeout(() => {
-                progressBox.classList.add('hidden');
-                successPanel.classList.remove('hidden');
-              }, 400);
-            } else {
-              throw new Error('Worker returned unsuccessful result.');
-            }
-          } catch (err) {
-            console.warn('Worker fallback executed:', err);
-            // Fallback for PDFLib
-            try {
-              updateProgress(70, 'Fallback execution on main thread...');
-              const result = await window.SlowPDFEngine.executeFallback('ROTATE', { files: selectedFiles }, updateProgress);
-              if (result && result.pdfBytes) {
-                const blob = new Blob([result.pdfBytes], { type: 'application/pdf' });
-                if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-                processedBlobUrl = URL.createObjectURL(blob);
-                progressBox.classList.add('hidden');
-                successPanel.classList.remove('hidden');
-              }
-            } catch (fallbackErr) {
-              alert('Error processing PDF: ' + fallbackErr.message);
-              progressBox.classList.add('hidden');
-              activeWorkbench.classList.remove('hidden');
-            }
-          }
-        };
+      if (angleBadge) {
+        angleBadge.textContent = `${totalAngle}°`;
       }
+    }
 
-      if (downloadResultBtn) {
-        downloadResultBtn.onclick = () => {
-          if (!processedBlobUrl) return;
-          const a = document.createElement('a');
-          a.href = processedBlobUrl;
-          a.download = 'rotate-pdf_processed.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        };
+    // Batch Action Handlers
+    rotateAllLeftBtn.addEventListener('click', () => rotateAllPages(-90));
+    rotateAllRightBtn.addEventListener('click', () => rotateAllPages(90));
+    mobileRotateAllBtn.addEventListener('click', () => rotateAllPages(90));
+
+    resetAllBtn.addEventListener('click', () => {
+      userRotations = new Array(totalPagesCount).fill(0);
+      const cards = thumbnailGrid.querySelectorAll('.tool-card');
+      cards.forEach((card, idx) => updateCardOrientation(card, idx));
+    });
+
+    function rotateAllPages(deltaDegrees) {
+      for (let i = 0; i < totalPagesCount; i++) {
+        userRotations[i] = (userRotations[i] + deltaDegrees + 360) % 360;
       }
+      const cards = thumbnailGrid.querySelectorAll('.tool-card');
+      cards.forEach((card, idx) => updateCardOrientation(card, idx));
+    }
 
-      if (resetBtn) {
-        resetBtn.onclick = () => {
-          selectedFiles = [];
-          if (fileInput) fileInput.value = '';
-          if (processedBlobUrl) URL.revokeObjectURL(processedBlobUrl);
-          processedBlobUrl = null;
+    // Save & Download Rotated PDF Execution
+    savePdfDesktopBtn.addEventListener('click', saveAndCompilePdf);
+    mobileSavePdfBtn.addEventListener('click', saveAndCompilePdf);
 
-          successPanel.classList.add('hidden');
-          activeWorkbench.classList.add('hidden');
-          emptyDropzone.classList.remove('hidden');
-        };
+    async function saveAndCompilePdf() {
+      if (!fileArrayBuffer) return;
+
+      // Show Progress Bar
+      processingProgressBox.classList.remove('hidden');
+      progressStatusText.textContent = 'Applying permanent orientation angles in RAM...';
+      progressBarFill.style.width = '20%';
+      progressPercentText.textContent = '20%';
+
+      setTimeout(async () => {
+        try {
+          // Load document in pdf-lib
+          const pdfLibDoc = await PDFLib.PDFDocument.load(fileArrayBuffer);
+          const pages = pdfLibDoc.getPages();
+
+          progressBarFill.style.width = '60%';
+          progressPercentText.textContent = '60%';
+
+          // Apply Rotation Metadata Tags
+          pages.forEach((page, idx) => {
+            const currentAngle = page.getRotation().angle || 0;
+            const deltaAngle = userRotations[idx] || 0;
+            const finalAngle = ((currentAngle + deltaAngle) % 360 + 360) % 360;
+            page.setRotation(PDFLib.degrees(finalAngle));
+          });
+
+          progressBarFill.style.width = '85%';
+          progressPercentText.textContent = '85%';
+
+          // Save Document Bytes
+          const rotatedPdfBytes = await pdfLibDoc.save();
+
+          progressBarFill.style.width = '100%';
+          progressPercentText.textContent = '100%';
+
+          // Create Blob
+          const blob = new Blob([rotatedPdfBytes], { type: 'application/pdf' });
+          if (rotatedPdfBlobUrl) URL.revokeObjectURL(rotatedPdfBlobUrl);
+          rotatedPdfBlobUrl = URL.createObjectURL(blob);
+
+          const sizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+
+          // Update Success Panel Display
+          const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Rotated_Document';
+          successFileNameDisplay.textContent = `${exportName}.pdf`;
+          successFileStatsDisplay.textContent = `${sizeMB} MB • ${totalPagesCount} Pages • Permanent Angles Saved`;
+
+          // Switch Views to Success Screen
+          workbenchPanel.classList.add('hidden');
+          mobileStickyDock.classList.add('hidden');
+          processingProgressBox.classList.add('hidden');
+          successPanel.classList.remove('hidden');
+
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+
+        } catch (err) {
+          console.error('Error saving rotated PDF:', err);
+          alert('Failed to rotate PDF pages: ' + err.message);
+          processingProgressBox.classList.add('hidden');
+        }
+      }, 100);
+    }
+
+    // Trigger Download
+    downloadRotatedPdfBtn.addEventListener('click', () => {
+      if (!rotatedPdfBlobUrl) return;
+      const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Rotated_Document';
+      const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
+
+      const link = document.createElement('a');
+      link.href = rotatedPdfBlobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Reset Workspace to Rotate Another PDF
+    rotateAnotherPdfBtn.addEventListener('click', () => {
+      selectedFile = null;
+      fileArrayBuffer = null;
+      pdfDocObj = null;
+      userRotations = [];
+      originalRotations = [];
+      if (rotatedPdfBlobUrl) URL.revokeObjectURL(rotatedPdfBlobUrl);
+      rotatedPdfBlobUrl = null;
+
+      fileInput.value = '';
+      thumbnailGrid.innerHTML = '';
+
+      successPanel.classList.add('hidden');
+      workbenchPanel.classList.add('hidden');
+      mobileStickyDock.classList.add('hidden');
+      emptyDropzone.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // FAQ Accordion Mechanics
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+
+        const isExpanded = content.style.display === 'block';
+
+        if (isExpanded) {
+          content.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // FAQ "View All 10 Questions" Button
+    const toggleAllFaqBtn = document.getElementById('toggle-all-faq-btn');
+    const extraFaqItems = document.getElementById('extra-faq-items');
+
+    if (toggleAllFaqBtn && extraFaqItems) {
+      toggleAllFaqBtn.addEventListener('click', () => {
+        if (extraFaqItems.classList.contains('hidden')) {
+          extraFaqItems.classList.remove('hidden');
+          toggleAllFaqBtn.textContent = 'Hide Extra Questions';
+        } else {
+          extraFaqItems.classList.add('hidden');
+          toggleAllFaqBtn.textContent = 'View All 10 Questions';
+        }
+      });
+    }
+
+    // Auto-initialize Carousel and Banners if available
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.initializeBanners) {
+        window.initializeBanners('rotate-pdf');
       }
-    })();
+      if (window.initializeCarousel) {
+        window.initializeCarousel();
+      }
+    });
+  
+    // Accordion toggle & View All FAQ handler
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'Show Fewer Questions';
+          if (faqChevron) faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'View All 10 Questions';
+          if (faqChevron) faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+
   </script>
 </body>
 </html>

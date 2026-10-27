@@ -536,9 +536,10 @@
     
     <!-- Title & Breadcrumb -->
     <div class="text-center max-w-3xl mx-auto mb-8">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 text-xs font-bold tracking-wide uppercase mb-3.5 border border-emerald-300/40">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Legal Digital Signatures • 100% Client-Side Privacy
+            <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>100% In-Browser Memory • Zero Cloud Uploads</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#222E28] dark:text-white leading-tight">
         Sign & Stamp PDF
@@ -880,13 +881,64 @@
 
     </div>
 
+      <!-- UNIVERSAL MOBILE QUICK-NAV STRIP -->
+    <nav class="w-full max-w-4xl mx-auto my-8 px-2" aria-label="Quick mobile navigation">
+      <div class="flex items-center justify-center gap-2 overflow-x-auto py-2 no-scrollbar scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;">
+        <a href="../index.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="../index.html#popular-tools" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          Tools
+        </a>
+        <a href="../pages/blog.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          Blog
+        </a>
+        <a href="../pages/about.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About
+        </a>
+        <a href="../pages/privacy.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Privacy
+        </a>
+        <a href="#faq-section" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          FAQ
+        </a>
+        <a href="../pages/contact.html" class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all duration-150 shadow-2xs hover:shadow-xs shrink-0 flex items-center gap-1.5" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+          <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </div>
+    </nav>
   </main>
-
-  <!-- ========================================== -->
-  <!-- 3. MANDATORY 10-BANNER PROMO CAROUSEL      -->
-  <!-- ========================================== -->
-  <section id="promo-carousel-section" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
-    <!-- Rendered dynamically by assets/js/carousel.js -->
+  <!-- =================================================================== -->
+  <!-- 3. DEDICATED CAROUSEL                                               -->
+  <!-- =================================================================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" aria-label="Explore other tools">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#222E28] dark:text-[#F1F5F2]">
+        Explore More Private PDF Tools
+      </h2>
+      <p class="mt-1 text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+        Discover zero-server tools built for calm, private document work.
+      </p>
+    </div>
+    <div 
+      id="carousel-wrapper" 
+      class="banner-card-gradient relative w-full rounded-2xl overflow-hidden shadow-md select-none touch-pan-y bg-gradient-to-r from-[#1e3d30] via-[#274737] to-[#173327] text-white border border-emerald-900/20 dark:border-stone-800"
+      style="background: linear-gradient(135deg, #1e3d30 0%, #274737 50%, #173327 100%) !important;"
+    >
+      <div id="carousel-slides" class="relative w-full overflow-hidden">
+        <!-- Companion Banner Slides populated dynamically -->
+      </div>
+    </div>
+    <div id="carousel-dots" class="mt-4 flex justify-center items-center gap-2">
+      <!-- Dots injected via carousel.js -->
+    </div>
   </section>
 
   <!-- ========================================== -->
@@ -976,9 +1028,7 @@
           Use our 'Draw Signature' canvas to draw your signature using a mouse, stylus, or touch screen. Select pen color (Black, Blue, Red) and stroke thickness, then click 'Add Signature'.
         </div>
       </div>
-
-      <!-- FAQ 2 -->
-      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
         <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
           <span>Can I type my name and convert it into a cursive signature?</span>
           <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -987,9 +1037,7 @@
           Yes! Switch to the 'Type Name' tab, enter your name, and choose from elegant cursive fonts like Dancing Script, Caveat, or Great Vibes.
         </div>
       </div>
-
-      <!-- FAQ 3 -->
-      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
         <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
           <span>Can I upload an official company stamp or seal image?</span>
           <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -998,9 +1046,8 @@
           Yes! Switch to the 'Upload Stamp / Logo' tab to upload transparent PNG or JPG images of corporate seals, approval stamps, or official signatures.
         </div>
       </div>
-
-      <!-- FAQ 4 -->
-      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+      <div id="extra-faqs" class="hidden space-y-3.5">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
         <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
           <span>How do I place and resize my signature on the PDF page?</span>
           <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1009,9 +1056,7 @@
           Click 'Place Signature on Page' or tap on the document canvas. Drag the signature box to move it, or use the corner handle to scale it to your preferred size.
         </div>
       </div>
-
-      <!-- FAQ 5 -->
-      <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
         <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
           <span>Are electronic signatures created on SlowPDF legally binding?</span>
           <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1020,12 +1065,7 @@
           Electronic signatures created on SlowPDF satisfy standard e-signature requirements for non-notarized contracts, consent forms, invoices, and internal approvals.
         </div>
       </div>
-
-      <!-- Extra FAQs Container -->
-      <div id="extra-faq-items" class="hidden space-y-3">
-        
-        <!-- FAQ 6 -->
-        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
           <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
             <span>Are my signatures or PDF contracts uploaded to any cloud server?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1034,9 +1074,7 @@
             Never. All signature drawing, font rendering, stamp embedding, and PDF generation happen 100% inside your browser RAM. Zero files or signatures leave your device.
           </div>
         </div>
-
-        <!-- FAQ 7 -->
-        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
           <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
             <span>Can I place multiple signatures on different pages of a single document?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1045,9 +1083,7 @@
             Yes! You can add as many signatures, initials, dates, and stamps as needed across any page of your document.
           </div>
         </div>
-
-        <!-- FAQ 8 -->
-        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
           <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
             <span>Does signing a PDF alter the underlying text quality or vector clarity?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1056,9 +1092,7 @@
             No! SlowPDF embeds signature PNG layers directly into the original PDF page stream using pdf-lib, preserving 100% of the original document vector quality.
           </div>
         </div>
-
-        <!-- FAQ 9 -->
-        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
           <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
             <span>Does this tool work smoothly on smartphones and iPads?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1067,9 +1101,7 @@
             Yes! SlowPDF features responsive touchscreen support, allowing smooth stylus or finger drawing on mobile devices.
           </div>
         </div>
-
-        <!-- FAQ 10 -->
-        <div class="faq-item tool-card rounded-2xl overflow-hidden">
+<div class="faq-item tool-card rounded-2xl overflow-hidden">
           <button type="button" class="faq-trigger w-full px-6 py-4 text-left font-bold text-sm sm:text-base text-[#222E28] dark:text-white flex items-center justify-between gap-4">
             <span>Is SlowPDF Sign PDF 100% free with no watermarks?</span>
             <svg class="faq-icon w-5 h-5 text-stone-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1078,6 +1110,7 @@
             Yes! SlowPDF is 100% free with zero watermarks, zero limits, and zero account registration requirements.
           </div>
         </div>
+      </div>
 
       </div>
 
@@ -1090,6 +1123,18 @@
         class="px-6 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-[#1C2420] text-xs font-bold text-[#274737] dark:text-emerald-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
       >
         View All 10 Questions
+      </button>
+    </div>
+      <div class="mt-8 flex justify-center">
+      <button 
+        id="toggle-faqs-btn" 
+        type="button"
+        class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white dark:bg-[#1C2420] text-[#355E4B] dark:text-emerald-400 border border-stone-200 dark:border-stone-700 shadow-2xs hover:shadow-xs hover:border-[#355E4B] dark:hover:border-emerald-500 transition-all duration-200"
+      >
+        <span id="faq-btn-text">View All 10 Questions</span>
+        <svg id="faq-chevron" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
     </div>
   </section>
@@ -1213,6 +1258,7 @@
           Legal &amp; Support
         </h4>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+          <li><a href="../index.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Home</a></li>
           <li><a href="../pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="../pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
           <li><a href="../pages/privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
@@ -1936,6 +1982,28 @@
         window.initializeCarousel();
       }
     });
+  
+    // Accordion toggle & View All FAQ handler
+    const toggleFaqsBtn = document.getElementById('toggle-faqs-btn');
+    const extraFaqs = document.getElementById('extra-faqs');
+    const faqBtnText = document.getElementById('faq-btn-text');
+    const faqChevron = document.getElementById('faq-chevron');
+    let faqsExpanded = false;
+    if (toggleFaqsBtn && extraFaqs) {
+      toggleFaqsBtn.addEventListener('click', () => {
+        faqsExpanded = !faqsExpanded;
+        if (faqsExpanded) {
+          extraFaqs.classList.remove('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'Show Fewer Questions';
+          if (faqChevron) faqChevron.classList.add('rotate-180');
+        } else {
+          extraFaqs.classList.add('hidden');
+          if (faqBtnText) faqBtnText.textContent = 'View All 10 Questions';
+          if (faqChevron) faqChevron.classList.remove('rotate-180');
+        }
+      });
+    }
+
   </script>
 </body>
 </html>
