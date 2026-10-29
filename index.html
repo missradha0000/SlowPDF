@@ -215,11 +215,11 @@
   </script>
 
   <!-- External Centralized Configurations, Carousel Engine & Memory Nav -->
-  <script src="assets/js/banners.js"></script>
-  <script src="assets/js/carousel.js"></script>
-  <script src="assets/js/nav-memory.js"></script>
-  <script src="assets/js/pdf-engine.js"></script>
-  <script src="assets/js/share.js"></script>
+  <script src="assets/js/banners.js" defer></script>
+  <script src="assets/js/carousel.js" defer></script>
+  <script src="assets/js/nav-memory.js" defer></script>
+  <script src="assets/js/pdf-engine.js" defer></script>
+  <script src="assets/js/share.js" defer></script>
 
   <style>
     /* ==========================================================================
@@ -533,6 +533,8 @@
           <img 
             src="assets/images/logo.png" 
             alt="SlowPDF Mascot Logo" 
+            width="40"
+            height="40"
             class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
             onerror="this.src='public/assets/images/logo.png'"
           />
@@ -584,6 +586,11 @@
       </div>
     
   </header>
+
+  <!-- ========================================== -->
+  <!-- PRIMARY CONTENT WRAPPER (<main>)           -->
+  <!-- ========================================== -->
+  <main id="main-content" role="main" class="flex-1 w-full">
 
   <!-- ========================================== -->
   <!-- 2. HERO SECTION                            -->
@@ -666,6 +673,11 @@
             <img 
               src="assets/images/tortoise.png" 
               alt="SlowPDF Nerdy Tortoise Mascot with Spectacles" 
+              width="320"
+              height="320"
+              style="max-width: 100%; height: auto;"
+              fetchpriority="high"
+              loading="eager"
               class="mascot-blend dark:mix-blend-normal opacity-100 object-contain max-h-52 sm:max-h-64 md:max-h-72 lg:max-h-80 w-auto mx-auto drop-shadow-xl"
               onerror="this.src='public/assets/images/tortoise.png'"
             />
@@ -689,6 +701,9 @@
             <img 
               src="assets/images/logo.png" 
               alt="SlowPDF Tortoise Mascot" 
+              width="48"
+              height="48"
+              loading="lazy"
               class="mascot-peeking w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-md overflow-visible"
               onerror="this.src='public/assets/images/logo.png'"
             />
@@ -710,9 +725,11 @@
 
           <!-- Text Input Field (White text for high contrast over green) -->
           <div class="w-full pl-3 sm:pl-4 pr-10 flex flex-col justify-center">
+            <label for="tool-search-input" class="sr-only">Search all PDF tools</label>
             <input 
               type="text" 
               id="tool-search-input" 
+              aria-label="Search all PDF tools"
               placeholder=""
               value=""
               class="w-full bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-white placeholder-white/70 text-sm sm:text-base font-semibold tracking-tight shadow-none ring-0"
@@ -1169,7 +1186,7 @@
     <!-- "No Tools Found" Empty State -->
     <div id="no-tools-found" class="hidden max-w-xl mx-auto my-8 bg-white dark:bg-[#1C2420] border-2 border-dashed border-[#E0D2B4] dark:border-[#2A3630] rounded-2xl p-8 text-center shadow-xs">
       <div class="w-16 h-16 mx-auto mb-4 relative flex items-center justify-center bg-[#FFFBF2] dark:bg-[#121815] rounded-full border border-[#E0D2B4] dark:border-stone-700">
-        <img src="assets/images/logo.png" alt="Tortoise Mascot Searching" class="w-10 h-10 object-contain" onerror="this.src='public/assets/images/logo.png'">
+        <img src="assets/images/logo.png" alt="Tortoise Mascot Searching" width="40" height="40" loading="lazy" class="w-10 h-10 object-contain" onerror="this.src='public/assets/images/logo.png'">
         <span class="absolute -bottom-1 -right-1 text-base">🔍</span>
       </div>
       <h3 class="text-xl font-bold text-[#222E28] dark:text-[#F1F5F2]">No Tools Found</h3>
@@ -1822,6 +1839,7 @@
       </button>
     </div>
   </section>
+  </main>
 
   <!-- ========================================== -->
   <!-- 7. MASTER FOOTER                           -->
@@ -1838,6 +1856,9 @@
           <img 
             src="assets/images/logo.png" 
             alt="SlowPDF Brand Logo" 
+            width="40"
+            height="40"
+            loading="lazy"
             class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
             onerror="this.src='public/assets/images/logo.png'"
           />
@@ -1905,9 +1926,9 @@
 
       <!-- Column 1: Primary Tools -->
       <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
           PDF Tools
-        </h4>
+        </h3>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
           <li><a href="tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
           <li><a href="tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
@@ -1922,9 +1943,9 @@
 
       <!-- Column 2: More Tools & Blog -->
       <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
           More Utilities
-        </h4>
+        </h3>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
           <li><a href="tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
           <li><a href="tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
@@ -1939,9 +1960,9 @@
 
       <!-- Column 3: Legal & Support -->
       <div class="space-y-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-[#222E28] dark:text-white">
           Legal &amp; Support
-        </h4>
+        </h3>
         <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
           <li><a href="pages/about.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">About Us</a></li>
           <li><a href="pages/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
@@ -2279,7 +2300,7 @@
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
       <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
         <div class="flex items-center gap-2">
-          <img src="assets/images/logo.png" alt="SlowPDF" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
+          <img src="assets/images/logo.png" alt="SlowPDF" width="28" height="28" loading="lazy" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
         <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
