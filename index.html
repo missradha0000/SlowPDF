@@ -531,10 +531,11 @@
         <!-- Tortoise Mascot Logo on the LEFT -->
         <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
           <img 
-            src="assets/images/logo.png" 
+            src="assets/images/logo.webp" 
             alt="SlowPDF Mascot Logo" 
             width="40"
             height="40"
+            decoding="async"
             class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
             onerror="this.src='public/assets/images/logo.png'"
           />
@@ -671,13 +672,16 @@
         <div class="relative z-10 w-full lg:w-auto flex justify-center lg:justify-end shrink-0 bg-transparent overflow-visible pt-2 lg:pt-0">
           <div class="mascot-backlight relative bg-transparent overflow-visible animate-gentle-float dark:bg-emerald-500/10 dark:rounded-full p-2">
             <img 
-              src="assets/images/tortoise.png" 
+              src="assets/images/tortoise.webp" 
+              srcset="assets/images/tortoise-289w.webp 289w, assets/images/tortoise-578w.webp 578w"
+              sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, 289px"
               alt="SlowPDF Nerdy Tortoise Mascot with Spectacles" 
-              width="320"
-              height="320"
+              width="289"
+              height="364"
               style="max-width: 100%; height: auto;"
               fetchpriority="high"
               loading="eager"
+              decoding="async"
               class="mascot-blend dark:mix-blend-normal opacity-100 object-contain max-h-52 sm:max-h-64 md:max-h-72 lg:max-h-80 w-auto mx-auto drop-shadow-xl"
               onerror="this.src='public/assets/images/tortoise.png'"
             />
@@ -699,11 +703,13 @@
           <!-- Full Tortoise Mascot -->
           <div class="relative overflow-visible z-30 animate-mascot-float">
             <img 
-              src="assets/images/logo.png" 
+              src="assets/images/logo.webp" 
+              srcset="assets/images/logo-56w.webp 1x, assets/images/logo-112w.webp 2x"
               alt="SlowPDF Tortoise Mascot" 
-              width="48"
-              height="48"
+              width="56"
+              height="70"
               loading="lazy"
+              decoding="async"
               class="mascot-peeking w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-md overflow-visible"
               onerror="this.src='public/assets/images/logo.png'"
             />
@@ -1186,7 +1192,7 @@
     <!-- "No Tools Found" Empty State -->
     <div id="no-tools-found" class="hidden max-w-xl mx-auto my-8 bg-white dark:bg-[#1C2420] border-2 border-dashed border-[#E0D2B4] dark:border-[#2A3630] rounded-2xl p-8 text-center shadow-xs">
       <div class="w-16 h-16 mx-auto mb-4 relative flex items-center justify-center bg-[#FFFBF2] dark:bg-[#121815] rounded-full border border-[#E0D2B4] dark:border-stone-700">
-        <img src="assets/images/logo.png" alt="Tortoise Mascot Searching" width="40" height="40" loading="lazy" class="w-10 h-10 object-contain" onerror="this.src='public/assets/images/logo.png'">
+        <img src="assets/images/logo.webp" alt="Tortoise Mascot Searching" width="40" height="40" loading="lazy" decoding="async" class="w-10 h-10 object-contain" onerror="this.src='public/assets/images/logo.png'">
         <span class="absolute -bottom-1 -right-1 text-base">🔍</span>
       </div>
       <h3 class="text-xl font-bold text-[#222E28] dark:text-[#F1F5F2]">No Tools Found</h3>
@@ -1854,11 +1860,12 @@
       <div class="lg:col-span-2 space-y-4">
         <a href="index.html" class="flex items-center gap-3 group">
           <img 
-            src="assets/images/logo.png" 
+            src="assets/images/logo.webp" 
             alt="SlowPDF Brand Logo" 
             width="40"
             height="40"
             loading="lazy"
+            decoding="async"
             class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
             onerror="this.src='public/assets/images/logo.png'"
           />
@@ -2300,7 +2307,7 @@
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
       <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
         <div class="flex items-center gap-2">
-          <img src="assets/images/logo.png" alt="SlowPDF" width="28" height="28" loading="lazy" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
+          <img src="assets/images/logo.webp" alt="SlowPDF" width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 object-contain rounded-full" onerror="this.src='public/assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
         <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
