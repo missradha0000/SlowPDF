@@ -1265,7 +1265,7 @@
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full" id="about-slowpdf" aria-label="SlowPDF Guide and Information">
     <div class="bg-white/90 dark:bg-[#1C2420]/90 backdrop-blur-sm rounded-3xl p-6 sm:p-10 lg:p-14 border border-stone-200/80 dark:border-stone-800 shadow-sm space-y-14 sm:space-y-16">
       
-      <!-- 1. SLOWPDF KYA HAI? (WHAT IS SLOWPDF?) -->
+      <!-- 1. WHAT IS SLOWPDF? -->
       <div class="space-y-6">
         <div class="flex items-center gap-2.5">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/60 text-[#274737] dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800/60">
@@ -1277,13 +1277,13 @@
 
         <div class="max-w-4xl">
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#222E28] dark:text-[#F1F5F2] tracking-tight leading-snug">
-            SlowPDF Kya Hai? <span class="text-[#355E4B] dark:text-emerald-400 block sm:inline font-bold text-xl sm:text-2xl lg:text-3xl">(What is SlowPDF?)</span>
+            What is SlowPDF? <span class="text-[#355E4B] dark:text-emerald-400 block sm:inline font-bold text-xl sm:text-2xl lg:text-3xl">Private In-Browser Document Suite</span>
           </h2>
           <p class="mt-4 text-stone-600 dark:text-stone-300 text-base sm:text-lg leading-relaxed">
-            <strong>SlowPDF</strong> ek modern, <strong>100% private aur client-side PDF utility suite</strong> hai jo aapke documents ko bina kisi cloud server par upload kiye, seedhe aapke browser memory (RAM) mein process karta hai. Traditional websites par jab aap apna resume, confidential agreement, financial statement ya medical report upload karte hain, toh woh unke remote server par store hoti hai. SlowPDF is traditional tarike ko poori tarah badal deta hai.
+            <strong>SlowPDF</strong> is a modern, <strong>100% private and client-side PDF utility suite</strong> engineered to process documents entirely in your local browser memory (RAM) without uploading files to any remote cloud servers. Unlike conventional web converters that store confidential resumes, legal contracts, financial audits, or medical records on third-party backend servers, SlowPDF eliminates server-side handling entirely.
           </p>
           <p class="mt-3 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
-            SlowPDF par aapko <strong>kisi account creation, login, subscription ya software install</strong> karne ki bilkul zaroorat nahi hoti. Chahe aap student ho jo assignments merge kar rahe hain, researcher ho jo journals scan kar rahe hain, ya koi professional jise urgent contract sign aur redact karna ho — SlowPDF har user ko safe, fast aur calm environment provide karta hai.
+            There is <strong>no account creation, login, subscription, or software installation</strong> required. Whether you are a student merging course assignments, a researcher annotating scientific journals, or a legal professional redacting sensitive agreements — SlowPDF provides a secure, lightning-fast, and distraction-free document workflow.
           </p>
         </div>
 
@@ -1308,17 +1308,17 @@
         </div>
       </div>
 
-      <!-- 2. SLOWPDF KARTA KYA HAI? (HOW DOES SLOWPDF WORK?) -->
+      <!-- 2. HOW DOES SLOWPDF WORK? -->
       <div class="space-y-6 pt-6 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-4xl">
           <span class="text-xs uppercase font-extrabold tracking-wider text-[#355E4B] dark:text-emerald-400">
             Client-Side Architecture
           </span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2] mt-1.5 tracking-tight">
-            SlowPDF Karta Kya Hai? <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">(How Does SlowPDF Work?)</span>
+            How Does SlowPDF Work? <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">Zero-Server Technology</span>
           </h2>
           <p class="mt-3 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
-            SlowPDF cutting-edge <strong>WebAssembly (Wasm)</strong>, <strong>HTML5 Canvas</strong>, aur <strong>Web Workers</strong> technology ke zariye documents ko aapke local computer ya mobile ke CPU/RAM par process karta hai. Yahan process ka technical workflow bilkul transparent hai:
+            SlowPDF leverages cutting-edge <strong>WebAssembly (Wasm)</strong>, <strong>HTML5 Canvas</strong>, and <strong>Web Workers</strong> to process documents on your local device CPU and RAM. The technical execution model is completely transparent:
           </p>
         </div>
 
@@ -1332,7 +1332,7 @@
               Local In-Browser Loading
             </h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-              Jab aap koi file choose ya drag-and-drop karte hain, toh browser File API document bytes ko seedhe local memory (ArrayBuffer/RAM) mein render karta hai. Document ka ek bhi packet network wire par transmit nahi hota.
+              When you choose or drag-and-drop a file, the browser's HTML5 File API loads document bytes directly into sandboxed local memory (ArrayBuffer/RAM). Not a single data packet is ever sent over the network.
             </p>
           </div>
 
@@ -1345,7 +1345,7 @@
               High-Speed Wasm Execution
             </h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-              PDF manipulation, merging, compression, OCR aur Word synthesis jaise bhari tasks browser ke andar WebAssembly sandboxed engine aur background Web Workers run karte hain, bina main screen ko freeze kiye.
+              Document compilation, page manipulation, compression, OCR, and format conversions execute inside compiled WebAssembly modules across background Web Workers, keeping your browser fluid and responsive.
             </p>
           </div>
 
@@ -1358,23 +1358,23 @@
               Instant Download &amp; Auto-Purge
             </h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-              Generated document seedhe aapke browser ke Downloads folder mein save ho jata hai. Jaise hi aap tab close karte hain ya dusra tool open karte hain, RAM se pichhla data automatically complete wipe (garbage-collect) ho jata hai.
+              Output documents save directly to your computer or mobile Downloads folder. The moment you close the tab or switch tools, browser memory is wiped and automatically garbage-collected.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 3. SLOWPDF PAR KAUN-KAUN SE TOOLS HAIN? (ALL 26 TOOLS ACROSS 4 CATEGORIES) -->
+      <!-- 3. ALL 26 TOOLS ACROSS 4 CATEGORIES -->
       <div class="space-y-8 pt-6 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-4xl">
           <span class="text-xs uppercase font-extrabold tracking-wider text-[#355E4B] dark:text-emerald-400">
             Complete Suite Architecture
           </span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2] mt-1.5 tracking-tight">
-            SlowPDF Par Kaun-Kaun Se Tools Hain? <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">(All 26 Private Tools)</span>
+            Explore All 26 Private Tools <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">Across 4 Purpose-Built Categories</span>
           </h2>
           <p class="mt-3 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
-            SlowPDF par aapko document management ki <strong>4 broad categories ke andar kul 26 specialized tools</strong> milte hain. Har ek tool zero-server architecture par built hai:
+            SlowPDF includes <strong>26 specialized document tools across 4 essential categories</strong>. Every single utility is built strictly on zero-server architecture:
           </p>
         </div>
 
@@ -1389,46 +1389,46 @@
                 </div>
                 <div>
                   <h3 class="text-lg font-extrabold text-[#222E28] dark:text-white">
-                    1. Edit &amp; Organize (PDF Edit Aur Vyavasthit Karein)
+                    1. Edit &amp; Organize
                   </h3>
                   <span class="text-xs text-stone-500 dark:text-stone-400 font-semibold">8 Comprehensive Utility Tools</span>
                 </div>
               </div>
               <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
-                Pages ko reorder karna, unwanted leaves delete karna, watermark lagana aur live interactive canvas par annotations add karne ke tools:
+                Reorder pages, discard unwanted leaves, stamp custom watermarks, and annotate directly on an interactive canvas:
               </p>
               <ul class="space-y-2.5 text-xs sm:text-sm">
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/merge-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Merge PDF</a>: Multiple PDF files ko drag-and-drop order mein ek single structured PDF banayein.</span>
+                  <span><a href="tools/merge-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Merge PDF</a>: Combine multiple PDF files into one structured document with intuitive drag-and-drop ordering.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/split-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Split PDF</a>: Kisi bhi large document se custom page ranges ya single pages alag karein.</span>
+                  <span><a href="tools/split-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Split PDF</a>: Extract custom page ranges or separate individual pages from any large document.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/rotate-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Rotate PDF</a>: Ulte ya sideways scanned pages ko 90°, 180° ya 270° angle par ghuma kar correct karein.</span>
+                  <span><a href="tools/rotate-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Rotate PDF</a>: Permanently correct upside-down or sideways pages at 90°, 180°, or 270° angles.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/delete-pages.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Delete Pages</a>: Visual thumbnails par click karke unwanted blank ya extra pages hataayein.</span>
+                  <span><a href="tools/delete-pages.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Delete Pages</a>: Click visual thumbnails to quickly remove unwanted blank or superfluous pages.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/crop-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Crop PDF</a>: Excess white margins trim karein ya custom box select karke page dimensions adjust karein.</span>
+                  <span><a href="tools/crop-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Crop PDF</a>: Trim excess margins or apply custom bounding boxes to adjust page dimensions precisely.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/add-page-numbers.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Add Page Numbers</a>: Header aur footer mein 6 distinct positions par custom page numbering daalein.</span>
+                  <span><a href="tools/add-page-numbers.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Add Page Numbers</a>: Insert customizable page numbers across 6 header and footer positions.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/add-watermark.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Add Watermark</a>: Confidential, Draft ya custom copyright text/image watermark customize karein.</span>
+                  <span><a href="tools/add-watermark.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Add Watermark</a>: Apply customizable text or image watermarks for Confidential, Draft, or copyright notices.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
-                  <span><a href="tools/edit-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Edit PDF</a>: Text blocks, custom callouts, geometric shapes aur highlight annotations live canvas par add karein.</span>
+                  <span><a href="tools/edit-pdf.html" class="font-bold text-[#274737] dark:text-emerald-400 hover:underline">Edit PDF</a>: Add text callouts, shapes, and highlight annotations on an interactive live canvas.</span>
                 </li>
               </ul>
             </div>
@@ -1443,38 +1443,38 @@
                 </div>
                 <div>
                   <h3 class="text-lg font-extrabold text-[#222E28] dark:text-white">
-                    2. Convert &amp; Export (PDF Conversion Aur Export)
+                    2. Convert &amp; Export
                   </h3>
                   <span class="text-xs text-stone-500 dark:text-stone-400 font-semibold">6 High-Fidelity Converters</span>
                 </div>
               </div>
               <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
-                PDF documents ko editable Word, Excel, high-res images ya OCR text mein seamlessly transform karein:
+                Seamlessly convert PDF documents into editable Word files, Excel sheets, high-resolution images, or OCR text:
               </p>
               <ul class="space-y-2.5 text-xs sm:text-sm">
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/pdf-to-word.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to Word</a>: Headings aur text flow preserve karke genuine editable Microsoft Word (.docx) document banayein.</span>
+                  <span><a href="tools/pdf-to-word.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to Word</a>: Preserve typography and layout flow to produce genuine editable Microsoft Word (.docx) files.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/pdf-to-excel.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to Excel</a>: PDF tables, accounts aur financial grids ko structured .xlsx spreadsheets mein convert karein.</span>
+                  <span><a href="tools/pdf-to-excel.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to Excel</a>: Extract tables, financial ledgers, and tabular data into formatted .xlsx spreadsheets.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/pdf-to-jpg.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to JPG</a>: PDF pages ko crisp, high-DPI JPG aur PNG images mein convert karke zip download karein.</span>
+                  <span><a href="tools/pdf-to-jpg.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">PDF to JPG</a>: Convert PDF pages into crisp, high-DPI JPG and PNG image files with ZIP download options.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/images-to-pdf.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">Images to PDF</a>: Multiple gallery photos, receipts ya JPG/PNG files ko combine karke clean PDF create karein.</span>
+                  <span><a href="tools/images-to-pdf.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">Images to PDF</a>: Merge multiple gallery photos, scans, receipts, or image files into a clean PDF.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/extract-text.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">Extract Text</a>: PDF se unformatted plain text instantaneously copy aur download karein.</span>
+                  <span><a href="tools/extract-text.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">Extract Text</a>: Instantly pull raw unformatted text from documents for immediate copying and sharing.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
-                  <span><a href="tools/ocr-pdf.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">OCR PDF</a>: Scanned image documents ko optical character recognition ke zariye searchable aur copy-ready banayein.</span>
+                  <span><a href="tools/ocr-pdf.html" class="font-bold text-blue-700 dark:text-blue-400 hover:underline">OCR PDF</a>: Recognize scanned text using optical character recognition to create searchable documents.</span>
                 </li>
               </ul>
             </div>
@@ -1489,38 +1489,38 @@
                 </div>
                 <div>
                   <h3 class="text-lg font-extrabold text-[#222E28] dark:text-white">
-                    3. Optimize &amp; Compress (PDF Optimize Aur Compress)
+                    3. Optimize &amp; Compress
                   </h3>
                   <span class="text-xs text-stone-500 dark:text-stone-400 font-semibold">6 File Tuning Tools</span>
                 </div>
               </div>
               <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
-                File size reduce karne, printing toner bachane aur document metadata ko control karne ke tools:
+                Reduce file sizes, conserve printer ink, and manage technical PDF properties with ease:
               </p>
               <ul class="space-y-2.5 text-xs sm:text-sm">
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/compress-pdf.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Compress PDF</a>: File size ko up to 80% shrink karein taaki email attachment ya portal uploads aasani se ho sakein.</span>
+                  <span><a href="tools/compress-pdf.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Compress PDF</a>: Shrink PDF file sizes by up to 80% to fit email attachment limits and portal uploads.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/grayscale-pdf.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Grayscale PDF</a>: Colorful PDFs ko clean black-and-white print-ready document mein convert karein.</span>
+                  <span><a href="tools/grayscale-pdf.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Grayscale PDF</a>: Convert color documents into clean monochrome black-and-white print-ready files.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/pdf-color-tint.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">PDF Color Tint</a>: Presentation styling ke liye pages par custom pastel aur duotone color tint overlays apply karein.</span>
+                  <span><a href="tools/pdf-color-tint.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">PDF Color Tint</a>: Apply stylish pastel or duotone color tints for presentations and creative documents.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/pdf-tint.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">PDF Tint</a>: Lambi padhai ke dauran aankhon par strain kam karne ke liye soft sepia aur eye-comfort tints dein.</span>
+                  <span><a href="tools/pdf-tint.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">PDF Tint</a>: Add eye-comfort sepia or warm reading tints to reduce visual fatigue during long study sessions.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/edit-metadata.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Edit Metadata</a>: PDF title, author name, subject aur search keywords ko instantly view aur edit karein.</span>
+                  <span><a href="tools/edit-metadata.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Edit Metadata</a>: Inspect and update document title, author, subject, and keywords in seconds.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-amber-600 dark:text-amber-400 font-bold">•</span>
-                  <span><a href="tools/edit-pdf-metadata.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Edit PDF Metadata</a>: Advanced technical properties sanitize karein aur document history clean karein.</span>
+                  <span><a href="tools/edit-pdf-metadata.html" class="font-bold text-amber-700 dark:text-amber-400 hover:underline">Edit PDF Metadata</a>: Sanitize technical properties, software tags, and revision histories for clean publishing.</span>
                 </li>
               </ul>
             </div>
@@ -1535,38 +1535,38 @@
                 </div>
                 <div>
                   <h3 class="text-lg font-extrabold text-[#222E28] dark:text-white">
-                    4. Privacy &amp; Security (Security Aur Redaction)
+                    4. Privacy &amp; Security
                   </h3>
                   <span class="text-xs text-stone-500 dark:text-stone-400 font-semibold">6 Bulletproof Privacy Tools</span>
                 </div>
               </div>
               <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
-                Sensitive private data redact karne, passwords lagane/hatane aur digital signature add karne ke tools:
+                Redact sensitive information, configure strong passwords, and apply legally binding digital signatures:
               </p>
               <ul class="space-y-2.5 text-xs sm:text-sm">
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/protect-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Protect PDF</a>: Strong AES encryption aur custom user password set karke unauthorized access rokein.</span>
+                  <span><a href="tools/protect-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Protect PDF</a>: Set strong AES encryption and custom passwords to safeguard documents against unauthorized access.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/unlock-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Unlock PDF</a>: Apne password-protected PDFs se access restrictions local browser RAM mein unlock karein.</span>
+                  <span><a href="tools/unlock-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Unlock PDF</a>: Remove passwords and restrictions from your protected documents entirely within local memory.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/redact-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Redact PDF</a>: Bank details, Aadhaar/SSN numbers aur private text ko permanently black-box redact karein.</span>
+                  <span><a href="tools/redact-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Redact PDF</a>: Permanently blackout financial data, social security numbers, and private details.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/sign-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Sign PDF</a>: Draw, type ya signature photo upload karke document par legal digital signatures add karein.</span>
+                  <span><a href="tools/sign-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Sign PDF</a>: Draw, type, or upload signature graphics to legally sign agreements directly in-browser.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/erase-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Erase PDF</a>: Precise canvas eraser se unwanted marks, stamps ya stray lines mitayein.</span>
+                  <span><a href="tools/erase-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Erase PDF</a>: Erase unwanted markings, stamps, or stray lines with a high-precision canvas eraser.</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-purple-600 dark:text-purple-400 font-bold">•</span>
-                  <span><a href="tools/whiteout-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Whiteout PDF</a>: Document ke kisi bhi hisse par clean opaque whiteout patches draw karke content hide karein.</span>
+                  <span><a href="tools/whiteout-pdf.html" class="font-bold text-purple-700 dark:text-purple-400 hover:underline">Whiteout PDF</a>: Mask sensitive sections with clean, opaque whiteout blocks on any page.</span>
                 </li>
               </ul>
             </div>
@@ -1575,17 +1575,17 @@
         </div>
       </div>
 
-      <!-- 4. SLOWPDF KYUN CHOOSE KAREIN? (WHY CHOOSE SLOWPDF?) -->
+      <!-- 4. WHY CHOOSE SLOWPDF? -->
       <div class="space-y-6 pt-6 border-t border-stone-200/80 dark:border-stone-800">
         <div class="max-w-4xl">
           <span class="text-xs uppercase font-extrabold tracking-wider text-[#355E4B] dark:text-emerald-400">
             Privacy-First Benefits
           </span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-[#F1F5F2] mt-1.5 tracking-tight">
-            SlowPDF Kyun Choose Karein? <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">(Why Choose SlowPDF?)</span>
+            Why Choose SlowPDF? <span class="text-stone-500 dark:text-stone-400 text-xl font-medium block sm:inline">Privacy-First Architecture</span>
           </h2>
           <p class="mt-3 text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
-            Internet par sekdo PDF tools available hain, lekin unme se 99% aapka personal data unke cloud server par upload karte hain. Yahan jaanein SlowPDF har user ki pehli choice kyun hai:
+            While hundreds of PDF websites exist, over 99% transmit your sensitive files to remote cloud servers. Here is why privacy-conscious users and enterprises trust SlowPDF:
           </p>
         </div>
 
@@ -1602,7 +1602,7 @@
               </h3>
             </div>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed pl-12">
-              Aapke sensitive tax forms, legal deeds, business proposals aur personal IDs kabhi bhi kisi remote cloud storage ya server database par save nahi hote. Document ka processing session sirf aapki screen par chalta hai.
+              Your confidential tax filings, legal agreements, business proposals, and personal IDs are never transmitted or stored on any remote server. The entire session executes strictly within your device's RAM.
             </p>
           </div>
 
@@ -1617,7 +1617,7 @@
               </h3>
             </div>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed pl-12">
-              Traditional tools 25MB file size cap ya din mein sirf 2 conversions allow karke paid monthly subscription demand karte hain. SlowPDF par cloud bandwidth cost na hone ke chalte aap massive textbooks bina kisi rukawat ke free use kar sakte hain.
+              Traditional services impose 25MB caps or daily conversion limits to upsell paid subscriptions. Because SlowPDF eliminates server computing costs, you can process extensive documents without paywalls.
             </p>
           </div>
 
@@ -1632,7 +1632,7 @@
               </h3>
             </div>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed pl-12">
-              Heavy 100MB files ko server par upload karne aur download link ka intezaar karne ki zaroorat nahi hai. Client-side WebAssembly aapke device ke direct hardware threads use karke fractions of seconds mein file taiyar karta hai.
+              Bypass slow upload channels and download queues for heavy files. Client-side WebAssembly leverages your hardware threads directly, completing complex document workflows in fractions of a second.
             </p>
           </div>
 
@@ -1647,7 +1647,7 @@
               </h3>
             </div>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed pl-12">
-              GDPR, HIPAA aur FERPA compliance yahan koi legal claim nahi, balki code architecture ki guarantee hai. Chunki data network par transmit hi nahi hota, isliye third-party data breach ya data leak ka risk 0% rehta hai.
+              GDPR, HIPAA, and FERPA compliance is not merely a legal claim—it is guaranteed by architectural design. Because files never leave your device, the risk of third-party data interception is zero.
             </p>
           </div>
 
