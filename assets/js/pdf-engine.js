@@ -4,6 +4,18 @@
    ========================================================================== */
 
 (function (window) {
+  // ----------------------------------------------------
+  // Telegram WebApp SDK Initialization
+  // ----------------------------------------------------
+  if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+    try {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    } catch (e) {
+      console.warn('Telegram WebApp init error', e);
+    }
+  }
+
   let workerInstance = null;
   const callbacks = new Map();
 
@@ -44,37 +56,108 @@
   }
 
   // ----------------------------------------------------
-  // Telegram Mini App Compatible Download Function
+  // Temporary Button Visual Feedback ("Downloading..." spinner for 1s)
   // ----------------------------------------------------
-  function downloadResult(blob, filename) {
-    const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
+  function triggerDownloadButtonFeedback(btn) {
+    if (!btn || btn.dataset.isDownloading === 'true') return;
+    btn.dataset.isDownloading = 'true';
+    const originalHtml = btn.innerHTML;
+    const originalPointerEvents = btn.style.pointerEvents;
+    btn.style.pointerEvents = 'none';
+    btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline-block shrink-0 align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span class="align-middle">Downloading...</span>`;
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.pointerEvents = originalPointerEvents;
+      delete btn.dataset.isDownloading;
+    }, 1000);
+  }
+  window.triggerDownloadButtonFeedback = triggerDownloadButtonFeedback;
+
+  // ----------------------------------------------------
+  // Telegram Mini App Compatible Native In-App Download Function
+  // ----------------------------------------------------
+  async function downloadResult(blob, filename) {
+    try {
+      const activeBtn = document.activeElement?.closest('a[download], button[id*="download"], a[id*="download"], button[id*="dl"], .download-btn') ||
+        document.querySelector('button[id*="download"]:not(.hidden), a[id*="download"]:not(.hidden), a[download]:not(.hidden)');
+      if (activeBtn) {
+        triggerDownloadButtonFeedback(activeBtn);
+      }
+    } catch (_) {}
+
+    const tg = window.Telegram?.WebApp;
+    const isTelegram = !!(tg && tg.initData);
+
+    // Normalize input: handle string URLs or typed arrays if passed
+    let realBlob = blob;
+    if (!(blob instanceof Blob)) {
+      if (typeof blob === 'string') {
+        try {
+          const res = await fetch(blob);
+          realBlob = await res.blob();
+        } catch (e) {
+          console.warn('Could not fetch blob from string url', e);
+        }
+      } else if (blob instanceof Uint8Array || blob instanceof ArrayBuffer) {
+        const mime = filename.endsWith('.txt') ? 'text/plain'
+          : filename.endsWith('.zip') ? 'application/zip'
+          : filename.endsWith('.xlsx') ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+          : filename.endsWith('.docx') ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+          : filename.endsWith('.jpg') ? 'image/jpeg'
+          : 'application/pdf';
+        realBlob = new Blob([blob], { type: mime });
+      }
+    }
 
     if (isTelegram) {
-      // Telegram Webview fix: Open blob via new window or trigger download via Telegram bridge
-      const blobUrl = (typeof blob === 'string') ? blob : URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = filename;
-      a.target = '_blank';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      
-      // Fallback for strict Telegram webviews:
-      setTimeout(() => {
-        window.open(blobUrl, '_blank');
-      }, 100);
-    } else {
-      const blobUrl = (typeof blob === 'string') ? blob : URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      if (typeof blob !== 'string') {
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      // Method A: Telegram Official Native WebApp downloadFile API
+      if (typeof tg.downloadFile === 'function') {
+        const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
+        tg.downloadFile({
+          url: blobUrl,
+          file_name: filename
+        }, function(accepted) {
+          if (!accepted) {
+            console.warn('Native download prompt dismissed or unhandled');
+          }
+        });
+        return;
       }
+
+      // Method B: Base64 Data URI in-app fallback (reliable within webview without external redirect)
+      if (realBlob instanceof Blob) {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+          const base64Url = reader.result;
+          const a = document.createElement('a');
+          a.href = base64Url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        };
+        reader.readAsDataURL(realBlob);
+      } else if (typeof realBlob === 'string') {
+        const a = document.createElement('a');
+        a.href = realBlob;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+      return;
+    }
+
+    // Method C: Standard web browser blob download
+    const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    if (realBlob instanceof Blob) {
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
     }
   }
   window.downloadResult = downloadResult;
@@ -195,12 +278,18 @@
     }
   };
 
-  // Auto-intercept download clicks in Telegram Webview
+  // Auto-intercept download clicks in Telegram Webview & trigger visual feedback
   if (typeof document !== 'undefined') {
     document.addEventListener('click', function (e) {
+      const btn = e.target.closest('a[download], button[id*="download"], a[id*="download"], button[id*="dl"], .download-btn');
+      if (btn) {
+        triggerDownloadButtonFeedback(btn);
+      }
+
       const link = e.target.closest('a[download]');
       if (!link) return;
-      const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
+      const tg = window.Telegram?.WebApp;
+      const isTelegram = !!(tg && tg.initData);
       if (isTelegram && link.href && (link.href.startsWith('blob:') || link.href.startsWith('data:'))) {
         e.preventDefault();
         const filename = link.getAttribute('download') || link.download || 'document.pdf';
