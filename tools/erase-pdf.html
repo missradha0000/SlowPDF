@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8MGQ1D3QQ"></script>
 <script>
@@ -1853,12 +1854,7 @@
       const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Redacted_Document';
       const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
 
-      const link = document.createElement('a');
-      link.href = redactedPdfBlobUrl;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      downloadResult(redactedPdfBlobUrl, filename);
     });
 
     // Reset Workflow to Redact Another PDF
@@ -2020,6 +2016,39 @@
 </div>
 
 <script>
+
+    function downloadResult(blob, filename) {
+      const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
+
+      if (isTelegram) {
+        // Telegram Webview fix: Open blob via new window or trigger download via Telegram bridge
+        const blobUrl = (typeof blob === "string") ? blob : URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = filename;
+        a.target = "_blank";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+        // Fallback for strict Telegram webviews:
+        setTimeout(() => {
+          window.open(blobUrl, "_blank");
+        }, 100);
+      } else {
+        const blobUrl = (typeof blob === "string") ? blob : URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        if (typeof blob !== "string") {
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        }
+      }
+    }
+
   (function() {
     function initMenu() {
       const menuBtn = document.getElementById('mobileMenuBtn') || document.getElementById('hamburger-btn') || document.querySelector('.mobile-menu-btn') || document.querySelector('.menu-icon');

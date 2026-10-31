@@ -43,6 +43,42 @@
     return workerInstance;
   }
 
+  // ----------------------------------------------------
+  // Telegram Mini App Compatible Download Function
+  // ----------------------------------------------------
+  function downloadResult(blob, filename) {
+    const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
+
+    if (isTelegram) {
+      // Telegram Webview fix: Open blob via new window or trigger download via Telegram bridge
+      const blobUrl = (typeof blob === 'string') ? blob : URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Fallback for strict Telegram webviews:
+      setTimeout(() => {
+        window.open(blobUrl, '_blank');
+      }, 100);
+    } else {
+      const blobUrl = (typeof blob === 'string') ? blob : URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      if (typeof blob !== 'string') {
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      }
+    }
+  }
+  window.downloadResult = downloadResult;
+
   window.SlowPDFEngine = {
     // ----------------------------------------------------
     // Execute Task in Background Worker with Transferables
@@ -95,19 +131,18 @@
     },
 
     // ----------------------------------------------------
+    // Telegram-Compatible Download Trigger
+    // ----------------------------------------------------
+    downloadResult: downloadResult,
+
+    // ----------------------------------------------------
     // Fast Instant Download Trigger from Uint8Array/ArrayBuffer
     // ----------------------------------------------------
     downloadBuffer: function (buffer, fileName = 'document.pdf', mimeType = 'application/pdf') {
       const blob = new Blob([buffer], { type: mimeType });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = fileName.endsWith('.pdf') ? fileName : `${fileName}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
-      return url;
+      const fullName = fileName.endsWith('.pdf') ? fileName : `${fileName}.pdf`;
+      downloadResult(blob, fullName);
+      return blob;
     },
 
     // ----------------------------------------------------
@@ -159,4 +194,18 @@
       }
     }
   };
+
+  // Auto-intercept download clicks in Telegram Webview
+  if (typeof document !== 'undefined') {
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a[download]');
+      if (!link) return;
+      const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
+      if (isTelegram && link.href && (link.href.startsWith('blob:') || link.href.startsWith('data:'))) {
+        e.preventDefault();
+        const filename = link.getAttribute('download') || link.download || 'document.pdf';
+        downloadResult(link.href, filename);
+      }
+    }, true);
+  }
 })(window);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8MGQ1D3QQ"></script>
   <script>
@@ -19,17 +20,17 @@
   <meta name="theme-color" content="#121815" media="(prefers-color-scheme: dark)" />
 
   <!-- Canonical Link -->
-  <link rel="canonical" href="https://slowpdf.vercel.app/pages/contact.html" />
+  <link rel="canonical" href="https://slowpdf.vercel.app/contact.html" />
 
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/webp" href="../assets/images/logo.webp" />
-  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
-  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="icon" type="image/webp" href="assets/images/logo.webp" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
 
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:site_name" content="SlowPDF" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://slowpdf.vercel.app/pages/contact.html" />
+  <meta property="og:url" content="https://slowpdf.vercel.app/contact.html" />
   <meta property="og:title" content="Get in Touch — Contact Us | SlowPDF" />
   <meta property="og:description" content="Have questions, feature requests, or privacy concerns? Reach out directly to SlowPDF and Tveezal." />
   <meta property="og:image" content="https://slowpdf.vercel.app/assets/images/banner1.jpg" />
@@ -37,7 +38,7 @@
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://slowpdf.vercel.app/pages/contact.html" />
+  <meta name="twitter:url" content="https://slowpdf.vercel.app/contact.html" />
   <meta name="twitter:title" content="Get in Touch — Contact Us | SlowPDF" />
   <meta name="twitter:description" content="Have questions, feature requests, or privacy concerns? Reach out directly to SlowPDF and Tveezal." />
   <meta name="twitter:image" content="https://slowpdf.vercel.app/assets/images/banner1.jpg" />
@@ -83,7 +84,7 @@
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact SlowPDF",
-    "url": "https://slowpdf.vercel.app/pages/contact.html",
+    "url": "https://slowpdf.vercel.app/contact.html",
     "description": "Direct contact channels and support options for SlowPDF users.",
     "mainEntity": {
       "@type": "Organization",
@@ -111,8 +112,8 @@
   </script>
 
   <!-- External Scripts -->
-  <script src="../assets/js/nav-memory.js" defer></script>
-  <script src="../assets/js/share.js" defer></script>
+  <script src="assets/js/nav-memory.js" defer></script>
+  <script src="assets/js/share.js" defer></script>
 
   <style>
     body {
@@ -206,16 +207,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo & Title -->
-      <a href="../index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737] rounded-xl p-1 select-none" aria-label="SlowPDF Homepage">
         <div class="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center header-mascot-idle">
           <img 
-            src="../assets/images/logo.webp" 
+            src="assets/images/logo.webp" 
             alt="SlowPDF Mascot Logo" 
             width="40"
             height="40"
             decoding="async"
             class="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
-            onerror="this.src='../assets/images/logo.png'"
+            onerror="this.src='assets/images/logo.png'"
           />
         </div>
         <span class="text-2xl font-extrabold tracking-tight text-[#2D3748] dark:text-[#2D3748] leading-none shrink-0 flex items-center">
@@ -225,13 +226,13 @@
 
       <!-- Center Header Nav Buttons -->
       <nav class="hidden md:flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold py-1">
-        <a id="nav-home-link" href="../index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
-        <a href="../index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Tools</a>
-        <a href="../blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
-        <a href="../about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
+        <a id="nav-home-link" href="index.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Home</a>
+        <a href="index.html#popular-tools" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Tools</a>
+        <a href="blog.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Blog</a>
+        <a href="about.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">About</a>
         <a href="/contact.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#274737] text-white shadow-xs border border-[#1E362A] shrink-0 transition-all hover:scale-105" aria-current="page">Contact</a>
-        <a href="../privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
-        <a href="../terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
+        <a href="privacy.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Privacy</a>
+        <a href="terms.html" class="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full text-[#1E3D33] bg-white/80 hover:bg-white border border-[#274737]/25 shadow-2xs shrink-0 transition-all hover:scale-105">Terms</a>
       </nav>
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
@@ -398,7 +399,7 @@
             >
               <div class="flex items-center gap-2.5">
                 <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center shrink-0">
-                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </div>
                 <div class="text-left">
                   <span class="block text-xs font-bold text-[#222E28] dark:text-white">X (Twitter)</span>
@@ -432,12 +433,12 @@
           <div class="p-3.5 rounded-2xl bg-[#FFFBF2] dark:bg-[#151D19] border border-stone-200/80 dark:border-stone-800">
             <div class="flex items-center gap-3">
               <img 
-                src="../assets/images/logo.webp" 
+                src="assets/images/logo.webp" 
                 alt="Tveezal Mascot" 
                 width="36" 
                 height="36" 
                 class="w-9 h-9 object-contain"
-                onerror="this.src='../assets/images/logo.png'"
+                onerror="this.src='assets/images/logo.png'"
               />
               <div>
                 <span class="block text-xs font-bold text-[#222E28] dark:text-white">Tveezal Studios</span>
@@ -595,13 +596,13 @@
           Need immediate guidance on how client-side privacy works?
         </span>
         <div class="flex items-center gap-4 text-xs font-semibold">
-          <a href="how-it-works.html" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
+          <a href="pages/how-it-works.html" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
             How It Works →
           </a>
-          <a href="security.html" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
+          <a href="pages/security.html" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
             Security Architecture →
           </a>
-          <a href="../index.html#faq-section" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
+          <a href="index.html#faq-section" class="text-[#355E4B] dark:text-[#5E9B7E] hover:underline">
             Read FAQs →
           </a>
         </div>
@@ -620,14 +621,14 @@
         
         <!-- Left Column: Branding, Tagline, Official Brand Social Buttons, Share Button -->
         <div class="lg:col-span-2 space-y-4">
-          <a href="../index.html" class="flex items-center gap-3 group">
+          <a href="index.html" class="flex items-center gap-3 group">
             <img 
-              src="../assets/images/logo.webp" 
+              src="assets/images/logo.webp" 
               alt="SlowPDF Brand Logo" 
               width="40"
               height="40"
               class="w-10 h-10 object-contain rounded-full shadow-xs group-hover:scale-105 transition-transform" 
-              onerror="this.src='../assets/images/logo.png'"
+              onerror="this.src='assets/images/logo.png'"
             />
             <span class="text-2xl font-extrabold tracking-tight text-[#222E28] dark:text-white">
               Slow<span class="text-[#355E4B] dark:text-[#5E9B7E]">PDF</span>
@@ -684,14 +685,14 @@
             PDF Tools
           </h4>
           <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-            <li><a href="../tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
-            <li><a href="../tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
-            <li><a href="../tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
-            <li><a href="../tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
-            <li><a href="../tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
-            <li><a href="../tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
-            <li><a href="../tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
-            <li><a href="../tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
+            <li><a href="tools/compress-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Compress PDF</a></li>
+            <li><a href="tools/merge-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Merge PDF</a></li>
+            <li><a href="tools/split-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Split PDF</a></li>
+            <li><a href="tools/protect-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Protect PDF</a></li>
+            <li><a href="tools/unlock-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Unlock PDF</a></li>
+            <li><a href="tools/images-to-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Images to PDF</a></li>
+            <li><a href="tools/pdf-to-word.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to Word</a></li>
+            <li><a href="tools/rotate-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Rotate PDF</a></li>
           </ul>
         </div>
 
@@ -701,14 +702,14 @@
             More Utilities
           </h4>
           <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
-            <li><a href="../tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
-            <li><a href="../tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
-            <li><a href="../tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
-            <li><a href="../tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
-            <li><a href="../tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
-            <li><a href="../blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
-            <li><a href="how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
-            <li><a href="learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
+            <li><a href="tools/pdf-to-jpg.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">PDF to JPG</a></li>
+            <li><a href="tools/ocr-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">OCR PDF</a></li>
+            <li><a href="tools/edit-metadata.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Edit Metadata</a></li>
+            <li><a href="tools/crop-pdf.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Crop PDF</a></li>
+            <li><a href="tools/add-watermark.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Add Watermark</a></li>
+            <li><a href="blog.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium text-emerald-800 dark:text-emerald-300">Blog &amp; Guides</a></li>
+            <li><a href="pages/how-it-works.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="pages/learn.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Learn PDF Privacy</a></li>
           </ul>
         </div>
 
@@ -722,8 +723,8 @@
             <li><a href="/contact.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-semibold text-emerald-800 dark:text-emerald-300">Contact Us</a></li>
             <li><a href="privacy.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
             <li><a href="terms.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
-            <li><a href="security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
-            <li><a href="../index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
+            <li><a href="pages/security.html" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">Security Architecture</a></li>
+            <li><a href="index.html#faq-section" class="hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors">FAQ</a></li>
           </ul>
         </div>
 
@@ -756,7 +757,7 @@
     <div class="fixed top-20 right-4 sm:right-8 w-80 max-w-[90vw] bg-white dark:bg-[#1C2420] rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-700 transform transition-transform duration-300 scale-95" id="modal-card">
       <div class="flex items-center justify-between pb-4 border-b border-stone-100 dark:border-stone-700/60">
         <div class="flex items-center gap-2">
-          <img src="../assets/images/logo.webp" alt="SlowPDF" width="28" height="28" class="w-7 h-7 object-contain rounded-full" onerror="this.src='../assets/images/logo.png'" />
+          <img src="assets/images/logo.webp" alt="SlowPDF" width="28" height="28" class="w-7 h-7 object-contain rounded-full" onerror="this.src='assets/images/logo.png'" />
           <span class="font-bold text-base text-[#222E28] dark:text-white">Quick Preferences</span>
         </div>
         <button id="close-modal-btn" class="close-modal-btn p-1 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-white focus:outline-none" aria-label="Close menu">
@@ -787,22 +788,22 @@
       <!-- Navigation & Legal Links with Blog -->
       <div class="py-4 space-y-2.5 border-b border-stone-100 dark:border-stone-700/60 text-sm">
         <div class="text-xs font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">Navigation</div>
-        <a href="../index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Home</a>
-        <a href="../index.html#popular-tools" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Tools</a>
-        <a href="../blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+        <a href="index.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Home</a>
+        <a href="index.html#popular-tools" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Tools</a>
+        <a href="blog.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
           <span>Blog &amp; Articles</span>
           <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40">New</span>
         </a>
-        <a href="../about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
+        <a href="about.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">About Us</a>
         <a href="/contact.html" class="block font-semibold text-[#274737] dark:text-emerald-400 py-1">Contact Us</a>
-        <a href="how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
-        <a href="learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
-        <a href="../privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
+        <a href="pages/how-it-works.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">How It Works</a>
+        <a href="pages/learn.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Learn &amp; Study Guides</a>
+        <a href="privacy.html" class="flex items-center justify-between text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">
           <span>Privacy Policy</span>
           <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Zero-Server</span>
         </a>
-        <a href="../terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
-        <a href="security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
+        <a href="terms.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Terms of Service</a>
+        <a href="pages/security.html" class="block text-stone-600 dark:text-stone-300 hover:text-[#355E4B] dark:hover:text-emerald-400 py-1">Security Architecture</a>
       </div>
 
       <!-- Social Media Icons in Menu -->
