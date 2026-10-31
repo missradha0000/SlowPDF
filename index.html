@@ -1846,6 +1846,72 @@
       </button>
     </div>
   </section>
+
+  <!-- Compact Quick-Note Form Section Below FAQ -->
+  <section class="max-w-2xl mx-auto px-4 sm:px-6 mt-16 sm:mt-20">
+    <div class="rounded-3xl p-6 sm:p-9 bg-white dark:bg-[#1C2420] border border-stone-200/80 dark:border-stone-800 shadow-xs">
+      <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#355E4B]/10 dark:bg-[#5E9B7E]/15 text-[#274737] dark:text-[#A7F3D0] text-xs font-semibold mb-3 border border-[#355E4B]/20">
+          <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Direct Studio Help</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white tracking-tight mb-2">
+          Still have questions or feedback?
+        </h2>
+        <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
+          Send a direct message to our studio team.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/mpppywnp" method="POST" id="home-quick-form" class="space-y-4">
+        <!-- Anti-spam Honeypot -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div>
+          <label for="home-replyto" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+            Your Email Address <span class="text-[#355E4B] dark:text-[#5E9B7E]">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="home-replyto"
+            name="_replyto" 
+            required 
+            placeholder="Your email address" 
+            class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm transition-all"
+          />
+        </div>
+
+        <div>
+          <label for="home-message" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+            Your Message <span class="text-[#355E4B] dark:text-[#5E9B7E]">*</span>
+          </label>
+          <textarea 
+            id="home-message"
+            name="message" 
+            rows="3" 
+            required 
+            placeholder="How can we help you?" 
+            class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm transition-all resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+          <span class="text-xs text-stone-500 dark:text-stone-400 text-center sm:text-left">
+            Need more options? Visit our <a href="/contact.html" class="text-[#355E4B] dark:text-[#5E9B7E] font-semibold underline hover:opacity-80">Full Contact Page</a>.
+          </span>
+          <button 
+            type="submit" 
+            id="home-quick-submit-btn"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-[#274737] hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#43715C] text-white font-semibold text-sm shadow-xs hover:shadow-md transition-all cursor-pointer shrink-0"
+          >
+            <span>Send Message ↗</span>
+          </button>
+        </div>
+
+        <div id="home-quick-status" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+      </form>
+    </div>
+  </section>
   </main>
 
   <!-- ========================================== -->
@@ -2280,6 +2346,68 @@
         faqChevron.classList.remove('rotate-180');
       }
     });
+
+    // ----------------------------------------------------
+    // F. Compact Home Quick Form Interaction (Formspree)
+    // ----------------------------------------------------
+    const homeQuickForm = document.getElementById('home-quick-form');
+    if (homeQuickForm) {
+      const homeSubmitBtn = document.getElementById('home-quick-submit-btn');
+      const homeStatusBox = document.getElementById('home-quick-status');
+
+      homeQuickForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (!homeSubmitBtn || !homeStatusBox) {
+          homeQuickForm.submit();
+          return;
+        }
+
+        const originalBtnText = homeSubmitBtn.innerHTML;
+        homeSubmitBtn.disabled = true;
+        homeSubmitBtn.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Sending...</span>
+        `;
+        homeStatusBox.className = 'hidden';
+
+        try {
+          const formData = new FormData(homeQuickForm);
+          const response = await fetch(homeQuickForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            homeStatusBox.className = 'p-4 rounded-xl text-sm font-medium bg-[#355E4B]/10 dark:bg-[#5E9B7E]/20 text-[#274737] dark:text-[#A7F3D0] border border-[#355E4B]/20 flex items-center gap-2.5';
+            homeStatusBox.innerHTML = `
+              <svg class="w-5 h-5 text-[#355E4B] dark:text-[#A7F3D0] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Thank you! Your message has been sent to our studio team.</span>
+            `;
+            homeQuickForm.reset();
+          } else {
+            const data = await response.json().catch(() => ({}));
+            const errorMsg = data && data.errors ? data.errors.map(err => err.message).join(', ') : 'Unable to send message. Please try again.';
+            homeStatusBox.className = 'p-4 rounded-xl text-sm font-medium bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/50 flex items-center gap-2.5';
+            homeStatusBox.innerHTML = `
+              <svg class="w-5 h-5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>${errorMsg}</span>
+            `;
+          }
+        } catch (err) {
+          homeQuickForm.submit();
+          return;
+        } finally {
+          homeSubmitBtn.disabled = false;
+          homeSubmitBtn.innerHTML = originalBtnText;
+        }
+      });
+    }
   </script>
 
   <!-- Vite module entry if needed by dev server -->

@@ -269,7 +269,7 @@
   <!-- ========================================== -->
   <!-- 2. MAIN CONTENT (<main role="main">)       -->
   <!-- ========================================== -->
-  <main role="main" class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+  <main role="main" class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
 
     <!-- Hero Header -->
     <section class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -285,164 +285,273 @@
       </p>
     </section>
 
-    <!-- 3 Core Contact Cards Grid -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
+    <!-- Contact & Channels Grid: Direct Support Cards & Formspree Form -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-start">
 
-      <!-- Card 1: Official Email Support -->
-      <article class="contact-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-[#355E4B]/10 dark:bg-[#5E9B7E]/20 text-[#274737] dark:text-[#A7F3D0] flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
+      <!-- Left Column: Direct Support Cards (lg:col-span-5) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Card 1: Official Email Support -->
+        <article class="contact-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-[#355E4B]/10 dark:bg-[#5E9B7E]/20 text-[#274737] dark:text-[#A7F3D0] flex items-center justify-center mb-5">
+              <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
+              Support Desk
+            </span>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-2">
+              Direct Email
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-5">
+              We review every inquiry and usually reply within 24 to 48 hours. Whether you found a PDF rendering edge-case or have a tool idea, write to us directly.
+            </p>
           </div>
-          <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
-            Support Desk
-          </span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-3">
-            Direct Email
+
+          <div>
+            <a 
+              href="mailto:contact.tveezal@gmail.com" 
+              class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#274737] hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#43715C] text-white font-semibold text-xs sm:text-sm shadow-xs transition-all hover:shadow-md"
+              aria-label="Send email to contact.tveezal@gmail.com"
+            >
+              <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span>contact.tveezal@gmail.com</span>
+            </a>
+            <span class="block text-center text-[11px] text-stone-400 dark:text-stone-500 mt-2">
+              Click to open your default email app
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 2: Community & Instant Channels -->
+        <article class="contact-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-5">
+              <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
+              Real-Time Updates
+            </span>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-2">
+              Official Channels
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-5">
+              Join our channels for quick updates, releases, and announcements. Direct links to our official handles:
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <!-- WhatsApp Channel -->
+            <a 
+              href="https://whatsapp.com/channel/0029Vb8nVyw1SWt4dryhS13o" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-[#25D366]/10 dark:hover:bg-[#25D366]/15 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
+            >
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-[#25D366] text-white flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </div>
+                <div class="text-left">
+                  <span class="block text-xs font-bold text-[#222E28] dark:text-white">WhatsApp Channel</span>
+                  <span class="block text-[10px] text-stone-500 dark:text-stone-400">Announcements &amp; News</span>
+                </div>
+              </div>
+              <svg class="w-3.5 h-3.5 text-stone-400 group-hover:text-[#25D366] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <!-- Telegram Channel -->
+            <a 
+              href="https://t.me/tveezalofficial" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-[#229ED9]/10 dark:hover:bg-[#229ED9]/15 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
+            >
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-[#229ED9] text-white flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </div>
+                <div class="text-left">
+                  <span class="block text-xs font-bold text-[#222E28] dark:text-white">Telegram Community</span>
+                  <span class="block text-[10px] text-stone-500 dark:text-stone-400">@tveezalofficial</span>
+                </div>
+              </div>
+              <svg class="w-3.5 h-3.5 text-stone-400 group-hover:text-[#229ED9] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <!-- X / Twitter -->
+            <a 
+              href="https://x.com/tveezal" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-black/10 dark:hover:bg-white/10 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
+            >
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                <div class="text-left">
+                  <span class="block text-xs font-bold text-[#222E28] dark:text-white">X (Twitter)</span>
+                  <span class="block text-[10px] text-stone-500 dark:text-stone-400">@tveezal</span>
+                </div>
+              </div>
+              <svg class="w-3.5 h-3.5 text-stone-400 group-hover:text-black dark:group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Parent Studio -->
+        <article class="contact-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 flex items-center justify-center mb-5">
+              <svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
+              Creation Lab
+            </span>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-2">
+              Crafted by Tveezal
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-5">
+              SlowPDF is an independent digital utility built under the Tveezal creation lab. We design minimal, private, and high-performance tools that champion deep learning without invasive cloud harvesting.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-[#FFFBF2] dark:bg-[#151D19] border border-stone-200/80 dark:border-stone-800">
+            <div class="flex items-center gap-3">
+              <img 
+                src="assets/images/logo.webp" 
+                alt="Tveezal Mascot" 
+                width="36" 
+                height="36" 
+                class="w-9 h-9 object-contain"
+                onerror="this.src='assets/images/logo.png'"
+              />
+              <div>
+                <span class="block text-xs font-bold text-[#222E28] dark:text-white">Tveezal Studios</span>
+                <span class="block text-[11px] text-stone-500 dark:text-stone-400">Calm Tech &amp; Open Web Standards</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Right Column: Full Contact Form Component (lg:col-span-7) -->
+      <article class="lg:col-span-7 contact-card rounded-3xl p-6 sm:p-9">
+        <div class="mb-6 sm:mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#355E4B]/10 dark:bg-[#5E9B7E]/15 text-[#274737] dark:text-[#A7F3D0] text-xs font-semibold mb-3 border border-[#355E4B]/20">
+            <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Direct Message</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#222E28] dark:text-white mb-2">
+            Send Us a Message
           </h2>
-          <p class="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-6">
-            We review every inquiry and usually reply within 24 to 48 hours. Whether you found a PDF rendering edge-case or have a tool idea, write to us directly.
+          <p class="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+            Have a suggestion, bug report, or partnership idea? Fill out the form below and we will review your note promptly.
           </p>
         </div>
 
-        <div>
-          <a 
-            href="mailto:contact.tveezal@gmail.com" 
-            class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-[#274737] hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#43715C] text-white font-semibold text-sm shadow-xs transition-all hover:shadow-md"
-            aria-label="Send email to contact.tveezal@gmail.com"
-          >
-            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-            <span>contact.tveezal@gmail.com</span>
-          </a>
-          <span class="block text-center text-xs text-stone-400 dark:text-stone-500 mt-2">
-            Click to open your default email app
-          </span>
-        </div>
-      </article>
+        <form action="https://formspree.io/f/mpppywnp" method="POST" id="main-contact-form" class="space-y-5">
+          <!-- Anti-spam Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-      <!-- Card 2: Community & Instant Channels -->
-      <article class="contact-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
-            Real-Time Updates
-          </span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-3">
-            Official Channels
-          </h2>
-          <p class="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-6">
-            Join our channels for quick updates, releases, and announcements. Direct links to our official handles:
-          </p>
-        </div>
-
-        <div class="space-y-2.5">
-          <!-- WhatsApp Channel -->
-          <a 
-            href="https://whatsapp.com/channel/0029Vb8nVyw1SWt4dryhS13o" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="flex items-center justify-between p-3 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-[#25D366]/10 dark:hover:bg-[#25D366]/15 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-              </div>
-              <div class="text-left">
-                <span class="block text-xs font-bold text-[#222E28] dark:text-white">WhatsApp Channel</span>
-                <span class="block text-[11px] text-stone-500 dark:text-stone-400">Announcements &amp; News</span>
-              </div>
-            </div>
-            <svg class="w-4 h-4 text-stone-400 group-hover:text-[#25D366] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-
-          <!-- Telegram Channel -->
-          <a 
-            href="https://t.me/tveezalofficial" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="flex items-center justify-between p-3 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-[#229ED9]/10 dark:hover:bg-[#229ED9]/15 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-[#229ED9] text-white flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              </div>
-              <div class="text-left">
-                <span class="block text-xs font-bold text-[#222E28] dark:text-white">Telegram Community</span>
-                <span class="block text-[11px] text-stone-500 dark:text-stone-400">@tveezalofficial</span>
-              </div>
-            </div>
-            <svg class="w-4 h-4 text-stone-400 group-hover:text-[#229ED9] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-
-          <!-- X / Twitter -->
-          <a 
-            href="https://x.com/tveezal" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="flex items-center justify-between p-3 rounded-xl bg-stone-50 dark:bg-stone-800/60 hover:bg-black/10 dark:hover:bg-white/10 border border-stone-200/80 dark:border-stone-700/80 transition-all group"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center shrink-0">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </div>
-              <div class="text-left">
-                <span class="block text-xs font-bold text-[#222E28] dark:text-white">X (Twitter)</span>
-                <span class="block text-[11px] text-stone-500 dark:text-stone-400">@tveezal</span>
-              </div>
-            </div>
-            <svg class="w-4 h-4 text-stone-400 group-hover:text-black dark:group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 3: Parent Studio -->
-      <article class="contact-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-          </div>
-          <span class="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
-            Creation Lab
-          </span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-[#222E28] dark:text-white mt-1 mb-3">
-            Crafted by Tveezal
-          </h2>
-          <p class="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-6">
-            SlowPDF is an independent digital utility built under the Tveezal creation lab. We design minimal, private, and high-performance tools that champion deep learning without invasive cloud harvesting.
-          </p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-[#FFFBF2] dark:bg-[#151D19] border border-stone-200/80 dark:border-stone-800">
-          <div class="flex items-center gap-3">
-            <img 
-              src="assets/images/logo.webp" 
-              alt="Tveezal Mascot" 
-              width="36" 
-              height="36" 
-              class="w-9 h-9 object-contain"
-              onerror="this.src='assets/images/logo.png'"
-            />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Full Name -->
             <div>
-              <span class="block text-xs font-bold text-[#222E28] dark:text-white">Tveezal Studios</span>
-              <span class="block text-[11px] text-stone-500 dark:text-stone-400">Calm Tech &amp; Open Web Standards</span>
+              <label for="name" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                Full Name <span class="text-[#355E4B] dark:text-[#5E9B7E]">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="Your full name" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm transition-all"
+              />
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label for="email" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+                Email Address <span class="text-[#355E4B] dark:text-[#5E9B7E]">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="_replyto" 
+                required 
+                placeholder="you@example.com" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm transition-all"
+              />
             </div>
           </div>
-        </div>
+
+          <!-- Inquiry Topic -->
+          <div>
+            <label for="subject" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+              Inquiry Topic
+            </label>
+            <div class="relative">
+              <select 
+                id="subject" 
+                name="subject" 
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm appearance-none transition-all cursor-pointer pr-10"
+              >
+                <option value="General Question">General Question</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Partnership">Partnership</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-stone-500">
+                <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
+              Message <span class="text-[#355E4B] dark:text-[#5E9B7E]">*</span>
+            </label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="4" 
+              required 
+              placeholder="Write your message here..." 
+              class="w-full px-4 py-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-stone-50/70 dark:bg-stone-800/60 text-[#222E28] dark:text-white placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-[#355E4B] focus:ring-2 focus:ring-[#355E4B]/20 dark:focus:border-[#5E9B7E] dark:focus:ring-[#5E9B7E]/20 text-sm transition-all resize-y"
+            ></textarea>
+          </div>
+
+          <!-- Primary Submit Button -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button 
+              type="submit" 
+              id="main-contact-submit-btn"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#274737] hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#43715C] text-white font-semibold text-sm sm:text-base shadow-xs hover:shadow-md transition-all cursor-pointer"
+            >
+              <span>Send Message ↗</span>
+            </button>
+            <span class="text-xs text-stone-500 dark:text-stone-400 text-center sm:text-right">
+              Protected by honeypot anti-spam. No login required.
+            </span>
+          </div>
+
+          <div id="main-contact-status" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+        </form>
       </article>
 
     </section>
@@ -812,6 +921,71 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuModal && menuModal.style.display === 'block') {
           closeModal();
+        }
+      });
+    })();
+  </script>
+
+  <!-- Formspree Submission Handler -->
+  <script>
+    (function() {
+      const contactForm = document.getElementById('main-contact-form');
+      if (!contactForm) return;
+
+      const submitBtn = document.getElementById('main-contact-submit-btn');
+      const statusBox = document.getElementById('main-contact-status');
+
+      contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        if (!submitBtn || !statusBox) {
+          contactForm.submit();
+          return;
+        }
+
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Sending...</span>
+        `;
+        statusBox.className = 'hidden';
+
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            statusBox.className = 'p-4 rounded-xl text-sm font-medium bg-[#355E4B]/10 dark:bg-[#5E9B7E]/20 text-[#274737] dark:text-[#A7F3D0] border border-[#355E4B]/20 flex items-center gap-2.5';
+            statusBox.innerHTML = `
+              <svg class="w-5 h-5 text-[#355E4B] dark:text-[#A7F3D0] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Thank you! Your message has been sent successfully. We will get back to you shortly.</span>
+            `;
+            contactForm.reset();
+          } else {
+            const data = await response.json().catch(() => ({}));
+            const errorMsg = data && data.errors ? data.errors.map(err => err.message).join(', ') : 'Submission failed. Please check your details and try again.';
+            statusBox.className = 'p-4 rounded-xl text-sm font-medium bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/50 flex items-center gap-2.5';
+            statusBox.innerHTML = `
+              <svg class="w-5 h-5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>${errorMsg}</span>
+            `;
+          }
+        } catch (err) {
+          // Fallback to standard native form submission if fetch is blocked
+          contactForm.submit();
+          return;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
         }
       });
     })();
