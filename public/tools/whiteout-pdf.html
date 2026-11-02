@@ -190,6 +190,7 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
+  <script src="../assets/js/export-document.js"></script>
 
   <style>
     /* ==========================================================================
@@ -1242,13 +1243,8 @@
   <script>
 
     async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
-      }
-      const tg = window.Telegram?.WebApp;
-      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
-      if (isTelegram) {
-        alert('Sending to Telegram chat...');
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -1259,8 +1255,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-
-    // Global Application State
+    window.exportDocument = downloadResult;// Global Application State
     let selectedFile = null;
     let fileArrayBuffer = null;
     let pdfDocObj = null;
@@ -1905,7 +1900,7 @@
       const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Redacted_Document';
       const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
 
-      downloadResult(redactedPdfBlobUrl, filename);
+      window.exportDocument(redactedPdfBlobUrl, filename);
     });
 
     // Reset Workflow to Redact Another PDF

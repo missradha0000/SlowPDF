@@ -182,6 +182,7 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
+  <script src="../assets/js/export-document.js"></script>
 
   <style>
     /* ==========================================================================
@@ -1264,13 +1265,8 @@
   <script>
 
     async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
-      }
-      const tg = window.Telegram?.WebApp;
-      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
-      if (isTelegram) {
-        alert('Sending to Telegram chat...');
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -1281,8 +1277,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-
-    // 1. Configure PDF.js Worker
+    window.exportDocument = downloadResult;// 1. Configure PDF.js Worker
     if (typeof pdfjsLib !== 'undefined') {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }

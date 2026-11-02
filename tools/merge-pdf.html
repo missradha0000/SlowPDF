@@ -73,6 +73,7 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
+  <script src="assets/js/export-document.js"></script>
 
   <style>
     /* ==========================================================================
@@ -1164,15 +1165,9 @@
   <script>
     // ----------------------------------------------------
 
-        async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
-      }
-      const tg = window.Telegram?.WebApp;
-      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
-      if (isTelegram) {
-        // Fallback if engine wrapper not yet attached
-        alert('Sending to Telegram chat...');
+        async function window.exportDocument(blob, filename) {
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -1183,7 +1178,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-    // 1. DARK MODE THEME PERSISTENCE
+    window.exportDocument = downloadResult;// 1. DARK MODE THEME PERSISTENCE
     // ----------------------------------------------------
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkModeThumb = document.getElementById('dark-mode-thumb');
@@ -1554,14 +1549,7 @@
           const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
           if (isTelegram) {
             e.preventDefault();
-            downloadResult(blob, latestName);
-            return false;
-          }
-        };
-          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
-          if (isTelegram) {
-            e.preventDefault();
-            downloadResult(blob, latestName);
+            window.exportDocument(blob, latestName);
             return false;
           }
         };

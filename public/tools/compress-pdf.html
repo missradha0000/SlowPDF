@@ -123,6 +123,7 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
+  <script src="assets/js/export-document.js"></script>
   <script src="../assets/js/share.js"></script>
 
   <style>
@@ -1373,14 +1374,8 @@
     // ----------------------------------------------------
 
         async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
-      }
-      const tg = window.Telegram?.WebApp;
-      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
-      if (isTelegram) {
-        // Fallback if engine wrapper not yet attached
-        alert('Sending to Telegram chat...');
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -1391,7 +1386,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-    // 1. DARK MODE THEME PERSISTENCE
+    window.exportDocument = downloadResult;// 1. DARK MODE THEME PERSISTENCE
     // ----------------------------------------------------
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkModeThumb = document.getElementById('dark-mode-thumb');
@@ -1800,23 +1795,16 @@
           compressedFileStats.textContent = `${formatBytes(originalBytes)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Full Quality`;
 
           downloadCompressedBtn.onclick = (e) => {
-          const latestName = computeFinalFileName();
-          downloadCompressedBtn.download = latestName;
-          downloadCompressedBtn.setAttribute('download', latestName);
-          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
-          if (isTelegram) {
-            e.preventDefault();
-            downloadResult(downloadUrl, latestName);
-            return false;
-          }
-        };
-          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
-          if (isTelegram) {
-            e.preventDefault();
-            downloadResult(downloadUrl, latestName);
-            return false;
-          }
-        };
+            const latestName = computeFinalFileName();
+            downloadCompressedBtn.download = latestName;
+            downloadCompressedBtn.setAttribute('download', latestName);
+            const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+            if (isTelegram) {
+              e.preventDefault();
+              window.exportDocument(downloadUrl, latestName);
+              return false;
+            }
+          };
 
           progressBarFill.style.width = '100%';
           progressPercentText.textContent = '100%';
@@ -2037,10 +2025,16 @@
         comparisonBadgeText.textContent = `Original: ${formatBytes(originalBytes)} ➔ Compressed: ${formatBytes(newBytes)} (Saved ${percentSaved}%)`;
         compressedFileStats.textContent = `${formatBytes(newBytes)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Crisp & Clean`;
 
-        downloadCompressedBtn.onclick = () => {
+        downloadCompressedBtn.onclick = (e) => {
           const latestName = computeFinalFileName();
           downloadCompressedBtn.download = latestName;
           downloadCompressedBtn.setAttribute('download', latestName);
+          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+          if (isTelegram) {
+            e.preventDefault();
+            window.exportDocument(downloadUrl, latestName);
+            return false;
+          }
         };
 
         // Switch to success view

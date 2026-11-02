@@ -229,8 +229,8 @@
   </script>
   <script>
     async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -241,7 +241,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-  </script>
+    window.exportDocument = downloadResult;</script>
 
   <!-- External Centralized Configurations, Carousel Engine & Memory Nav -->
   <script src="assets/js/banners.js" defer></script>

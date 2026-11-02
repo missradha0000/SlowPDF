@@ -125,6 +125,7 @@
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/pdf-engine.js"></script>
+  <script src="../assets/js/export-document.js"></script>
 
   <style>
     /* ==========================================================================
@@ -1297,13 +1298,8 @@
   <script>
 
     async function downloadResult(blob, filename) {
-      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
-        return window.SlowPDFEngine.downloadResult(blob, filename);
-      }
-      const tg = window.Telegram?.WebApp;
-      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
-      if (isTelegram) {
-        alert('Sending to Telegram chat...');
+      if (window.exportDocument) {
+        return window.exportDocument(blob, filename);
       }
       const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
@@ -1314,8 +1310,7 @@
       document.body.removeChild(a);
     }
     window.downloadResult = downloadResult;
-
-    // Configure PDF.js Worker
+    window.exportDocument = downloadResult;// Configure PDF.js Worker
     if (window.pdfjsLib) {
       window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
     }
@@ -1838,10 +1833,16 @@
         protectedFileName.textContent = finalDownloadName;
         protectedFileStats.textContent = `${formatBytes(encryptedBytes.byteLength)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Fully Encrypted`;
 
-        downloadProtectedBtn.onclick = () => {
+        downloadProtectedBtn.onclick = (e) => {
           const latestName = computeFinalFileName();
           downloadProtectedBtn.download = latestName;
           downloadProtectedBtn.setAttribute('download', latestName);
+          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+          if (isTelegram) {
+            e.preventDefault();
+            window.exportDocument(downloadUrl, latestName);
+            return false;
+          }
         };
 
         // Switch to success view

@@ -104,7 +104,7 @@
     // 1. Native Telegram Alert
     if (window.Telegram?.WebApp?.showAlert) {
       try {
-        window.Telegram.WebApp.showAlert("✅ Success! Your processed PDF has been delivered to your bot chat. Please check your messages!");
+        window.Telegram.WebApp.showAlert("File sent to your bot chat!");
       } catch (e) {
         console.warn('Telegram showAlert error:', e);
       }
@@ -202,7 +202,7 @@
         activeBtn.style.pointerEvents = 'none';
         activeBtn.innerHTML = `
           <svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline-block shrink-0 align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-          <span class="align-middle">Sending to your Telegram chat... ⏳</span>
+          <span class="align-middle">Sending file to your Telegram chat... ⏳</span>
         `;
       }
 
@@ -267,6 +267,7 @@
     }
   }
   window.downloadResult = downloadResult;
+  window.exportDocument = downloadResult;
 
   window.SlowPDFEngine = {
     execute: function (action, payload, transferables = [], onProgress = null) {
@@ -313,6 +314,7 @@
     },
 
     downloadResult: downloadResult,
+    exportDocument: downloadResult,
 
     downloadBuffer: function (buffer, fileName = 'document.pdf', mimeType = 'application/pdf') {
       const blob = new Blob([buffer], { type: mimeType });
