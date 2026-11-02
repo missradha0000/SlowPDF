@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    if (window.Telegram?.WebApp) {
+      try {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+      } catch (e) {
+        console.warn('Telegram WebApp init error', e);
+      }
+    }
+  </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8MGQ1D3QQ"></script>
 <script>
@@ -281,6 +291,8 @@
     }
 
   </style>
+  <link rel="manifest" href="/manifest.json" />
+  <script src="/assets/js/pwa-install.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
 
@@ -321,7 +333,13 @@
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
       <div class="flex items-center gap-2">
-        <button 
+                <button 
+          id="headerInstallBtn"
+          type="button"
+          class="header-pwa-install-btn hidden items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold bg-[#274737] text-white hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#274737] shadow-xs transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Install App"
+        >Install App ⬇</button>
+<button 
           id="header-share-btn"
           type="button"
           onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
@@ -1202,7 +1220,21 @@
   <!-- ========================================== -->
   <!-- 6. EXACT MASTER FOOTER                     -->
   <!-- ========================================== -->
-  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+    <!-- ========================================== -->
+  <!-- GLOBAL TELEGRAM & PWA FOOTER UTILITY STRIP -->
+  <!-- ========================================== -->
+  <div class="w-full bg-[#EADCC0] dark:bg-[#18231D] border-t border-b border-[#D8C7A5] dark:border-stone-800 text-[#1E362A] dark:text-[#E4EBE6] text-xs sm:text-sm py-2.5 px-4 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center justify-center gap-1.5 flex-wrap">
+        <span>Also available inside Telegram 👉 <a href="https://t.me/slowpdf_bot/app" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">Launch Mini App ↗</a></span>
+      </div>
+      <div class="flex items-center justify-center">
+        <button id="footerInstallBtn" class="footer-install-link hidden items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[#274737]/10 dark:bg-white/10 hover:bg-[#274737]/20 dark:hover:bg-white/20 transition-all focus:outline-none">📲 Install App</button>
+      </div>
+    </div>
+  </div>
+
+<footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
@@ -1340,37 +1372,25 @@
   <script>
     // ----------------------------------------------------
 
-    function downloadResult(blob, filename) {
-      const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData;
-
-      if (isTelegram) {
-        // Telegram Webview fix: Open blob via new window or trigger download via Telegram bridge
-        const blobUrl = (typeof blob === "string") ? blob : URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = blobUrl;
-        a.download = filename;
-        a.target = "_blank";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        
-        // Fallback for strict Telegram webviews:
-        setTimeout(() => {
-          window.open(blobUrl, "_blank");
-        }, 100);
-      } else {
-        const blobUrl = (typeof blob === "string") ? blob : URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = blobUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        if (typeof blob !== "string") {
-          setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-        }
+        async function downloadResult(blob, filename) {
+      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
+        return window.SlowPDFEngine.downloadResult(blob, filename);
       }
+      const tg = window.Telegram?.WebApp;
+      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
+      if (isTelegram) {
+        // Fallback if engine wrapper not yet attached
+        alert('Sending to Telegram chat...');
+      }
+      const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename || 'document.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
+    window.downloadResult = downloadResult;
     // 1. DARK MODE THEME PERSISTENCE
     // ----------------------------------------------------
     const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -1779,11 +1799,24 @@
           comparisonBadgeText.textContent = `Original: ${formatBytes(originalBytes)} ➔ Output: ${formatBytes(originalBytes)} (Already optimal • 100% quality preserved)`;
           compressedFileStats.textContent = `${formatBytes(originalBytes)} • ${numPages} Page${numPages > 1 ? 's' : ''} • Full Quality`;
 
-          downloadCompressedBtn.onclick = () => {
-            const latestName = computeFinalFileName();
-            downloadCompressedBtn.download = latestName;
-            downloadCompressedBtn.setAttribute('download', latestName);
-          };
+          downloadCompressedBtn.onclick = (e) => {
+          const latestName = computeFinalFileName();
+          downloadCompressedBtn.download = latestName;
+          downloadCompressedBtn.setAttribute('download', latestName);
+          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+          if (isTelegram) {
+            e.preventDefault();
+            downloadResult(downloadUrl, latestName);
+            return false;
+          }
+        };
+          const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
+          if (isTelegram) {
+            e.preventDefault();
+            downloadResult(downloadUrl, latestName);
+            return false;
+          }
+        };
 
           progressBarFill.style.width = '100%';
           progressPercentText.textContent = '100%';

@@ -301,6 +301,8 @@
     }
 
   </style>
+  <link rel="manifest" href="/manifest.json" />
+  <script src="/assets/js/pwa-install.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
 
@@ -338,7 +340,13 @@
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
       <div class="flex items-center gap-2">
-        <button 
+                <button 
+          id="headerInstallBtn"
+          type="button"
+          class="header-pwa-install-btn hidden items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold bg-[#274737] text-white hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#274737] shadow-xs transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Install App"
+        >Install App ⬇</button>
+<button 
           id="header-share-btn"
           type="button"
           onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
@@ -1039,7 +1047,21 @@
   <!-- ========================================== -->
   <!-- 3. LOCKED MASTER FOOTER                    -->
   <!-- ========================================== -->
-  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+    <!-- ========================================== -->
+  <!-- GLOBAL TELEGRAM & PWA FOOTER UTILITY STRIP -->
+  <!-- ========================================== -->
+  <div class="w-full bg-[#EADCC0] dark:bg-[#18231D] border-t border-b border-[#D8C7A5] dark:border-stone-800 text-[#1E362A] dark:text-[#E4EBE6] text-xs sm:text-sm py-2.5 px-4 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center justify-center gap-1.5 flex-wrap">
+        <span>Also available inside Telegram 👉 <a href="https://t.me/slowpdf_bot/app" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">Launch Mini App ↗</a></span>
+      </div>
+      <div class="flex items-center justify-center">
+        <button id="footerInstallBtn" class="footer-install-link hidden items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[#274737]/10 dark:bg-white/10 hover:bg-[#274737]/20 dark:hover:bg-white/20 transition-all focus:outline-none">📲 Install App</button>
+      </div>
+    </div>
+  </div>
+
+<footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
@@ -1694,90 +1716,24 @@
 <script>
 
         async function downloadResult(blob, filename) {
-      try {
-        const activeBtn = document.activeElement?.closest('a[download], button[id*="download"], a[id*="download"], button[id*="dl"], .download-btn') ||
-          document.querySelector('button[id*="download"]:not(.hidden), a[id*="download"]:not(.hidden), a[download]:not(.hidden)');
-        if (activeBtn && window.triggerDownloadButtonFeedback) {
-          window.triggerDownloadButtonFeedback(activeBtn);
-        }
-      } catch (_) {}
-
+      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
+        return window.SlowPDFEngine.downloadResult(blob, filename);
+      }
       const tg = window.Telegram?.WebApp;
-      const isTelegram = !!(tg && tg.initData);
-
-      let realBlob = blob;
-      if (!(blob instanceof Blob)) {
-        if (typeof blob === 'string') {
-          try {
-            const res = await fetch(blob);
-            realBlob = await res.blob();
-          } catch (e) {
-            console.warn('Could not fetch blob from string url', e);
-          }
-        } else if (blob instanceof Uint8Array || blob instanceof ArrayBuffer) {
-          const mime = filename.endsWith('.txt') ? 'text/plain'
-            : filename.endsWith('.zip') ? 'application/zip'
-            : filename.endsWith('.xlsx') ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            : filename.endsWith('.docx') ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-            : filename.endsWith('.jpg') ? 'image/jpeg'
-            : 'application/pdf';
-          realBlob = new Blob([blob], { type: mime });
-        }
-      }
-
+      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
       if (isTelegram) {
-        // Method A: Telegram Official Native WebApp downloadFile API
-        if (typeof tg.downloadFile === 'function') {
-          const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
-          tg.downloadFile({
-            url: blobUrl,
-            file_name: filename
-          }, function(accepted) {
-            if (!accepted) {
-              console.warn('Native download prompt dismissed or unhandled');
-            }
-          });
-          return;
-        }
-
-        // Method B: Base64 Data URI in-app fallback (reliable within webview without external redirect)
-        if (realBlob instanceof Blob) {
-          const reader = new FileReader();
-          reader.onloadend = function() {
-            const base64Url = reader.result;
-            const a = document.createElement('a');
-            a.href = base64Url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          };
-          reader.readAsDataURL(realBlob);
-        } else if (typeof realBlob === 'string') {
-          const a = document.createElement('a');
-          a.href = realBlob;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
-        return;
+        // Fallback if engine wrapper not yet attached
+        alert('Sending to Telegram chat...');
       }
-
-      // Method C: Standard web browser blob download
-      const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
+      const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
       const a = document.createElement('a');
       a.href = blobUrl;
-      a.download = filename;
+      a.download = filename || 'document.pdf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      if (realBlob instanceof Blob) {
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
-      }
     }
     window.downloadResult = downloadResult;
-    }
 
   (function() {
     function initMenu() {

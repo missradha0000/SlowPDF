@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    if (window.Telegram?.WebApp) {
+      try {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+      } catch (e) {
+        console.warn('Telegram WebApp init error', e);
+      }
+    }
+  </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8MGQ1D3QQ"></script>
 <script>
@@ -178,6 +189,7 @@
   <script src="../assets/js/banners.js"></script>
   <script src="../assets/js/carousel.js"></script>
   <script src="../assets/js/nav-memory.js"></script>
+  <script src="../assets/js/pdf-engine.js"></script>
 
   <style>
     /* ==========================================================================
@@ -1206,6 +1218,26 @@
   <!-- 7. WHITEOUT & REDACTION ENGINE SCRIPT      -->
   <!-- ========================================== -->
   <script>
+
+    async function downloadResult(blob, filename) {
+      if (window.SlowPDFEngine && typeof window.SlowPDFEngine.downloadResult === 'function') {
+        return window.SlowPDFEngine.downloadResult(blob, filename);
+      }
+      const tg = window.Telegram?.WebApp;
+      const isTelegram = Boolean(tg?.initDataUnsafe?.user?.id);
+      if (isTelegram) {
+        alert('Sending to Telegram chat...');
+      }
+      const blobUrl = (blob instanceof Blob) ? URL.createObjectURL(blob) : blob;
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename || 'document.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    window.downloadResult = downloadResult;
+
     // Global Application State
     let selectedFile = null;
     let fileArrayBuffer = null;
@@ -1851,12 +1883,7 @@
       const exportName = outputFilenameInput.value.trim() || 'SlowPDF_Redacted_Document';
       const filename = exportName.endsWith('.pdf') ? exportName : `${exportName}.pdf`;
 
-      const link = document.createElement('a');
-      link.href = redactedPdfBlobUrl;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      downloadResult(redactedPdfBlobUrl, filename);
     });
 
     // Reset Workflow to Redact Another PDF

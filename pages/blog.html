@@ -122,6 +122,8 @@
 
   <script src="../assets/js/nav-memory.js"></script>
   <script src="../assets/js/share.js"></script>
+  <link rel="manifest" href="/manifest.json" />
+  <script src="/assets/js/pwa-install.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#355E4B] selection:text-white">
 
@@ -159,7 +161,13 @@
 
       <!-- Far Right: Share Button + Hamburger Menu Button -->
       <div class="flex items-center gap-2">
-        <button 
+                <button 
+          id="headerInstallBtn"
+          type="button"
+          class="header-pwa-install-btn hidden items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold bg-[#274737] text-white hover:bg-[#1E362A] dark:bg-[#355E4B] dark:hover:bg-[#274737] shadow-xs transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#274737]"
+          aria-label="Install App"
+        >Install App ⬇</button>
+<button 
           id="header-share-btn"
           type="button"
           onclick="window.slowPdfShare({ title: document.title, text: 'SlowPDF – Free Client-Side PDF Tools. 100% private.', url: window.location.href })"
@@ -546,7 +554,21 @@
   <!-- ========================================== -->
   <!-- 4. MASTER FOOTER                           -->
   <!-- ========================================== -->
-  <footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
+    <!-- ========================================== -->
+  <!-- GLOBAL TELEGRAM & PWA FOOTER UTILITY STRIP -->
+  <!-- ========================================== -->
+  <div class="w-full bg-[#EADCC0] dark:bg-[#18231D] border-t border-b border-[#D8C7A5] dark:border-stone-800 text-[#1E362A] dark:text-[#E4EBE6] text-xs sm:text-sm py-2.5 px-4 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center justify-center gap-1.5 flex-wrap">
+        <span>Also available inside Telegram 👉 <a href="https://t.me/slowpdf_bot/app" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">Launch Mini App ↗</a></span>
+      </div>
+      <div class="flex items-center justify-center">
+        <button id="footerInstallBtn" class="footer-install-link hidden items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[#274737]/10 dark:bg-white/10 hover:bg-[#274737]/20 dark:hover:bg-white/20 transition-all focus:outline-none">📲 Install App</button>
+      </div>
+    </div>
+  </div>
+
+<footer class="mt-20 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#121A16] text-stone-700 dark:text-stone-300 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-stone-200 dark:border-stone-800">
@@ -604,6 +626,11 @@
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#355E4B] hover:bg-[#284739] dark:bg-[#5E9B7E] dark:hover:bg-[#4a8067] text-white font-medium text-xs shadow-xs transition-colors cursor-pointer">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
               <span>Share Website</span>
+            </button>
+            <button class="btn-install-app footer-download-btn" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; padding: 8px 16px; border-radius: 9999px; background: #3f4e45; color: #fff; border: none; cursor: pointer; font-size: 14px;">
+              <!-- Android SVG -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 18C6 19.1 6.9 20 8 20H9V22C9 22.55 9.45 23 10 23C10.55 23 11 22.55 11 22V20H13V22C13 22.55 13.45 23 14 23C14.55 23 15 22.55 15 22V20H16C17.1 20 18 19.1 18 18V9H6V18ZM3.5 9C2.67 9 2 9.67 2 10.5V16.5C2 17.33 2.67 18 3.5 18C4.33 18 5 17.33 5 16.5V10.5C5 9.67 4.33 9 3.5 9ZM20.5 9C19.67 9 19 9.67 19 10.5V16.5C19 17.33 19.67 18 20.5 18C21.33 18 22 17.33 22 16.5V10.5C22 9.67 21.33 9 20.5 9ZM15.53 4.25L16.89 2.89C17.09 2.69 17.09 2.37 16.89 2.18C16.69 1.98 16.37 1.98 16.18 2.18L14.65 3.71C13.85 3.27 12.95 3 12 3C11.05 3 10.15 3.27 9.35 3.71L7.82 2.18C7.63 1.98 7.31 1.98 7.11 2.18C6.92 2.37 6.92 2.69 7.11 2.89L8.47 4.25C6.97 5.27 6 6.99 6 8.94H18C18 6.99 17.03 5.27 15.53 4.25ZM9 6.5C8.45 6.5 8 6.05 8 5.5C8 4.95 8.45 4.5 9 4.5C9.55 4.5 10 4.95 10 5.5C10 6.05 9.55 6.5 9 6.5ZM15 6.5C14.45 6.5 14 6.05 14 5.5C14 4.95 14.45 4.5 15 4.5C15.55 4.5 16 4.95 16 5.5C16 6.05 15.55 6.5 15 6.5Z" fill="#3DDC84"/></svg>
+              <span>Download App</span>
             </button>
           </div>
         </div>
