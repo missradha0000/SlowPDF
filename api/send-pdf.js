@@ -1,7 +1,6 @@
 /**
- * Vercel Serverless Function / Express Route Handler: /api/send-pdf
- * Reads TELEGRAM_BOT_TOKEN securely from environment variables.
- * Dispatches processed PDF documents to user's Telegram chat via Telegram Bot API.
+ * Vercel Serverless Function / Express Handler: /api/send-pdf
+ * Delivers processed PDFs directly to user's Telegram chat via Telegram Bot API
  */
 
 export const config = {
@@ -13,7 +12,7 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  // CORS configuration
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -24,90 +23,68 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({
-      success: false,
-      message: 'Method Not Allowed. Please use POST.'
-    });
+    return res.status(405).json({ success: false, error: 'Method Not Allowed. Use POST.' });
   }
 
   try {
     const { userId, fileName, pdfBase64 } = req.body || {};
 
-    // 1. Verify that TELEGRAM_BOT_TOKEN is present in environment variables
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    if (!botToken || !botToken.trim()) {
-      console.warn('Telegram bot token is not configured on server.');
-      return res.status(500).json({
-        success: false,
-        message: 'Telegram bot token is not configured on server'
-      });
-    }
-
-    // 2. Validate input parameters
     if (!userId) {
-      return res.status(400).json({
-        success: false,
-        message: 'Missing userId parameter.'
-      });
+      return res.status(400).json({ success: false, error: 'Missing userId parameter.' });
     }
 
     if (!pdfBase64) {
-      return res.status(400).json({
+      return res.status(400).json({ success: false, error: 'Missing pdfBase64 document payload.' });
+    }
+
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    if (!botToken) {
+      console.warn('TELEGRAM_BOT_TOKEN is not configured on the server.');
+      return res.status(500).json({
         success: false,
-        message: 'Missing pdfBase64 document payload.'
+        error: 'Telegram Bot Token is not configured on the server (TELEGRAM_BOT_TOKEN is missing).'
       });
     }
 
-    // 3. Process Base64 PDF data (support both raw base64 and data URI schemes)
-    const cleanBase64 = typeof pdfBase64 === 'string'
-      ? pdfBase64.replace(/^data:[^;]+;base64,/, '').trim()
-      : '';
+    // Strip data URI prefix if present (e.g. "data:application/pdf;base64,...")
+    const cleanBase64 = typeof pdfBase64 === 'string' ? pdfBase64.replace(/^data:[^;]+;base64,/, '') : '';
     const fileBuffer = Buffer.from(cleanBase64, 'base64');
 
     if (fileBuffer.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid or empty PDF payload.'
-      });
+      return res.status(400).json({ success: false, error: 'Invalid or empty PDF payload.' });
     }
 
     const safeFileName = (fileName && typeof fileName === 'string' && fileName.trim())
       ? fileName.trim()
       : 'SlowPDF_Document.pdf';
 
-    // 4. Construct multipart/form-data payload using standard web FormData & Blob
+    // Construct FormData for Telegram sendDocument API
     const fileBlob = new Blob([fileBuffer], { type: 'application/pdf' });
     const formData = new FormData();
     formData.append('chat_id', String(userId));
     formData.append('document', fileBlob, safeFileName);
     formData.append('caption', '✅ Here is your processed document from SlowPDF!');
 
-    // 5. Send document via official Telegram Bot API
-    const telegramApiUrl = `https://api.telegram.org/bot${botToken.trim()}/sendDocument`;
+    const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendDocument`;
 
     const tgResponse = await fetch(telegramApiUrl, {
       method: 'POST',
       body: formData
     });
 
-    const tgResult = await tgResponse.json().catch(() => ({
-      ok: false,
-      description: 'Received non-JSON response from Telegram API'
-    }));
+    const tgResult = await tgResponse.json().catch(() => ({ ok: false, description: 'Non-JSON response from Telegram' }));
 
     if (!tgResponse.ok || !tgResult.ok) {
-      console.error('Telegram API error response:', tgResult);
+      console.error('Telegram API error:', tgResult);
       return res.status(tgResponse.status >= 400 && tgResponse.status < 500 ? tgResponse.status : 502).json({
         success: false,
-        message: tgResult.description || 'Failed to send document to Telegram chat.',
+        error: tgResult.description || 'Failed to send document to Telegram chat.',
         errorCode: tgResult.error_code
       });
     }
 
-    // 6. Return successful delivery response
     return res.status(200).json({
       success: true,
-      message: 'Document delivered successfully to Telegram chat.',
       messageId: tgResult.result?.message_id
     });
 
@@ -115,7 +92,7 @@ export default async function handler(req, res) {
     console.error('Unexpected error in /api/send-pdf:', error);
     return res.status(500).json({
       success: false,
-      message: error.message || 'Internal server error while dispatching PDF to Telegram.'
+      error: error.message || 'Internal server error while dispatching PDF to Telegram.'
     });
   }
 }
