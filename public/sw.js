@@ -1,11 +1,16 @@
 // SlowPDF Service Worker
-const CACHE_NAME = 'slowpdf-cache-v1';
+const CACHE_NAME = 'slowpdf-cache-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/logo.svg',
+  '/logo.png',
   '/icon-192.png',
   '/icon-512.png',
+  '/icon-maskable-192.png',
+  '/icon-maskable-512.png',
+  '/apple-touch-icon.png',
   '/assets/images/logo.webp',
   '/assets/images/logo.png'
 ];

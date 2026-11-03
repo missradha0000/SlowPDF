@@ -224,7 +224,7 @@
         const resData = await response.json().catch(() => ({}));
 
         if (!response.ok || !resData.success) {
-          throw new Error(resData.error || 'Failed to deliver PDF to Telegram chat.');
+          throw new Error(resData.message || resData.error || 'Failed to deliver PDF to Telegram chat.');
         }
 
         // Show Telegram Success Notification & In-Page Card
@@ -235,9 +235,21 @@
         const errMsg = err.message || 'An error occurred while sending the PDF to your chat.';
         
         if (tg?.showAlert) {
-          tg.showAlert(`⚠️ Delivery Failed: ${errMsg}\n\nPlease try again or ensure you have messaged the bot.`);
+          tg.showAlert(`⚠️ Bot Delivery Notice: ${errMsg}\n\nInitiating direct device download as a fallback...`);
         } else {
-          alert(`⚠️ Delivery Failed: ${errMsg}\n\nPlease try again.`);
+          alert(`⚠️ Bot Delivery Notice: ${errMsg}\n\nInitiating direct device download as a fallback...`);
+        }
+
+        // Direct device download fallback
+        const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = defaultFilename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        if (realBlob instanceof Blob) {
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 3000);
         }
       } finally {
         if (activeBtn) {
