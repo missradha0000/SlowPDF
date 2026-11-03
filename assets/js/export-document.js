@@ -145,7 +145,7 @@
         const resData = await response.json().catch(() => ({}));
 
         if (!response.ok || !resData.success) {
-          throw new Error(resData.error || 'Failed to deliver PDF to Telegram chat.');
+          throw new Error(resData.message || resData.error || 'Failed to deliver PDF to Telegram chat.');
         }
 
         showTelegramSuccessUI(finalName);

@@ -23,7 +23,7 @@ app.all('/api/send-pdf', async (req, res) => {
   } catch (err: any) {
     console.error('Error handling /api/send-pdf:', err);
     if (!res.headersSent) {
-      res.status(500).json({ success: false, error: err.message || 'Internal server error' });
+      res.status(500).json({ success: false, message: err.message || 'Internal server error' });
     }
   }
 });
