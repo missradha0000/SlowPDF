@@ -9,6 +9,10 @@
   "orientation": "any",
   "background_color": "#FFFBF2",
   "theme_color": "#FFFBF2",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
   "icons": [
     {
       "src": "/icon-192.png",
@@ -33,18 +37,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
     }
   ]
 }
