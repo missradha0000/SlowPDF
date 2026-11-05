@@ -1,7 +1,8 @@
 /**
  * SlowPDF Global Export Utility: window.exportDocument(blob, fileName)
  * Seamless routing:
- * - Inside Telegram WebApp: Converts Blob to Base64, notifies user, and POSTs to /api/send-pdf.
+ * - Inside Telegram Mini App (TMA): Converts Blob to Base64, calls /api/send-telegram with chat_id,
+ *   and displays alert: "PDF aapke Telegram chat mein bhej di gayi hai!".
  * - Standard Browsers: Triggers direct memory Blob URL download via hidden <a> tag.
  */
 (function(window) {
@@ -29,13 +30,19 @@
   }
 
   function showTelegramSuccessUI(fileName) {
+    const alertMsg = "PDF aapke Telegram chat mein bhej di gayi hai!";
+
     const tg = window.Telegram?.WebApp;
     if (tg?.showAlert) {
       try {
-        tg.showAlert("File sent to your bot chat!");
+        tg.showAlert(alertMsg);
       } catch (e) {
         console.warn('Telegram showAlert error:', e);
       }
+    } else {
+      try {
+        alert(alertMsg);
+      } catch (_) {}
     }
 
     const existing = document.getElementById('telegram-chat-delivery-card');
@@ -50,8 +57,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#24A1DE"/><path d="M5.4 12L18.6 6.9C19.2 6.6 19.8 7.1 19.6 7.7L17.3 18.5C17.1 19.1 16.4 19.4 15.9 19L12.4 16.2L10.7 17.8C10.5 18 10.2 18.1 9.9 18.1L10.1 14.8L16.2 9.3C16.5 9 16.1 8.6 15.8 8.8L8.2 13.6L5.1 12.6C4.5 12.4 4.5 11.6 5.4 12Z" fill="white"/></svg>
         </div>
         <div class="text-left">
-          <h4 class="text-base font-bold text-[#1E362A] dark:text-emerald-300">File sent to your bot chat!</h4>
-          <p class="text-xs text-stone-600 dark:text-stone-300">"<strong>${escapeHtml(fileName || 'SlowPDF_Document.pdf')}</strong>" has been delivered.</p>
+          <h4 class="text-base font-bold text-[#1E362A] dark:text-emerald-300">PDF aapke Telegram chat mein bhej di gayi hai!</h4>
+          <p class="text-xs text-stone-600 dark:text-stone-300">"<strong>${escapeHtml(fileName || 'SlowPDF_Document.pdf')}</strong>" has been delivered to your bot chat.</p>
         </div>
       </div>
       <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
@@ -107,15 +114,16 @@
       }
     }
 
-    const isTelegram = Boolean(window.Telegram?.WebApp?.initDataUnsafe?.user?.id);
-    const userId = window.Telegram?.WebApp?.initDataUnsafe?.user?.id;
+    // Check if running inside Telegram Mini App (TMA user)
+    const telegramUserId = window.Telegram?.WebApp?.initDataUnsafe?.user?.id;
+    const isTelegram = Boolean(telegramUserId);
 
     const activeBtn = document.activeElement?.closest('a[download], button[id*="download"], a[id*="download"], button[id*="dl"], .download-btn') ||
       document.querySelector('button[id*="download"]:not(.hidden), a[id*="download"]:not(.hidden), a[download]:not(.hidden)');
 
     if (isTelegram) {
       // ----------------------------------------------------
-      // TELEGRAM FLOW
+      // TELEGRAM MINI APP FLOW
       // ----------------------------------------------------
       let originalBtnHtml = '';
       if (activeBtn) {
@@ -123,20 +131,21 @@
         activeBtn.style.pointerEvents = 'none';
         activeBtn.innerHTML = `
           <svg class="animate-spin -ml-1 mr-2 h-4 w-4 inline-block shrink-0 align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-          <span class="align-middle">Sending file to your Telegram chat... ⏳</span>
+          <span class="align-middle">Sending to Telegram chat... ⏳</span>
         `;
       }
 
       try {
         const base64Data = await blobToBase64(realBlob);
 
-        const response = await fetch('/api/send-pdf', {
+        const response = await fetch('/api/send-telegram', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            userId: userId,
+            chat_id: telegramUserId,
+            userId: telegramUserId,
             fileName: finalName,
             pdfBase64: base64Data
           })
@@ -154,21 +163,9 @@
         console.error('Telegram exportDocument delivery error:', err);
         const errMsg = err.message || 'An error occurred while sending the PDF to your chat.';
         if (window.Telegram?.WebApp?.showAlert) {
-          window.Telegram.WebApp.showAlert(`⚠️ Bot Delivery Notice: ${errMsg}\n\nInitiating direct device download as a fallback...`);
+          window.Telegram.WebApp.showAlert(`⚠️ Delivery Failed: ${errMsg}\n\nPlease try again or ensure bot is started.`);
         } else {
-          alert(`⚠️ Bot Delivery Notice: ${errMsg}\n\nInitiating direct device download as a fallback...`);
-        }
-
-        // Direct device download fallback so user never loses their processed file
-        const blobUrl = (realBlob instanceof Blob) ? URL.createObjectURL(realBlob) : realBlob;
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = finalName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        if (realBlob instanceof Blob) {
-          setTimeout(() => URL.revokeObjectURL(blobUrl), 3000);
+          alert(`⚠️ Delivery Failed: ${errMsg}\n\nPlease try again.`);
         }
       } finally {
         if (activeBtn) {

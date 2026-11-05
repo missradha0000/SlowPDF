@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import sendPdfHandler from './api/send-pdf.js';
+import sendTelegramHandler from './api/send-telegram.js';
 
 dotenv.config();
 
@@ -16,12 +17,12 @@ const PORT = Number(process.env.PORT) || 3000;
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Telegram Delivery API Route
-app.all('/api/send-pdf', async (req, res) => {
+// Telegram Delivery API Routes
+app.all(['/api/send-telegram', '/api/send-pdf'], async (req, res) => {
   try {
-    await sendPdfHandler(req, res);
+    await sendTelegramHandler(req, res);
   } catch (err: any) {
-    console.error('Error handling /api/send-pdf:', err);
+    console.error('Error handling Telegram delivery route:', err);
     if (!res.headersSent) {
       res.status(500).json({ success: false, message: err.message || 'Internal server error' });
     }

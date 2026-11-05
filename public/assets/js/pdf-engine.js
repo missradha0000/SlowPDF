@@ -104,10 +104,14 @@
     // 1. Native Telegram Alert
     if (window.Telegram?.WebApp?.showAlert) {
       try {
-        window.Telegram.WebApp.showAlert("File sent to your bot chat!");
+        window.Telegram.WebApp.showAlert("PDF aapke Telegram chat mein bhej di gayi hai!");
       } catch (e) {
         console.warn('Telegram showAlert error:', e);
       }
+    } else {
+      try {
+        alert("PDF aapke Telegram chat mein bhej di gayi hai!");
+      } catch (_) {}
     }
 
     // 2. Remove existing card if present
@@ -209,12 +213,13 @@
       try {
         const base64Data = await blobToBase64(realBlob);
         
-        const response = await fetch('/api/send-pdf', {
+        const response = await fetch('/api/send-telegram', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
+            chat_id: telegramUserId,
             userId: telegramUserId,
             fileName: defaultFilename,
             pdfBase64: base64Data
