@@ -478,11 +478,17 @@
   }
 
   function showLoadingOverlay(toolName) {
+    // Never show loading overlay on the homepage (index.html)
+    const currentPath = window.location.pathname;
+    if (!currentPath.includes('/tools/')) {
+      return;
+    }
+
     ensureLoaderStyles();
 
     const subtitleText = toolName
-      ? `Preparing ${toolName} in local browser memory...`
-      : 'Initializing 100% private client-side workspace...';
+      ? `Processing ${toolName} in local browser memory...`
+      : 'Processing file in local browser memory...';
 
     let overlay = document.getElementById(OVERLAY_ID);
     if (!overlay) {
@@ -497,14 +503,8 @@
             <div class="pdf-engine-spinner"></div>
             <span style="font-size: 20px; line-height: 1; user-select: none;" aria-hidden="true">🐢</span>
           </div>
-          <div class="pdf-engine-loader-title">Loading PDF Engine...</div>
+          <div class="pdf-engine-loader-title">Processing PDF...</div>
           <div id="slowpdf-engine-loading-subtitle" class="pdf-engine-loader-subtitle">${subtitleText}</div>
-          <div class="pdf-engine-skeleton-box" aria-hidden="true">
-            <div class="pdf-skeleton-line" style="width: 42%; height: 12px;"></div>
-            <div class="pdf-skeleton-line" style="width: 86%;"></div>
-            <div class="pdf-skeleton-line" style="width: 68%;"></div>
-            <div class="pdf-skeleton-line" style="width: 54%; height: 26px; margin-top: 4px;"></div>
-          </div>
         </div>
       `;
       document.body.appendChild(overlay);
@@ -528,18 +528,9 @@
     if (existing) {
       existing.classList.remove('is-active');
       existing.setAttribute('aria-hidden', 'true');
-    }
-  }
-
-  function scheduleLoadingFeedback(toolName, delayMs) {
-    if (loadingTimer) clearTimeout(loadingTimer);
-    const delay = typeof delayMs === 'number' ? delayMs : 0;
-    if (delay <= 0) {
-      showLoadingOverlay(toolName);
-    } else {
-      loadingTimer = setTimeout(() => {
-        showLoadingOverlay(toolName);
-      }, delay);
+      if (!window.location.pathname.includes('/tools/')) {
+        existing.remove();
+      }
     }
   }
 
@@ -560,6 +551,9 @@
                      (!pathname.includes('/tools/') && !pathname.includes('/pages/'));
 
   if (isHomepage) {
+    // Ensure no loading overlay ever exists on the homepage
+    hideLoadingOverlay();
+
     // 1. Trigger Idle Pre-fetching once homepage finishes initial load
     if (document.readyState === 'complete') {
       const idleFn = window.requestIdleCallback || function(cb) { return setTimeout(cb, 600); };
@@ -574,9 +568,8 @@
     // 2. Enable Hover & Touch Preloading
     initHoverAndTouchPreload();
 
-    // 3. Intercept tool clicks on homepage to show immediate "Loading PDF Engine..." visual feedback
+    // 3. Save scroll state & prefetch when clicking a tool on homepage (no loading overlay on homepage)
     document.addEventListener('click', function(e) {
-      // Ignore modified clicks (new tab / middle click / right click)
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
       const toolLink = e.target.closest('a[href*="tools/"], [data-tool-card]');
@@ -595,15 +588,8 @@
         sessionStorage.setItem(SESSION_KEY, VALUE_TOOLS_GRID);
       } catch(err) {}
 
-      // Extract clean tool title for feedback message
-      const headingEl = toolLink.querySelector('h3, h4, .tool-title');
-      const toolTitle = headingEl ? headingEl.textContent.trim() : '';
-
       // Trigger prefetch immediately if not yet cached
       prefetchToolTarget(href);
-
-      // Immediately display the CSS-based "Loading PDF Engine..." skeleton/spinner overlay
-      showLoadingOverlay(toolTitle);
     });
 
     // 4. Restore scroll position on homepage load if arriving back from a tool
@@ -634,24 +620,6 @@
       restoreScroll();
     }
   } else {
-    // On Tool Pages (/tools/*.html) or Subpages:
-    // If tool scripts take >150ms to finish initializing before interactive/load, show feedback & dismiss when ready
-    if (pathname.includes('/tools/') && document.readyState === 'loading') {
-      const initTimer = setTimeout(() => {
-        if (document.readyState === 'loading' && document.body) {
-          showLoadingOverlay('');
-        }
-      }, 150);
-
-      const clearInitFeedback = () => {
-        clearTimeout(initTimer);
-        hideLoadingOverlay();
-      };
-
-      document.addEventListener('DOMContentLoaded', clearInitFeedback, { once: true });
-      window.addEventListener('load', clearInitFeedback, { once: true });
-    }
-
     // Wire Home links & cross-tool navigation links
     function wireToolPageLinks() {
       hideLoadingOverlay();
@@ -687,7 +655,6 @@
         brandHomeLink.href = targetUrl;
       }
 
-      // Also provide immediate feedback if user navigates from one tool directly to another tool
       document.addEventListener('click', function(e) {
         if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         const toolLink = e.target.closest('a[href*="tools/"]');
@@ -695,7 +662,6 @@
         const href = toolLink.getAttribute('href');
         if (href && !href.startsWith('#')) {
           prefetchToolTarget(href);
-          showLoadingOverlay('');
         }
       });
     }
