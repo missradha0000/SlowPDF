@@ -253,6 +253,13 @@
     window.downloadResult = downloadResult;
     window.exportDocument = downloadResult;</script>
 
+  <!-- Preconnect & Idle Prefetch Hints for Instant PDF Tool Launches -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" as="script" />
+  <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" as="script" />
+  <link rel="prefetch" href="/assets/js/pdf-engine.js" as="script" />
+
   <!-- External Centralized Configurations, Carousel Engine & Memory Nav -->
   <script src="assets/js/banners.js" defer></script>
   <script src="assets/js/carousel.js" defer></script>
@@ -679,24 +686,13 @@
             Simple, calm, and reliable PDF tools designed to help you study and work at your own pace. No rush. No clutter. Just what you need.
           </p>
 
-          <!-- Telegram Mini App & Android APK / PWA Banner Row -->
+          <!-- Telegram Mini App Banner Row -->
           <div class="mt-4 flex flex-wrap items-center gap-3">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-xs text-white/90">
               <!-- Telegram SVG -->
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#24A1DE"/><path d="M5.4 12L18.6 6.9C19.2 6.6 19.8 7.1 19.6 7.7L17.3 18.5C17.1 19.1 16.4 19.4 15.9 19L12.4 16.2L10.7 17.8C10.5 18 10.2 18.1 9.9 18.1L10.1 14.8L16.2 9.3C16.5 9 16.1 8.6 15.8 8.8L8.2 13.6L5.1 12.6C4.5 12.4 4.5 11.6 5.4 12Z" fill="white"/></svg>
               <span>Telegram: <a href="https://t.me/slowpdf_bot/app" target="_blank" rel="noopener noreferrer" class="underline hover:text-white font-semibold">Launch Mini App ↗</a></span>
             </span>
-
-            <a href="/SlowPDF-unsigned.apk" download="SlowPDF.apk" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3DDC84]/20 hover:bg-[#3DDC84]/30 border border-[#3DDC84]/40 text-xs text-emerald-200 font-semibold transition-all">
-              <!-- Android Robot Icon Small -->
-              <svg class="w-3.5 h-3.5 fill-[#3DDC84]" viewBox="0 0 24 24"><path d="M6 18C6 19.1 6.9 20 8 20H9V22C9 22.55 9.45 23 10 23C10.55 23 11 22.55 11 22V20H13V22C13 22.55 13.45 23 14 23C14.55 23 15 22.55 15 22V20H16C17.1 20 18 19.1 18 18V9H6V18ZM16.99 10.23L18.59 7.45C18.71 7.24 18.64 6.97 18.43 6.85C18.22 6.73 17.95 6.8 17.83 7.01L16.19 9.85C14.95 9.29 13.52 8.97 12 8.97C10.48 8.97 9.05 9.29 7.81 9.85L6.17 7.01C6.05 6.8 5.78 6.73 5.57 6.85C5.36 6.97 5.29 7.24 5.41 7.45L7.01 10.23C3.91 11.91 1.78 15.12 1.5 18.91H22.5C22.22 15.12 20.09 11.91 16.99 10.23Z"/></svg>
-              <span>Android APK</span>
-            </a>
-
-            <button class="btn-install-app pwa-hero-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 text-xs text-white cursor-pointer transition-all">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              <span>Install PWA</span>
-            </button>
           </div>
 
           <!-- Action Buttons -->
@@ -709,20 +705,20 @@
               Explore All Tools
             </a>
 
-            <!-- Stylish Download for Android Button -->
+            <!-- Single App Download Button -->
             <a 
               id="hero-download-android-btn"
-              href="/SlowPDF.apk" 
+              href="/SlowPDF-unsigned.apk" 
               download="SlowPDF.apk"
               class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-base text-stone-900 bg-[#3DDC84] hover:bg-[#32c974] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-              aria-label="Download SlowPDF for Android"
+              aria-label="Download Android App"
               title="Download SlowPDF Android APK"
             >
               <!-- Android Robot SVG Icon -->
               <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6 18C6 19.1 6.9 20 8 20H9V22C9 22.55 9.45 23 10 23C10.55 23 11 22.55 11 22V20H13V22C13 22.55 13.45 23 14 23C14.55 23 15 22.55 15 22V20H16C17.1 20 18 19.1 18 18V9H6V18ZM3.5 9C2.67 9 2 9.67 2 10.5V16.5C2 17.33 2.67 18 3.5 18C4.33 18 5 17.33 5 16.5V10.5C5 9.67 4.33 9 3.5 9ZM20.5 9C19.67 9 19 9.67 19 10.5V16.5C19 17.33 19.67 18 20.5 18C21.33 18 22 17.33 22 16.5V10.5C22 9.67 21.33 9 20.5 9ZM15.53 4.25L16.89 2.89C17.09 2.69 17.09 2.37 16.89 2.18C16.69 1.98 16.37 1.98 16.18 2.18L14.65 3.71C13.85 3.27 12.95 3 12 3C11.05 3 10.15 3.27 9.35 3.71L7.82 2.18C7.63 1.98 7.31 1.98 7.11 2.18C6.92 2.37 6.92 2.69 7.11 2.89L8.47 4.25C6.97 5.27 6 6.99 6 8.94H18C18 6.99 17.03 5.27 15.53 4.25ZM9 6.5C8.45 6.5 8 6.05 8 5.5C8 4.95 8.45 4.5 9 4.5C9.55 4.5 10 4.95 10 5.5C10 6.05 9.55 6.5 9 6.5ZM15 6.5C14.45 6.5 14 6.05 14 5.5C14 4.95 14.45 4.5 15 4.5C15.55 4.5 16 4.95 16 5.5C16 6.05 15.55 6.5 15 6.5Z"/>
               </svg>
-              <span>Download for Android</span>
+              <span>Download Android App</span>
             </a>
 
             <a 
@@ -2593,6 +2589,40 @@
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================== -->
+  <!-- INSTANT PDF ENGINE LOADING OVERLAY & ANIMATED SKELETON SCREEN              -->
+  <!-- Triggered when a user clicks a PDF tool on the homepage                    -->
+  <!-- ========================================================================== -->
+  <div
+    id="slowpdf-engine-loading-overlay"
+    class="pdf-engine-loader-overlay"
+    role="status"
+    aria-live="polite"
+    aria-hidden="true"
+  >
+    <div class="pdf-engine-loader-card">
+      <!-- Animated Spinner Ring + Mascot -->
+      <div class="pdf-engine-spinner-wrap">
+        <div class="pdf-engine-spinner"></div>
+        <span class="text-xl select-none" aria-hidden="true">🐢</span>
+      </div>
+
+      <!-- Primary Required Text -->
+      <div class="pdf-engine-loader-title">Loading PDF Engine...</div>
+      <div id="slowpdf-engine-loading-subtitle" class="pdf-engine-loader-subtitle">
+        Initializing 100% private client-side workspace...
+      </div>
+
+      <!-- CSS-Based Animated Skeleton Screen (Simulates PDF Dropzone & Toolbar) -->
+      <div class="pdf-engine-skeleton-box" aria-hidden="true">
+        <div class="pdf-skeleton-line" style="width: 42%; height: 12px;"></div>
+        <div class="pdf-skeleton-line" style="width: 86%;"></div>
+        <div class="pdf-skeleton-line" style="width: 68%;"></div>
+        <div class="pdf-skeleton-line" style="width: 54%; height: 26px; margin-top: 4px;"></div>
       </div>
     </div>
   </div>

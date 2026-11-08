@@ -313,25 +313,16 @@ header.site-header #hamburger-btn:hover,
 }
 
 /* ==========================================================================
-   GLOBAL RESPONSIVE HEADER NAVIGATION RULES
-   - On Mobile screens (max-width: 768px):
-     Hide all center navigation links, tool shortcuts, and nav containers.
-     Top bar shows ONLY Logo + Name (Left) and Share + Hamburger buttons (Right).
-   - On Tablet/Desktop screens (min-width: 769px):
-     Show center navigation links neatly aligned.
+   7. TOP HEADER NAVIGATION MOBILE RESPONSIVE LAYOUT
+   - On mobile screens (max-width: 768px): Completely hide top header navigation
+     buttons/links and disable horizontal scrolling.
+   - On tablets & desktop screens (min-width: 769px): Keep all navigation
+     buttons visible and neatly aligned horizontally in top header as normal.
    ========================================================================== */
 @media (max-width: 768px) {
-  #site-header,
-  header.site-header,
-  header {
-    overflow-x: hidden !important;
-  }
-
   #site-header nav,
   header.site-header nav,
-  header nav,
-  #site-header .nav-link,
-  header.site-header .nav-link {
+  header nav {
     display: none !important;
   }
 }
@@ -343,4 +334,146 @@ header.site-header #hamburger-btn:hover,
     display: flex !important;
   }
 }
+
+/* ==========================================================================
+   8. PDF ENGINE LOADING OVERLAY & ANIMATED SKELETON SCREEN
+   ========================================================================== */
+@keyframes pdfEngineSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pdfSkeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.pdf-engine-loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: rgba(255, 251, 242, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.16s ease-out, visibility 0.16s ease-out;
+}
+
+.dark .pdf-engine-loader-overlay {
+  background-color: rgba(18, 24, 21, 0.88);
+}
+
+.pdf-engine-loader-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.pdf-engine-loader-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5DEC9;
+  border-radius: 1.5rem;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 24px 48px -12px rgba(39, 71, 55, 0.22);
+  text-align: center;
+  transform: translateY(6px) scale(0.98);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .pdf-engine-loader-card {
+  background-color: #1C2420;
+  border-color: #2A3630;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+}
+
+.pdf-engine-loader-overlay.is-active .pdf-engine-loader-card {
+  transform: translateY(0) scale(1);
+}
+
+.pdf-engine-spinner-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-engine-spinner {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 4px solid #ECE3D0;
+  border-top-color: #355E4B;
+  border-right-color: #355E4B;
+  animation: pdfEngineSpin 0.72s linear infinite;
+}
+
+.dark .pdf-engine-spinner {
+  border-color: #2A3630;
+  border-top-color: #5E9B7E;
+  border-right-color: #5E9B7E;
+}
+
+.pdf-engine-loader-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #222E28;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.25rem;
+}
+
+.dark .pdf-engine-loader-title {
+  color: #F1F5F2;
+}
+
+.pdf-engine-loader-subtitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #637069;
+  margin-bottom: 1.25rem;
+}
+
+.dark .pdf-engine-loader-subtitle {
+  color: #9CA8A1;
+}
+
+.pdf-engine-skeleton-box {
+  background-color: #FAF6EE;
+  border: 1px dashed #DFD4BE;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.dark .pdf-engine-skeleton-box {
+  background-color: #151C18;
+  border-color: #2A3630;
+}
+
+.pdf-skeleton-line {
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #EDE4D3 25%, #F7F2E7 50%, #EDE4D3 75%);
+  background-size: 200% 100%;
+  animation: pdfSkeletonShimmer 1.35s infinite linear;
+}
+
+.dark .pdf-skeleton-line {
+  background: linear-gradient(90deg, #232D28 25%, #2F3C35 50%, #232D28 75%);
+  background-size: 200% 100%;
+}
+
 
