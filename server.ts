@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import sendPdfHandler from './api/send-pdf.js';
@@ -27,6 +28,23 @@ app.all(['/api/send-telegram', '/api/send-pdf'], async (req, res) => {
       res.status(500).json({ success: false, message: err.message || 'Internal server error' });
     }
   }
+});
+
+// Direct Android APK Download Route (supports case-insensitive /slowpdf.apk & /SlowPDF.apk)
+app.get(['/slowpdf.apk', '/SlowPDF.apk', '/SlowPDF-unsigned.apk'], (req, res) => {
+  const candidates = [
+    path.join(__dirname, 'public', 'slowpdf.apk'),
+    path.join(__dirname, 'public', 'SlowPDF.apk'),
+    path.join(__dirname, 'dist', 'slowpdf.apk'),
+    path.join(__dirname, 'dist', 'SlowPDF.apk'),
+  ];
+  const apkPath = candidates.find((p) => fs.existsSync(p));
+  if (apkPath) {
+    res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+    res.setHeader('Content-Disposition', 'attachment; filename="SlowPDF.apk"');
+    return res.sendFile(apkPath);
+  }
+  res.status(404).send('APK file not found');
 });
 
 // Vite middleware in dev; static dist files in prod
