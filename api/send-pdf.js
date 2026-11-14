@@ -77,10 +77,22 @@ export default async function handler(req, res) {
 
     // 4. Construct multipart/form-data payload using standard web FormData & Blob
     const fileBlob = new Blob([fileBuffer], { type: 'application/pdf' });
+    const replyMarkup = {
+      inline_keyboard: [
+        [
+          {
+            text: '👉 Sponsored: Free AI Tools 🔗',
+            url: 'https://uplcm.com/4/12263337'
+          }
+        ]
+      ]
+    };
+
     const formData = new FormData();
     formData.append('chat_id', String(userId));
     formData.append('document', fileBlob, safeFileName);
     formData.append('caption', '✅ Here is your processed document from SlowPDF!');
+    formData.append('reply_markup', JSON.stringify(replyMarkup));
 
     // 5. Send document via official Telegram Bot API
     const telegramApiUrl = `https://api.telegram.org/bot${botToken.trim()}/sendDocument`;
